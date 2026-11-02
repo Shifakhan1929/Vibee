@@ -2,18 +2,15 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Calendar,
-  Users,
-  Ticket,
-  QrCode,
+  DollarSign,
   Share2,
-  CheckCircle2,
+  QrCode,
   ArrowRight,
   Sparkles,
+  Sun,
+  Moon,
   Zap,
-  ShieldCheck,
-  Compass,
-  DollarSign,
-  MessageSquare,
+  ExternalLink,
 } from "lucide-react";
 
 export const Route = createFileRoute("/how-it-works")({
@@ -23,7 +20,7 @@ export const Route = createFileRoute("/how-it-works")({
       {
         name: "description",
         content:
-          "Vibe lets anyone host anything — from a Sunday cricket match with 10 players to a comedy night or concert for 1,000. Discover how Vibe works in 4 simple steps.",
+          "Vibe lets anyone host anything — from a Sunday cricket match with 10 players to a comedy night or festival for 1,000. Live in about five minutes.",
       },
       { property: "og:title", content: "How It Works – Vibe" },
       {
@@ -37,212 +34,447 @@ export const Route = createFileRoute("/how-it-works")({
   component: HowItWorksPage,
 });
 
-function HowItWorksPage() {
-  const [activeStep, setActiveStep] = useState<number>(1);
+/* =========================================================================
+   CUSTOM HIGH-FIDELITY VECTOR ICONS (Matching Screenshot 1 exactly)
+   ========================================================================= */
 
-  // 1. Screenshot 1 Data: Categories
+// 1. Cricket Bat & Ball (Sports & Games)
+function SportsCricketIcon() {
+  return (
+    <svg
+      width="40"
+      height="40"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="select-none drop-shadow-md"
+    >
+      {/* Cricket Bat Handle */}
+      <rect
+        x="13"
+        y="8"
+        width="4"
+        height="12"
+        rx="2"
+        transform="rotate(-40 13 8)"
+        fill="#F8FAFC"
+      />
+      <rect
+        x="12.5"
+        y="7.5"
+        width="5"
+        height="3"
+        rx="1"
+        transform="rotate(-40 12.5 7.5)"
+        fill="#CBD5E1"
+      />
+      {/* Cricket Bat Blade */}
+      <path
+        d="M17.5 17.5L29 31C30.5 32.8 31 35.5 29.8 37.2L28 39.5C26.5 41.2 23.8 41.5 21.8 40.2L11 31.5C9.8 30.5 9.5 28.8 10.2 27.5L16.2 18.2C16.5 17.7 17.1 17.3 17.5 17.5Z"
+        fill="#E0A96D"
+      />
+      <path
+        d="M20 20L28 30C29.2 31.5 29.5 33.5 28.5 35L27 37C25.8 38.5 23.8 38.8 22.2 37.8L13 29.8L18.5 20.8C19 20.2 19.5 20 20 20Z"
+        fill="#C68B59"
+      />
+      {/* Red Cricket Ball */}
+      <circle cx="36" cy="36" r="6.5" fill="#EF4444" />
+      <circle cx="34.5" cy="34" r="2" fill="#F87171" opacity="0.8" />
+      <path
+        d="M31 38C33 34 39 34 41 38"
+        stroke="#FFFFFF"
+        strokeWidth="1.2"
+        strokeDasharray="1.5 1"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+// 2. Microphone (Comedy & Open Mics)
+function ComedyMicIcon() {
+  return (
+    <svg
+      width="40"
+      height="40"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="select-none drop-shadow-md"
+    >
+      {/* Mic Body / Handle (Purple) */}
+      <path
+        d="M19 23L27 31L23 37C21.8 38.8 19 39.2 17.2 38L14 35.8C12.2 34.2 12 31.5 13.5 29.8L19 23Z"
+        fill="#8B5CF6"
+      />
+      <rect
+        x="12"
+        y="35"
+        width="6"
+        height="8"
+        rx="2"
+        transform="rotate(-45 12 35)"
+        fill="#6D28D9"
+      />
+      {/* Chrome Mic Capsule */}
+      <ellipse
+        cx="29"
+        cy="17"
+        rx="7.5"
+        ry="9"
+        transform="rotate(45 29 17)"
+        fill="#CBD5E1"
+      />
+      <ellipse
+        cx="30"
+        cy="16"
+        rx="5.5"
+        ry="7"
+        transform="rotate(45 30 16)"
+        fill="#94A3B8"
+      />
+      {/* Mesh lines */}
+      <path
+        d="M24 15L32 23M26 12L34 20M29 9L37 17"
+        stroke="#475569"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+      />
+      {/* Mic Ring Accent */}
+      <rect
+        x="23"
+        y="21"
+        width="3"
+        height="11"
+        rx="1"
+        transform="rotate(45 23 21)"
+        fill="#DDD6FE"
+      />
+    </svg>
+  );
+}
+
+// 3. Music Notes (Music & Parties)
+function MusicPartiesIcon() {
+  return (
+    <svg
+      width="40"
+      height="40"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="select-none drop-shadow-md"
+    >
+      {/* Left Note Head */}
+      <ellipse cx="14" cy="34" rx="5" ry="3.8" transform="rotate(-20 14 34)" fill="#A855F7" />
+      {/* Left Stem */}
+      <rect x="17" y="14" width="3" height="21" rx="1.5" fill="#9333EA" />
+      {/* Right Note Head */}
+      <ellipse cx="32" cy="29" rx="5" ry="3.8" transform="rotate(-20 32 29)" fill="#A855F7" />
+      {/* Right Stem */}
+      <rect x="35" y="9" width="3" height="21" rx="1.5" fill="#9333EA" />
+      {/* Top Connecting Beam */}
+      <path
+        d="M17 17L38 12V8L17 13V17Z"
+        fill="#7E22CE"
+      />
+      {/* Floating Sparkle / Accents */}
+      <circle cx="10" cy="18" r="1.5" fill="#C084FC" />
+      <circle cx="39" cy="23" r="2" fill="#E9D5FF" />
+    </svg>
+  );
+}
+
+// 4. Brain / Knowledge (Learn & Meet)
+function LearnMeetIcon() {
+  return (
+    <svg
+      width="40"
+      height="40"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="select-none drop-shadow-md"
+    >
+      {/* Pink Brain Graphic */}
+      <path
+        d="M24 12C20.5 12 17.5 14 16.5 17C14.5 17.5 12 19.5 12 23C12 25.5 13.5 27.5 15.5 28.5C15 29.5 15 31 16 32.5C17.2 34.5 19.5 35.5 22 35.5C23 35.5 23.5 35 24 34.5V12Z"
+        fill="#F472B6"
+      />
+      <path
+        d="M24 12C27.5 12 30.5 14 31.5 17C33.5 17.5 36 19.5 36 23C36 25.5 34.5 27.5 32.5 28.5C33 29.5 33 31 32 32.5C30.8 34.5 28.5 35.5 26 35.5C25 35.5 24.5 35 24 34.5V12Z"
+        fill="#EC4899"
+      />
+      {/* Brain Folds / Convolutions */}
+      <path
+        d="M18 19C19 21 21 21 22 23M15 24C17 25 18 27 20 27M18 30C19.5 30 20.5 32 22 32"
+        stroke="#DB2777"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <path
+        d="M30 19C29 21 27 21 26 23M33 24C31 25 30 27 28 27M30 30C28.5 30 27.5 32 26 32"
+        stroke="#BE185D"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export default function HowItWorksPage() {
+  // Theme state: defaults to 'dark' to replicate screenshot aesthetics exactly, toggleable to 'light'
+  const [theme, setTheme] = useState<"dark" | "light">("light");
+  const isDark = theme === "dark";
+
+  // Section 1 Data (Screenshot 1: "One place for every kind of gathering")
   const categories = [
     {
-      emoji: "🏏",
+      icon: <SportsCricketIcon />,
       title: "Sports and games",
       description: "Cricket, football, badminton, run clubs",
     },
     {
-      emoji: "🎤",
+      icon: <ComedyMicIcon />,
       title: "Comedy and open mics",
       description: "Stand-up nights, poetry, storytelling",
     },
     {
-      emoji: "🎶",
+      icon: <MusicPartiesIcon />,
       title: "Music and parties",
       description: "Gigs, DJ nights, birthdays, reunions",
     },
     {
-      emoji: "🧠",
+      icon: <LearnMeetIcon />,
       title: "Learn and meet",
       description: "Workshops, talks, startup meetups",
     },
   ];
 
-  // 2. Screenshot 2 Data: Scale Tiers
+  // Section 2 Data (Screenshot 2: "From a group of 10 to a crowd of 1,000")
   const scaleTiers = [
     {
       tier: "Small",
-      tierColor: "bg-sky-50 text-sky-700 border-sky-200",
       title: "Pickup and meetups",
       description:
         "Set a player limit, split the ground fee, and let Vibe fill the empty spots. Perfect for matches, game nights and study groups.",
-      capacity: "10 – 30 people",
-      perks: [
-        "Automatic ground/turf fee split",
-        "Player limit with instant waitlist",
-        "Direct attendee notifications",
-      ],
     },
     {
       tier: "Medium",
-      tierColor: "bg-indigo-50 text-indigo-700 border-indigo-200",
       title: "Shows and workshops",
       description:
         "Sell tickets, run a waitlist, and message everyone going. Built for comedy nights, classes and community events.",
-      capacity: "30 – 250 people",
-      perks: [
-        "Online ticket sales & instant UPI payouts",
-        "Live waitlist & ticket transfer",
-        "Broadcast message to all attendees",
-      ],
     },
     {
       tier: "Large",
-      tierColor: "bg-purple-50 text-purple-700 border-purple-200",
       title: "Festivals and concerts",
       description:
         "Tiered tickets, QR check-in at the gate, team access and live sales. Run a full-scale event from one dashboard.",
-      capacity: "250 – 1,000+ people",
-      perks: [
-        "Tiered passes (Early Bird, VIP, Phase 1)",
-        "Sub-second QR gate ticket scanner",
-        "Multi-staff scanner access & live sales stats",
-      ],
     },
   ];
 
-  // 3. Screenshot 3 Data: 4 Steps
+  // Section 3 Data (Screenshot 3: "Live in about five minutes")
   const steps = [
     {
       number: 1,
       title: "Describe it",
-      description: "Name it, pick a date and venue, set how many people you need.",
+      description:
+        "Name it, pick a date and venue, set how many people you need.",
       icon: Calendar,
     },
     {
       number: 2,
       title: "Set the price",
-      description: "Free, split-the-cost, or ticketed. Payments go straight to you.",
+      description:
+        "Free, split-the-cost, or ticketed. Payments go straight to you.",
       icon: DollarSign,
     },
     {
       number: 3,
       title: "Share the link",
-      description: "Post it on Vibe and WhatsApp. People nearby find it on their own.",
+      description:
+        "Post it on Vibe and WhatsApp. People nearby find it on their own.",
       icon: Share2,
     },
     {
       number: 4,
       title: "Show up",
-      description: "Scan QR codes at the door or tick off your team. Done.",
+      description:
+        "Scan QR codes at the door or tick off your team. Done.",
       icon: QrCode,
     },
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans antialiased">
-      {/* 1. Topbar Navigation */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
+    <div
+      className={`min-h-screen font-sans antialiased transition-colors duration-300 ${
+        isDark ? "bg-[#060D1E] text-white" : "bg-[#F8FAFC] text-slate-800"
+      }`}
+    >
+      {/* =========================================================================
+          TOPBAR NAVIGATION
+          ========================================================================= */}
+      <header
+        className={`sticky top-0 z-50 backdrop-blur-md border-b transition-colors ${
+          isDark
+            ? "bg-[#060D1E]/95 border-slate-800/80 text-white"
+            : "bg-white/95 border-slate-200 text-slate-800 shadow-xs"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-5">
             <Link to="/" className="flex items-center gap-2">
               <img
-                src="/site-assets/vibe-logo-dark.png"
+                src={
+                  isDark
+                    ? "/site-assets/6f6ea317c2a7cf87.png"
+                    : "/site-assets/vibe-logo-dark.png"
+                }
                 alt="Vibe logo"
-                className="h-9 w-auto object-contain"
+                className="h-8 w-auto object-contain"
+                onError={(e) => {
+                  (e.target as HTMLElement).style.display = "none";
+                }}
               />
+              <span className="font-extrabold text-xl tracking-tight text-white drop-shadow-sm">
+                Vibe
+              </span>
             </Link>
-            <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-[#1565C0] border border-blue-200 text-xs font-semibold">
-              <span className="w-2 h-2 rounded-full bg-[#1565C0] animate-pulse" />
-              How Vibe Works
-            </div>
+
+            <span
+              className={`hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${
+                isDark
+                  ? "bg-blue-500/10 text-[#38bdf8] border border-blue-400/20"
+                  : "bg-blue-50 text-[#1565C0] border border-blue-200"
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-[#00e0ff] animate-pulse" />
+              How It Works
+            </span>
           </div>
 
           <nav className="flex items-center gap-3 sm:gap-4">
+            {/* Theme Toggle Button */}
+            <button
+              onClick={() => setTheme(isDark ? "light" : "dark")}
+              type="button"
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+                isDark
+                  ? "bg-slate-800/80 text-slate-200 border-slate-700 hover:bg-slate-700 hover:text-white"
+                  : "bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200"
+              }`}
+              title="Toggle Dark / Light Theme"
+            >
+              {isDark ? (
+                <>
+                  <Sun className="w-3.5 h-3.5 text-amber-400" />
+                  <span className="hidden sm:inline">Light Mode</span>
+                </>
+              ) : (
+                <>
+                  <Moon className="w-3.5 h-3.5 text-indigo-600" />
+                  <span className="hidden sm:inline">Dark Mode</span>
+                </>
+              )}
+            </button>
+
             <Link
               to="/"
-              className="text-sm font-medium text-slate-600 hover:text-[#1565C0] transition-colors hidden sm:inline-block"
+              className={`text-sm font-medium transition-colors hidden sm:inline-block ${
+                isDark
+                  ? "text-slate-300 hover:text-white"
+                  : "text-slate-600 hover:text-[#1565C0]"
+              }`}
             >
               Home
             </Link>
+
             <a
-              href="/indore"
-              className="text-sm font-medium text-slate-600 hover:text-[#1565C0] transition-colors hidden md:inline-block"
+              href="/vibe-instant"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`text-sm font-semibold transition-colors hidden md:inline-flex items-center gap-1 ${
+                isDark
+                  ? "text-[#00e0ff] hover:text-[#38bdf8]"
+                  : "text-[#0a6cf0] hover:text-[#08a8ff]"
+              }`}
             >
-              Indore Events
+              <Zap className="w-3.5 h-3.5" />
+              Vibe Instant
             </a>
+
             <a
-              href="/manage/create.php?ref=how-it-works-topbar"
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-[#1565C0] text-white hover:bg-[#0D47A1] shadow-xs hover:shadow-md transition-all"
+              href="/create"
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-gradient-to-r from-[#0a6cf0] to-[#0099ff] text-white hover:brightness-110 shadow-md transition-all"
             >
-              <span>+</span> Create Event
+              <span>+</span> Host an Event
             </a>
           </nav>
         </div>
       </header>
 
-      {/* 2. Hero Section */}
-      <section className="bg-white border-b border-slate-200 py-14 sm:py-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#1565C0] text-xs font-bold uppercase tracking-wider mb-6">
-            <Sparkles className="w-3.5 h-3.5" />
-            Simple · Fast · Flexible
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-            How Vibe Works
-          </h1>
-
-          <p className="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Everything you need to gather people, sell tickets, split ground fees, or run a full-scale show — with zero friction.
-          </p>
-
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="/manage/create.php?ref=how-it-works-hero"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#1565C0] hover:bg-[#0D47A1] text-white font-semibold text-sm sm:text-base shadow-md hover:shadow-lg transition-all"
-            >
-              Create an Event
-              <ArrowRight className="w-4 h-4" />
-            </a>
-            <a
-              href="/indore"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm sm:text-base border border-slate-200 transition-colors"
-            >
-              Explore Events in Indore
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* =========================================================================
           SECTION 1: "One place for every kind of gathering" (Screenshot 1)
           ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-[#F8FAFC]">
+      <section
+        className={`pt-16 pb-16 sm:pt-20 sm:pb-24 transition-colors ${
+          isDark ? "bg-[#060D1E]" : "bg-[#F8FAFC]"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <div className="max-w-4xl mb-10 sm:mb-14">
+            <h1
+              className={`text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight ${
+                isDark ? "text-white" : "text-slate-900"
+              }`}
+              style={{ fontFamily: "'Trapvoid', 'Bricolage Grotesque', 'Outfit', sans-serif" }}
+            >
               One place for every kind of gathering
-            </h2>
-            <p className="mt-3 text-base sm:text-lg text-slate-600 leading-relaxed">
-              Whether you are chasing players, an audience, or both, pick a category and see what is happening this week.
+            </h1>
+            <p
+              className={`mt-4 text-base sm:text-lg leading-relaxed ${
+                isDark ? "text-[#8EA2C6]" : "text-slate-600"
+              }`}
+            >
+              Whether you are chasing players, an audience, or both, pick a
+              category and see what is happening this week.
             </p>
           </div>
 
-          {/* Category Cards Grid: 4 distinct columns, responsive and spacious */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* 4 Cards Grid - Pixel-perfect match to Screenshot 1 */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {categories.map((cat, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl p-7 border border-slate-200 shadow-xs hover:shadow-xl hover:border-[#1565C0]/40 transition-all duration-300 flex flex-col justify-between"
+                className={`rounded-[22px] p-6 sm:p-7 transition-all duration-300 flex flex-col justify-start ${
+                  isDark
+                    ? "bg-[#0C1B38] border border-[#162B54] hover:border-[#00e0ff]/50 hover:shadow-[0_10px_35px_rgba(0,224,255,0.09)]"
+                    : "bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#0a6cf0]/40"
+                }`}
               >
-                <div>
-                  <div className="w-14 h-14 rounded-2xl bg-blue-50/70 border border-blue-100 flex items-center justify-center text-3xl mb-5">
-                    {cat.emoji}
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
-                    {cat.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                    {cat.description}
-                  </p>
+                {/* Visual Icon */}
+                <div className="mb-5 flex items-center justify-start h-10 w-10">
+                  {cat.icon}
                 </div>
+
+                {/* Card Title */}
+                <h3
+                  className={`text-xl font-bold tracking-tight mb-2.5 ${
+                    isDark ? "text-white" : "text-slate-900"
+                  }`}
+                  style={{ fontFamily: "'Trapvoid', 'Bricolage Grotesque', 'Outfit', sans-serif" }}
+                >
+                  {cat.title}
+                </h3>
+
+                {/* Card Description */}
+                <p
+                  className={`text-sm sm:text-[15px] leading-relaxed ${
+                    isDark ? "text-[#8EA2C6]" : "text-slate-600"
+                  }`}
+                >
+                  {cat.description}
+                </p>
               </div>
             ))}
           </div>
@@ -252,55 +484,71 @@ function HowItWorksPage() {
       {/* =========================================================================
           SECTION 2: "From a group of 10 to a crowd of 1,000" (Screenshot 2)
           ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-white border-y border-slate-200">
+      <section
+        className={`py-14 sm:py-20 transition-colors ${
+          isDark ? "bg-[#060D1E]" : "bg-[#F1F5F9]/50"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <div className="max-w-4xl mb-10 sm:mb-14">
+            <h2
+              className={`text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight ${
+                isDark ? "text-white" : "text-slate-900"
+              }`}
+              style={{ fontFamily: "'Trapvoid', 'Bricolage Grotesque', 'Outfit', sans-serif" }}
+            >
               From a group of 10 to a crowd of 1,000
             </h2>
-            <p className="mt-3 text-base sm:text-lg text-slate-600 leading-relaxed">
-              The same tools work at any size. Start simple and add what you need as you grow.
+            <p
+              className={`mt-4 text-base sm:text-lg leading-relaxed ${
+                isDark ? "text-[#8EA2C6]" : "text-slate-600"
+              }`}
+            >
+              The same tools work at any size. Start simple and add what you need
+              as you grow.
             </p>
           </div>
 
-          {/* Scale Cards Grid: 3 spacious cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {/* 3 Cards Grid - Pixel-perfect match to Screenshot 2 */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7">
             {scaleTiers.map((tier, idx) => (
               <div
                 key={idx}
-                className="bg-slate-50/60 hover:bg-white rounded-2xl p-7 sm:p-8 border border-slate-200 shadow-xs hover:shadow-xl hover:border-[#1565C0]/40 transition-all duration-300 flex flex-col justify-between"
+                className={`rounded-[22px] p-7 sm:p-8 transition-all duration-300 flex flex-col justify-start ${
+                  isDark
+                    ? "bg-[#0C1B38] border border-[#162B54] hover:border-[#00e0ff]/50 hover:shadow-[0_10px_35px_rgba(0,224,255,0.09)]"
+                    : "bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#0a6cf0]/40"
+                }`}
               >
-                <div>
-                  {/* Tier Badge */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span
-                      className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border ${tier.tierColor}`}
-                    >
-                      {tier.tier}
-                    </span>
-                    <span className="text-xs font-medium text-slate-400">
-                      {tier.capacity}
-                    </span>
-                  </div>
-
-                  <h3 className="text-2xl font-bold text-slate-900 tracking-tight mb-3">
-                    {tier.title}
-                  </h3>
-
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
-                    {tier.description}
-                  </p>
-
-                  {/* Feature Checklist */}
-                  <div className="space-y-2.5 pt-4 border-t border-slate-200/80">
-                    {tier.perks.map((perk, pIdx) => (
-                      <div key={pIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
-                        <CheckCircle2 className="w-4 h-4 text-[#1565C0] shrink-0 mt-0.5" />
-                        <span>{perk}</span>
-                      </div>
-                    ))}
-                  </div>
+                {/* Cyan Category Badge */}
+                <div className="mb-3">
+                  <span
+                    className={`text-sm font-semibold tracking-wide ${
+                      isDark ? "text-[#00D2FF]" : "text-[#0a6cf0]"
+                    }`}
+                  >
+                    {tier.tier}
+                  </span>
                 </div>
+
+                {/* Card Title */}
+                <h3
+                  className={`text-2xl font-bold tracking-tight mb-3 ${
+                    isDark ? "text-white" : "text-slate-900"
+                  }`}
+                  style={{ fontFamily: "'Trapvoid', 'Bricolage Grotesque', 'Outfit', sans-serif" }}
+                >
+                  {tier.title}
+                </h3>
+
+                {/* Card Description */}
+                <p
+                  className={`text-sm sm:text-[15px] leading-relaxed ${
+                    isDark ? "text-[#8EA2C6]" : "text-slate-600"
+                  }`}
+                >
+                  {tier.description}
+                </p>
               </div>
             ))}
           </div>
@@ -308,113 +556,133 @@ function HowItWorksPage() {
       </section>
 
       {/* =========================================================================
-          SECTION 3: "Live in about five minutes" (Screenshot 3 - Stepper)
-          Fixed layout so steps and descriptions wrap properly with clean vertical hierarchy
+          SECTION 3: "Live in about five minutes" (Screenshot 3 - Connected Stepper)
           ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-[#F8FAFC]">
+      <section
+        className={`py-16 sm:py-24 transition-colors ${
+          isDark ? "bg-[#060D1E]" : "bg-[#F8FAFC]"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <div className="max-w-4xl mb-14 sm:mb-16">
+            <h2
+              className={`text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight ${
+                isDark ? "text-white" : "text-slate-900"
+              }`}
+              style={{ fontFamily: "'Trapvoid', 'Bricolage Grotesque', 'Outfit', sans-serif" }}
+            >
               Live in about five minutes
             </h2>
-            <p className="mt-3 text-base sm:text-lg text-slate-600 leading-relaxed">
+            <p
+              className={`mt-4 text-base sm:text-lg leading-relaxed ${
+                isDark ? "text-[#8EA2C6]" : "text-slate-600"
+              }`}
+            >
               No forms to fight with. Four steps from idea to full house.
             </p>
           </div>
 
-          {/* Stepper Timeline Container */}
-          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/90 shadow-sm">
-            {/* Desktop Timeline Tracker */}
-            <div className="relative">
-              {/* Horizontal Connecting Progress Line (Desktop only) */}
+          {/* Stepper Grid Container with connecting horizontal line */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8">
+            {steps.map((step, idx) => (
               <div
-                className="hidden lg:block absolute top-6 left-8 right-8 h-1 bg-slate-200"
-                style={{ zIndex: 1 }}
+                key={step.number}
+                className="flex flex-col items-start text-left relative"
               >
-                <div
-                  className="h-full bg-[#1565C0] transition-all duration-500"
-                  style={{ width: `${((activeStep - 1) / 3) * 100}%` }}
-                />
-              </div>
+                {/* Number Circle and Horizontal Connecting Line (on desktop) */}
+                <div className="flex items-center w-full mb-5 relative">
+                  {/* Step Number Circle */}
+                  <div
+                    className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm z-10 shrink-0 ${
+                      isDark
+                        ? "bg-[#0066FF] text-white shadow-[0_0_15px_rgba(0,102,255,0.4)]"
+                        : "bg-[#0a6cf0] text-white shadow-[0_2px_10px_rgba(10,108,240,0.3)]"
+                    }`}
+                  >
+                    {step.number}
+                  </div>
 
-              {/* Steps Grid: On desktop 4 columns, on mobile 1 column stacked cleanly */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 relative z-10">
-                {steps.map((step) => {
-                  const isActive = activeStep === step.number;
-                  const isDone = activeStep > step.number;
-
-                  return (
+                  {/* Connecting Line to next step (Hidden on last step and mobile) */}
+                  {idx < steps.length - 1 && (
                     <div
-                      key={step.number}
-                      onClick={() => setActiveStep(step.number)}
-                      className={`cursor-pointer group flex flex-col justify-start p-4 rounded-2xl transition-all ${
-                        isActive
-                          ? "bg-blue-50/50 ring-2 ring-[#1565C0]/20"
-                          : "hover:bg-slate-50"
+                      className={`hidden lg:block absolute left-9 right-[-2rem] top-1/2 -translate-y-1/2 h-[2px] z-0 ${
+                        isDark ? "bg-[#18325E]" : "bg-slate-300"
                       }`}
-                    >
-                      {/* Step Circle Badge */}
-                      <div className="mb-5 flex items-center">
-                        <div
-                          className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-base transition-all ${
-                            isActive
-                              ? "bg-[#1565C0] text-white ring-4 ring-blue-100 shadow-md scale-105"
-                              : isDone
-                              ? "bg-[#1565C0] text-white shadow-xs"
-                              : "bg-white text-slate-700 border-2 border-slate-300 group-hover:border-[#1565C0]"
-                          }`}
-                        >
-                          {step.number}
-                        </div>
-                      </div>
+                    />
+                  )}
+                </div>
 
-                      {/* Step Title on its own line */}
-                      <h3 className="text-xl font-bold text-slate-900 tracking-tight mb-2 group-hover:text-[#1565C0] transition-colors">
-                        {step.title}
-                      </h3>
+                {/* Step Title */}
+                <h3
+                  className={`text-xl font-bold tracking-tight mb-2.5 ${
+                    isDark ? "text-white" : "text-slate-900"
+                  }`}
+                  style={{ fontFamily: "'Trapvoid', 'Bricolage Grotesque', 'Outfit', sans-serif" }}
+                >
+                  {step.title}
+                </h3>
 
-                      {/* Step Description on its own line with natural text wrapping */}
-                      <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                        {step.description}
-                      </p>
-                    </div>
-                  );
-                })}
+                {/* Step Description */}
+                <p
+                  className={`text-sm sm:text-[15px] leading-relaxed ${
+                    isDark ? "text-[#8EA2C6]" : "text-slate-600"
+                  }`}
+                >
+                  {step.description}
+                </p>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 4. Bottom Host CTA Banner */}
-      <section className="py-16 sm:py-20 bg-gradient-to-br from-[#1565C0] to-[#0D47A1] text-white">
+      {/* =========================================================================
+          BOTTOM CTA SECTION
+          ========================================================================= */}
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-[#0b1f4b] via-[#0a6cf0] to-[#08a8ff] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+          <h2
+            className="text-3xl sm:text-4xl font-extrabold tracking-tight"
+            style={{ fontFamily: "'Trapvoid', 'Bricolage Grotesque', 'Outfit', sans-serif" }}
+          >
             Ready to host your next gathering?
           </h2>
           <p className="mt-3 text-base sm:text-lg text-blue-100 max-w-xl mx-auto leading-relaxed">
-            From Sunday cricket matches to comedy nights and packed concerts, post it on Vibe and fill every spot.
+            From Sunday cricket matches to comedy nights and packed concerts,
+            post it on Vibe and fill every spot.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <a
-              href="/manage/create.php?ref=how-it-works-cta"
-              className="px-8 py-3.5 rounded-xl bg-white text-[#1565C0] font-bold text-base hover:bg-blue-50 shadow-lg hover:shadow-xl transition-all"
+              href="/create"
+              className="px-8 py-3.5 rounded-xl bg-white text-[#0a6cf0] font-bold text-base hover:bg-blue-50 shadow-lg hover:shadow-xl transition-all"
             >
               Start Hosting Now
             </a>
             <a
-              href="/indore"
-              className="px-8 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-base border border-white/20 transition-colors"
+              href="/vibe-instant"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-black/20 hover:bg-black/30 text-white font-semibold text-base border border-white/20 transition-colors"
             >
-              Browse Events
+              <Zap className="w-4 h-4 text-[#00e0ff]" />
+              Try Vibe Instant
+              <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
         </div>
       </section>
 
-      {/* 5. Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-10 border-t border-slate-800 text-center text-xs">
+      {/* =========================================================================
+          FOOTER
+          ========================================================================= */}
+      <footer
+        className={`py-8 text-center text-xs border-t transition-colors ${
+          isDark
+            ? "bg-[#040814] border-slate-800 text-slate-500"
+            : "bg-slate-900 border-slate-800 text-slate-400"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4">
           <p>© {new Date().getFullYear()} Vibe. All rights reserved.</p>
         </div>

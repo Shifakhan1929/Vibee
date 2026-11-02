@@ -11,7 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CityRouteImport } from './routes/$city'
+import { Route as CreateRouteImport } from './routes/create'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as HostRouteImport } from './routes/host'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as VibeInstantRouteImport } from './routes/vibe-instant'
+import { Route as VibesRouteImport } from './routes/vibes'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,40 +28,110 @@ const CityRoute = CityRouteImport.update({
   path: '/$city',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CreateRoute = CreateRouteImport.update({
+  id: '/create',
+  path: '/create',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HostRoute = HostRouteImport.update({
+  id: '/host',
+  path: '/host',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HowItWorksRoute = HowItWorksRouteImport.update({
   id: '/how-it-works',
   path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VibeInstantRoute = VibeInstantRouteImport.update({
+  id: '/vibe-instant',
+  path: '/vibe-instant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VibesRoute = VibesRouteImport.update({
+  id: '/vibes',
+  path: '/vibes',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$city': typeof CityRoute
+  '/create': typeof CreateRoute
+  '/dashboard': typeof DashboardRoute
+  '/host': typeof HostRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/vibe-instant': typeof VibeInstantRoute
+  '/vibes': typeof VibesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$city': typeof CityRoute
+  '/create': typeof CreateRoute
+  '/dashboard': typeof DashboardRoute
+  '/host': typeof HostRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/vibe-instant': typeof VibeInstantRoute
+  '/vibes': typeof VibesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$city': typeof CityRoute
+  '/create': typeof CreateRoute
+  '/dashboard': typeof DashboardRoute
+  '/host': typeof HostRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/vibe-instant': typeof VibeInstantRoute
+  '/vibes': typeof VibesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$city' | '/how-it-works'
+  fullPaths:
+    | '/'
+    | '/$city'
+    | '/create'
+    | '/dashboard'
+    | '/host'
+    | '/how-it-works'
+    | '/vibe-instant'
+    | '/vibes'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$city' | '/how-it-works'
-  id: '__root__' | '/' | '/$city' | '/how-it-works'
+  to:
+    | '/'
+    | '/$city'
+    | '/create'
+    | '/dashboard'
+    | '/host'
+    | '/how-it-works'
+    | '/vibe-instant'
+    | '/vibes'
+  id:
+    | '__root__'
+    | '/'
+    | '/$city'
+    | '/create'
+    | '/dashboard'
+    | '/host'
+    | '/how-it-works'
+    | '/vibe-instant'
+    | '/vibes'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CityRoute: typeof CityRoute
+  CreateRoute: typeof CreateRoute
+  DashboardRoute: typeof DashboardRoute
+  HostRoute: typeof HostRoute
   HowItWorksRoute: typeof HowItWorksRoute
+  VibeInstantRoute: typeof VibeInstantRoute
+  VibesRoute: typeof VibesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,11 +150,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/create': {
+      id: '/create'
+      path: '/create'
+      fullPath: '/create'
+      preLoaderRoute: typeof CreateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/host': {
+      id: '/host'
+      path: '/host'
+      fullPath: '/host'
+      preLoaderRoute: typeof HostRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/how-it-works': {
       id: '/how-it-works'
       path: '/how-it-works'
       fullPath: '/how-it-works'
       preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vibe-instant': {
+      id: '/vibe-instant'
+      path: '/vibe-instant'
+      fullPath: '/vibe-instant'
+      preLoaderRoute: typeof VibeInstantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vibes': {
+      id: '/vibes'
+      path: '/vibes'
+      fullPath: '/vibes'
+      preLoaderRoute: typeof VibesRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -88,7 +198,12 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CityRoute: CityRoute,
+  CreateRoute: CreateRoute,
+  DashboardRoute: DashboardRoute,
+  HostRoute: HostRoute,
   HowItWorksRoute: HowItWorksRoute,
+  VibeInstantRoute: VibeInstantRoute,
+  VibesRoute: VibesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

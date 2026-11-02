@@ -1,4 +1,8 @@
 import { EventTypePreview } from "../components/EventTypePreview";
+import { BotCreateSection } from "../components/BotCreateSection";
+import { DownloadAppButton } from "../components/DownloadAppButton";
+import { triggerPwaInstall } from "../components/AppInstallModal";
+import { Download } from "lucide-react";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import capturedCSS from "../styles/captured.css?raw";
@@ -84,10 +88,10 @@ function Index() {
               <div className={"tbsearch hide_for_b2b"}>
                 <div className={"input-append"}><span className={"hidden-phone search-icon-desktop"}>{"\n\t\t\t\t\t\t\t"}<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">{"\n\t\t\t\t\t\t\t\t"}<path d="M15.75 15.75L11.25 11.25M2.25 7.5C2.25 8.18944 2.3858 8.87213 2.64963 9.50909C2.91347 10.146 3.30018 10.7248 3.78769 11.2123C4.2752 11.6998 4.85395 12.0865 5.49091 12.3504C6.12787 12.6142 6.81056 12.75 7.5 12.75C8.18944 12.75 8.87213 12.6142 9.50909 12.3504C10.146 12.0865 10.7248 11.6998 11.2123 11.2123C11.6998 10.7248 12.0865 10.146 12.3504 9.50909C12.6142 8.87213 12.75 8.18944 12.75 7.5C12.75 6.81056 12.6142 6.12787 12.3504 5.49091C12.0865 4.85395 11.6998 4.2752 11.2123 3.78769C10.7248 3.30018 10.146 2.91347 9.50909 2.64963C8.87213 2.3858 8.18944 2.25 7.5 2.25C6.81056 2.25 6.12787 2.3858 5.49091 2.64963C4.85395 2.91347 4.2752 3.30018 3.78769 3.78769C3.30018 4.2752 2.91347 4.85395 2.64963 5.49091C2.3858 6.12787 2.25 6.81056 2.25 7.5Z" stroke="#30363E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t"}</svg>{"\n\t\t\t\t\t\t"}</span><span className={"\x76isible-phone search-icon-mobile"} style={{ pointerEvents: "auto", cursor: "pointer" }}>{"\n\t\t\t\t\t\t\t"}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none" style={{ pointerEvents: "auto" }}>{"\n\t\t\t\t\t\t\t\t"}<path d="M10.5 19.5C15.1944 19.5 19 15.6944 19 11C19 6.3056 15.1944 2.5 10.5 2.5C5.8056 2.5 2 6.3056 2 11C2 15.6944 5.8056 19.5 10.5 19.5Z" stroke="#fff" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t\t"}<path d="M16.6094 17.1108L20.852 21.3535" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t"}</svg>{"\n\t\t\t\t\t\t"}</span><input className={"span3"} id="searchd-input" type="text" placeholder="Art events" autoComplete="off" onKeyDown={e => { if (e.key === "Enter" && (e.currentTarget.value).trim()) { window.location.href = `/indore?q=${encodeURIComponent((e.currentTarget.value).trim())}`; } }} {...({ size: "16" } as any)} /></div>
               </div>
-              <div className={"tbhide  hidden-phone"}><a className={"how-it-works-link track topbar-btn"} href="/how-it-works" target="_blank" rel="noopener noreferrer" title="How Vibe works" style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "5px 12px", fontSize: "13px", fontWeight: "600", color: "#1565C0", backgroundColor: "#EFF6FF", border: "1px solid #BFDBFE", borderRadius: "16px", marginRight: "8px", textDecoration: "none" }}><i className={"icon-info-circle"} style={{ fontSize: "14px" }} />How it works</a><a className={"create-b2b create-action track popo topbar-btn create-btn-style"} data-original-title="" href="/manage/create.php?ref=home-page-topbar" rel="nofollow" tabIndex={0} title="">{"\n\t\t\t\t\t\t\t"}<i className={"icon-plus-2 mr5 create-btn-icon"} style={{ fontSize: "16px", color: "var(--gray-600)" }} />Create Event</a><a className={"hide hidden-phone"} href="/recommended?ref=home-page-topbar" rel="nofollow" title="Recommended Events For You"><i className={"icon-magic"} /></a><button id="login-top" className={"track hidden-phone topbar-btn lazy"} title="Sign in to AllEvents">{"\n\t\t\t\t\t\t\t"}<img src="/site-assets/8a75fa2fbc04c7e6.webp" alt="User Profile" className={"login-user-icon lazy"} style={{ width: "22px", height: "22px", verticalAlign: "middle", marginRight: "2px", marginBottom: "2px" }} />
+              <div className={"tbhide  hidden-phone"}><DownloadAppButton /><a className={"vibe-instant-topbar-btn track topbar-btn"} href="/vibe-instant" target="_blank" rel="noopener noreferrer" title="Vibe Instant – Host anything in 60 seconds" style={{ display: "inline-flex", alignItems: "center", gap: "5px", padding: "5px 12px", fontSize: "13px", fontWeight: "700", color: "#ffffff", background: "linear-gradient(135deg, #0b1f4b 0%, #0a6cf0 100%)", border: "1px solid #08a8ff", borderRadius: "16px", marginRight: "8px", textDecoration: "none", boxShadow: "0 2px 8px rgba(10, 108, 240, 0.25)" }}><span style={{ color: "#00e0ff", fontSize: "13px" }}>⚡</span>Vibe Instant</a><a className={"how-it-works-link track topbar-btn"} href="/how-it-works" target="_blank" rel="noopener noreferrer" title="How Vibe works" style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "5px 12px", fontSize: "13px", fontWeight: "600", color: "#1565C0", backgroundColor: "#EFF6FF", border: "1px solid #BFDBFE", borderRadius: "16px", marginRight: "8px", textDecoration: "none" }}><i className={"icon-info-circle"} style={{ fontSize: "14px" }} />How it works</a><a className={"create-b2b create-action track popo topbar-btn create-btn-style"} data-original-title="" href="/create" rel="nofollow" tabIndex={0} title="">{"\n\t\t\t\t\t\t\t"}<i className={"icon-plus-2 mr5 create-btn-icon"} style={{ fontSize: "16px", color: "var(--gray-600)" }} />Host an Event</a><a className={"dashboard-topbar-link track topbar-btn"} href="/dashboard" style={{ display: "inline-flex", alignItems: "center", gap: "5px", padding: "5px 12px", fontSize: "13px", fontWeight: "600", color: "#475569", backgroundColor: "#F1F5F9", border: "1px solid #E2E8F0", borderRadius: "16px", marginRight: "8px", textDecoration: "none" }}><i className={"icon-dashboard"} style={{ fontSize: "14px" }} />Dashboard</a><a className={"hide hidden-phone"} href="/recommended?ref=home-page-topbar" rel="nofollow" title="Recommended Events For You"><i className={"icon-magic"} /></a><button id="login-top" className={"track hidden-phone topbar-btn lazy"} title="Sign in to AllEvents">{"\n\t\t\t\t\t\t\t"}<img src="/site-assets/8a75fa2fbc04c7e6.webp" alt="User Profile" className={"login-user-icon lazy"} style={{ width: "22px", height: "22px", verticalAlign: "middle", marginRight: "2px", marginBottom: "2px" }} />
       							Sign in
       						</button></div>
-              <a className={"tbdapp track"} href="/app" style={{ right: "75px" }}>Open App</a>
+              <button type="button" onClick={() => triggerPwaInstall()} className={"tbdapp track"} style={{ right: "75px", cursor: "pointer", border: "none", background: "linear-gradient(135deg, #0b1f4b 0%, #0a6cf0 100%)", color: "#ffffff", borderRadius: "14px", padding: "5px 12px", display: "inline-flex", alignItems: "center", gap: "5px", fontWeight: "700" }} title="Install Vibe App (Web & Mobile)"><Download style={{ width: "13px", height: "13px" }} />App</button>
             </div>
           </div>
         </div>
@@ -106,8 +110,8 @@ function Index() {
           <div className={"vibe-hero-layout"}>
             {/* 1. Headline (Desktop: Left Col / Mobile: Order 1) */}
             <div className={"vibe-hero-headline"} style={{ gridArea: "headline" }}>
-              <h1 className={"title"} style={{ fontWeight: "bold", lineHeight: "1.2" }}>Need a team? A crowd? A stage? <span style={{ color: "rgb(33, 192, 232)" }}>Make it an event.</span></h1>
-              <p className={"sub-title"} style={{ fontWeight: "normal", lineHeight: "1.5" }}>Vibe lets anyone host anything. Start a Sunday cricket match with 10 players or sell out a comedy night for 500. Post it, fill it, show up.</p>
+              <h1 className={"title"} style={{ fontWeight: 800, lineHeight: 1.2, margin: "0 0 10px 0", textShadow: "0 2px 10px rgba(0,0,0,0.5)" }}>Need a team? A crowd? A stage? <span style={{ color: "#00e0ff" }}>Make it an event.</span></h1>
+              <p className={"sub-title"} style={{ fontWeight: "normal", lineHeight: 1.55, textTransform: "none", margin: "0 0 16px 0", color: "#cbd5e1" }}>Vibe lets anyone host anything. Start a Sunday cricket match with 10 players or sell out a comedy night for 500. Post it, fill it, show up.</p>
             </div>
 
             {/* 2. Search Bar (Desktop: Left Col / Mobile: Order 2) */}
@@ -167,7 +171,16 @@ function Index() {
 
             {/* 5. Hero CTA Buttons (Desktop: Left Col / Mobile: Order 5) */}
             <div className={"vibe-hero-ctas"} style={{ gridArea: "ctas" }}>
-              <a href="/manage/create.php?ref=hero" className={"vibe-cta-primary"}>
+              <a
+                href="/vibe-instant"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={"vibe-cta-instant"}
+                title="Launch an event in 60 seconds"
+              >
+                <span>⚡</span> Vibe Instant
+              </a>
+              <a href="/create" className={"vibe-cta-primary"}>
                 + Host an Event
               </a>
               <a href="/indore" className={"vibe-cta-secondary"}>
@@ -178,6 +191,8 @@ function Index() {
         </div>
       </div>
       <div id="hss_bar_background_overlay" className={searchOpen ? "import-search-overlay" : ""} onClick={() => setSearchOpen(false)} />
+      {/* Bot Create Section */}
+      <BotCreateSection />
       {/* Why Vibe is Best For You - Video Section */}
       <div style={{ backgroundColor: "#ffffff", padding: "48px 0 36px", borderBottom: "1px solid #E2E8F0" }}>
         <div style={{ maxWidth: "860px", margin: "0 auto", padding: "0 20px", textAlign: "center" }}>
@@ -1019,46 +1034,40 @@ function Index() {
                 <a href="/location.php" style={{ color: "rgb(46, 54, 63)" }} title="Explore All Events across the globe">Explore Events across the Globe</a>
               </h2>
             </div>
-            <div className={"\x63ontainer"}>
-              <div className={"popular-city-row"}>
-                <div className={"popular-city-container"}>
-                  <a href="/london?ref=home-page" title="Events in London">
-                    <div className={"popular-city-overlay"}>
-                      <img style={{ width: "100%", height: "100%", objectFit: "cover" }} className={"lazy"} data-src="https://cdn2.allevents.in/transup/73/50b00762be4131af6a9b90d15e7972/yy-175-1-.png" alt="Events in London" src="/site-assets/71e5fe6101665e72.webp" loading="eager" />
-                      <div className={"\x74ext-holder-with-shadow"}>
-                                          London
-                                      </div>
-                    </div>
+            <div className={"container"}>
+              <div className={"popular-city-row vibe-globe-cards-row"}>
+                {/* 1. New York */}
+                <div className={"popular-city-container vibe-globe-card-item"}>
+                  <a href="/newyork-dbe12298e8b6a417?ref=home-page" className={"vibe-globe-card-link"} title="Events in New York">
+                    <img className={"vibe-globe-card-img"} alt="Events in New York" src="/site-assets/cities/new-york-transparent.png" loading="lazy" />
                   </a>
                 </div>
-                <div className={"popular-city-container"}>
-                  <a href="/newyork-dbe12298e8b6a417?ref=home-page" title="Events in New York">
-                    <div className={"popular-city-overlay"}>
-                      <img style={{ width: "100%", height: "100%", objectFit: "cover" }} className={"lazy"} data-src="https://cdn2.allevents.in/transup/bd/c75347f2344b4e9515f4e5ed7e3a9a/ny.jpg" alt="Events in New York" src="/site-assets/1bb97f25615eaed9.jpg" loading="eager" />
-                      <div className={"\x74ext-holder-with-shadow"}>
-                                          New York
-                                      </div>
-                    </div>
+
+                {/* 2. San Francisco */}
+                <div className={"popular-city-container vibe-globe-card-item"}>
+                  <a href="/san-francisco?ref=home-page" className={"vibe-globe-card-link"} title="Events in San Francisco">
+                    <img className={"vibe-globe-card-img"} alt="Events in San Francisco" src="/site-assets/cities/san-francisco-transparent.png" loading="lazy" />
                   </a>
                 </div>
-                <div className={"popular-city-container"}>
-                  <a href="/toronto?ref=home-page" title="Events in Toronto">
-                    <div className={"popular-city-overlay"}>
-                      <img style={{ width: "100%", height: "100%", objectFit: "cover" }} className={"lazy"} data-src="https://cdn2.allevents.in/transup/2f/de0a760e6c4322ae37b31498e933e2/toronto.webp" alt="Events in Toronto" src="/site-assets/16241ef8e3e694c8.webp" loading="eager" />
-                      <div className={"\x74ext-holder-with-shadow"}>
-                                          Toronto
-                                      </div>
-                    </div>
+
+                {/* 3. Chicago */}
+                <div className={"popular-city-container vibe-globe-card-item"}>
+                  <a href="/chicago?ref=home-page" className={"vibe-globe-card-link"} title="Events in Chicago">
+                    <img className={"vibe-globe-card-img"} alt="Events in Chicago" src="/site-assets/cities/chicago-transparent.png" loading="lazy" />
                   </a>
                 </div>
-                <div className={"popular-city-container"}>
-                  <a href="/chicago?ref=home-page" title="Events in Chicago">
-                    <div className={"popular-city-overlay"}>
-                      <img style={{ width: "100%", height: "100%", objectFit: "cover" }} className={"lazy"} data-src="https://cdn2.allevents.in/transup/a9/9500b64be6474693b848f260d723ba/Chicago.webp" alt="Events in Chicago" src="/site-assets/80ca59ff35cc59ac.webp" loading="eager" />
-                      <div className={"\x74ext-holder-with-shadow"}>
-                                          Chicago
-                                      </div>
-                    </div>
+
+                {/* 4. Nashville */}
+                <div className={"popular-city-container vibe-globe-card-item"}>
+                  <a href="/nashville?ref=home-page" className={"vibe-globe-card-link"} title="Events in Nashville">
+                    <img className={"vibe-globe-card-img"} alt="Events in Nashville" src="/site-assets/cities/nashville-transparent.png" loading="lazy" />
+                  </a>
+                </div>
+
+                {/* 5. Miami */}
+                <div className={"popular-city-container vibe-globe-card-item"}>
+                  <a href="/miami?ref=home-page" className={"vibe-globe-card-link"} title="Events in Miami">
+                    <img className={"vibe-globe-card-img"} alt="Events in Miami" src="/site-assets/cities/miami-transparent.png" loading="lazy" />
                   </a>
                 </div>
               </div>
@@ -3111,10 +3120,10 @@ function Index() {
                                   Let’s make the world #Happening together
                               </div>
                   <div style={{ display: "flex" }}>
-                    <a className={"home-page-button"} data-original-title="View all Events in Indore" href="/manage/create.php?ref=home-page-creator-section" style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
-                                      Create an Event
+                    <a className={"home-page-button"} data-original-title="View all Events in Indore" href="/create" style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
+                                      Host an Event
                                   </a>
-                    <div className={"creator-link"}><a href="/manage/create.php?ref=home-page-creator-section" style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
+                    <div className={"creator-link"}><a href="/create" style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
                                           Create
                                       </a><svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" viewBox="0 0 5 5" fill="none" style={{ margin: "9px" }}>{"\n                                    "}<circle cx="2.5" cy="2.5" r="2.5" fill="#D9D9D9" />{"\n                                "}</svg><a href="/pages/event-marketing?ref=home-page-creator-section" style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
                                           Promote
@@ -4824,7 +4833,7 @@ function ImportedNavMainNavigation({ openCity }: { openCity: () => void }) {
           <a href="/indore">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}<div className={"ae-icon-marker new-svg-icon"} />{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}<span className={"toh city-select-width"}>Indore</span>{"\n\t\t\t\t\t\t                        \t\t"}<button onClick={e => { e.preventDefault(); openCity(); }} className={"city-select-button tltp mcity-select"}>{"\n\t\t\t\t\t\t                        \t\t"}<span className={"city-select-v-middle"}>Change City</span>{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}</button>{"\n\t\t\t\t\t\t\t\t\t\t\t\t"}</a>
         </li>
         <li className={"svg-item-box"}>
-          <a className={"e_main_title1 track"} href="/how-it-works" target="_blank" rel="noopener noreferrer">
+          <a className={"e_main_title1 track"} href="/vibe-instant" target="_blank" rel="noopener noreferrer"><div className={"ae-icon-magic new-svg-icon"} /><span className={"e_nav_item"}>⚡ Vibe Instant</span></a></li><li className={"svg-item-box"}><button type="button" onClick={() => triggerPwaInstall()} className={"e_main_title1 track"} style={{ width: "100%", textAlign: "left", background: "none", border: "none", padding: "10px 15px", cursor: "pointer", display: "flex", alignItems: "center" }}><div className={"new-svg-icon"} style={{ display: "flex", alignItems: "center", justifyContent: "center", marginRight: "10px" }}><Download style={{ width: "16px", height: "16px", color: "#0a6cf0" }} /></div><span className={"e_nav_item"} style={{ fontWeight: 600, color: "#0a6cf0" }}>Download App</span></button></li><li className={"svg-item-box"}><a className={"e_main_title1 track"} href="/how-it-works" target="_blank" rel="noopener noreferrer">
             <div className={"ae-icon-info new-svg-icon"} />
             <span className={"e_nav_item"}>How it works</span>
           </a>
@@ -4840,9 +4849,15 @@ function ImportedNavMainNavigation({ openCity }: { openCity: () => void }) {
           <p className={"e_main_title"}>Host Control</p>
         </li>
         <li className={"svg-item-box"}>
-          <a className={"create-action e_main_title1 track"} href="/manage/create.php?ref=topbar-dropdown" rel="nofollow">
+          <a className={"create-action e_main_title1 track"} href="/create" rel="nofollow">
             <div className={"ae-icon-plus-2 new-svg-icon"} />
-            <span className={"e_nav_item"}>Create an event</span>
+            <span className={"e_nav_item"}>Host an event</span>
+          </a>
+        </li>
+        <li className={"svg-item-box"}>
+          <a className={"dashboard-action e_main_title1 track"} href="/dashboard">
+            <div className={"ae-icon-dashboard new-svg-icon"} />
+            <span className={"e_nav_item"}>Host Dashboard</span>
           </a>
         </li>
         <li className={"svg-item-box"}>
@@ -5066,7 +5081,7 @@ function ImportedFooterSiteNavigation() {
               <a href="https://support.allevents.in" target="_blank" title="Frequently Asked Questions and Support">Support</a>
             </li>
             <li>
-              <a href="/pages/media-coverage" title="Media Coverage Page" {...({ "\"": "" } as any)}>Media Coverage</a>
+              <a href="/pages/media-coverage" title="Media Coverage Page">Media Coverage</a>
             </li>
             <li>
               <a href="/conditions" rel="nofollow" title={"Terms & Conditions"}>Terms of Service</a>

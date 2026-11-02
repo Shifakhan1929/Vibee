@@ -697,10 +697,10 @@ function CityEventsPage() {
               Explore All
             </Link>
             <a
-              href="/#create"
+              href="/create"
               className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg border border-[#1565C0] text-[#1565C0] hover:bg-[#1565C0]/5 transition-colors"
             >
-              <span>+</span> Create Event
+              <span>+</span> Host an Event
             </a>
             <button className="hidden sm:inline-flex items-center text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 px-3.5 py-1.5 rounded-lg transition-colors">
               Sign In
@@ -1123,7 +1123,7 @@ function CityEventsPage() {
               </h4>
               <ul className="space-y-1.5 text-xs">
                 <li>
-                  <a href="/#create" className="hover:text-white transition-colors">
+                  <a href="/create" className="hover:text-white transition-colors">
                     Post an Event in {formattedCity}
                   </a>
                 </li>
