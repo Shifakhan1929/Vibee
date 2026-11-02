@@ -142,3 +142,87 @@
     color: var(--color-foreground);
   }
 }
+
+/* site-import tokens: begin (generated; re-import replaces this block) */
+/* Imported clone roles use prefixed Tailwind utilities
+   (bg-site-import-primary, text-site-import-foreground, …); edit the
+   --site-import-* variables to restyle the clone. Unprefixed roles theme new UI. */
+:root {
+  --background: oklch(1 0 0);
+  --site-import-background: oklch(1 0 0);
+  --foreground: oklch(0.47385 0.0208 264.36);
+  --site-import-foreground: oklch(0.47385 0.0208 264.36);
+  --primary: oklch(0.55999 0.09986 221.68);
+  --site-import-primary: oklch(0.55999 0.09986 221.68);
+  --primary-foreground: oklch(0.985 0 0);
+  --site-import-primary-foreground: oklch(0.985 0 0);
+  --accent: oklch(0.74953 0.13187 220.86);
+  --site-import-accent: oklch(0.74953 0.13187 220.86);
+  --border: oklch(0.89755 0 0);
+  --site-import-border: oklch(0.89755 0 0);
+  --card: oklch(1 0 0 / 0.4);
+  --site-import-card: oklch(1 0 0 / 0.4);
+  --muted-foreground: oklch(0.39413 0.00881 268.43);
+  --site-import-muted-foreground: oklch(0.39413 0.00881 268.43);
+  --muted: oklch(1 0 0 / 0.3);
+  --site-import-muted: oklch(1 0 0 / 0.3);
+}
+/* Design tokens captured from the imported site, registered as Tailwind
+   utilities (bg-<name>, text-<name>, font-<name>). var() values live in
+   the imported stylesheet's :root. */
+@theme inline {
+  --font-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --color-site-import-background: var(--site-import-background);
+  --color-site-import-foreground: var(--site-import-foreground);
+  --color-site-import-primary: var(--site-import-primary);
+  --color-site-import-primary-foreground: var(--site-import-primary-foreground);
+  --color-site-import-accent: var(--site-import-accent);
+  --color-site-import-border: var(--site-import-border);
+  --color-site-import-card: var(--site-import-card);
+  --color-site-import-muted-foreground: var(--site-import-muted-foreground);
+  --color-site-import-muted: var(--site-import-muted);
+  --color-brand-color: var(--brand-color);
+  --color-city-hover: var(--city-hover);
+  --color-danger-dark: var(--danger-dark);
+  --color-danger-light: var(--danger-light);
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-gray-400: var(--gray-400);
+  --color-gray-500: var(--gray-500);
+  --color-gray-600: var(--gray-600);
+  --color-gray-700: var(--gray-700);
+  --color-gray-800: var(--gray-800);
+  --color-gray-900: var(--gray-900);
+  --color-header-footer-primary: var(--header-footer-primary);
+  --color-header-footer-secondary: var(--header-footer-secondary);
+  --color-header-head-primary: var(--header-head-primary);
+  --color-primary-bg-dark: var(--primary-bg-dark);
+  --color-primary-bg-default: var(--primary-bg-default);
+  --color-primary-bg-light: var(--primary-bg-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-default: var(--primary-default);
+  --color-primary-light: var(--primary-light);
+  --color-success-dark: var(--success-dark);
+  --color-success-light: var(--success-light);
+  --color-warning-dark: var(--warning-dark);
+  --color-warning-light: var(--warning-light);
+}
+@theme reference {
+  --radius-lg: 5px;
+  --radius-md: 3px;
+  --radius-sm: 2px;
+  --radius-xl: 10px;
+  --spacing-0: 0px;
+  --spacing-2xl: 32px;
+  --spacing-2xs: 6px;
+  --spacing-3xl: 36px;
+  --spacing-4xl: 40px;
+  --spacing-5xl: 60px;
+  --spacing-lg: 20px;
+  --spacing-md: 16px;
+  --spacing-sm: 12px;
+  --spacing-xl: 24px;
+  --spacing-xs: 8px;
+}
+/* site-import tokens: end */
