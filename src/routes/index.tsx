@@ -5,10 +5,10 @@ import repairCSS from "../styles/import-repairs.css?raw";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
-    { title: "AllEvents – Discover Events Happening in Your City" },
-    { name: "description", content: "Discover concerts, festivals, workshops and popular events near you on AllEvents." },
-    { property: "og:title", content: "AllEvents – Discover Events Happening in Your City" },
-    { property: "og:description", content: "Explore local events, concerts, festivals and things to do with AllEvents." },
+    { title: "Vibe – Need a team? A crowd? A stage? Make it an event." },
+    { name: "description", content: "Vibe lets anyone host anything. Start a Sunday cricket match with 10 players or sell out a comedy night for 500. Post it, fill it, show up." },
+    { property: "og:title", content: "Vibe – Need a team? A crowd? A stage? Make it an event." },
+    { property: "og:description", content: "Vibe lets anyone host anything. Start a Sunday cricket match with 10 players or sell out a comedy night for 500. Post it, fill it, show up." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
   ] }),
@@ -16,9 +16,9 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const CITY_NAMES = ["London", "Orlando", "Vancouver", "Miami", "Bangalore", "Edinburgh", "Washington", "Delhi", "Los Angeles", "Ahmedabad", "Chicago", "Nashville", "San Francisco", "Edmonton", "Chennai", "New York", "New Orleans", "Mumbai", "Las Vegas", "your city"];
+const CITY_NAMES = ["Indore", "Bhopal", "Mumbai", "Delhi", "Bangalore", "Pune", "Ahmedabad", "Jaipur", "Hyderabad", "London", "New York", "your city"];
 const OBSERVED_CITIES = [["Uppsala", "/uppsala"], ["Sundbyberg", "/sundbyberg"], ["\u00d6rebro", "/%C3%96rebro"], ["V\u00e4ster\u00e5s", "/v%C3%A4ster%C3%A5s"], ["Link\u00f6ping", "/link%C3%B6ping"], ["Online", "/online"]];
-const CITY_SUGGESTIONS = [["London", "EN, United Kingdom", "/london?ref=cityselect"], ["London", "ON, Canada", "/london-ca?ref=cityselect"], ["New London", "CT, United States", "/new-london-ct?ref=cityselect"], ["New London", "WI, United States", "/new-london-wi?ref=cityselect"], ["Londonderry", "NI, United Kingdom", "/londonderry-ni?ref=cityselect"], ["London", "OH, United States", "/london-oh?ref=cityselect"], ["London", "KY, United States", "/london-ky?ref=cityselect"], ["East london", "EC, South Africa", "/east-london?ref=cityselect"], ["Londonderry", "NH, United States", "/londonderry-nh?ref=cityselect"], ["New London", "NH, United States", "/new-london-nh?ref=cityselect"], ["London Colney", "EN, United Kingdom", "/london-colney?ref=cityselect"], ["New London", "MN, United States", "/new-london-mn?ref=cityselect"], ["New London", "NC, United States", "/new-london-nc?ref=cityselect"], ["Londonderry", "VT, United States", "/londonderry-vt?ref=cityselect"], ["New London", "OH, United States", "/new-london-oh?ref=cityselect"], ["New London", "TX, United States", "/new-london-tx?ref=cityselect"], ["New London", "IA, United States", "/new-london-ia?ref=cityselect"], ["London", "TX, United States", "/london-tx?ref=cityselect"], ["Londonderry", "OH, United States", "/londonderry-oh?ref=cityselect"], ["South Londonderry", "VT, United States", "/south-londonderry?ref=cityselect"], ["New London", "MO, United States", "/new-london-mo?ref=cityselect"], ["South Londonberry", "VT, United States", "/south-londonberry?ref=cityselect"], ["London", "AR, United States", "/london-ar?ref=cityselect"], ["London", "WV, United States", "/london-wv?ref=cityselect"], ["London Mills", "IL, United States", "/london-mills?ref=cityselect"], ["New London", "PA, United States", "/new-london-pa?ref=cityselect"]];
+const CITY_SUGGESTIONS = [["Indore", "MP, India", "/indore?ref=cityselect"], ["Bhopal", "MP, India", "/bhopal?ref=cityselect"], ["Ujjain", "MP, India", "/ujjain?ref=cityselect"], ["Mumbai", "MH, India", "/mumbai?ref=cityselect"], ["Delhi", "DL, India", "/delhi?ref=cityselect"], ["Bangalore", "KA, India", "/bangalore?ref=cityselect"], ["Pune", "MH, India", "/pune?ref=cityselect"], ["Ahmedabad", "GJ, India", "/ahmedabad?ref=cityselect"], ["Jaipur", "RJ, India", "/jaipur?ref=cityselect"], ["London", "EN, United Kingdom", "/london?ref=cityselect"], ["London", "ON, Canada", "/london-ca?ref=cityselect"], ["New London", "CT, United States", "/new-london-ct?ref=cityselect"], ["New London", "WI, United States", "/new-london-wi?ref=cityselect"], ["Londonderry", "NI, United Kingdom", "/londonderry-ni?ref=cityselect"], ["London", "OH, United States", "/london-oh?ref=cityselect"], ["London", "KY, United States", "/london-ky?ref=cityselect"], ["East london", "EC, South Africa", "/east-london?ref=cityselect"], ["Londonderry", "NH, United States", "/londonderry-nh?ref=cityselect"], ["New London", "NH, United States", "/new-london-nh?ref=cityselect"], ["London Colney", "EN, United Kingdom", "/london-colney?ref=cityselect"], ["New London", "MN, United States", "/new-london-mn?ref=cityselect"], ["New London", "NC, United States", "/new-london-nc?ref=cityselect"], ["Londonderry", "VT, United States", "/londonderry-vt?ref=cityselect"], ["New London", "OH, United States", "/new-london-oh?ref=cityselect"], ["New London", "TX, United States", "/new-london-tx?ref=cityselect"], ["New London", "IA, United States", "/new-london-ia?ref=cityselect"], ["London", "TX, United States", "/london-tx?ref=cityselect"], ["Londonderry", "OH, United States", "/londonderry-oh?ref=cityselect"], ["South Londonderry", "VT, United States", "/south-londonberry?ref=cityselect"], ["New London", "MO, United States", "/new-london-mo?ref=cityselect"], ["South Londonberry", "VT, United States", "/south-londonberry?ref=cityselect"], ["London", "AR, United States", "/london-ar?ref=cityselect"], ["London", "WV, United States", "/london-wv?ref=cityselect"], ["London Mills", "IL, United States", "/london-mills?ref=cityselect"], ["New London", "PA, United States", "/new-london-pa?ref=cityselect"]] as const;
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -53,14 +53,14 @@ function Index() {
       <div id="cityselect" className="modal fade in import-city-open" role="dialog" aria-modal="true" aria-label="Change city" tabIndex={-1}>
         <button type="button" className="close" aria-label="Close city chooser" onClick={closePanels}>×</button>
         <div className="modal-header"><div className="header"><h1 className="h3">AllEvents in <div className="city-container"><div className="city-scroller">{CITY_NAMES.map(c => <span key={c}>{c}</span>)}</div></div></h1></div>
-        <div className="city-in"><i className="icon icon-search"/><input id="city_select_input" className="typeahead ui-autocomplete-input" autoComplete="off" placeholder="Enter your city…" value={cityText} onChange={e => setCityText(e.target.value)} />
+        <div className="city-in"><i className="icon icon-search"/><input id="city_select_input" className="typeahead ui-autocomplete-input" autoComplete="off" placeholder="Enter your city…" value={cityText} onChange={e => setCityText(e.target.value)} onKeyDown={e => { if (e.key === "Enter" && cityText.trim()) { window.location.href = `/${encodeURIComponent(cityText.trim().toLowerCase().replace(/\s+/g, "-"))}`; } }} />
         <span id="cityselect-current-location">Current Location</span>
         {cityText.length >= 2 && <ul className="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all city-autoc import-city-results">{CITY_SUGGESTIONS.filter(c => c[0].toLowerCase().includes(cityText.toLowerCase())).map(([name,region,url]) => <li className="ui-menu-item" key={url}><a className="ui-corner-all" href={url}><i className="icon-map-marker-2 city-select-icon-marker"/><p>{name}<span>{region}</span></p></a></li>)}</ul>}
         </div></div>
         <div className="modal-body"><div className="nearby-cities-section"><div className="nearby-cities-section-header"><span className="h3 nearby-cities-title">Explore Cities Near You</span><span className="nearby-cities-subtitle">Discover events in 40,000+ Cities around the world with AllEvents</span></div><div className="city-list">{OBSERVED_CITIES.map(([name,url]) => <a className="cbtn ghref" key={url} href={url}><i className="icon-map-marker-2 city-select-icon-marker"/><div><span>{name}</span></div></a>)}</div></div></div>
       </div></>}
 
-      <div className={`topbar fixed lg0 topbar--hero ${scrolled ? "scrolled topbar--white shadow-on-scroll" : "topbar--transparent"}`}>
+      <div className={`topbar fixed lg0 topbar--hero topbar--white ${scrolled ? "scrolled shadow-on-scroll" : ""}`}>
         <div className={"\x63ontainer \x74op-cont"}>
           <div className={"row \x74op-cont-row"}>
             <div className={"span5 logo-span logo-span-flex"}>
@@ -74,14 +74,14 @@ function Index() {
                   </div>
                 </div>
               </div>
-              <a className={"logo-cont"} href="/hermiston">{"\n\t\t\t\t\t\t\t\t\t"}<img className={"logo logo-dark home-page-nav-scroll"} width="135" height="37" src="/site-assets/5b5feb0bfb829d4d-b76cf5b9a8a694da5a9c70961c351f26.png" title="AllEvents" alt="AllEvents logo" fetchPriority="high" />{"\n\t\t\t\t\t"}<img className={"logo logo-light home-page-nav-scroll"} width="135" height="37" src="/site-assets/44f31af4a74e45c3-507bafe18a3b29b9bd2a4bbe5a62ffbd.png" title="AllEvents" alt="AllEvents logo" />{"\n\t\t\t\t\t\t\t\t\t\n    \t\t\t"}</a>
+              <a className={"logo-cont"} href="/indore">{"\n\t\t\t\t\t\t\t\t\t"}<img className={"logo logo-dark home-page-nav-scroll"} width="135" height="37" src="/site-assets/vibe-logo-dark.png" title="Vibe" alt="Vibe logo" fetchPriority="high" />{"\n\t\t\t\t\t"}<img className={"logo logo-light home-page-nav-scroll"} width="135" height="37" src="/site-assets/vibe-logo-light.png" title="Vibe" alt="Vibe logo" />{"\n\t\t\t\t\t\t\t\t\t\n    \t\t\t"}</a>
               <div className={"city-select-wrapper"} style={{ marginLeft: "10px" }}>
-                <button title="Hermiston, Oregon, United States Events" onClick={openCity} aria-haspopup="dialog" aria-expanded={cityOpen} className={"city-select-button toh tltp ae-top-hide-city hidden-phone city-select-desktop"} tabIndex={0}><i className={"icon-map-marker-2 city-select-icon-marker"} />Hermiston<i className={"icon-angle-down city-select-icon-down"} style={{ fontSize: "16px", verticalAlign: "middle", paddingLeft: "4px", borderWidth: "medium", borderStyle: "none", borderColor: "currentcolor", borderImage: "none", background: "none" } as CSSProperties} /></button>
+                <button title="Indore, Madhya Pradesh, India Events" onClick={openCity} aria-haspopup="dialog" aria-expanded={cityOpen} className={"city-select-button toh tltp ae-top-hide-city hidden-phone city-select-desktop"} tabIndex={0}><i className={"icon-map-marker-2 city-select-icon-marker"} />Indore<i className={"icon-angle-down city-select-icon-down"} style={{ fontSize: "16px", verticalAlign: "middle", paddingLeft: "4px", borderWidth: "medium", borderStyle: "none", borderColor: "currentcolor", borderImage: "none", background: "none" } as CSSProperties} /></button>
               </div>
             </div>
             <div className={"span7 pull-right rspan topbar-options topbar-options-logged-out"}>
               <div className={"tbsearch hide_for_b2b"}>
-                <div className={"input-append"}><span className={"hidden-phone search-icon-desktop"}>{"\n\t\t\t\t\t\t\t"}<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">{"\n\t\t\t\t\t\t\t\t"}<path d="M15.75 15.75L11.25 11.25M2.25 7.5C2.25 8.18944 2.3858 8.87213 2.64963 9.50909C2.91347 10.146 3.30018 10.7248 3.78769 11.2123C4.2752 11.6998 4.85395 12.0865 5.49091 12.3504C6.12787 12.6142 6.81056 12.75 7.5 12.75C8.18944 12.75 8.87213 12.6142 9.50909 12.3504C10.146 12.0865 10.7248 11.6998 11.2123 11.2123C11.6998 10.7248 12.0865 10.146 12.3504 9.50909C12.6142 8.87213 12.75 8.18944 12.75 7.5C12.75 6.81056 12.6142 6.12787 12.3504 5.49091C12.0865 4.85395 11.6998 4.2752 11.2123 3.78769C10.7248 3.30018 10.146 2.91347 9.50909 2.64963C8.87213 2.3858 8.18944 2.25 7.5 2.25C6.81056 2.25 6.12787 2.3858 5.49091 2.64963C4.85395 2.91347 4.2752 3.30018 3.78769 3.78769C3.30018 4.2752 2.91347 4.85395 2.64963 5.49091C2.3858 6.12787 2.25 6.81056 2.25 7.5Z" stroke="#30363E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t"}</svg>{"\n\t\t\t\t\t\t"}</span><span className={"\x76isible-phone search-icon-mobile"} style={{ pointerEvents: "auto", cursor: "pointer" }}>{"\n\t\t\t\t\t\t\t"}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none" style={{ pointerEvents: "auto" }}>{"\n\t\t\t\t\t\t\t\t"}<path d="M10.5 19.5C15.1944 19.5 19 15.6944 19 11C19 6.3056 15.1944 2.5 10.5 2.5C5.8056 2.5 2 6.3056 2 11C2 15.6944 5.8056 19.5 10.5 19.5Z" stroke="#fff" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t\t"}<path d="M16.6094 17.1108L20.852 21.3535" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t"}</svg>{"\n\t\t\t\t\t\t"}</span><input className={"span3"} id="searchd-input" type="text" placeholder="Art events" autoComplete="off" {...({ size: "16" } as any)} /></div>
+                <div className={"input-append"}><span className={"hidden-phone search-icon-desktop"}>{"\n\t\t\t\t\t\t\t"}<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">{"\n\t\t\t\t\t\t\t\t"}<path d="M15.75 15.75L11.25 11.25M2.25 7.5C2.25 8.18944 2.3858 8.87213 2.64963 9.50909C2.91347 10.146 3.30018 10.7248 3.78769 11.2123C4.2752 11.6998 4.85395 12.0865 5.49091 12.3504C6.12787 12.6142 6.81056 12.75 7.5 12.75C8.18944 12.75 8.87213 12.6142 9.50909 12.3504C10.146 12.0865 10.7248 11.6998 11.2123 11.2123C11.6998 10.7248 12.0865 10.146 12.3504 9.50909C12.6142 8.87213 12.75 8.18944 12.75 7.5C12.75 6.81056 12.6142 6.12787 12.3504 5.49091C12.0865 4.85395 11.6998 4.2752 11.2123 3.78769C10.7248 3.30018 10.146 2.91347 9.50909 2.64963C8.87213 2.3858 8.18944 2.25 7.5 2.25C6.81056 2.25 6.12787 2.3858 5.49091 2.64963C4.85395 2.91347 4.2752 3.30018 3.78769 3.78769C3.30018 4.2752 2.91347 4.85395 2.64963 5.49091C2.3858 6.12787 2.25 6.81056 2.25 7.5Z" stroke="#30363E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t"}</svg>{"\n\t\t\t\t\t\t"}</span><span className={"\x76isible-phone search-icon-mobile"} style={{ pointerEvents: "auto", cursor: "pointer" }}>{"\n\t\t\t\t\t\t\t"}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none" style={{ pointerEvents: "auto" }}>{"\n\t\t\t\t\t\t\t\t"}<path d="M10.5 19.5C15.1944 19.5 19 15.6944 19 11C19 6.3056 15.1944 2.5 10.5 2.5C5.8056 2.5 2 6.3056 2 11C2 15.6944 5.8056 19.5 10.5 19.5Z" stroke="#fff" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t\t"}<path d="M16.6094 17.1108L20.852 21.3535" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t"}</svg>{"\n\t\t\t\t\t\t"}</span><input className={"span3"} id="searchd-input" type="text" placeholder="Art events" autoComplete="off" onKeyDown={e => { if (e.key === "Enter" && (e.currentTarget.value).trim()) { window.location.href = `/indore?q=${encodeURIComponent((e.currentTarget.value).trim())}`; } }} {...({ size: "16" } as any)} /></div>
               </div>
               <div className={"tbhide  hidden-phone"}><a className={"create-b2b create-action track popo topbar-btn create-btn-style"} data-original-title="" href="/manage/create.php?ref=home-page-topbar" rel="nofollow" tabIndex={0} title="">{"\n\t\t\t\t\t\t\t"}<i className={"icon-plus-2 mr5 create-btn-icon"} style={{ fontSize: "16px", color: "var(--gray-600)" }} />Create Event</a><a className={"hide hidden-phone"} href="/recommended?ref=home-page-topbar" rel="nofollow" title="Recommended Events For You"><i className={"icon-magic"} /></a><button id="login-top" className={"track hidden-phone topbar-btn lazy"} title="Sign in to AllEvents">{"\n\t\t\t\t\t\t\t"}<img src="/site-assets/8a75fa2fbc04c7e6.webp" alt="User Profile" className={"login-user-icon lazy"} style={{ width: "22px", height: "22px", verticalAlign: "middle", marginRight: "2px", marginBottom: "2px" }} />
       							Sign in
@@ -104,8 +104,8 @@ function Index() {
         <div className={"\x63ontainer search-child"}>
           <div className={"\x72ow-fluid"} style={{ position: "relative", height: "100%" }}>
             <div className={"span8 input-append search-wrap"}>
-              <p className={"title"} style={{ margin: "10px 0px 0px", fontWeight: "bold" }}><span style={{ color: "rgb(33, 192, 232)" }}>Live.</span> Don't Just Exist.</p>
-              <h1 className={"sub-title"} style={{ fontWeight: "normal" }}>Discover the Most happening events around you</h1>
+              <h1 className={"title"} style={{ margin: "10px 0px 10px", fontWeight: "bold", fontSize: "40px", lineHeight: "1.2" }}>Need a team? A crowd? A stage? <span style={{ color: "rgb(33, 192, 232)" }}>Make it an event.</span></h1>
+              <p className={"sub-title"} style={{ fontWeight: "normal", fontSize: "18px", lineHeight: "1.5", marginBottom: "24px" }}>Vibe lets anyone host anything. Start a Sunday cricket match with 10 players or sell out a comedy night for 500. Post it, fill it, show up.</p>
               <div id="hss_bar">
                 <div className={"hs_search_input_box"}>
                   <div className={"hs_search_icon"}>
@@ -113,7 +113,7 @@ function Index() {
                       <path d="M16.839 16.0751L12.4498 11.7562C13.5992 10.5074 14.3054 8.85589 14.3054 7.03859C14.3049 3.15103 11.1028 0 7.15245 0C3.20212 0 0 3.15103 0 7.03859C0 10.9261 3.20212 14.0772 7.15245 14.0772C8.85926 14.0772 10.4247 13.4868 11.6544 12.5054L16.0606 16.8414C16.2753 17.0529 16.6238 17.0529 16.8385 16.8414C17.0537 16.6299 17.0537 16.2866 16.839 16.0751ZM7.15245 12.9942C3.81004 12.9942 1.1005 10.3278 1.1005 7.03859C1.1005 3.74936 3.81004 1.08293 7.15245 1.08293C10.4949 1.08293 13.2044 3.74936 13.2044 7.03859C13.2044 10.3278 10.4949 12.9942 7.15245 12.9942Z" fill="#575C67" />
                     </svg>
                   </div>
-                  <input onFocus={() => setSearchOpen(true)} value={searchText} onChange={e => setSearchText(e.target.value)} type="search" name="hs_search_text" placeholder="Search Events, Categories, Location..." autoComplete="off" className={"hs_search_text"} />
+                  <input onFocus={() => setSearchOpen(true)} value={searchText} onChange={e => setSearchText(e.target.value)} type="search" name="hs_search_text" placeholder="Search Events, Categories, Location..." autoComplete="off" className={"hs_search_text"} onKeyDown={e => { if (e.key === "Enter" && searchText.trim()) { window.location.href = `/indore?q=${encodeURIComponent(searchText.trim())}`; } }} />
                   <div className={"hs_remove_text_icon"}>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: "none" }}>
                       <path d="M13.3334 13.3334L2.66675 2.66675M13.3334 2.66675L2.66675 13.3334" stroke="#D4D4D4" strokeWidth="2" strokeLinecap="round" />
@@ -126,7 +126,7 @@ function Index() {
                         <span className={"location_icon"} style={{ left: "12px" }}>
                           <i className={"icon-map-marker-2"} style={{ fontSize: "18px", color: "var(--gray-500)" }} />
                         </span>
-                        <p className={"location_text"} style={{ fontSize: "16px", color: "var(--gray-800)", margin: "0px" }}>hermiston</p>
+                        <p className={"location_text"} style={{ fontSize: "16px", color: "var(--gray-800)", margin: "0px" }}>indore</p>
                         <span>
                           <i className={"icon-angle-down"} style={{ fontSize: "20px", color: "var(--gray-500)" }} />
                         </span>
@@ -134,7 +134,7 @@ function Index() {
                     </div>
                   </div>
                   <div className={"search_suggestion_popup"} hidden={!searchOpen}>
-                    <div className={"ss_wrapper"}><div className="ss_trending_topics"><div className="ss_heading">Trending Topics</div><div className="topics_chips_container">{topics.filter(t => !searchText || t.includes(searchText.toLowerCase())).map(t => <span key={t}><a className="chip" href={`/hermiston/${t}?ref=search-suggestion-topics`} target="_blank">{t}</a></span>)}</div></div></div>
+                    <div className={"ss_wrapper"}><div className="ss_trending_topics"><div className="ss_heading">Trending Topics</div><div className="topics_chips_container">{topics.filter(t => !searchText || t.includes(searchText.toLowerCase())).map(t => <span key={t}><a className="chip" href={`/indore/${t}?ref=search-suggestion-topics`} target="_blank">{t}</a></span>)}</div></div></div>
                   </div>
                 </div>
                 <div className={"searchlocation \x76isible-phone"}>
@@ -142,21 +142,62 @@ function Index() {
                     <span role="button" tabIndex={0} onClick={openCity} onKeyDown={e => { if (e.key === "Enter") openCity(); }} className={"city-select-action"}>
                       <span className={"icon-map-marker-2"} style={{ fontSize: "18px", color: "rgb(255, 255, 255)", marginRight: "6px", cursor: "pointer" }} />
                       <p style={{ colorScheme: "unset", forcedColorAdjust: "unset", mathDepth: "unset", position: "unset", positionAnchor: "unset", textSizeAdjust: "unset", appearance: "unset", fontFamily: "unset", fontFeatureSettings: "unset", fontKerning: "unset", fontLanguageOverride: "unset", fontOpticalSizing: "unset", fontPalette: "unset", fontSizeAdjust: "unset", fontStretch: "unset", fontStyle: "unset", fontSynthesis: "unset", fontVariant: "unset", fontVariationSettings: "unset", fontWeight: "unset", positionArea: "unset", textOrientation: "unset", textRendering: "unset", textSpacingTrim: "unset", WebkitFontSmoothing: "unset", WebkitLocale: "unset", WebkitTextOrientation: "unset", WebkitWritingMode: "unset", writingMode: "unset", zoom: "unset", accentColor: "unset", placeContent: "unset", placeItems: "unset", placeSelf: "unset", alignmentBaseline: "unset", anchorName: "unset", anchorScope: "unset", animationComposition: "unset", animation: "unset", animationTrigger: "unset", appRegion: "unset", aspectRatio: "unset", backdropFilter: "unset", backfaceVisibility: "unset", background: "unset", backgroundBlendMode: "unset", baselineShift: "unset", baselineSource: "unset", blockSize: "unset", borderBlock: "unset", borderRadius: "unset", borderCollapse: "unset", borderEndEndRadius: "unset", borderEndStartRadius: "unset", borderImage: "unset", borderInline: "unset", borderLeft: "unset", borderRight: "unset", borderShape: "unset", borderStartEndRadius: "unset", borderStartStartRadius: "unset", borderTop: "unset", inset: "unset", boxDecorationBreak: "unset", boxShadow: "unset", boxSizing: "unset", breakAfter: "unset", breakBefore: "unset", breakInside: "unset", bufferedRendering: "unset", captionSide: "unset", caretAnimation: "unset", caretColor: "unset", caretShape: "unset", clear: "unset", clip: "unset", clipPath: "unset", clipRule: "unset", colorInterpolation: "unset", colorInterpolationFilters: "unset", colorRendering: "unset", columns: "unset", columnFill: "unset", gap: "unset", ruleBreak: "unset", rule: "unset", ruleInset: "unset", ruleVisibilityItems: "unset", columnSpan: "unset", contain: "unset", containIntrinsicBlockSize: "unset", containIntrinsicSize: "unset", containIntrinsicInlineSize: "unset", container: "unset", content: "unset", contentVisibility: "unset", cornerShape: "unset", cornerBlockEndShape: "unset", cornerBlockStartShape: "unset", counterIncrement: "unset", counterReset: "unset", counterSet: "unset", cx: "unset", cy: "unset", d: "unset", display: "unset", dominantBaseline: "unset", dynamicRangeLimit: "unset", emptyCells: "unset", fieldSizing: "unset", fill: "unset", fillOpacity: "unset", fillRule: "unset", filter: "unset", flex: "unset", flexFlow: "unset", flexLineCount: "unset", float: "unset", floodColor: "unset", floodOpacity: "unset", frameSizing: "unset", grid: "unset", gridArea: "unset", height: "unset", hyphenateCharacter: "unset", hyphenateLimitChars: "unset", hyphens: "unset", imageOrientation: "unset", imageRendering: "unset", initialLetter: "unset", inlineSize: "unset", insetBlock: "unset", insetInline: "unset", interactivity: "unset", interestDelay: "unset", interpolateSize: "unset", isolation: "unset", letterSpacing: "unset", lightingColor: "unset", lineBreak: "unset", lineHeight: "unset", listStyle: "unset", marginBlock: "unset", margin: "unset", marginInline: "unset", marginTrim: "unset", marker: "unset", mask: "unset", maskType: "unset", mathShift: "unset", mathStyle: "unset", maxBlockSize: "unset", maxHeight: "unset", maxInlineSize: "unset", maxWidth: "unset", minBlockSize: "unset", minHeight: "unset", minInlineSize: "unset", minWidth: "unset", mixBlendMode: "unset", objectFit: "unset", objectPosition: "unset", objectViewBox: "unset", offset: "unset", opacity: "unset", order: "unset", orphans: "unset", outline: "unset", outlineOffset: "unset", overflowAnchor: "unset", overflowBlock: "unset", overflowClipMargin: "unset", overflowInline: "unset", overflowWrap: "unset", overflow: "unset", overlay: "unset", overscrollBehaviorBlock: "unset", overscrollBehaviorInline: "unset", overscrollBehavior: "unset", paddingBlock: "unset", padding: "unset", paddingInline: "unset", page: "unset", pageMarginSafety: "unset", pageOrientation: "unset", paintOrder: "unset", perspective: "unset", perspectiveOrigin: "unset", pointerEvents: "unset", positionTry: "unset", positionVisibility: "unset", printColorAdjust: "unset", quotes: "unset", r: "unset", readingFlow: "unset", readingOrder: "unset", resize: "unset", rotate: "unset", rubyAlign: "unset", rubyOverhang: "unset", rubyPosition: "unset", ruleOverlap: "unset", rx: "unset", ry: "unset", scale: "unset", scrollAxisLock: "unset", scrollBehavior: "unset", scrollInitialTarget: "unset", scrollMarginBlock: "unset", scrollMargin: "unset", scrollMarginInline: "unset", scrollMarkerGroup: "unset", scrollPaddingBlock: "unset", scrollPadding: "unset", scrollPaddingInline: "unset", scrollSnapAlign: "unset", scrollSnapStop: "unset", scrollSnapType: "unset", scrollTargetGroup: "unset", scrollTimeline: "unset", scrollbarColor: "unset", scrollbarGutter: "unset", scrollbarWidth: "unset", shapeImageThreshold: "unset", shapeMargin: "unset", shapeOutside: "unset", shapeRendering: "unset", size: "unset", speak: "unset", stopColor: "unset", stopOpacity: "unset", stroke: "unset", strokeDasharray: "unset", strokeDashoffset: "unset", strokeLinecap: "unset", strokeLinejoin: "unset", strokeMiterlimit: "unset", strokeOpacity: "unset", strokeWidth: "unset", tabSize: "unset", tableLayout: "unset", textAlign: "unset", textAlignLast: "unset", textAnchor: "unset", textAutospace: "unset", textBox: "unset", textCombineUpright: "unset", textDecoration: "unset", textDecorationSkipInk: "unset", textEmphasis: "unset", textEmphasisPosition: "unset", textFit: "unset", textIndent: "unset", textJustify: "unset", textOverflow: "unset", textShadow: "unset", textTransform: "unset", textUnderlineOffset: "unset", textUnderlinePosition: "unset", textWrap: "unset", timelineScope: "unset", timelineTrigger: "unset", touchAction: "unset", transform: "unset", transformBox: "unset", transformOrigin: "unset", transformStyle: "unset", transition: "unset", translate: "unset", triggerScope: "unset", userSelect: "unset", vectorEffect: "unset", verticalAlign: "unset", viewTimeline: "unset", viewTransitionClass: "unset", viewTransitionGroup: "unset", viewTransitionName: "unset", viewTransitionScope: "unset", visibility: "unset", borderSpacing: "unset", WebkitBoxAlign: "unset", WebkitBoxDecorationBreak: "unset", WebkitBoxDirection: "unset", WebkitBoxFlex: "unset", WebkitBoxOrdinalGroup: "unset", WebkitBoxOrient: "unset", WebkitBoxPack: "unset", WebkitBoxReflect: "unset", WebkitLineBreak: "unset", WebkitLineClamp: "unset", WebkitMaskBoxImage: "unset", WebkitRtlOrdering: "unset", WebkitRubyPosition: "unset", WebkitTapHighlightColor: "unset", WebkitTextCombine: "unset", WebkitTextDecorationsInEffect: "unset", WebkitTextFillColor: "unset", WebkitTextSecurity: "unset", WebkitTextStroke: "unset", WebkitUserDrag: "unset", whiteSpaceCollapse: "unset", widows: "unset", width: "unset", willChange: "unset", windowDrag: "unset", wordBreak: "unset", wordSpacing: "unset", x: "unset", y: "unset", zIndex: "unset", color: "white", fontSize: "18px", borderBottom: "0px solid rgb(255, 255, 255)", cursor: "pointer" } as CSSProperties} data-site-import-responsive="1641">
-      											Hermiston										</p>
+      											Indore										</p>
                       <span className={"icon-angle-down"} style={{ fontSize: "15px", color: "rgb(255, 255, 255)", marginLeft: "6px", cursor: "pointer" }} />
                     </span>
                   </div>
                 </div>
-              </div>
-              <div className={"app_video_container"}>
-                <p className={"app_video_text"} style={{ color: "var(--primary-bg-light, #F7FCFF)", fontFamily: "Inter", fontSize: "19.8px", fontStyle: "normal", fontWeight: "500", lineHeight: "normal" }}>Download the App &amp; Step Into the Moment</p>
-                <div style={{ display: "flex", columnGap: "16px" }}><a className={"app_video_btn track"} href={"https://play.google.com/store/apps/details?id=com.amitech.allevents&utm_source=AEhomepage&utm_medium=banner&utm_campaign=HomepageFF"} target="_blank">{"\n\t\t\t\t\t\t\t\t\t"}<img style={{ height: "39.693px" }} src="/site-assets/18249bc14d9bf078.png" alt="Download from Google" />{"\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t"}</a><a className={"app_video_btn track"} href={"https://itunes.apple.com/app/apple-store/id488116646?pt=505903&mt=8&ct=HomepageFF"} target="_blank">{"\n\t\t\t\t\t\t\t\t\t"}<img style={{ height: "39.693px" }} src="/site-assets/2da2fe5508fa7dfa.png" alt="Download from Google" />{"\n\t\t\t\t\t\t\t\t"}</a></div>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div id="hss_bar_background_overlay" className={searchOpen ? "import-search-overlay" : ""} onClick={() => setSearchOpen(false)} />
+      {/* Why Vibe is Best For You - Video Section */}
+      <div style={{ backgroundColor: "#ffffff", padding: "48px 0 36px", borderBottom: "1px solid #E2E8F0" }}>
+        <div style={{ maxWidth: "860px", margin: "0 auto", padding: "0 20px", textAlign: "center" }}>
+          <div style={{ display: "inline-block", padding: "4px 14px", borderRadius: "9999px", backgroundColor: "#EFF6FF", color: "#1565C0", fontSize: "12px", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "12px" }}>
+            Video Walkthrough
+          </div>
+          <h2 style={{ fontSize: "28px", fontWeight: "800", color: "#1E293B", margin: "0 0 10px", lineHeight: "1.25" }}>
+            Why Vibe is Best For You
+          </h2>
+          <p style={{ fontSize: "15px", color: "#64748B", margin: "0 auto 28px", maxWidth: "600px", lineHeight: "1.6" }}>
+            Need a team? A crowd? A stage? See how anyone can create, share, and fill out events in minutes.
+          </p>
+
+          {/* 16:9 Video Frame */}
+          <div style={{ position: "relative", width: "100%", paddingBottom: "56.25%", height: 0, overflow: "hidden", borderRadius: "16px", backgroundColor: "#0F172A", boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)", border: "1px solid #CBD5E1" }}>
+            <iframe
+              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: 0 }}
+              src="https://www.youtube-nocookie.com/embed/ScMzIvxBSi4?rel=0&modestbranding=1"
+              title="Why Vibe is Best For You"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+
+          {/* Feature Highlights */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "16px", marginTop: "32px", textAlign: "left" }}>
+            <div style={{ backgroundColor: "#F8FAFC", padding: "16px 20px", borderRadius: "12px", border: "1px solid #E2E8F0" }}>
+              <div style={{ fontSize: "20px", marginBottom: "6px" }}>⚡</div>
+              <div style={{ fontSize: "14px", fontWeight: "700", color: "#1E293B", marginBottom: "4px" }}>Instant Event Setup</div>
+              <div style={{ fontSize: "12px", color: "#64748B", lineHeight: "1.5" }}>Post a match, gig, or workshop in 60 seconds with ticketing and passes.</div>
+            </div>
+            <div style={{ backgroundColor: "#F8FAFC", padding: "16px 20px", borderRadius: "12px", border: "1px solid #E2E8F0" }}>
+              <div style={{ fontSize: "20px", marginBottom: "6px" }}>👥</div>
+              <div style={{ fontSize: "14px", fontWeight: "700", color: "#1E293B", marginBottom: "4px" }}>Local Crowd Reach</div>
+              <div style={{ fontSize: "12px", color: "#64748B", lineHeight: "1.5" }}>Connect with local enthusiasts actively looking for things to do.</div>
+            </div>
+            <div style={{ backgroundColor: "#F8FAFC", padding: "16px 20px", borderRadius: "12px", border: "1px solid #E2E8F0" }}>
+              <div style={{ fontSize: "20px", marginBottom: "6px" }}>🎟️</div>
+              <div style={{ fontSize: "14px", fontWeight: "700", color: "#1E293B", marginBottom: "4px" }}>Seamless Check-ins</div>
+              <div style={{ fontSize: "12px", color: "#64748B", lineHeight: "1.5" }}>Instant digital QR passes, real-time attendee lists, and smooth payouts.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className={"near-by-section"}>
         <div className={"fold"} style={{ paddingBottom: "30px" }}>
           <div className={"\x72ow-fluid bgstyle-0"}>
@@ -179,11 +220,11 @@ function Index() {
             <div className={"\x63ontainer"}>
               <div className={"head-label"} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0px" }}>
                 <h2 className={"headstyle-1 acolor"}>
-                  <span>Hermiston's Most-Loved</span>
+                  <span>Indore's Most-Loved</span>
                 </h2>
                 <button className={"btn btn-link hidden-desktop"} style={{ color: "rgb(130, 130, 130)", float: "right", fontSize: "14px", padding: "4px 12px" }}> View all </button>
               </div>
-              <div className={"v2-cat-items-wrapper"}><a className={"v2-cat-item track"} href="/hermiston/music" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/93b82224d173105b.webp" alt="Music" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/hermiston/concerts" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/39053defbb43a63c.webp" alt="Concert" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/hermiston/parties" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/2b0ccf40e274f844.webp" alt="Parties" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/hermiston/food-drinks" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/546d76e37ce0d8e0.webp" alt={"Food & Drinks"} className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/hermiston/crafts" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/8f9bebffbc7bf57d.webp" alt="Crafts" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/hermiston/festivals" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/d0af47ed09716286.webp" alt="Festivals" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/hermiston/kids" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/57fa7e9248221a5f.webp" alt="Kids" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/hermiston/photography" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/930522db410623d7.webp" alt="Photography" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/hermiston/sports" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/bc422fd976b63917.webp" alt="Sports" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><div className={"v2-cat-item v2-see-all-item track"}><img src="/site-assets/9117ecf9f3919d0f.webp" alt="All Categories" className={"v2-see-all-img"} /></div></div>
+              <div className={"v2-cat-items-wrapper"}><a className={"v2-cat-item track"} href="/indore/music" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/93b82224d173105b.webp" alt="Music" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/indore/concerts" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/39053defbb43a63c.webp" alt="Concert" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/indore/parties" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/2b0ccf40e274f844.webp" alt="Parties" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/indore/food-drinks" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/546d76e37ce0d8e0.webp" alt={"Food & Drinks"} className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/indore/crafts" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/8f9bebffbc7bf57d.webp" alt="Crafts" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/indore/festivals" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/d0af47ed09716286.webp" alt="Festivals" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/indore/kids" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/57fa7e9248221a5f.webp" alt="Kids" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/indore/photography" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/930522db410623d7.webp" alt="Photography" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/indore/sports" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/bc422fd976b63917.webp" alt="Sports" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><div className={"v2-cat-item v2-see-all-item track"}><img src="/site-assets/9117ecf9f3919d0f.webp" alt="All Categories" className={"v2-see-all-img"} /></div></div>
             </div>
           </div>
         </div>
@@ -191,7 +232,7 @@ function Index() {
       <div id="home-popular-event-section" className={"homepopulareventsection fold events-loaded"}>
         <div id="show_popular_section" className={"\x63ontainer hpe-container"}>
           <div className={"head-label"}>
-            <h2 className={"headstyle-1"}>Popular Events in Hermiston</h2>
+            <h2 className={"headstyle-1"}>Popular Events in Indore</h2>
             <div className={"ue-tabs-wrapper"}>
               <div className={"ue-tabs"}>
                 <div className={"ue-option active"}>All</div>
@@ -203,7 +244,7 @@ function Index() {
             <ul className={"event-card-parent event-card-scrollable show4card"}>
               <li className={"event-card event-card-link"}>
                 <div className={"banner-cont"}>
-                  <img alt="Hermiston Tree Lighting Celebration" className={"banner-img"} data-src="https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czMvYmFubmVycy9hZWYxODFlOTRkMjM0Y2IyNzM5MGI2ZWIyZmFkZTEwMzFmNzQzYmM3NWM3ZWU3Y2UyYjlkODNhYWJkZGI2M2U2LXJpbWctdzEyMDAtaDEwMDItZGNmOGY4ZjgtZ21pcj92PTE3ODcxOTYxNTE.avif" src="/site-assets/13e8d321b8e3c021.avif" {...({ lazy: "loaded" } as any)} />
+                  <img alt="Indore Grand Cultural Festival" className={"banner-img"} data-src="https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czMvYmFubmVycy9hZWYxODFlOTRkMjM0Y2IyNzM5MGI2ZWIyZmFkZTEwMzFmNzQzYmM3NWM3ZWU3Y2UyYjlkODNhYWJkZGI2M2U2LXJpbWctdzEyMDAtaDEwMDItZGNmOGY4ZjgtZ21pcj92PTE3ODcxOTYxNTE.avif" src="/site-assets/13e8d321b8e3c021.avif" {...({ lazy: "loaded" } as any)} />
                   <div className={"ellipsis-btn-join-event"}>
                     <div className={"dropdown pull-right"}>
                       <div className={"interest-animate"} />
@@ -225,11 +266,11 @@ function Index() {
                   </div>
                   <div className={"meta-middle"}>
                     <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/hermiston/hermiston-tree-lighting-celebration/200029773097221" target="_blank" title="Hermiston Tree Lighting Celebration">
-                        <h3>Hermiston Tree Lighting Celebration</h3>
+                      <a href="/indore/indore-tree-lighting-celebration/200029773097221" target="_blank" title="Indore Grand Cultural Festival">
+                        <h3>Indore Grand Cultural Festival</h3>
                       </a>
                     </div>
-                    <div className={"location"} style={{ marginBottom: "12px", fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", textTransform: "capitalize" }}>Hermiston Festival Street</div>
+                    <div className={"location"} style={{ marginBottom: "12px", fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", textTransform: "capitalize" }}>Rajwada, Indore</div>
                   </div>
                   <div className={"meta-bottom"}>
                     <div className={"interested-container"}>
@@ -266,7 +307,7 @@ function Index() {
                   </div>
                   <div className={"meta-middle"}>
                     <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/hermiston/2026-hac-turkey-day-5k/100002002168621243" target="_blank" title="2026 HAC Turkey Day 5k">
+                      <a href="/indore/2026-hac-turkey-day-5k/100002002168621243" target="_blank" title="2026 HAC Turkey Day 5k">
                         <h3>2026 HAC Turkey Day 5k</h3>
                       </a>
                     </div>
@@ -285,7 +326,7 @@ function Index() {
               </li>
               <li className={"event-card event-card-link"}>
                 <div className={"banner-cont"}>
-                  <img alt="Liberty Quartet in Hermiston" className={"banner-img"} data-src="https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czMvYmFubmVycy9hOGNjOTc2MC03NWNhLTExZjEtYTZlZC01MTQ2YTg3MTNmN2ItcmltZy13MTIwMC1oNjc1LWRjZmZmZmZmLWdtaXIud2VicD92PTE3ODI5NjQ4NzA.avif" src="/site-assets/abbeb51a8097f0c7.avif" {...({ lazy: "loaded" } as any)} />
+                  <img alt="Indore Live Music Fest" className={"banner-img"} data-src="https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czMvYmFubmVycy9hOGNjOTc2MC03NWNhLTExZjEtYTZlZC01MTQ2YTg3MTNmN2ItcmltZy13MTIwMC1oNjc1LWRjZmZmZmZmLWdtaXIud2VicD92PTE3ODI5NjQ4NzA.avif" src="/site-assets/abbeb51a8097f0c7.avif" {...({ lazy: "loaded" } as any)} />
                   <div className={"ellipsis-btn-join-event"}>
                     <div className={"dropdown pull-right"}>
                       <div className={"interest-animate"} />
@@ -307,11 +348,11 @@ function Index() {
                   </div>
                   <div className={"meta-middle"}>
                     <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/hermiston/liberty-quartet-in-hermiston/3300030341334010" target="_blank" title="Liberty Quartet in Hermiston">
-                        <h3>Liberty Quartet in Hermiston</h3>
+                      <a href="/indore/liberty-quartet-in-indore/3300030341334010" target="_blank" title="Indore Live Music Fest">
+                        <h3>Indore Live Music Fest</h3>
                       </a>
                     </div>
-                    <div className={"location"} style={{ marginBottom: "12px", fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", textTransform: "capitalize" }}>Hermiston Nazarene Church</div>
+                    <div className={"location"} style={{ marginBottom: "12px", fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", textTransform: "capitalize" }}>Indore Nazarene Church</div>
                   </div>
                   <div className={"meta-bottom"}>
                     <div className={"interested-container"}>
@@ -344,7 +385,7 @@ function Index() {
                   </div>
                   <div className={"meta-middle"}>
                     <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/hermiston/crafting-after-hours/100002004196624054" target="_blank" title="Crafting After  Hours">
+                      <a href="/indore/crafting-after-hours/100002004196624054" target="_blank" title="Crafting After  Hours">
                         <h3>Crafting After  Hours</h3>
                       </a>
                     </div>
@@ -387,11 +428,11 @@ function Index() {
                   </div>
                   <div className={"meta-middle"}>
                     <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/hermiston/evening-with-the-author-luzy-d-king/200030912531952" target="_blank" title="Evening with the Author: Luzy D. King">
+                      <a href="/indore/evening-with-the-author-luzy-d-king/200030912531952" target="_blank" title="Evening with the Author: Luzy D. King">
                         <h3>Evening with the Author: Luzy D. King</h3>
                       </a>
                     </div>
-                    <div className={"location"} style={{ marginBottom: "12px", fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", textTransform: "capitalize" }}>1000 S. Hwy 395 Ste. C, Hermiston, OR, United States, Oregon 97838</div>
+                    <div className={"location"} style={{ marginBottom: "12px", fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", textTransform: "capitalize" }}>1000 S. Hwy 395 Ste. C, Indore, OR, United States, Oregon 97838</div>
                   </div>
                   <div className={"meta-bottom"}>
                     <div className={"interested-container"}>
@@ -427,11 +468,11 @@ function Index() {
                   </div>
                   <div className={"meta-middle"}>
                     <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/hermiston/bookminders-the-god-of-the-woods/200030766464256" target="_blank" title="Bookminders - The God of the Woods">
+                      <a href="/indore/bookminders-the-god-of-the-woods/200030766464256" target="_blank" title="Bookminders - The God of the Woods">
                         <h3>Bookminders - The God of the Woods</h3>
                       </a>
                     </div>
-                    <div className={"location"} style={{ marginBottom: "12px", fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", textTransform: "capitalize" }}>235 E Gladys Ave, Hermiston, OR, United States, Oregon 97838</div>
+                    <div className={"location"} style={{ marginBottom: "12px", fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", textTransform: "capitalize" }}>235 E Gladys Ave, Indore, OR, United States, Oregon 97838</div>
                   </div>
                   <div className={"meta-bottom"}>
                     <div className={"interested-container"}>
@@ -467,11 +508,11 @@ function Index() {
                   </div>
                   <div className={"meta-middle"}>
                     <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/hermiston/dves-parent-club-meeting-november/200030774912045" target="_blank" title="DVES Parent Club Meeting - November">
+                      <a href="/indore/dves-parent-club-meeting-november/200030774912045" target="_blank" title="DVES Parent Club Meeting - November">
                         <h3>DVES Parent Club Meeting - November</h3>
                       </a>
                     </div>
-                    <div className={"location"} style={{ marginBottom: "12px", fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", textTransform: "capitalize" }}>1225 SW 9th St, Hermiston, OR, United States, Oregon 97838</div>
+                    <div className={"location"} style={{ marginBottom: "12px", fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", textTransform: "capitalize" }}>1225 SW 9th St, Indore, OR, United States, Oregon 97838</div>
                   </div>
                   <div className={"meta-bottom"}>
                     <div className={"interested-container"}>
@@ -504,7 +545,7 @@ function Index() {
                   </div>
                   <div className={"meta-middle"}>
                     <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/hermiston/christmas-market-at-the-farm/200030828051546" target="_blank" title="Christmas Market at the Farm 🎄">
+                      <a href="/indore/christmas-market-at-the-farm/200030828051546" target="_blank" title="Christmas Market at the Farm 🎄">
                         <h3>Christmas Market at the Farm 🎄</h3>
                       </a>
                     </div>
@@ -519,7 +560,7 @@ function Index() {
               </li>
             </ul>
             <div className={"w100 \x74ext-center hp_view_more_btn_block"}>
-              <a className={"tltp skyload white hp_view_more_btn"} href="/hermiston?ref=home-page" title="View All events  in Hermiston"> View all events in Hermiston</a>
+              <a className={"tltp skyload white hp_view_more_btn"} href="/indore?ref=home-page" title="View All events  in Indore"> View all events in Indore</a>
             </div>
           </div>
         </div>
@@ -3062,7 +3103,7 @@ function Index() {
                                   Let’s make the world #Happening together
                               </div>
                   <div style={{ display: "flex" }}>
-                    <a className={"home-page-button"} data-original-title="View all Events in Hermiston" href="/manage/create.php?ref=home-page-creator-section" style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
+                    <a className={"home-page-button"} data-original-title="View all Events in Indore" href="/manage/create.php?ref=home-page-creator-section" style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
                                       Create an Event
                                   </a>
                     <div className={"creator-link"}><a href="/manage/create.php?ref=home-page-creator-section" style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
@@ -3110,7 +3151,7 @@ function Index() {
               <div className={"ap-qr"}>
                 <img className={"lazy"} data-src="https://cdn2.allevents.in/transup/2e/1723178e244d7c8a3946a247219666/qr-code.png" alt="Scan to download AllEvents app" src="/site-assets/f401e83494cd77da.png" loading="eager" />
               </div>
-              <div className={"ap-badges"}><a className={"track lazy"} href={"https://itunes.apple.com/app/apple-store/id488116646?pt=505903&mt=8&ct=app_download_section"} target="_blank">{"\n                        "}<img className={"lazy"} data-src="https://cdn2.allevents.in/transup/19/f34ec9a910401181d29597108729d7/Component-2.webp" alt="Download App From App Store" src="/site-assets/5fa990a991fd2c86.webp" loading="eager" />{"\n                    "}</a><a className={"track lazy"} href={"https://play.google.com/store/apps/details?id=com.amitech.allevents&utm_source=app_pitch_section&utm_medium=banner&utm_campaign=app_download_section"} target="_blank">{"\n                        "}<img className={"lazy"} data-src="https://cdn2.allevents.in/transup/79/eca480b6be4f328b1d32e6042493f6/Component-3.webp" alt="Download App From Google Play" src="/site-assets/691d9cc79f41cdfa.webp" loading="eager" />{"\n                    "}</a></div>
+              
             </div>
           </div>
           <div className={"ap-phones"}>
@@ -3217,23 +3258,23 @@ function Index() {
             <div id="trending_searchandevents" className={"trending_results"} style={{ display: "block" }}>
               <div className={"trending_container"}>
                 <div className={"qsp_title"}>
-                  <span>Trending in Hermiston</span>
+                  <span>Trending in Indore</span>
                 </div>
                 <div className={"qsp_category_contaner"}>
                   <a className={"title_long"} href="/events/car-shows-in-usa?ref=quicksearch-t-results" target="_blank" title="Car Shows 2026 In United States"><span className={"trending_up_icon"}><svg viewBox="0 0 144 144"><path fillRule="evenodd" clipRule="evenodd" fill="#2481DE" d="M116.509 38.4h12v42h-12V58.372l-43.803 43.803-8.485-8.485.048-.049-14.205-14.205-26.098 26.098-8.485-8.485 34.65-34.65 8.486 8.485-.068.067 14.206 14.205 34.757-34.758H86.508v-12h30.001z" /></svg></span>{" "}<span className={"title_p"}><p>Car Shows 2026 In United States</p></span>{" "}<i className={"icon-chevron-right trending_chevron"} /></a>
                   <a className={"title_long"} href="/events/back-to-school-events-in-usa?ref=quicksearch-t-results" target="_blank" title={"Back To School 2026 Events & Giveaways In The USA"}><span className={"trending_up_icon"}><svg viewBox="0 0 144 144"><path fillRule="evenodd" clipRule="evenodd" fill="#2481DE" d="M116.509 38.4h12v42h-12V58.372l-43.803 43.803-8.485-8.485.048-.049-14.205-14.205-26.098 26.098-8.485-8.485 34.65-34.65 8.486 8.485-.068.067 14.206 14.205 34.757-34.758H86.508v-12h30.001z" /></svg></span>{" "}<span className={"title_p"}><p>Back To School 2026 Events &amp; Giveaways In The USA</p></span>{" "}<i className={"icon-chevron-right trending_chevron"} /></a>
                   <a className={"title_long"} href="/events/halloween-events-celebrations-in-usa?ref=quicksearch-t-results" target="_blank" title={"Halloween 2026 Events & Celebrations In The USA"}><span className={"trending_up_icon"}><svg viewBox="0 0 144 144"><path fillRule="evenodd" clipRule="evenodd" fill="#2481DE" d="M116.509 38.4h12v42h-12V58.372l-43.803 43.803-8.485-8.485.048-.049-14.205-14.205-26.098 26.098-8.485-8.485 34.65-34.65 8.486 8.485-.068.067 14.206 14.205 34.757-34.758H86.508v-12h30.001z" /></svg></span>{" "}<span className={"title_p"}><p>Halloween 2026 Events &amp; Celebrations In The USA</p></span>{" "}<i className={"icon-chevron-right trending_chevron"} /></a>
                   <a className={"title_long"} href="/events/labor-day-celebrations-in-usa?ref=quicksearch-t-results" target="_blank" title={"Labor Day 2026 Events & Celebrations In The USA"}><span className={"trending_up_icon"}><svg viewBox="0 0 144 144"><path fillRule="evenodd" clipRule="evenodd" fill="#2481DE" d="M116.509 38.4h12v42h-12V58.372l-43.803 43.803-8.485-8.485.048-.049-14.205-14.205-26.098 26.098-8.485-8.485 34.65-34.65 8.486 8.485-.068.067 14.206 14.205 34.757-34.758H86.508v-12h30.001z" /></svg></span>{" "}<span className={"title_p"}><p>Labor Day 2026 Events &amp; Celebrations In The USA</p></span>{" "}<i className={"icon-chevron-right trending_chevron"} /></a>
-                  <a className={"title_long"} href="/hermiston/festivals?ref=quicksearch-t-results" target="_blank" title="Hermiston Festival Guide 2026"><span className={"trending_up_icon"}><span>{" "}<i className={"icon-book"} /></span></span>{" "}<span className={"title_p"}><p>Hermiston Festival Guide 2026</p></span>{" "}<i className={"icon-chevron-right trending_chevron"} /></a>
-                  <a className={"title_long"} href="/hermiston/this-weekend?ref=quicksearch-t-results" target="_blank" title={"Events & Things To Do In Hermiston This Weekend "}><span className={"trending_up_icon"}><span>{" "}<i className={"icon-book"} /></span></span>{" "}<span className={"title_p"}><p>Events &amp; Things To Do In Hermiston This Weekend </p></span>{" "}<i className={"icon-chevron-right trending_chevron"} /></a>
-                  <a className={"title_long"} href="/hermiston/halloween?ref=quicksearch-t-results" target="_blank" title={"&#127875; Halloween Events in Hermiston"}><span className={"trending_up_icon"}><span>{" "}<i className={"icon-book"} /></span></span>{" "}<span className={"title_p"}><p>🎃 Halloween Events in Hermiston</p></span>{" "}<i className={"icon-chevron-right trending_chevron"} /></a>
-                  <a className={"title_long"} href="/hermiston/live-music?ref=quicksearch-t-results" target="_blank" title="Live Music Events Near Hermiston"><span className={"trending_up_icon"}><span>{" "}<i className={"icon-book"} /></span></span>{" "}<span className={"title_p"}><p>Live Music Events Near Hermiston</p></span>{" "}<i className={"icon-chevron-right trending_chevron"} /></a>
+                  <a className={"title_long"} href="/indore/festivals?ref=quicksearch-t-results" target="_blank" title="Indore Festival Guide 2026"><span className={"trending_up_icon"}><span>{" "}<i className={"icon-book"} /></span></span>{" "}<span className={"title_p"}><p>Indore Festival Guide 2026</p></span>{" "}<i className={"icon-chevron-right trending_chevron"} /></a>
+                  <a className={"title_long"} href="/indore/this-weekend?ref=quicksearch-t-results" target="_blank" title={"Events & Things To Do In Indore This Weekend "}><span className={"trending_up_icon"}><span>{" "}<i className={"icon-book"} /></span></span>{" "}<span className={"title_p"}><p>Events &amp; Things To Do In Indore This Weekend </p></span>{" "}<i className={"icon-chevron-right trending_chevron"} /></a>
+                  <a className={"title_long"} href="/indore/halloween?ref=quicksearch-t-results" target="_blank" title={"&#127875; Halloween Events in Indore"}><span className={"trending_up_icon"}><span>{" "}<i className={"icon-book"} /></span></span>{" "}<span className={"title_p"}><p>🎃 Halloween Events in Indore</p></span>{" "}<i className={"icon-chevron-right trending_chevron"} /></a>
+                  <a className={"title_long"} href="/indore/live-music?ref=quicksearch-t-results" target="_blank" title="Live Music Events Near Indore"><span className={"trending_up_icon"}><span>{" "}<i className={"icon-book"} /></span></span>{" "}<span className={"title_p"}><p>Live Music Events Near Indore</p></span>{" "}<i className={"icon-chevron-right trending_chevron"} /></a>
                 </div>
               </div>
               <div className={"qsp_event_container"} />
               <div className={"qsp_title"}>
                 <span>
-                  <span>Trending Events around Hermiston</span>
+                  <span>Trending Events around Indore</span>
                 </span>
               </div>
               <div className={"qsp_event_container"}>
@@ -3578,7 +3619,7 @@ function Index() {
                   </a>
                 </div>
                 <div className={"event_card"}>
-                  <a href="/hermiston/event/200030766464256?ref=quicksearch-t-events" target="_blank">
+                  <a href="/indore/event/200030766464256?ref=quicksearch-t-events" target="_blank">
                     <div className={"event_pic"}>
                       <div className={"event_thumbnail"}>
                         <img alt="Bookminders - The God of the Woods" data-src="https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czUvYmFubmVycy8xYWJlYjdkMGFmMzNmYmRjZTgyNmFlNWFmZTUyODQ1ZmIyYTAyNzA0ZDdhOGMwODllNmE2MjQ3N2RiYmZiYjVkLXJpbWctdzEwODAtaDEwODAtZGNkOGU4ZjgtZ21pcj92PTE3OTEwNDIxNzY.avif" src="/site-assets/774b998c693df4ae.avif" loading="eager" {...({ lazy: "loading" } as any)} />
@@ -3587,12 +3628,12 @@ function Index() {
                     <div className={"event_details"}>
                       <div className={"event_name"}>Bookminders - The God of the Woods</div>
                       <div className={"event_meta event_when"}><i className={"icon icon-calendar-empty"} /> <span className={"event_meta_text"}>Nov 05</span> </div>
-                      <div className={"event_meta event_where"}><i className={"icon icon-map-marker-2"} /> <span className={"event_meta_text"}>Hermiston, United States</span></div>
+                      <div className={"event_meta event_where"}><i className={"icon icon-map-marker-2"} /> <span className={"event_meta_text"}>Indore, India</span></div>
                     </div>
                   </a>
                 </div>
                 <div className={"event_card"}>
-                  <a href="/hermiston/event/100002002168621243?ref=quicksearch-t-events" target="_blank">
+                  <a href="/indore/event/100002002168621243?ref=quicksearch-t-events" target="_blank">
                     <div className={"event_pic"}>
                       <div className={"event_thumbnail"}>
                         <img alt="2026 HAC Turkey Day 5k" data-src="https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czEvYmFubmVycy81NWU2MWVmMGYxMmE4ZjAwZWUwNDk4NTQwZGU3M2ExYjIyMmQ5ZDk0NDgzN2VhY2YzY2Q4ZDMzNTU0YjY3NTBlLXJpbWctdzEyMDAtaDYwMC1kY2Y4ZjhmOC1nbWlyLmpwZz92PTE3OTA2ODUwNzM.avif" src="/site-assets/99fde05723294869.avif" loading="eager" {...({ lazy: "loading" } as any)} />
@@ -3601,7 +3642,7 @@ function Index() {
                     <div className={"event_details"}>
                       <div className={"event_name"}>2026 HAC Turkey Day 5k</div>
                       <div className={"event_meta event_when"}><i className={"icon icon-calendar-empty"} /> <span className={"event_meta_text"}>Nov 26</span> </div>
-                      <div className={"event_meta event_where"}><i className={"icon icon-map-marker-2"} /> <span className={"event_meta_text"}>Hermiston, United States</span></div>
+                      <div className={"event_meta event_where"}><i className={"icon icon-map-marker-2"} /> <span className={"event_meta_text"}>Indore, India</span></div>
                       <div className={"event_ticket_wrapper"}>
                         <div className={"event_ticket"}>
                           <div className={"ticket"}><i className={"icon-ticket-empty"} />
@@ -3918,16 +3959,16 @@ function Index() {
                   </a>
                 </div>
                 <div className={"event_card"}>
-                  <a href="/hermiston/event/200029773097221?ref=quicksearch-t-events" target="_blank">
+                  <a href="/indore/event/200029773097221?ref=quicksearch-t-events" target="_blank">
                     <div className={"event_pic"}>
                       <div className={"event_thumbnail"}>
-                        <img alt="Hermiston Tree Lighting Celebration" data-src="https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czMvYmFubmVycy9hZWYxODFlOTRkMjM0Y2IyNzM5MGI2ZWIyZmFkZTEwMzFmNzQzYmM3NWM3ZWU3Y2UyYjlkODNhYWJkZGI2M2U2LXJpbWctdzEyMDAtaDEwMDItZGNmOGY4ZjgtZ21pcj92PTE3ODcxOTYxNTE.avif" src="/site-assets/13e8d321b8e3c021.avif" loading="eager" {...({ lazy: "loading" } as any)} />
+                        <img alt="Indore Grand Cultural Festival" data-src="https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czMvYmFubmVycy9hZWYxODFlOTRkMjM0Y2IyNzM5MGI2ZWIyZmFkZTEwMzFmNzQzYmM3NWM3ZWU3Y2UyYjlkODNhYWJkZGI2M2U2LXJpbWctdzEyMDAtaDEwMDItZGNmOGY4ZjgtZ21pcj92PTE3ODcxOTYxNTE.avif" src="/site-assets/13e8d321b8e3c021.avif" loading="eager" {...({ lazy: "loading" } as any)} />
                       </div>
                     </div>
                     <div className={"event_details"}>
-                      <div className={"event_name"}>Hermiston Tree Lighting Celebration</div>
+                      <div className={"event_name"}>Indore Grand Cultural Festival</div>
                       <div className={"event_meta event_when"}><i className={"icon icon-calendar-empty"} /> <span className={"event_meta_text"}>Dec 04</span> </div>
-                      <div className={"event_meta event_where"}><i className={"icon icon-map-marker-2"} /> <span className={"event_meta_text"}>Hermiston, United States</span></div>
+                      <div className={"event_meta event_where"}><i className={"icon icon-map-marker-2"} /> <span className={"event_meta_text"}>Indore, India</span></div>
                     </div>
                   </a>
                 </div>
@@ -4772,7 +4813,7 @@ function ImportedNavMainNavigation({ openCity }: { openCity: () => void }) {
     <nav role="navigation" aria-label="Main Navigation">
       <ul className={"nav topuserinfomobile"}>
         <li className={"ae-top-visible-city li1"}>
-          <a href="/hermiston">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}<div className={"ae-icon-marker new-svg-icon"} />{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}<span className={"toh city-select-width"}>Hermiston</span>{"\n\t\t\t\t\t\t                        \t\t"}<button onClick={e => { e.preventDefault(); openCity(); }} className={"city-select-button tltp mcity-select"}>{"\n\t\t\t\t\t\t                        \t\t"}<span className={"city-select-v-middle"}>Change City</span>{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}</button>{"\n\t\t\t\t\t\t\t\t\t\t\t\t"}</a>
+          <a href="/indore">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}<div className={"ae-icon-marker new-svg-icon"} />{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}<span className={"toh city-select-width"}>Indore</span>{"\n\t\t\t\t\t\t                        \t\t"}<button onClick={e => { e.preventDefault(); openCity(); }} className={"city-select-button tltp mcity-select"}>{"\n\t\t\t\t\t\t                        \t\t"}<span className={"city-select-v-middle"}>Change City</span>{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}</button>{"\n\t\t\t\t\t\t\t\t\t\t\t\t"}</a>
         </li>
         <li className={"svg-item-box"}>
           <a className={"login-action e_main_title1 track"} href="#" id="login-top-mob">
@@ -4825,7 +4866,7 @@ function ImportedFooterSiteNavigation() {
             <div className={"span3-ms ft1span3 first-column"}>
               <div className={"another-div"} style={{ marginTop: "5px" }}>
                 <a className={"footer-04__logo_link"} href="/" target="_blank">
-                  <img style={{ width: "150px", display: "inline" }} title="allevents logo" className={"lazy allevents_logo"} alt="AllEvents Footer Logo" height="36" src="/site-assets/44f31af4a74e45c3-507bafe18a3b29b9bd2a4bbe5a62ffbd.png" />
+                  <img style={{ width: "150px", display: "inline" }} title="Vibe logo" className={"lazy allevents_logo"} alt="Vibe Footer Logo" height="36" src="/site-assets/vibe-logo-light.png" />
                 </a>
                 <p className={"goto-content"} style={{ color: "white", marginTop: "10px" }}>Go-to place to discover events for more than 20M people globally.</p>
                 <ul className={"footer-badges home-footer-links"}>
