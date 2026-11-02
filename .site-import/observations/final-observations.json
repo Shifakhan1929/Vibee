@@ -1,0 +1,137 @@
+[
+  {
+    "location": "vent\nCreate\nPromote\nSell\n@Stroymoyd\nComedian, San Francisco\nDiscover Events\nanywhere, anytime\n\nDownload the AllEvents app to never miss out the best events near you!\n\nGo-to place to discover events for more than 20M people globally.\n\nDiscover Events\nEvents for You\nVirtual Events\nGet Event Updates\nEvent Discovery App\nFor Organizers\nList Your Event\nPromote Your Event\nPricing Plans\nEvent Ticketing Software\nEvent Manager App\nHost Recorded Events\nHost Better Events\nQR Code Generator\nTrackable Link Generator\nBlog\nLearn Event Marketing\nExplore\nEvent Listing Plugin\nMedia Kit\nAffiliate Program\nEvents API\nSupport Center\nWrite for Us\nCountry\nArgentina\nAustralia\nBrazil\nBelgium\nCanada\nFrance\nGermany\nIndia\nIreland\nItaly\nMalaysia\nMexico\nNetherlands\nSouth Africa\nSpain\nSingapore\nUnited Kingdom\nUnited States\nTrending In Worldwide\nAbout\nCareers\nSupport\nMedia Coverage\nTerms of Service\nPrivacy\nContact Us\n© Copyright 2026. All Rights Reserved\n\n      \n\n×\nAllEvents in\nLondon\nOrlando\nVancouver\nMiami\nBangalore\nEdinburgh\nWashington\nDelhi\nLos Angeles\nAhmedabad\nChicago\nNashville\nSan Francisco\nEdmonton\nChennai\nNew York\nNew Orleans\nMumbai\nLas Vegas\nyour city\n26 results are available, use up and down arrow keys to navigate.\nCurrent Location\n\nLondon\nEN, United Kingdom\n\nLondon\nON, Canada\n\nNew London\nCT, United States\n\nNew London\nWI, United States\n\nLondonderry\nNI, United Kingdom\n\nLondon\nOH, United States\n\nLondon\nKY, United States\n\nEast london\nEC, South Africa\n\nLondonderry\nNH, United States\n\nNew London\nNH, United States\n\nLondon Colney\nEN, United Kingdom\n\nNew London\nMN, United States\n\nNew London\nNC, United States\n\nLondonderry\nVT, United States\n\nNew London\nOH, United States\n\nNew London\nTX, United States\n\nNew London\nIA, United States\n\nLondon\nTX, United States\n\nLondonderry\nOH, United States\n\nSouth Londonderry\nVT, United States\n\nNew London\nMO, United States\n\nSouth Londonberry\nVT, United States\n\nLondon\nAR, United States\n\nLondon\nWV, United States\n\nLondon Mills\nIL, United States\n\nNew London\nPA, United States\n\nExplore Cities Near You\nDiscover events in 40,000+ Cities around the world with AllEvents\nUppsala\n514+ Events\nSundbyberg\n96+ Events\nÖrebro\n214+ Events\nVästerås\n40+ Events\nLinköping\n104+ Events\nOnline"
+  },
+  {
+    "tab": "locator.click: Timeout 1500ms exceeded.\nCall log:\n  - waiting for locator('.ue-option:visible').filter({ hasText: /^Today$/ })\n"
+  },
+  {
+    "menu": [
+      {
+        "text": "Open Menu",
+        "html": "<button class=\"btn btn-navbar mnv tb-mobile--burger mobile-navbar--custom mobile-burger-btn\" data-toggle=\"collapse\" data-target=\"#ae-nav-collapse\" aria-label=\"Open Menu\">\n\t\t\t\t\t\t\t\t\t\t<span class=\"screen-reader-only\">Open Menu</span>\n\t\t\t\t\t\t\t\t\t\t<span class=\"icon-bar\"></span>\n\t\t\t\t\t\t\t\t\t\t<span class=\"icon-bar\"></span>\n\t\t\t\t\t\t\t\t\t\t<span class=\"icon-bar\"></span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"red-dot-burger\"></span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>"
+      },
+      {
+        "text": "Stockholm",
+        "href": "https://allevents.in/stockholm",
+        "html": "<a data-track=\"Topbar|clicks|mobile-events-in-city\" href=\"https://allevents.in/stockholm\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"ae-icon-marker new-svg-icon\"></div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"toh city-select-width\">Stockholm</span>\n\t\t\t\t\t\t                        \t\t<button data-html=\"true\" data-placement=\"bottom\" class=\"city-select-button tltp mcity-select\">\n\t\t\t\t\t\t                        \t\t<span class=\"city-select-v-middle\">Change City</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</butt"
+      },
+      {
+        "text": "Login",
+        "href": "https://allevents.in/#",
+        "html": "<a data-track=\"Topbar|clicks|mobile-login\" id=\"login-top-mob\" href=\"#\" class=\"login-action e_main_title1 track\"><div class=\"ae-icon-login new-svg-icon\"></div><span class=\"e_nav_item\">Login</span></a>"
+      },
+      {
+        "text": "Create an event",
+        "href": "https://allevents.in/manage/create.php?ref=topbar-dropdown",
+        "html": "<a class=\"create-action e_main_title1 track\" data-track=\"CreateEvent|ClicksFromMenu|mobile-topbar\" rel=\"nofollow\" href=\"https://allevents.in/manage/create.php?ref=topbar-dropdown\"><div class=\"ae-icon-plus-2 new-svg-icon\"></div><span class=\"e_nav_item\">Create an event</span></a>"
+      },
+      {
+        "text": "Manage events",
+        "href": "https://allevents.in/manage/manage-events.php?ref=topbar-dropdown",
+        "html": "<a class=\"e_main_title1 track\" data-track=\"Topbar|clicks|mobile-my-events\" title=\"\" href=\"https://allevents.in/manage/manage-events.php?ref=topbar-dropdown\"><div class=\"ae-icon-cal new-svg-icon\"></div><span class=\"e_nav_item\">Manage events</span></a>"
+      },
+      {
+        "text": "Get the AllEventsApp\nNew",
+        "href": "https://allevents.in/app?ref=topbar-dropdown&utm_source=allevents&utm_medium=topbar&utm_campaign=topbar_get_app&utm_content=topbar-dropdown&ct=topbar-dropdown",
+        "html": "<a class=\"e_main_title1 track app-download-color\" data-track=\"download_app|topbar|clicks\" href=\"https://allevents.in/app?ref=topbar-dropdown&amp;utm_source=allevents&amp;utm_medium=topbar&amp;utm_campaign=topbar_get_app&amp;utm_content=topbar-dropdown&amp;ct=topbar-dropdown\" target=\"_blank\"><div class=\"for-phone new-svg-icon\"></div><span class=\"e_nav_item\">Get the AllEventsApp</span><span class=\"badge badge-important\">New</span></a>"
+      },
+      {
+        "text": "Need help?",
+        "href": "https://allevents.in/pages/support?ref=topbar-dropdown",
+        "html": "<a class=\"e_main_title1 track\" data-track=\"Topbar|clicks|mobile-support-redirection\" href=\"https://allevents.in/pages/support?ref=topbar-dropdown\" target=\"_blank\"><div class=\"ae-icon-square-question new-svg-icon\"></div><span class=\"e_nav_item\">Need help?</span></a>"
+      },
+      {
+        "text": "",
+        "href": "https://allevents.in/stockholm",
+        "html": "<a href=\"https://allevents.in/stockholm\" class=\"logo-cont\">\n\t\t\t\t\t\t\t\t\t<img class=\"logo logo-dark home-page-nav-scroll\" width=\"135\" height=\"37\" src=\"https://cdn2.allevents.in/media-kit/svg/ae-logo-vector.svg\" title=\"AllEvents\" alt=\"AllEvents logo\" fetchpriority=\"high\">\n\t\t\t\t\t<img class=\"logo logo-light home-page-nav-scroll\" width=\"135\" height=\"37\" src=\"https://allevents.in/img/ae-logo-website-v2.svg\" title=\"AllEvents\" alt=\"AllEvents logo\">\n\t\t\t\t\t\t\t\t\t"
+      },
+      {
+        "text": "",
+        "href": "https://play.google.com/store/apps/details?id=com.amitech.allevents&utm_source=AEhomepage&utm_medium=banner&utm_campaign=HomepageFF",
+        "html": "<a href=\"https://play.google.com/store/apps/details?id=com.amitech.allevents&amp;utm_source=AEhomepage&amp;utm_medium=banner&amp;utm_campaign=HomepageFF\" target=\"_blank\" class=\"app_video_btn track\" data-track=\"HomePage|click|Plays-Store\">\n\t\t\t\t\t\t\t\t\t<img style=\"height: 39.693px;\" src=\"https://cdn2.allevents.in/transup/33/4fcdc12a954b04b02f742ce3265692/Google-Play-Icon.png\" alt=\"Download from Google\">\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t</a>"
+      },
+      {
+        "text": "",
+        "href": "https://itunes.apple.com/app/apple-store/id488116646?pt=505903&mt=8&ct=HomepageFF",
+        "html": "<a href=\"https://itunes.apple.com/app/apple-store/id488116646?pt=505903&amp;mt=8&amp;ct=HomepageFF\" target=\"_blank\" class=\"app_video_btn track\" data-track=\"HomePage|click|App-Store\">\n\t\t\t\t\t\t\t\t\t<img style=\"height: 39.693px;\" src=\"https://cdn2.allevents.in/transup/0a/caa241b4e3479abed19e9ffd00690c/App-Store-Icon.png\" alt=\"Download from Google\">\n\t\t\t\t\t\t\t\t</a>"
+      },
+      {
+        "text": "View all",
+        "html": "<button class=\"btn btn-link hidden-desktop\" style=\"color:#828282;float:right;font-size:14px;padding:4px 12px;\" onclick=\"get_modal_with_params('category-list-modal.php', {'city_query': 'stockholm', 'city': 'Stockholm', 'region_code': 'ST', 'country': 'Sweden'});\"> View all </button>"
+      },
+      {
+        "text": "",
+        "href": "https://allevents.in/stockholm/music",
+        "html": "<a class=\"v2-cat-item track\" target=\"_blank\" href=\"https://allevents.in/stockholm/music\" data-track=\"CityHomeFold|cat-click|music\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<img src=\"https://cdn-ip.allevents.in/s/rs:fill:400:240/g:sm/q:80/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90cmFuc3VwLzg1LzE0MDM0MTEwYTE0NmQwOTAzZTU2OTVkYmVjNzYzYy9NdXNpYy1FdmVudHMtMS0ucG5n.webp\" alt=\"Music\" class=\"v2-cat-img\">\n\t\t\t\t\t\t\t</a>"
+      },
+      {
+        "text": "",
+        "href": "https://allevents.in/stockholm/business",
+        "html": "<a class=\"v2-cat-item track\" target=\"_blank\" href=\"https://allevents.in/stockholm/business\" data-track=\"CityHomeFold|cat-click|business\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<img src=\"https://cdn-ip.allevents.in/s/rs:fill:400:240/g:sm/q:80/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90cmFuc3VwLzJhLzcxYTZiMGMwNmE0MzVmYjkxNjhmMTNmMGEzMzY5ZS9CdXNpbmVzcy1FdmVudHMucG5n.webp\" alt=\"Business\" class=\"v2-cat-img\">\n\t\t\t\t\t\t\t</a>"
+      },
+      {
+        "text": "",
+        "href": "https://allevents.in/stockholm/concerts",
+        "html": "<a class=\"v2-cat-item track\" target=\"_blank\" href=\"https://allevents.in/stockholm/concerts\" data-track=\"CityHomeFold|cat-click|concerts\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<img src=\"https://cdn-ip.allevents.in/s/rs:fill:400:240/g:sm/q:80/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90cmFuc3VwLzY4L2UyMzYwMDUxNDI0NTg5ODU5YWY0ZWNiNWZjZDM2Ny9Db25jZXJ0cy0xXzFfMTF6b24ucG5n.webp\" alt=\"Concert\" class=\"v2-cat-img\">\n\t\t\t\t\t\t\t</a>"
+      },
+      {
+        "text": "",
+        "href": "https://allevents.in/stockholm/parties",
+        "html": "<a class=\"v2-cat-item track\" target=\"_blank\" href=\"https://allevents.in/stockholm/parties\" data-track=\"CityHomeFold|cat-click|parties\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<img src=\"https://cdn-ip.allevents.in/s/rs:fill:400:240/g:sm/q:80/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90cmFuc3VwLzRhL2JhMWQwOWY0YjM0ZGYzODk3YjIxYmI2YzMwYTY3My9QYXJ0aWVzXzRfMTF6b24ucG5n.webp\" alt=\"Parties\" class=\"v2-cat-img\">\n\t\t\t\t\t\t\t</a>"
+      }
+    ]
+  },
+  {
+    "nested": "locator.click: Timeout 1500ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Change City' })\n"
+  },
+  {
+    "phoneScroll": {
+      "y": 4240,
+      "height": 5084,
+      "scrolling": "HTML",
+      "fixed": [
+        {
+          "cls": "topbar fixed lg0 topbar--hero scrolled topbar--white shadow-on-scroll",
+          "position": "fixed",
+          "top": 0
+        },
+        {
+          "cls": "navbar navbar-static pull-left visible-phone",
+          "position": "fixed",
+          "top": 3.90625
+        },
+        {
+          "cls": "",
+          "position": "fixed",
+          "top": 0
+        },
+        {
+          "cls": "",
+          "position": "fixed",
+          "top": 0
+        },
+        {
+          "cls": "",
+          "position": "fixed",
+          "top": 0
+        },
+        {
+          "cls": "qsp_search_page_container",
+          "position": "fixed",
+          "top": 0
+        },
+        {
+          "cls": "custom_date_modal",
+          "position": "fixed",
+          "top": 0
+        },
+        {
+          "cls": "custom-date-modal-backdrop-transparent custom-date-modal-transition",
+          "position": "fixed",
+          "top": 0
+        }
+      ]
+    }
+  }
+]
