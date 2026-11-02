@@ -1,44 +1,92 @@
-import type { CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import capturedCSS from "../styles/captured.css?raw";
+import repairCSS from "../styles/import-repairs.css?raw";
 
 export const Route = createFileRoute("/")({
-  head: () => ({ meta: [{ title: "AllEvents – Discover Events Happening in Your City" }] }),
+  head: () => ({ meta: [
+    { title: "AllEvents – Discover Events Happening in Your City" },
+    { name: "description", content: "Discover concerts, festivals, workshops and popular events near you on AllEvents." },
+    { property: "og:title", content: "AllEvents – Discover Events Happening in Your City" },
+    { property: "og:description", content: "Explore local events, concerts, festivals and things to do with AllEvents." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
   staticData: { importedDocument: { html: { "className": "fonts-loaded", "lang": "en" }, body: {  } } },
   component: Index,
 });
 
+const CITY_NAMES = ["London", "Orlando", "Vancouver", "Miami", "Bangalore", "Edinburgh", "Washington", "Delhi", "Los Angeles", "Ahmedabad", "Chicago", "Nashville", "San Francisco", "Edmonton", "Chennai", "New York", "New Orleans", "Mumbai", "Las Vegas", "your city"];
+const OBSERVED_CITIES = [["Uppsala", "/uppsala"], ["Sundbyberg", "/sundbyberg"], ["\u00d6rebro", "/%C3%96rebro"], ["V\u00e4ster\u00e5s", "/v%C3%A4ster%C3%A5s"], ["Link\u00f6ping", "/link%C3%B6ping"], ["Online", "/online"]];
+const CITY_SUGGESTIONS = [["London", "EN, United Kingdom", "/london?ref=cityselect"], ["London", "ON, Canada", "/london-ca?ref=cityselect"], ["New London", "CT, United States", "/new-london-ct?ref=cityselect"], ["New London", "WI, United States", "/new-london-wi?ref=cityselect"], ["Londonderry", "NI, United Kingdom", "/londonderry-ni?ref=cityselect"], ["London", "OH, United States", "/london-oh?ref=cityselect"], ["London", "KY, United States", "/london-ky?ref=cityselect"], ["East london", "EC, South Africa", "/east-london?ref=cityselect"], ["Londonderry", "NH, United States", "/londonderry-nh?ref=cityselect"], ["New London", "NH, United States", "/new-london-nh?ref=cityselect"], ["London Colney", "EN, United Kingdom", "/london-colney?ref=cityselect"], ["New London", "MN, United States", "/new-london-mn?ref=cityselect"], ["New London", "NC, United States", "/new-london-nc?ref=cityselect"], ["Londonderry", "VT, United States", "/londonderry-vt?ref=cityselect"], ["New London", "OH, United States", "/new-london-oh?ref=cityselect"], ["New London", "TX, United States", "/new-london-tx?ref=cityselect"], ["New London", "IA, United States", "/new-london-ia?ref=cityselect"], ["London", "TX, United States", "/london-tx?ref=cityselect"], ["Londonderry", "OH, United States", "/londonderry-oh?ref=cityselect"], ["South Londonderry", "VT, United States", "/south-londonderry?ref=cityselect"], ["New London", "MO, United States", "/new-london-mo?ref=cityselect"], ["South Londonberry", "VT, United States", "/south-londonberry?ref=cityselect"], ["London", "AR, United States", "/london-ar?ref=cityselect"], ["London", "WV, United States", "/london-wv?ref=cityselect"], ["London Mills", "IL, United States", "/london-mills?ref=cityselect"], ["New London", "PA, United States", "/new-london-pa?ref=cityselect"]];
+
 function Index() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [cityOpen, setCityOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const [cityText, setCityText] = useState("");
+  const opener = useRef<HTMLElement | null>(null);
+  const openCity = () => {
+    opener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    setSearchOpen(false); setMenuOpen(false); setCityText(""); setCityOpen(true);
+  };
+  const closePanels = () => { setCityOpen(false); setSearchOpen(false); setMenuOpen(false); opener.current?.focus(); };
+  useEffect(() => {
+    const scroll = () => setScrolled(window.scrollY > 80);
+    const key = (e: KeyboardEvent) => { if (e.key === "Escape") closePanels(); };
+    window.addEventListener("scroll", scroll, { passive: true });
+    window.addEventListener("keydown", key); scroll();
+    return () => { window.removeEventListener("scroll", scroll); window.removeEventListener("keydown", key); };
+  }, []);
+  useEffect(() => {
+    if (!cityOpen) return;
+    document.getElementById("city_select_input")?.focus();
+  }, [cityOpen]);
+  const topics = ["band", "workshop", "konsert", "musician", "festival", "art", "artist", "movie", "meditation", "piano", "jazz", "concert", "yoga", "fest", "class"];
   return (
     <>
       <style>{capturedCSS}</style>
-      <div className={"topbar \x66ixed lg0 topbar--hero topbar--transparent"}>
+      <style>{repairCSS}</style>
+      {cityOpen && <><div className="modal-backdrop fade in" onClick={closePanels} />
+      <div id="cityselect" className="modal fade in import-city-open" role="dialog" aria-modal="true" aria-label="Change city" tabIndex={-1}>
+        <button type="button" className="close" aria-label="Close city chooser" onClick={closePanels}>×</button>
+        <div className="modal-header"><div className="header"><h1 className="h3">AllEvents in <div className="city-container"><div className="city-scroller">{CITY_NAMES.map(c => <span key={c}>{c}</span>)}</div></div></h1></div>
+        <div className="city-in"><i className="icon icon-search"/><input id="city_select_input" className="typeahead ui-autocomplete-input" autoComplete="off" placeholder="Enter your city…" value={cityText} onChange={e => setCityText(e.target.value)} />
+        <span id="cityselect-current-location">Current Location</span>
+        {cityText.length >= 2 && <ul className="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all city-autoc import-city-results">{CITY_SUGGESTIONS.filter(c => c[0].toLowerCase().includes(cityText.toLowerCase())).map(([name,region,url]) => <li className="ui-menu-item" key={url}><a className="ui-corner-all" href={url}><i className="icon-map-marker-2 city-select-icon-marker"/><p>{name}<span>{region}</span></p></a></li>)}</ul>}
+        </div></div>
+        <div className="modal-body"><div className="nearby-cities-section"><div className="nearby-cities-section-header"><span className="h3 nearby-cities-title">Explore Cities Near You</span><span className="nearby-cities-subtitle">Discover events in 40,000+ Cities around the world with AllEvents</span></div><div className="city-list">{OBSERVED_CITIES.map(([name,url]) => <a className="cbtn ghref" key={url} href={url}><i className="icon-map-marker-2 city-select-icon-marker"/><div><span>{name}</span></div></a>)}</div></div></div>
+      </div></>}
+
+      <div className={`topbar fixed lg0 topbar--hero ${scrolled ? "scrolled topbar--white shadow-on-scroll" : "topbar--transparent"}`}>
         <div className={"\x63ontainer \x74op-cont"}>
           <div className={"row \x74op-cont-row"}>
             <div className={"span5 logo-span logo-span-flex"}>
               <div id="ae-mobile-navbar" className={"navbar navbar-static pull-left \x76isible-phone"}>
                 <div className={"navbar-inner"}>
                   <div className={"\x63ontainer ae-mobile-navbar-container mobile-navbar-container"}>
-                    <button className={"btn btn-navbar mnv tb-mobile--burger mobile-navbar--custom mobile-burger-btn"} aria-label="Open Menu">{"\n\t\t\t\t\t\t\t\t\t\t"}<span className={"screen-reader-only"}>Open Menu</span>{"\n\t\t\t\t\t\t\t\t\t\t"}<span className={"icon-bar"} />{"\n\t\t\t\t\t\t\t\t\t\t"}<span className={"icon-bar"} />{"\n\t\t\t\t\t\t\t\t\t\t"}<span className={"icon-bar"} />{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<span className={"red-dot-burger"} />{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}</button>
-                    <div className={"nav-collapse \x63ollapse"} id="ae-nav-collapse">
-                      <ImportedNavMainNavigation />
+                    <button className={"btn btn-navbar mnv tb-mobile--burger mobile-navbar--custom mobile-burger-btn"} aria-label={menuOpen ? "Close Menu" : "Open Menu"} aria-expanded={menuOpen} aria-controls="ae-nav-collapse" onClick={() => setMenuOpen(!menuOpen)}> {"\n\t\t\t\t\t\t\t\t\t\t"}<span className={"screen-reader-only"}>Open Menu</span>{"\n\t\t\t\t\t\t\t\t\t\t"}<span className={"icon-bar"} />{"\n\t\t\t\t\t\t\t\t\t\t"}<span className={"icon-bar"} />{"\n\t\t\t\t\t\t\t\t\t\t"}<span className={"icon-bar"} />{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<span className={"red-dot-burger"} />{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}</button>
+                    <div className={`nav-collapse collapse ${menuOpen ? "in import-menu-open" : ""}`} id="ae-nav-collapse">
+                      <ImportedNavMainNavigation openCity={openCity} />
                     </div>
                   </div>
                 </div>
               </div>
               <a className={"logo-cont"} href="/hermiston">{"\n\t\t\t\t\t\t\t\t\t"}<img className={"logo logo-dark home-page-nav-scroll"} width="135" height="37" src="/site-assets/5b5feb0bfb829d4d-b76cf5b9a8a694da5a9c70961c351f26.png" title="AllEvents" alt="AllEvents logo" fetchPriority="high" />{"\n\t\t\t\t\t"}<img className={"logo logo-light home-page-nav-scroll"} width="135" height="37" src="/site-assets/44f31af4a74e45c3-507bafe18a3b29b9bd2a4bbe5a62ffbd.png" title="AllEvents" alt="AllEvents logo" />{"\n\t\t\t\t\t\t\t\t\t\n    \t\t\t"}</a>
               <div className={"city-select-wrapper"} style={{ marginLeft: "10px" }}>
-                <button title="Hermiston, Oregon, United States Events" className={"city-select-button toh tltp ae-top-hide-city hidden-phone city-select-desktop"} tabIndex={0}><i className={"icon-map-marker-2 city-select-icon-marker"} />Hermiston<i className={"icon-angle-down city-select-icon-down"} style={{ fontSize: "16px", verticalAlign: "middle", paddingLeft: "4px", borderWidth: "medium", borderStyle: "none", borderColor: "currentcolor", borderImage: "none", background: "none" } as CSSProperties} /></button>
+                <button title="Hermiston, Oregon, United States Events" onClick={openCity} aria-haspopup="dialog" aria-expanded={cityOpen} className={"city-select-button toh tltp ae-top-hide-city hidden-phone city-select-desktop"} tabIndex={0}><i className={"icon-map-marker-2 city-select-icon-marker"} />Hermiston<i className={"icon-angle-down city-select-icon-down"} style={{ fontSize: "16px", verticalAlign: "middle", paddingLeft: "4px", borderWidth: "medium", borderStyle: "none", borderColor: "currentcolor", borderImage: "none", background: "none" } as CSSProperties} /></button>
               </div>
             </div>
             <div className={"span7 pull-right rspan topbar-options topbar-options-logged-out"}>
               <div className={"tbsearch hide_for_b2b"}>
                 <div className={"input-append"}><span className={"hidden-phone search-icon-desktop"}>{"\n\t\t\t\t\t\t\t"}<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">{"\n\t\t\t\t\t\t\t\t"}<path d="M15.75 15.75L11.25 11.25M2.25 7.5C2.25 8.18944 2.3858 8.87213 2.64963 9.50909C2.91347 10.146 3.30018 10.7248 3.78769 11.2123C4.2752 11.6998 4.85395 12.0865 5.49091 12.3504C6.12787 12.6142 6.81056 12.75 7.5 12.75C8.18944 12.75 8.87213 12.6142 9.50909 12.3504C10.146 12.0865 10.7248 11.6998 11.2123 11.2123C11.6998 10.7248 12.0865 10.146 12.3504 9.50909C12.6142 8.87213 12.75 8.18944 12.75 7.5C12.75 6.81056 12.6142 6.12787 12.3504 5.49091C12.0865 4.85395 11.6998 4.2752 11.2123 3.78769C10.7248 3.30018 10.146 2.91347 9.50909 2.64963C8.87213 2.3858 8.18944 2.25 7.5 2.25C6.81056 2.25 6.12787 2.3858 5.49091 2.64963C4.85395 2.91347 4.2752 3.30018 3.78769 3.78769C3.30018 4.2752 2.91347 4.85395 2.64963 5.49091C2.3858 6.12787 2.25 6.81056 2.25 7.5Z" stroke="#30363E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t"}</svg>{"\n\t\t\t\t\t\t"}</span><span className={"\x76isible-phone search-icon-mobile"} style={{ pointerEvents: "auto", cursor: "pointer" }}>{"\n\t\t\t\t\t\t\t"}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none" style={{ pointerEvents: "auto" }}>{"\n\t\t\t\t\t\t\t\t"}<path d="M10.5 19.5C15.1944 19.5 19 15.6944 19 11C19 6.3056 15.1944 2.5 10.5 2.5C5.8056 2.5 2 6.3056 2 11C2 15.6944 5.8056 19.5 10.5 19.5Z" stroke="#fff" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t\t"}<path d="M16.6094 17.1108L20.852 21.3535" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t"}</svg>{"\n\t\t\t\t\t\t"}</span><input className={"span3"} id="searchd-input" type="text" placeholder="Art events" autoComplete="off" {...({ size: "16" } as any)} /></div>
               </div>
-              <div className={"tbhide  hidden-phone"}><a className={"create-b2b create-action track popo topbar-btn create-btn-style"} data-original-title="" href="/manage/createphp-1ad02fd30773cb65?ref=home-page-topbar" rel="nofollow" tabIndex={0} title="">{"\n\t\t\t\t\t\t\t"}<i className={"icon-plus-2 mr5 create-btn-icon"} style={{ fontSize: "16px", color: "var(--gray-600)" }} />Create Event</a><a className={"hide hidden-phone"} href="/recommended?ref=home-page-topbar" rel="nofollow" title="Recommended Events For You"><i className={"icon-magic"} /></a><button id="login-top" className={"track hidden-phone topbar-btn lazy"} title="Sign in to AllEvents">{"\n\t\t\t\t\t\t\t"}<img src="/site-assets/8a75fa2fbc04c7e6.webp" alt="User Profile" className={"login-user-icon lazy"} style={{ width: "22px", height: "22px", verticalAlign: "middle", marginRight: "2px", marginBottom: "2px" }} />
+              <div className={"tbhide  hidden-phone"}><a className={"create-b2b create-action track popo topbar-btn create-btn-style"} data-original-title="" href="/manage/create.php?ref=home-page-topbar" rel="nofollow" tabIndex={0} title="">{"\n\t\t\t\t\t\t\t"}<i className={"icon-plus-2 mr5 create-btn-icon"} style={{ fontSize: "16px", color: "var(--gray-600)" }} />Create Event</a><a className={"hide hidden-phone"} href="/recommended?ref=home-page-topbar" rel="nofollow" title="Recommended Events For You"><i className={"icon-magic"} /></a><button id="login-top" className={"track hidden-phone topbar-btn lazy"} title="Sign in to AllEvents">{"\n\t\t\t\t\t\t\t"}<img src="/site-assets/8a75fa2fbc04c7e6.webp" alt="User Profile" className={"login-user-icon lazy"} style={{ width: "22px", height: "22px", verticalAlign: "middle", marginRight: "2px", marginBottom: "2px" }} />
       							Sign in
       						</button></div>
-              <div className={"tbdapp track"} style={{ right: "75px" }}>Open App</div>
+              <a className={"tbdapp track"} href="/app" style={{ right: "75px" }}>Open App</a>
             </div>
           </div>
         </div>
@@ -65,7 +113,7 @@ function Index() {
                       <path d="M16.839 16.0751L12.4498 11.7562C13.5992 10.5074 14.3054 8.85589 14.3054 7.03859C14.3049 3.15103 11.1028 0 7.15245 0C3.20212 0 0 3.15103 0 7.03859C0 10.9261 3.20212 14.0772 7.15245 14.0772C8.85926 14.0772 10.4247 13.4868 11.6544 12.5054L16.0606 16.8414C16.2753 17.0529 16.6238 17.0529 16.8385 16.8414C17.0537 16.6299 17.0537 16.2866 16.839 16.0751ZM7.15245 12.9942C3.81004 12.9942 1.1005 10.3278 1.1005 7.03859C1.1005 3.74936 3.81004 1.08293 7.15245 1.08293C10.4949 1.08293 13.2044 3.74936 13.2044 7.03859C13.2044 10.3278 10.4949 12.9942 7.15245 12.9942Z" fill="#575C67" />
                     </svg>
                   </div>
-                  <input type="search" name="hs_search_text" placeholder="Search Events, Categories, Location..." autoComplete="off" className={"hs_search_text"} />
+                  <input onFocus={() => setSearchOpen(true)} value={searchText} onChange={e => setSearchText(e.target.value)} type="search" name="hs_search_text" placeholder="Search Events, Categories, Location..." autoComplete="off" className={"hs_search_text"} />
                   <div className={"hs_remove_text_icon"}>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: "none" }}>
                       <path d="M13.3334 13.3334L2.66675 2.66675M13.3334 2.66675L2.66675 13.3334" stroke="#D4D4D4" strokeWidth="2" strokeLinecap="round" />
@@ -73,7 +121,7 @@ function Index() {
                   </div>
                   <div className={"searchlocation hidden-phone"}>
                     <div id="hs_qsp_change_city_app">
-                      <div className={"changecity"} style={{ cursor: "pointer", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: "6px", paddingRight: "14px" }}>
+                      <div role="button" tabIndex={0} onClick={openCity} onKeyDown={e => { if (e.key === "Enter") openCity(); }} className={"changecity"} style={{ cursor: "pointer", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: "6px", paddingRight: "14px" }}>
                         <div className={"divider"} style={{ color: "var(--gray-200)" }}>|</div>
                         <span className={"location_icon"} style={{ left: "12px" }}>
                           <i className={"icon-map-marker-2"} style={{ fontSize: "18px", color: "var(--gray-500)" }} />
@@ -85,13 +133,13 @@ function Index() {
                       </div>
                     </div>
                   </div>
-                  <div className={"search_suggestion_popup"} style={{ display: "none" }}>
-                    <div className={"ss_wrapper"} />
+                  <div className={"search_suggestion_popup"} hidden={!searchOpen}>
+                    <div className={"ss_wrapper"}><div className="ss_trending_topics"><div className="ss_heading">Trending Topics</div><div className="topics_chips_container">{topics.filter(t => !searchText || t.includes(searchText.toLowerCase())).map(t => <span key={t}><a className="chip" href={`/hermiston/${t}?ref=search-suggestion-topics`} target="_blank">{t}</a></span>)}</div></div></div>
                   </div>
                 </div>
                 <div className={"searchlocation \x76isible-phone"}>
                   <div>
-                    <span className={"city-select-action"}>
+                    <span role="button" tabIndex={0} onClick={openCity} onKeyDown={e => { if (e.key === "Enter") openCity(); }} className={"city-select-action"}>
                       <span className={"icon-map-marker-2"} style={{ fontSize: "18px", color: "rgb(255, 255, 255)", marginRight: "6px", cursor: "pointer" }} />
                       <p style={{ colorScheme: "unset", forcedColorAdjust: "unset", mathDepth: "unset", position: "unset", positionAnchor: "unset", textSizeAdjust: "unset", appearance: "unset", fontFamily: "unset", fontFeatureSettings: "unset", fontKerning: "unset", fontLanguageOverride: "unset", fontOpticalSizing: "unset", fontPalette: "unset", fontSizeAdjust: "unset", fontStretch: "unset", fontStyle: "unset", fontSynthesis: "unset", fontVariant: "unset", fontVariationSettings: "unset", fontWeight: "unset", positionArea: "unset", textOrientation: "unset", textRendering: "unset", textSpacingTrim: "unset", WebkitFontSmoothing: "unset", WebkitLocale: "unset", WebkitTextOrientation: "unset", WebkitWritingMode: "unset", writingMode: "unset", zoom: "unset", accentColor: "unset", placeContent: "unset", placeItems: "unset", placeSelf: "unset", alignmentBaseline: "unset", anchorName: "unset", anchorScope: "unset", animationComposition: "unset", animation: "unset", animationTrigger: "unset", appRegion: "unset", aspectRatio: "unset", backdropFilter: "unset", backfaceVisibility: "unset", background: "unset", backgroundBlendMode: "unset", baselineShift: "unset", baselineSource: "unset", blockSize: "unset", borderBlock: "unset", borderRadius: "unset", borderCollapse: "unset", borderEndEndRadius: "unset", borderEndStartRadius: "unset", borderImage: "unset", borderInline: "unset", borderLeft: "unset", borderRight: "unset", borderShape: "unset", borderStartEndRadius: "unset", borderStartStartRadius: "unset", borderTop: "unset", inset: "unset", boxDecorationBreak: "unset", boxShadow: "unset", boxSizing: "unset", breakAfter: "unset", breakBefore: "unset", breakInside: "unset", bufferedRendering: "unset", captionSide: "unset", caretAnimation: "unset", caretColor: "unset", caretShape: "unset", clear: "unset", clip: "unset", clipPath: "unset", clipRule: "unset", colorInterpolation: "unset", colorInterpolationFilters: "unset", colorRendering: "unset", columns: "unset", columnFill: "unset", gap: "unset", ruleBreak: "unset", rule: "unset", ruleInset: "unset", ruleVisibilityItems: "unset", columnSpan: "unset", contain: "unset", containIntrinsicBlockSize: "unset", containIntrinsicSize: "unset", containIntrinsicInlineSize: "unset", container: "unset", content: "unset", contentVisibility: "unset", cornerShape: "unset", cornerBlockEndShape: "unset", cornerBlockStartShape: "unset", counterIncrement: "unset", counterReset: "unset", counterSet: "unset", cx: "unset", cy: "unset", d: "unset", display: "unset", dominantBaseline: "unset", dynamicRangeLimit: "unset", emptyCells: "unset", fieldSizing: "unset", fill: "unset", fillOpacity: "unset", fillRule: "unset", filter: "unset", flex: "unset", flexFlow: "unset", flexLineCount: "unset", float: "unset", floodColor: "unset", floodOpacity: "unset", frameSizing: "unset", grid: "unset", gridArea: "unset", height: "unset", hyphenateCharacter: "unset", hyphenateLimitChars: "unset", hyphens: "unset", imageOrientation: "unset", imageRendering: "unset", initialLetter: "unset", inlineSize: "unset", insetBlock: "unset", insetInline: "unset", interactivity: "unset", interestDelay: "unset", interpolateSize: "unset", isolation: "unset", letterSpacing: "unset", lightingColor: "unset", lineBreak: "unset", lineHeight: "unset", listStyle: "unset", marginBlock: "unset", margin: "unset", marginInline: "unset", marginTrim: "unset", marker: "unset", mask: "unset", maskType: "unset", mathShift: "unset", mathStyle: "unset", maxBlockSize: "unset", maxHeight: "unset", maxInlineSize: "unset", maxWidth: "unset", minBlockSize: "unset", minHeight: "unset", minInlineSize: "unset", minWidth: "unset", mixBlendMode: "unset", objectFit: "unset", objectPosition: "unset", objectViewBox: "unset", offset: "unset", opacity: "unset", order: "unset", orphans: "unset", outline: "unset", outlineOffset: "unset", overflowAnchor: "unset", overflowBlock: "unset", overflowClipMargin: "unset", overflowInline: "unset", overflowWrap: "unset", overflow: "unset", overlay: "unset", overscrollBehaviorBlock: "unset", overscrollBehaviorInline: "unset", overscrollBehavior: "unset", paddingBlock: "unset", padding: "unset", paddingInline: "unset", page: "unset", pageMarginSafety: "unset", pageOrientation: "unset", paintOrder: "unset", perspective: "unset", perspectiveOrigin: "unset", pointerEvents: "unset", positionTry: "unset", positionVisibility: "unset", printColorAdjust: "unset", quotes: "unset", r: "unset", readingFlow: "unset", readingOrder: "unset", resize: "unset", rotate: "unset", rubyAlign: "unset", rubyOverhang: "unset", rubyPosition: "unset", ruleOverlap: "unset", rx: "unset", ry: "unset", scale: "unset", scrollAxisLock: "unset", scrollBehavior: "unset", scrollInitialTarget: "unset", scrollMarginBlock: "unset", scrollMargin: "unset", scrollMarginInline: "unset", scrollMarkerGroup: "unset", scrollPaddingBlock: "unset", scrollPadding: "unset", scrollPaddingInline: "unset", scrollSnapAlign: "unset", scrollSnapStop: "unset", scrollSnapType: "unset", scrollTargetGroup: "unset", scrollTimeline: "unset", scrollbarColor: "unset", scrollbarGutter: "unset", scrollbarWidth: "unset", shapeImageThreshold: "unset", shapeMargin: "unset", shapeOutside: "unset", shapeRendering: "unset", size: "unset", speak: "unset", stopColor: "unset", stopOpacity: "unset", stroke: "unset", strokeDasharray: "unset", strokeDashoffset: "unset", strokeLinecap: "unset", strokeLinejoin: "unset", strokeMiterlimit: "unset", strokeOpacity: "unset", strokeWidth: "unset", tabSize: "unset", tableLayout: "unset", textAlign: "unset", textAlignLast: "unset", textAnchor: "unset", textAutospace: "unset", textBox: "unset", textCombineUpright: "unset", textDecoration: "unset", textDecorationSkipInk: "unset", textEmphasis: "unset", textEmphasisPosition: "unset", textFit: "unset", textIndent: "unset", textJustify: "unset", textOverflow: "unset", textShadow: "unset", textTransform: "unset", textUnderlineOffset: "unset", textUnderlinePosition: "unset", textWrap: "unset", timelineScope: "unset", timelineTrigger: "unset", touchAction: "unset", transform: "unset", transformBox: "unset", transformOrigin: "unset", transformStyle: "unset", transition: "unset", translate: "unset", triggerScope: "unset", userSelect: "unset", vectorEffect: "unset", verticalAlign: "unset", viewTimeline: "unset", viewTransitionClass: "unset", viewTransitionGroup: "unset", viewTransitionName: "unset", viewTransitionScope: "unset", visibility: "unset", borderSpacing: "unset", WebkitBoxAlign: "unset", WebkitBoxDecorationBreak: "unset", WebkitBoxDirection: "unset", WebkitBoxFlex: "unset", WebkitBoxOrdinalGroup: "unset", WebkitBoxOrient: "unset", WebkitBoxPack: "unset", WebkitBoxReflect: "unset", WebkitLineBreak: "unset", WebkitLineClamp: "unset", WebkitMaskBoxImage: "unset", WebkitRtlOrdering: "unset", WebkitRubyPosition: "unset", WebkitTapHighlightColor: "unset", WebkitTextCombine: "unset", WebkitTextDecorationsInEffect: "unset", WebkitTextFillColor: "unset", WebkitTextSecurity: "unset", WebkitTextStroke: "unset", WebkitUserDrag: "unset", whiteSpaceCollapse: "unset", widows: "unset", width: "unset", willChange: "unset", windowDrag: "unset", wordBreak: "unset", wordSpacing: "unset", x: "unset", y: "unset", zIndex: "unset", color: "white", fontSize: "18px", borderBottom: "0px solid rgb(255, 255, 255)", cursor: "pointer" } as CSSProperties} data-site-import-responsive="1641">
       											Hermiston										</p>
@@ -108,7 +156,7 @@ function Index() {
           </div>
         </div>
       </div>
-      <div id="hss_bar_background_overlay" />
+      <div id="hss_bar_background_overlay" className={searchOpen ? "import-search-overlay" : ""} onClick={() => setSearchOpen(false)} />
       <div className={"near-by-section"}>
         <div className={"fold"} style={{ paddingBottom: "30px" }}>
           <div className={"\x72ow-fluid bgstyle-0"}>
@@ -119,7 +167,7 @@ function Index() {
                 </h2>
               </div>
               <div className={"near-by-items-wrapper"}>
-                <div className={"nearby-cities-grid"}><a className={"nearby-city-item track"} href="/portland" title="Events in Portland">{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-icon"}><i className={"icon-map-marker-2"} /></div>{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Portland</span><span className={"city-events"}>6,698+ Events</span></div>{"\n\t\t\t\t\t\t\t\t\t"}</a><a className={"nearby-city-item track"} href="/spokane" title="Events in Spokane">{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-icon"}><i className={"icon-map-marker-2"} /></div>{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Spokane</span><span className={"city-events"}>2,029+ Events</span></div>{"\n\t\t\t\t\t\t\t\t\t"}</a><a className={"nearby-city-item track"} href="/tacoma" title="Events in Tacoma">{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-icon"}><i className={"icon-map-marker-2"} /></div>{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Tacoma</span><span className={"city-events"}>1,614+ Events</span></div>{"\n\t\t\t\t\t\t\t\t\t"}</a><a className={"nearby-city-item track"} href="/bellevue" title="Events in Bellevue">{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-icon"}><i className={"icon-map-marker-2"} /></div>{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Bellevue</span><span className={"city-events"}>693+ Events</span></div>{"\n\t\t\t\t\t\t\t\t\t"}</a><a className={"nearby-city-item search-city-item track"} href="#" title="Search for more cities">{"\n\t\t\t\t\t\t\t\t\t"}<div className={"city-icon search-icon"}><i className={"icon icon-search"} /></div>{"\n\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Search City</span><span className={"city-events"}>30,000+ cities</span></div>{"\n\t\t\t\t\t\t\t\t"}</a></div>
+                <div className={"nearby-cities-grid"}><a className={"nearby-city-item track"} href="/portland" title="Events in Portland">{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-icon"}><i className={"icon-map-marker-2"} /></div>{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Portland</span><span className={"city-events"}>6,698+ Events</span></div>{"\n\t\t\t\t\t\t\t\t\t"}</a><a className={"nearby-city-item track"} href="/spokane" title="Events in Spokane">{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-icon"}><i className={"icon-map-marker-2"} /></div>{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Spokane</span><span className={"city-events"}>2,029+ Events</span></div>{"\n\t\t\t\t\t\t\t\t\t"}</a><a className={"nearby-city-item track"} href="/tacoma" title="Events in Tacoma">{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-icon"}><i className={"icon-map-marker-2"} /></div>{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Tacoma</span><span className={"city-events"}>1,614+ Events</span></div>{"\n\t\t\t\t\t\t\t\t\t"}</a><a className={"nearby-city-item track"} href="/bellevue" title="Events in Bellevue">{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-icon"}><i className={"icon-map-marker-2"} /></div>{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Bellevue</span><span className={"city-events"}>693+ Events</span></div>{"\n\t\t\t\t\t\t\t\t\t"}</a><a onClick={e => { e.preventDefault(); openCity(); }} className={"nearby-city-item search-city-item track"} href="#" title="Search for more cities">{"\n\t\t\t\t\t\t\t\t\t"}<div className={"city-icon search-icon"}><i className={"icon icon-search"} /></div>{"\n\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Search City</span><span className={"city-events"}>30,000+ cities</span></div>{"\n\t\t\t\t\t\t\t\t"}</a></div>
               </div>
             </div>
           </div>
@@ -919,7 +967,7 @@ function Index() {
           <div className={"\x72ow-fluid citi"}>
             <div className={"head-label"}>
               <h2 className={"headstyle-1"}>
-                <a href="/locationphp-dc4ae04b22c9533c" style={{ color: "rgb(46, 54, 63)" }} title="Explore All Events across the globe">Explore Events across the Globe</a>
+                <a href="/location.php" style={{ color: "rgb(46, 54, 63)" }} title="Explore All Events across the globe">Explore Events across the Globe</a>
               </h2>
             </div>
             <div className={"\x63ontainer"}>
@@ -973,7 +1021,7 @@ function Index() {
                     <div className={"cont \x63ontainer"} style={{ textAlign: "left", marginLeft: "0px", paddingLeft: "0px" }}>
                       <ul className={"flag-list"}>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=united%20states">
+                          <a href="/location.php?country=united%20states">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/US.png" src="/site-assets/e4ca13d8a71211e2.png" alt="United States" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1020,7 +1068,7 @@ function Index() {
                                   <a href="/atlanta">Atlanta</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=united%20states">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=united%20states">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1028,7 +1076,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=united%20kingdom">
+                          <a href="/location.php?country=united%20kingdom">
                             <img className={"lazy"} data-src="//cdn2.allevents.in/transup/7c/1b048249aa476d8446f7ca8cff69fa/UK.png" src="/site-assets/75a761969d7542b5.webp" alt="United Kingdom" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1063,7 +1111,7 @@ function Index() {
                                   <a href="/sheffield" title="Events in Sheffield">Sheffield</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=united%20kingdom">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=united%20kingdom">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1071,7 +1119,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=canada">
+                          <a href="/location.php?country=canada">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/CA.png" src="/site-assets/90ffb7f21eadf49d.png" alt="Canada" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1103,7 +1151,7 @@ function Index() {
                                   <a href="/winnipeg" title="Events in Winnipeg">Winnipeg</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=canada">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=canada">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1111,7 +1159,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=france">
+                          <a href="/location.php?country=france">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/FR.png" src="/site-assets/5a60f18baa0bc688.png" alt="France" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1140,7 +1188,7 @@ function Index() {
                                   <a href="/lille" title="Events in Lille">Lille</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=france">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=france">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1148,7 +1196,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=germany">
+                          <a href="/location.php?country=germany">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/DE.png" src="/site-assets/85364ce15b57524e.png" alt="Germany" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1213,7 +1261,7 @@ function Index() {
                                   <a href="/ankara" title="Events in Ankara">Ankara</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=germany">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=germany">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1221,7 +1269,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=brazil">
+                          <a href="/location.php?country=brazil">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/BR.png" src="/site-assets/60a77e49d72858d5.webp" alt="Brazil" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1244,7 +1292,7 @@ function Index() {
                                   <a href="/belohorizonte-06e0ffc47c8cbac1" title="Events in Belo Horizonte">Belo Horizonte</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=brazil">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=brazil">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1252,7 +1300,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=netherlands">
+                          <a href="/location.php?country=netherlands">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/NL.png" src="/site-assets/61bb70478508dc6c.png" alt="Netherlands" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1293,7 +1341,7 @@ function Index() {
                                   <a href="/arnhem" title="Events in Arnhem">Arnhem</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=netherlands">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=netherlands">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1301,7 +1349,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=australia">
+                          <a href="/location.php?country=australia">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/AU.png" src="/site-assets/c7e6e15ca8c749b3.png" alt="Australia" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1330,7 +1378,7 @@ function Index() {
                                   <a href="/canberra" title="Events in Canberra">Canberra</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=australia">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=australia">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1338,7 +1386,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=spain">
+                          <a href="/location.php?country=spain">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/ES.png" src="/site-assets/3988c6cdb978f384.webp" alt="Spain" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1355,7 +1403,7 @@ function Index() {
                                   <a href="/valencia" title="Events in Valencia">Valencia</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=spain">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=spain">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1363,7 +1411,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=finland">
+                          <a href="/location.php?country=finland">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/FI.png" src="/site-assets/b3200534780c9a63.png" alt="Finland" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1380,7 +1428,7 @@ function Index() {
                                   <a href="/turku" title="Events in Turku">Turku</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=finland">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=finland">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1388,7 +1436,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=austria">
+                          <a href="/location.php?country=austria">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/AT.png" src="/site-assets/fe182cbab0d07d7f.png" alt="Austria" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1414,7 +1462,7 @@ function Index() {
                                   <a href="/innsbruck" title="Events in Innsbruck">Innsbruck</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=austria">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=austria">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1422,7 +1470,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=south%20africa">
+                          <a href="/location.php?country=south%20africa">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/ZA.png" src="/site-assets/65063fd16edc211d.png" alt="South Africa" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1454,7 +1502,7 @@ function Index() {
                                   <a href="/durban" title="Events in Durban">Durban</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=south%20africa">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=south%20africa">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1462,7 +1510,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=india">
+                          <a href="/location.php?country=india">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/IN.png" src="/site-assets/d9bf209f53e02813.png" alt="India" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1500,7 +1548,7 @@ function Index() {
                                   <a href="/bengaluru" title="Events in Bengaluru">Bengaluru</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=india">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=india">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1508,7 +1556,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=poland">
+                          <a href="/location.php?country=poland">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/PL.png" src="/site-assets/358a454a1ae7ac63.png" alt="poland" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1543,7 +1591,7 @@ function Index() {
                                   <a href="/lublin" title="Events in Lublin">Lublin</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=poland">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=poland">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1551,7 +1599,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=new%20zealand">
+                          <a href="/location.php?country=new%20zealand">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/NZ.png" src="/site-assets/fc160c9180b638da.png" alt="New Zealand" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1571,7 +1619,7 @@ function Index() {
                                   <a href="/nelson" title="Events in Nelson">Nelson</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=new%20zealand">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=new%20zealand">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1579,7 +1627,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=switzerland">
+                          <a href="/location.php?country=switzerland">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/CH.png" src="/site-assets/ee7d5d75e5e9f89e.png" alt="Switzerland" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1602,7 +1650,7 @@ function Index() {
                                   <a href="/geneva" title="Events in Geneva">Geneva</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=switzerland">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=switzerland">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1610,7 +1658,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=norway">
+                          <a href="/location.php?country=norway">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/NO.png" src="/site-assets/2bc5105105878d6b.png" alt="Norway" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1630,7 +1678,7 @@ function Index() {
                                   <a href="/trondheim" title="Events in Trondheim">Trondheim</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=norway">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=norway">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1638,7 +1686,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=belgium">
+                          <a href="/location.php?country=belgium">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/BE.png" src="/site-assets/8a5dd35ee3d4c851.png" alt="Belgium" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1676,7 +1724,7 @@ function Index() {
                                   <a href="/kortrijk" title="Events in Kortrijk">Kortrijk</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=belgium">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=belgium">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1684,7 +1732,7 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a href="/locationphp-dc4ae04b22c9533c?country=italy">
+                          <a href="/location.php?country=italy">
                             <img className={"lazy"} data-src="//cdn5.allevents.in/images/flags/32/IT.png" src="/site-assets/e73df4d25372b5f4.png" alt="Italy" loading="eager" />
                           </a>
                           <div className={"pop-cont"}>
@@ -1734,7 +1782,7 @@ function Index() {
                                   <a href="/trento" title="Events in Trento">Trento</a>
                                 </li>
                                 <li>
-                                  <a className={"more-city"} href="/locationphp-dc4ae04b22c9533c?country=italy">more cities</a>
+                                  <a className={"more-city"} href="/location.php?country=italy">more cities</a>
                                 </li>
                               </ul>
                               <div className={"hidden-div"} />
@@ -1742,11 +1790,11 @@ function Index() {
                           </div>
                         </li>
                         <li className={"flag"} data-original-title="" title="">
-                          <a className={"btn btn-link"} href="/locationphp-dc4ae04b22c9533c">more cities</a>
+                          <a className={"btn btn-link"} href="/location.php">more cities</a>
                           <div className={"pop-cont"}>
                             <div className={"pop-t"}>
                               <i className={"icon-globe mr5"} />
-                              <a href="/locationphp-dc4ae04b22c9533c">View All</a>
+                              <a href="/location.php">View All</a>
                             </div>
                             <div className={"pop-c"}>
                               <ul className={"city-list"}>
@@ -3014,10 +3062,10 @@ function Index() {
                                   Let’s make the world #Happening together
                               </div>
                   <div style={{ display: "flex" }}>
-                    <a className={"home-page-button"} data-original-title="View all Events in Hermiston" href="/manage/createphp-1ad02fd30773cb65?ref=home-page-creator-section" style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
+                    <a className={"home-page-button"} data-original-title="View all Events in Hermiston" href="/manage/create.php?ref=home-page-creator-section" style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
                                       Create an Event
                                   </a>
-                    <div className={"creator-link"}><a href="/manage/createphp-1ad02fd30773cb65?ref=home-page-creator-section" style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
+                    <div className={"creator-link"}><a href="/manage/create.php?ref=home-page-creator-section" style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
                                           Create
                                       </a><svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" viewBox="0 0 5 5" fill="none" style={{ margin: "9px" }}>{"\n                                    "}<circle cx="2.5" cy="2.5" r="2.5" fill="#D9D9D9" />{"\n                                "}</svg><a href="/pages/event-marketing?ref=home-page-creator-section" style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
                                           Promote
@@ -4719,12 +4767,12 @@ function Index() {
   );
 }
 
-function ImportedNavMainNavigation() {
+function ImportedNavMainNavigation({ openCity }: { openCity: () => void }) {
   return (
     <nav role="navigation" aria-label="Main Navigation">
       <ul className={"nav topuserinfomobile"}>
         <li className={"ae-top-visible-city li1"}>
-          <a href="/hermiston">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}<div className={"ae-icon-marker new-svg-icon"} />{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}<span className={"toh city-select-width"}>Hermiston</span>{"\n\t\t\t\t\t\t                        \t\t"}<button className={"city-select-button tltp mcity-select"}>{"\n\t\t\t\t\t\t                        \t\t"}<span className={"city-select-v-middle"}>Change City</span>{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}</button>{"\n\t\t\t\t\t\t\t\t\t\t\t\t"}</a>
+          <a href="/hermiston">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}<div className={"ae-icon-marker new-svg-icon"} />{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}<span className={"toh city-select-width"}>Hermiston</span>{"\n\t\t\t\t\t\t                        \t\t"}<button onClick={e => { e.preventDefault(); openCity(); }} className={"city-select-button tltp mcity-select"}>{"\n\t\t\t\t\t\t                        \t\t"}<span className={"city-select-v-middle"}>Change City</span>{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}</button>{"\n\t\t\t\t\t\t\t\t\t\t\t\t"}</a>
         </li>
         <li className={"svg-item-box"}>
           <a className={"login-action e_main_title1 track"} href="#" id="login-top-mob">
@@ -4737,13 +4785,13 @@ function ImportedNavMainNavigation() {
           <p className={"e_main_title"}>Host Control</p>
         </li>
         <li className={"svg-item-box"}>
-          <a className={"create-action e_main_title1 track"} href="/manage/createphp-1ad02fd30773cb65?ref=topbar-dropdown" rel="nofollow">
+          <a className={"create-action e_main_title1 track"} href="/manage/create.php?ref=topbar-dropdown" rel="nofollow">
             <div className={"ae-icon-plus-2 new-svg-icon"} />
             <span className={"e_nav_item"}>Create an event</span>
           </a>
         </li>
         <li className={"svg-item-box"}>
-          <a className={"e_main_title1 track"} href="/manage/manage-eventsphp-b5155479373cdb2d?ref=topbar-dropdown" title="">
+          <a className={"e_main_title1 track"} href="/manage/manage-events.php?ref=topbar-dropdown" title="">
             <div className={"ae-icon-cal new-svg-icon"} />
             <span className={"e_nav_item"}>Manage events</span>
           </a>
@@ -4884,58 +4932,58 @@ function ImportedFooterSiteNavigation() {
           <span className={"footer-head-title"} style={{ color: "rgb(239, 239, 239)", textTransform: "none", margin: "10px 0px 10px 10px", float: "left" }}>Country</span>
           <ul style={{ marginBottom: "0px" }}>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=argentina">Argentina</a>
+              <a href="/location.php?country=argentina">Argentina</a>
             </li>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=australia">Australia</a>
+              <a href="/location.php?country=australia">Australia</a>
             </li>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=brazil">Brazil</a>
+              <a href="/location.php?country=brazil">Brazil</a>
             </li>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=belgium">Belgium</a>
+              <a href="/location.php?country=belgium">Belgium</a>
             </li>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=canada">Canada</a>
+              <a href="/location.php?country=canada">Canada</a>
             </li>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=france">France</a>
+              <a href="/location.php?country=france">France</a>
             </li>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=germany">Germany</a>
+              <a href="/location.php?country=germany">Germany</a>
             </li>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=india">India</a>
+              <a href="/location.php?country=india">India</a>
             </li>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=ireland">Ireland</a>
+              <a href="/location.php?country=ireland">Ireland</a>
             </li>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=italy">Italy</a>
+              <a href="/location.php?country=italy">Italy</a>
             </li>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=malaysia">Malaysia</a>
+              <a href="/location.php?country=malaysia">Malaysia</a>
             </li>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=mexico">Mexico</a>
+              <a href="/location.php?country=mexico">Mexico</a>
             </li>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=netherlands">Netherlands</a>
+              <a href="/location.php?country=netherlands">Netherlands</a>
             </li>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=south africa">South Africa</a>
+              <a href="/location.php?country=south africa">South Africa</a>
             </li>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=spain">Spain</a>
+              <a href="/location.php?country=spain">Spain</a>
             </li>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=singapore">Singapore</a>
+              <a href="/location.php?country=singapore">Singapore</a>
             </li>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=united kingdom">United Kingdom</a>
+              <a href="/location.php?country=united kingdom">United Kingdom</a>
             </li>
             <li>
-              <a href="/locationphp-dc4ae04b22c9533c?country=united states">United States</a>
+              <a href="/location.php?country=united states">United States</a>
             </li>
           </ul>
         </div>

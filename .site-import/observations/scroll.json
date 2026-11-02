@@ -1,0 +1,1955 @@
+[
+  {
+    "y": 1350,
+    "height": 6410,
+    "scrolling": "HTML",
+    "headings": [
+      {
+        "text": "Discover The Most Happening Events Around You",
+        "y": -1150
+      },
+      {
+        "text": "Stockholm's Most-Loved",
+        "y": -800
+      },
+      {
+        "text": "Popular Events in Stockholm",
+        "y": -373.78125
+      },
+      {
+        "text": "The Prodigy in Stockholm",
+        "y": -83.78125
+      },
+      {
+        "text": "J. Cole Stockholm Tickets",
+        "y": -83.78125
+      },
+      {
+        "text": "Tove Lo | Avicii Arena, Stockholm",
+        "y": -83.78125
+      },
+      {
+        "text": "J. Cole: The Fall-Off Tour, Platinum Tickets",
+        "y": -83.78125
+      },
+      {
+        "text": "Benjamin Ingrosso in Stockholm",
+        "y": 190.21875
+      },
+      {
+        "text": "The Prodigy Tickets",
+        "y": 190.21875
+      },
+      {
+        "text": "The Witcher in Concert | Stockholm",
+        "y": 190.21875
+      },
+      {
+        "text": "Monday Bar Halloween Cruise 2026 (no 65)",
+        "y": 190.21875
+      },
+      {
+        "text": "Trending Events in the Sweden",
+        "y": 454.21875
+      },
+      {
+        "text": "Stockholm Food & Wine 2026",
+        "y": 692.875
+      },
+      {
+        "text": "Napalm Death | Live på Kollektivet Livet, Stockholm",
+        "y": 692.875
+      },
+      {
+        "text": "KAJ | Helsingborg",
+        "y": 692.875
+      },
+      {
+        "text": "LKN live på Kafé de luxe",
+        "y": 692.875
+      },
+      {
+        "text": "Haunted Market På citadellet i Landskrona",
+        "y": 984.53125
+      },
+      {
+        "text": "Explore Events across the Globe",
+        "y": 1154.53125
+      },
+      {
+        "text": "Loved by millions. Lived on AllEvents",
+        "y": 1591.53125
+      },
+      {
+        "text": "Events Trending Worldwide",
+        "y": 2342.71875
+      },
+      {
+        "text": "Dubai Fintech Summit",
+        "y": 2581.375
+      },
+      {
+        "text": "Golden Gate Comedy Night",
+        "y": 2581.375
+      },
+      {
+        "text": "Frisco Diwali Mela 2026 - India Festival of Lights - Kaleidoscope Park",
+        "y": 2581.375
+      },
+      {
+        "text": "ADIPEC 2026 Booth Builder Abu Dhabi | Custom Stand Design UAE",
+        "y": 2581.375
+      },
+      {
+        "text": "AFTER HOURS 2 with PBT (A sleepover for adults, except you go home).",
+        "y": 2878.03125
+      },
+      {
+        "text": "METALEX 2026",
+        "y": 2878.03125
+      },
+      {
+        "text": "interpack China 2026",
+        "y": 2878.03125
+      },
+      {
+        "text": "2nd Annual Christmas at RockPointe Church Market - Bearspaw",
+        "y": 2878.03125
+      },
+      {
+        "text": "Monday Joke Lab - Comedy Open Mic",
+        "y": 3174.6875
+      },
+      {
+        "text": "22nd International Exhibition \"Transport and Logistics – TransLogistica Uzbekistan 2026\"",
+        "y": 3174.6875
+      },
+      {
+        "text": "Overview session of the AI-Powered UX/UI course",
+        "y": 3174.6875
+      },
+      {
+        "text": "COSMEX 2026",
+        "y": 3174.6875
+      },
+      {
+        "text": "Discover Events",
+        "y": 3820.1875
+      },
+      {
+        "text": "anywhere, anytime",
+        "y": 3873.1875
+      },
+      {
+        "text": "Site Navigation",
+        "y": 0
+      },
+      {
+        "text": "Discover Events",
+        "y": 4300.6875
+      },
+      {
+        "text": "For Organizers",
+        "y": 4300.6875
+      },
+      {
+        "text": "Host Better Events",
+        "y": 4300.6875
+      },
+      {
+        "text": "Explore",
+        "y": 4300.6875
+      },
+      {
+        "text": "Trending In Worldwide",
+        "y": 4888.875
+      }
+    ],
+    "fixed": [
+      {
+        "tag": "DIV",
+        "cls": "topbar fixed lg0 topbar--hero scrolled topbar--white shadow-on-scroll",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "navbar navbar-static pull-left visible-phone",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "qsp_search_page_container",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom_date_modal",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom-date-modal-backdrop-transparent custom-date-modal-transition",
+        "position": "fixed",
+        "top": 0
+      }
+    ]
+  },
+  {
+    "y": 2700,
+    "height": 6410,
+    "scrolling": "HTML",
+    "headings": [
+      {
+        "text": "Discover The Most Happening Events Around You",
+        "y": -2500
+      },
+      {
+        "text": "Stockholm's Most-Loved",
+        "y": -2150
+      },
+      {
+        "text": "Popular Events in Stockholm",
+        "y": -1723.78125
+      },
+      {
+        "text": "The Prodigy in Stockholm",
+        "y": -1433.78125
+      },
+      {
+        "text": "J. Cole Stockholm Tickets",
+        "y": -1433.78125
+      },
+      {
+        "text": "Tove Lo | Avicii Arena, Stockholm",
+        "y": -1433.78125
+      },
+      {
+        "text": "J. Cole: The Fall-Off Tour, Platinum Tickets",
+        "y": -1433.78125
+      },
+      {
+        "text": "Benjamin Ingrosso in Stockholm",
+        "y": -1159.78125
+      },
+      {
+        "text": "The Prodigy Tickets",
+        "y": -1159.78125
+      },
+      {
+        "text": "The Witcher in Concert | Stockholm",
+        "y": -1159.78125
+      },
+      {
+        "text": "Monday Bar Halloween Cruise 2026 (no 65)",
+        "y": -1159.78125
+      },
+      {
+        "text": "Trending Events in the Sweden",
+        "y": -895.78125
+      },
+      {
+        "text": "Stockholm Food & Wine 2026",
+        "y": -657.125
+      },
+      {
+        "text": "Napalm Death | Live på Kollektivet Livet, Stockholm",
+        "y": -657.125
+      },
+      {
+        "text": "KAJ | Helsingborg",
+        "y": -657.125
+      },
+      {
+        "text": "LKN live på Kafé de luxe",
+        "y": -657.125
+      },
+      {
+        "text": "Haunted Market På citadellet i Landskrona",
+        "y": -365.46875
+      },
+      {
+        "text": "Explore Events across the Globe",
+        "y": -195.46875
+      },
+      {
+        "text": "Loved by millions. Lived on AllEvents",
+        "y": 241.53125
+      },
+      {
+        "text": "Events Trending Worldwide",
+        "y": 992.71875
+      },
+      {
+        "text": "Dubai Fintech Summit",
+        "y": 1231.375
+      },
+      {
+        "text": "Golden Gate Comedy Night",
+        "y": 1231.375
+      },
+      {
+        "text": "Frisco Diwali Mela 2026 - India Festival of Lights - Kaleidoscope Park",
+        "y": 1231.375
+      },
+      {
+        "text": "ADIPEC 2026 Booth Builder Abu Dhabi | Custom Stand Design UAE",
+        "y": 1231.375
+      },
+      {
+        "text": "AFTER HOURS 2 with PBT (A sleepover for adults, except you go home).",
+        "y": 1528.03125
+      },
+      {
+        "text": "METALEX 2026",
+        "y": 1528.03125
+      },
+      {
+        "text": "interpack China 2026",
+        "y": 1528.03125
+      },
+      {
+        "text": "2nd Annual Christmas at RockPointe Church Market - Bearspaw",
+        "y": 1528.03125
+      },
+      {
+        "text": "Monday Joke Lab - Comedy Open Mic",
+        "y": 1824.6875
+      },
+      {
+        "text": "22nd International Exhibition \"Transport and Logistics – TransLogistica Uzbekistan 2026\"",
+        "y": 1824.6875
+      },
+      {
+        "text": "Overview session of the AI-Powered UX/UI course",
+        "y": 1824.6875
+      },
+      {
+        "text": "COSMEX 2026",
+        "y": 1824.6875
+      },
+      {
+        "text": "Discover Events",
+        "y": 2470.1875
+      },
+      {
+        "text": "anywhere, anytime",
+        "y": 2523.1875
+      },
+      {
+        "text": "Site Navigation",
+        "y": 0
+      },
+      {
+        "text": "Discover Events",
+        "y": 2950.6875
+      },
+      {
+        "text": "For Organizers",
+        "y": 2950.6875
+      },
+      {
+        "text": "Host Better Events",
+        "y": 2950.6875
+      },
+      {
+        "text": "Explore",
+        "y": 2950.6875
+      },
+      {
+        "text": "Trending In Worldwide",
+        "y": 3538.875
+      }
+    ],
+    "fixed": [
+      {
+        "tag": "DIV",
+        "cls": "topbar fixed lg0 topbar--hero scrolled topbar--white shadow-on-scroll",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "navbar navbar-static pull-left visible-phone",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "qsp_search_page_container",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom_date_modal",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom-date-modal-backdrop-transparent custom-date-modal-transition",
+        "position": "fixed",
+        "top": 0
+      }
+    ]
+  },
+  {
+    "y": 4050,
+    "height": 6325,
+    "scrolling": "HTML",
+    "headings": [
+      {
+        "text": "Discover The Most Happening Events Around You",
+        "y": -3850
+      },
+      {
+        "text": "Stockholm's Most-Loved",
+        "y": -3500
+      },
+      {
+        "text": "Popular Events in Stockholm",
+        "y": -3073.78125
+      },
+      {
+        "text": "The Prodigy in Stockholm",
+        "y": -2783.78125
+      },
+      {
+        "text": "J. Cole Stockholm Tickets",
+        "y": -2783.78125
+      },
+      {
+        "text": "Tove Lo | Avicii Arena, Stockholm",
+        "y": -2783.78125
+      },
+      {
+        "text": "J. Cole: The Fall-Off Tour, Platinum Tickets",
+        "y": -2783.78125
+      },
+      {
+        "text": "Benjamin Ingrosso in Stockholm",
+        "y": -2509.78125
+      },
+      {
+        "text": "The Prodigy Tickets",
+        "y": -2509.78125
+      },
+      {
+        "text": "The Witcher in Concert | Stockholm",
+        "y": -2509.78125
+      },
+      {
+        "text": "Monday Bar Halloween Cruise 2026 (no 65)",
+        "y": -2509.78125
+      },
+      {
+        "text": "Trending Events in the Sweden",
+        "y": -2245.78125
+      },
+      {
+        "text": "Stockholm Food & Wine 2026",
+        "y": -2007.125
+      },
+      {
+        "text": "Napalm Death | Live på Kollektivet Livet, Stockholm",
+        "y": -2007.125
+      },
+      {
+        "text": "KAJ | Helsingborg",
+        "y": -2007.125
+      },
+      {
+        "text": "LKN live på Kafé de luxe",
+        "y": -2007.125
+      },
+      {
+        "text": "Haunted Market På citadellet i Landskrona",
+        "y": -1715.46875
+      },
+      {
+        "text": "Explore Events across the Globe",
+        "y": -1545.46875
+      },
+      {
+        "text": "Loved by millions. Lived on AllEvents",
+        "y": -1108.46875
+      },
+      {
+        "text": "Events Trending Worldwide",
+        "y": -357.28125
+      },
+      {
+        "text": "Dubai Fintech Summit",
+        "y": -118.625
+      },
+      {
+        "text": "Golden Gate Comedy Night",
+        "y": -118.625
+      },
+      {
+        "text": "Frisco Diwali Mela 2026 - India Festival of Lights - Kaleidoscope Park",
+        "y": -118.625
+      },
+      {
+        "text": "ADIPEC 2026 Booth Builder Abu Dhabi | Custom Stand Design UAE",
+        "y": -118.625
+      },
+      {
+        "text": "AFTER HOURS 2 with PBT (A sleepover for adults, except you go home).",
+        "y": 178.03125
+      },
+      {
+        "text": "METALEX 2026",
+        "y": 178.03125
+      },
+      {
+        "text": "interpack China 2026",
+        "y": 178.03125
+      },
+      {
+        "text": "2nd Annual Christmas at RockPointe Church Market - Bearspaw",
+        "y": 178.03125
+      },
+      {
+        "text": "Monday Joke Lab - Comedy Open Mic",
+        "y": 474.6875
+      },
+      {
+        "text": "22nd International Exhibition \"Transport and Logistics – TransLogistica Uzbekistan 2026\"",
+        "y": 474.6875
+      },
+      {
+        "text": "Overview session of the AI-Powered UX/UI course",
+        "y": 474.6875
+      },
+      {
+        "text": "COSMEX 2026",
+        "y": 474.6875
+      },
+      {
+        "text": "Discover Events",
+        "y": 1120.1875
+      },
+      {
+        "text": "anywhere, anytime",
+        "y": 1173.1875
+      },
+      {
+        "text": "Site Navigation",
+        "y": 0
+      },
+      {
+        "text": "Discover Events",
+        "y": 1600.6875
+      },
+      {
+        "text": "For Organizers",
+        "y": 1600.6875
+      },
+      {
+        "text": "Host Better Events",
+        "y": 1600.6875
+      },
+      {
+        "text": "Explore",
+        "y": 1600.6875
+      },
+      {
+        "text": "Trending In Worldwide",
+        "y": 2103.859375
+      }
+    ],
+    "fixed": [
+      {
+        "tag": "DIV",
+        "cls": "topbar fixed lg0 topbar--hero scrolled topbar--white shadow-on-scroll",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "navbar navbar-static pull-left visible-phone",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "qsp_search_page_container",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom_date_modal",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom-date-modal-backdrop-transparent custom-date-modal-transition",
+        "position": "fixed",
+        "top": 0
+      }
+    ]
+  },
+  {
+    "y": 4525,
+    "height": 6325,
+    "scrolling": "HTML",
+    "headings": [
+      {
+        "text": "Discover The Most Happening Events Around You",
+        "y": -4325
+      },
+      {
+        "text": "Stockholm's Most-Loved",
+        "y": -3975
+      },
+      {
+        "text": "Popular Events in Stockholm",
+        "y": -3548.78125
+      },
+      {
+        "text": "The Prodigy in Stockholm",
+        "y": -3258.78125
+      },
+      {
+        "text": "J. Cole Stockholm Tickets",
+        "y": -3258.78125
+      },
+      {
+        "text": "Tove Lo | Avicii Arena, Stockholm",
+        "y": -3258.78125
+      },
+      {
+        "text": "J. Cole: The Fall-Off Tour, Platinum Tickets",
+        "y": -3258.78125
+      },
+      {
+        "text": "Benjamin Ingrosso in Stockholm",
+        "y": -2984.78125
+      },
+      {
+        "text": "The Prodigy Tickets",
+        "y": -2984.78125
+      },
+      {
+        "text": "The Witcher in Concert | Stockholm",
+        "y": -2984.78125
+      },
+      {
+        "text": "Monday Bar Halloween Cruise 2026 (no 65)",
+        "y": -2984.78125
+      },
+      {
+        "text": "Trending Events in the Sweden",
+        "y": -2720.78125
+      },
+      {
+        "text": "Stockholm Food & Wine 2026",
+        "y": -2482.125
+      },
+      {
+        "text": "Napalm Death | Live på Kollektivet Livet, Stockholm",
+        "y": -2482.125
+      },
+      {
+        "text": "KAJ | Helsingborg",
+        "y": -2482.125
+      },
+      {
+        "text": "LKN live på Kafé de luxe",
+        "y": -2482.125
+      },
+      {
+        "text": "Haunted Market På citadellet i Landskrona",
+        "y": -2190.46875
+      },
+      {
+        "text": "Explore Events across the Globe",
+        "y": -2020.46875
+      },
+      {
+        "text": "Loved by millions. Lived on AllEvents",
+        "y": -1583.46875
+      },
+      {
+        "text": "Events Trending Worldwide",
+        "y": -832.28125
+      },
+      {
+        "text": "Dubai Fintech Summit",
+        "y": -593.625
+      },
+      {
+        "text": "Golden Gate Comedy Night",
+        "y": -593.625
+      },
+      {
+        "text": "Frisco Diwali Mela 2026 - India Festival of Lights - Kaleidoscope Park",
+        "y": -593.625
+      },
+      {
+        "text": "ADIPEC 2026 Booth Builder Abu Dhabi | Custom Stand Design UAE",
+        "y": -593.625
+      },
+      {
+        "text": "AFTER HOURS 2 with PBT (A sleepover for adults, except you go home).",
+        "y": -296.96875
+      },
+      {
+        "text": "METALEX 2026",
+        "y": -296.96875
+      },
+      {
+        "text": "interpack China 2026",
+        "y": -296.96875
+      },
+      {
+        "text": "2nd Annual Christmas at RockPointe Church Market - Bearspaw",
+        "y": -296.96875
+      },
+      {
+        "text": "Monday Joke Lab - Comedy Open Mic",
+        "y": -0.3125
+      },
+      {
+        "text": "22nd International Exhibition \"Transport and Logistics – TransLogistica Uzbekistan 2026\"",
+        "y": -0.3125
+      },
+      {
+        "text": "Overview session of the AI-Powered UX/UI course",
+        "y": -0.3125
+      },
+      {
+        "text": "COSMEX 2026",
+        "y": -0.3125
+      },
+      {
+        "text": "Discover Events",
+        "y": 645.1875
+      },
+      {
+        "text": "anywhere, anytime",
+        "y": 698.1875
+      },
+      {
+        "text": "Site Navigation",
+        "y": 0
+      },
+      {
+        "text": "Discover Events",
+        "y": 1125.6875
+      },
+      {
+        "text": "For Organizers",
+        "y": 1125.6875
+      },
+      {
+        "text": "Host Better Events",
+        "y": 1125.6875
+      },
+      {
+        "text": "Explore",
+        "y": 1125.6875
+      },
+      {
+        "text": "Trending In Worldwide",
+        "y": 1628.859375
+      }
+    ],
+    "fixed": [
+      {
+        "tag": "DIV",
+        "cls": "topbar fixed lg0 topbar--hero scrolled topbar--white shadow-on-scroll",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "navbar navbar-static pull-left visible-phone",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "qsp_search_page_container",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom_date_modal",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom-date-modal-backdrop-transparent custom-date-modal-transition",
+        "position": "fixed",
+        "top": 0
+      }
+    ]
+  },
+  {
+    "y": 4525,
+    "height": 6325,
+    "scrolling": "HTML",
+    "headings": [
+      {
+        "text": "Discover The Most Happening Events Around You",
+        "y": -4325
+      },
+      {
+        "text": "Stockholm's Most-Loved",
+        "y": -3975
+      },
+      {
+        "text": "Popular Events in Stockholm",
+        "y": -3548.78125
+      },
+      {
+        "text": "The Prodigy in Stockholm",
+        "y": -3258.78125
+      },
+      {
+        "text": "J. Cole Stockholm Tickets",
+        "y": -3258.78125
+      },
+      {
+        "text": "Tove Lo | Avicii Arena, Stockholm",
+        "y": -3258.78125
+      },
+      {
+        "text": "J. Cole: The Fall-Off Tour, Platinum Tickets",
+        "y": -3258.78125
+      },
+      {
+        "text": "Benjamin Ingrosso in Stockholm",
+        "y": -2984.78125
+      },
+      {
+        "text": "The Prodigy Tickets",
+        "y": -2984.78125
+      },
+      {
+        "text": "The Witcher in Concert | Stockholm",
+        "y": -2984.78125
+      },
+      {
+        "text": "Monday Bar Halloween Cruise 2026 (no 65)",
+        "y": -2984.78125
+      },
+      {
+        "text": "Trending Events in the Sweden",
+        "y": -2720.78125
+      },
+      {
+        "text": "Stockholm Food & Wine 2026",
+        "y": -2482.125
+      },
+      {
+        "text": "Napalm Death | Live på Kollektivet Livet, Stockholm",
+        "y": -2482.125
+      },
+      {
+        "text": "KAJ | Helsingborg",
+        "y": -2482.125
+      },
+      {
+        "text": "LKN live på Kafé de luxe",
+        "y": -2482.125
+      },
+      {
+        "text": "Haunted Market På citadellet i Landskrona",
+        "y": -2190.46875
+      },
+      {
+        "text": "Explore Events across the Globe",
+        "y": -2020.46875
+      },
+      {
+        "text": "Loved by millions. Lived on AllEvents",
+        "y": -1583.46875
+      },
+      {
+        "text": "Events Trending Worldwide",
+        "y": -832.28125
+      },
+      {
+        "text": "Dubai Fintech Summit",
+        "y": -593.625
+      },
+      {
+        "text": "Golden Gate Comedy Night",
+        "y": -593.625
+      },
+      {
+        "text": "Frisco Diwali Mela 2026 - India Festival of Lights - Kaleidoscope Park",
+        "y": -593.625
+      },
+      {
+        "text": "ADIPEC 2026 Booth Builder Abu Dhabi | Custom Stand Design UAE",
+        "y": -593.625
+      },
+      {
+        "text": "AFTER HOURS 2 with PBT (A sleepover for adults, except you go home).",
+        "y": -296.96875
+      },
+      {
+        "text": "METALEX 2026",
+        "y": -296.96875
+      },
+      {
+        "text": "interpack China 2026",
+        "y": -296.96875
+      },
+      {
+        "text": "2nd Annual Christmas at RockPointe Church Market - Bearspaw",
+        "y": -296.96875
+      },
+      {
+        "text": "Monday Joke Lab - Comedy Open Mic",
+        "y": -0.3125
+      },
+      {
+        "text": "22nd International Exhibition \"Transport and Logistics – TransLogistica Uzbekistan 2026\"",
+        "y": -0.3125
+      },
+      {
+        "text": "Overview session of the AI-Powered UX/UI course",
+        "y": -0.3125
+      },
+      {
+        "text": "COSMEX 2026",
+        "y": -0.3125
+      },
+      {
+        "text": "Discover Events",
+        "y": 645.1875
+      },
+      {
+        "text": "anywhere, anytime",
+        "y": 698.1875
+      },
+      {
+        "text": "Site Navigation",
+        "y": 0
+      },
+      {
+        "text": "Discover Events",
+        "y": 1125.6875
+      },
+      {
+        "text": "For Organizers",
+        "y": 1125.6875
+      },
+      {
+        "text": "Host Better Events",
+        "y": 1125.6875
+      },
+      {
+        "text": "Explore",
+        "y": 1125.6875
+      },
+      {
+        "text": "Trending In Worldwide",
+        "y": 1628.859375
+      }
+    ],
+    "fixed": [
+      {
+        "tag": "DIV",
+        "cls": "topbar fixed lg0 topbar--hero scrolled topbar--white shadow-on-scroll",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "navbar navbar-static pull-left visible-phone",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "qsp_search_page_container",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom_date_modal",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom-date-modal-backdrop-transparent custom-date-modal-transition",
+        "position": "fixed",
+        "top": 0
+      }
+    ]
+  },
+  {
+    "y": 4525,
+    "height": 6325,
+    "scrolling": "HTML",
+    "headings": [
+      {
+        "text": "Discover The Most Happening Events Around You",
+        "y": -4325
+      },
+      {
+        "text": "Stockholm's Most-Loved",
+        "y": -3975
+      },
+      {
+        "text": "Popular Events in Stockholm",
+        "y": -3548.78125
+      },
+      {
+        "text": "The Prodigy in Stockholm",
+        "y": -3258.78125
+      },
+      {
+        "text": "J. Cole Stockholm Tickets",
+        "y": -3258.78125
+      },
+      {
+        "text": "Tove Lo | Avicii Arena, Stockholm",
+        "y": -3258.78125
+      },
+      {
+        "text": "J. Cole: The Fall-Off Tour, Platinum Tickets",
+        "y": -3258.78125
+      },
+      {
+        "text": "Benjamin Ingrosso in Stockholm",
+        "y": -2984.78125
+      },
+      {
+        "text": "The Prodigy Tickets",
+        "y": -2984.78125
+      },
+      {
+        "text": "The Witcher in Concert | Stockholm",
+        "y": -2984.78125
+      },
+      {
+        "text": "Monday Bar Halloween Cruise 2026 (no 65)",
+        "y": -2984.78125
+      },
+      {
+        "text": "Trending Events in the Sweden",
+        "y": -2720.78125
+      },
+      {
+        "text": "Stockholm Food & Wine 2026",
+        "y": -2482.125
+      },
+      {
+        "text": "Napalm Death | Live på Kollektivet Livet, Stockholm",
+        "y": -2482.125
+      },
+      {
+        "text": "KAJ | Helsingborg",
+        "y": -2482.125
+      },
+      {
+        "text": "LKN live på Kafé de luxe",
+        "y": -2482.125
+      },
+      {
+        "text": "Haunted Market På citadellet i Landskrona",
+        "y": -2190.46875
+      },
+      {
+        "text": "Explore Events across the Globe",
+        "y": -2020.46875
+      },
+      {
+        "text": "Loved by millions. Lived on AllEvents",
+        "y": -1583.46875
+      },
+      {
+        "text": "Events Trending Worldwide",
+        "y": -832.28125
+      },
+      {
+        "text": "Dubai Fintech Summit",
+        "y": -593.625
+      },
+      {
+        "text": "Golden Gate Comedy Night",
+        "y": -593.625
+      },
+      {
+        "text": "Frisco Diwali Mela 2026 - India Festival of Lights - Kaleidoscope Park",
+        "y": -593.625
+      },
+      {
+        "text": "ADIPEC 2026 Booth Builder Abu Dhabi | Custom Stand Design UAE",
+        "y": -593.625
+      },
+      {
+        "text": "AFTER HOURS 2 with PBT (A sleepover for adults, except you go home).",
+        "y": -296.96875
+      },
+      {
+        "text": "METALEX 2026",
+        "y": -296.96875
+      },
+      {
+        "text": "interpack China 2026",
+        "y": -296.96875
+      },
+      {
+        "text": "2nd Annual Christmas at RockPointe Church Market - Bearspaw",
+        "y": -296.96875
+      },
+      {
+        "text": "Monday Joke Lab - Comedy Open Mic",
+        "y": -0.3125
+      },
+      {
+        "text": "22nd International Exhibition \"Transport and Logistics – TransLogistica Uzbekistan 2026\"",
+        "y": -0.3125
+      },
+      {
+        "text": "Overview session of the AI-Powered UX/UI course",
+        "y": -0.3125
+      },
+      {
+        "text": "COSMEX 2026",
+        "y": -0.3125
+      },
+      {
+        "text": "Discover Events",
+        "y": 645.1875
+      },
+      {
+        "text": "anywhere, anytime",
+        "y": 698.1875
+      },
+      {
+        "text": "Site Navigation",
+        "y": 0
+      },
+      {
+        "text": "Discover Events",
+        "y": 1125.6875
+      },
+      {
+        "text": "For Organizers",
+        "y": 1125.6875
+      },
+      {
+        "text": "Host Better Events",
+        "y": 1125.6875
+      },
+      {
+        "text": "Explore",
+        "y": 1125.6875
+      },
+      {
+        "text": "Trending In Worldwide",
+        "y": 1628.859375
+      }
+    ],
+    "fixed": [
+      {
+        "tag": "DIV",
+        "cls": "topbar fixed lg0 topbar--hero scrolled topbar--white shadow-on-scroll",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "navbar navbar-static pull-left visible-phone",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "qsp_search_page_container",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom_date_modal",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom-date-modal-backdrop-transparent custom-date-modal-transition",
+        "position": "fixed",
+        "top": 0
+      }
+    ]
+  },
+  {
+    "y": 4525,
+    "height": 6325,
+    "scrolling": "HTML",
+    "headings": [
+      {
+        "text": "Discover The Most Happening Events Around You",
+        "y": -4325
+      },
+      {
+        "text": "Stockholm's Most-Loved",
+        "y": -3975
+      },
+      {
+        "text": "Popular Events in Stockholm",
+        "y": -3548.78125
+      },
+      {
+        "text": "The Prodigy in Stockholm",
+        "y": -3258.78125
+      },
+      {
+        "text": "J. Cole Stockholm Tickets",
+        "y": -3258.78125
+      },
+      {
+        "text": "Tove Lo | Avicii Arena, Stockholm",
+        "y": -3258.78125
+      },
+      {
+        "text": "J. Cole: The Fall-Off Tour, Platinum Tickets",
+        "y": -3258.78125
+      },
+      {
+        "text": "Benjamin Ingrosso in Stockholm",
+        "y": -2984.78125
+      },
+      {
+        "text": "The Prodigy Tickets",
+        "y": -2984.78125
+      },
+      {
+        "text": "The Witcher in Concert | Stockholm",
+        "y": -2984.78125
+      },
+      {
+        "text": "Monday Bar Halloween Cruise 2026 (no 65)",
+        "y": -2984.78125
+      },
+      {
+        "text": "Trending Events in the Sweden",
+        "y": -2720.78125
+      },
+      {
+        "text": "Stockholm Food & Wine 2026",
+        "y": -2482.125
+      },
+      {
+        "text": "Napalm Death | Live på Kollektivet Livet, Stockholm",
+        "y": -2482.125
+      },
+      {
+        "text": "KAJ | Helsingborg",
+        "y": -2482.125
+      },
+      {
+        "text": "LKN live på Kafé de luxe",
+        "y": -2482.125
+      },
+      {
+        "text": "Haunted Market På citadellet i Landskrona",
+        "y": -2190.46875
+      },
+      {
+        "text": "Explore Events across the Globe",
+        "y": -2020.46875
+      },
+      {
+        "text": "Loved by millions. Lived on AllEvents",
+        "y": -1583.46875
+      },
+      {
+        "text": "Events Trending Worldwide",
+        "y": -832.28125
+      },
+      {
+        "text": "Dubai Fintech Summit",
+        "y": -593.625
+      },
+      {
+        "text": "Golden Gate Comedy Night",
+        "y": -593.625
+      },
+      {
+        "text": "Frisco Diwali Mela 2026 - India Festival of Lights - Kaleidoscope Park",
+        "y": -593.625
+      },
+      {
+        "text": "ADIPEC 2026 Booth Builder Abu Dhabi | Custom Stand Design UAE",
+        "y": -593.625
+      },
+      {
+        "text": "AFTER HOURS 2 with PBT (A sleepover for adults, except you go home).",
+        "y": -296.96875
+      },
+      {
+        "text": "METALEX 2026",
+        "y": -296.96875
+      },
+      {
+        "text": "interpack China 2026",
+        "y": -296.96875
+      },
+      {
+        "text": "2nd Annual Christmas at RockPointe Church Market - Bearspaw",
+        "y": -296.96875
+      },
+      {
+        "text": "Monday Joke Lab - Comedy Open Mic",
+        "y": -0.3125
+      },
+      {
+        "text": "22nd International Exhibition \"Transport and Logistics – TransLogistica Uzbekistan 2026\"",
+        "y": -0.3125
+      },
+      {
+        "text": "Overview session of the AI-Powered UX/UI course",
+        "y": -0.3125
+      },
+      {
+        "text": "COSMEX 2026",
+        "y": -0.3125
+      },
+      {
+        "text": "Discover Events",
+        "y": 645.1875
+      },
+      {
+        "text": "anywhere, anytime",
+        "y": 698.1875
+      },
+      {
+        "text": "Site Navigation",
+        "y": 0
+      },
+      {
+        "text": "Discover Events",
+        "y": 1125.6875
+      },
+      {
+        "text": "For Organizers",
+        "y": 1125.6875
+      },
+      {
+        "text": "Host Better Events",
+        "y": 1125.6875
+      },
+      {
+        "text": "Explore",
+        "y": 1125.6875
+      },
+      {
+        "text": "Trending In Worldwide",
+        "y": 1628.859375
+      }
+    ],
+    "fixed": [
+      {
+        "tag": "DIV",
+        "cls": "topbar fixed lg0 topbar--hero scrolled topbar--white shadow-on-scroll",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "navbar navbar-static pull-left visible-phone",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "qsp_search_page_container",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom_date_modal",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom-date-modal-backdrop-transparent custom-date-modal-transition",
+        "position": "fixed",
+        "top": 0
+      }
+    ]
+  },
+  {
+    "y": 4525,
+    "height": 6325,
+    "scrolling": "HTML",
+    "headings": [
+      {
+        "text": "Discover The Most Happening Events Around You",
+        "y": -4325
+      },
+      {
+        "text": "Stockholm's Most-Loved",
+        "y": -3975
+      },
+      {
+        "text": "Popular Events in Stockholm",
+        "y": -3548.78125
+      },
+      {
+        "text": "The Prodigy in Stockholm",
+        "y": -3258.78125
+      },
+      {
+        "text": "J. Cole Stockholm Tickets",
+        "y": -3258.78125
+      },
+      {
+        "text": "Tove Lo | Avicii Arena, Stockholm",
+        "y": -3258.78125
+      },
+      {
+        "text": "J. Cole: The Fall-Off Tour, Platinum Tickets",
+        "y": -3258.78125
+      },
+      {
+        "text": "Benjamin Ingrosso in Stockholm",
+        "y": -2984.78125
+      },
+      {
+        "text": "The Prodigy Tickets",
+        "y": -2984.78125
+      },
+      {
+        "text": "The Witcher in Concert | Stockholm",
+        "y": -2984.78125
+      },
+      {
+        "text": "Monday Bar Halloween Cruise 2026 (no 65)",
+        "y": -2984.78125
+      },
+      {
+        "text": "Trending Events in the Sweden",
+        "y": -2720.78125
+      },
+      {
+        "text": "Stockholm Food & Wine 2026",
+        "y": -2482.125
+      },
+      {
+        "text": "Napalm Death | Live på Kollektivet Livet, Stockholm",
+        "y": -2482.125
+      },
+      {
+        "text": "KAJ | Helsingborg",
+        "y": -2482.125
+      },
+      {
+        "text": "LKN live på Kafé de luxe",
+        "y": -2482.125
+      },
+      {
+        "text": "Haunted Market På citadellet i Landskrona",
+        "y": -2190.46875
+      },
+      {
+        "text": "Explore Events across the Globe",
+        "y": -2020.46875
+      },
+      {
+        "text": "Loved by millions. Lived on AllEvents",
+        "y": -1583.46875
+      },
+      {
+        "text": "Events Trending Worldwide",
+        "y": -832.28125
+      },
+      {
+        "text": "Dubai Fintech Summit",
+        "y": -593.625
+      },
+      {
+        "text": "Golden Gate Comedy Night",
+        "y": -593.625
+      },
+      {
+        "text": "Frisco Diwali Mela 2026 - India Festival of Lights - Kaleidoscope Park",
+        "y": -593.625
+      },
+      {
+        "text": "ADIPEC 2026 Booth Builder Abu Dhabi | Custom Stand Design UAE",
+        "y": -593.625
+      },
+      {
+        "text": "AFTER HOURS 2 with PBT (A sleepover for adults, except you go home).",
+        "y": -296.96875
+      },
+      {
+        "text": "METALEX 2026",
+        "y": -296.96875
+      },
+      {
+        "text": "interpack China 2026",
+        "y": -296.96875
+      },
+      {
+        "text": "2nd Annual Christmas at RockPointe Church Market - Bearspaw",
+        "y": -296.96875
+      },
+      {
+        "text": "Monday Joke Lab - Comedy Open Mic",
+        "y": -0.3125
+      },
+      {
+        "text": "22nd International Exhibition \"Transport and Logistics – TransLogistica Uzbekistan 2026\"",
+        "y": -0.3125
+      },
+      {
+        "text": "Overview session of the AI-Powered UX/UI course",
+        "y": -0.3125
+      },
+      {
+        "text": "COSMEX 2026",
+        "y": -0.3125
+      },
+      {
+        "text": "Discover Events",
+        "y": 645.1875
+      },
+      {
+        "text": "anywhere, anytime",
+        "y": 698.1875
+      },
+      {
+        "text": "Site Navigation",
+        "y": 0
+      },
+      {
+        "text": "Discover Events",
+        "y": 1125.6875
+      },
+      {
+        "text": "For Organizers",
+        "y": 1125.6875
+      },
+      {
+        "text": "Host Better Events",
+        "y": 1125.6875
+      },
+      {
+        "text": "Explore",
+        "y": 1125.6875
+      },
+      {
+        "text": "Trending In Worldwide",
+        "y": 1628.859375
+      }
+    ],
+    "fixed": [
+      {
+        "tag": "DIV",
+        "cls": "topbar fixed lg0 topbar--hero scrolled topbar--white shadow-on-scroll",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "navbar navbar-static pull-left visible-phone",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "qsp_search_page_container",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom_date_modal",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom-date-modal-backdrop-transparent custom-date-modal-transition",
+        "position": "fixed",
+        "top": 0
+      }
+    ]
+  },
+  {
+    "y": 4525,
+    "height": 6325,
+    "scrolling": "HTML",
+    "headings": [
+      {
+        "text": "Discover The Most Happening Events Around You",
+        "y": -4325
+      },
+      {
+        "text": "Stockholm's Most-Loved",
+        "y": -3975
+      },
+      {
+        "text": "Popular Events in Stockholm",
+        "y": -3548.78125
+      },
+      {
+        "text": "The Prodigy in Stockholm",
+        "y": -3258.78125
+      },
+      {
+        "text": "J. Cole Stockholm Tickets",
+        "y": -3258.78125
+      },
+      {
+        "text": "Tove Lo | Avicii Arena, Stockholm",
+        "y": -3258.78125
+      },
+      {
+        "text": "J. Cole: The Fall-Off Tour, Platinum Tickets",
+        "y": -3258.78125
+      },
+      {
+        "text": "Benjamin Ingrosso in Stockholm",
+        "y": -2984.78125
+      },
+      {
+        "text": "The Prodigy Tickets",
+        "y": -2984.78125
+      },
+      {
+        "text": "The Witcher in Concert | Stockholm",
+        "y": -2984.78125
+      },
+      {
+        "text": "Monday Bar Halloween Cruise 2026 (no 65)",
+        "y": -2984.78125
+      },
+      {
+        "text": "Trending Events in the Sweden",
+        "y": -2720.78125
+      },
+      {
+        "text": "Stockholm Food & Wine 2026",
+        "y": -2482.125
+      },
+      {
+        "text": "Napalm Death | Live på Kollektivet Livet, Stockholm",
+        "y": -2482.125
+      },
+      {
+        "text": "KAJ | Helsingborg",
+        "y": -2482.125
+      },
+      {
+        "text": "LKN live på Kafé de luxe",
+        "y": -2482.125
+      },
+      {
+        "text": "Haunted Market På citadellet i Landskrona",
+        "y": -2190.46875
+      },
+      {
+        "text": "Explore Events across the Globe",
+        "y": -2020.46875
+      },
+      {
+        "text": "Loved by millions. Lived on AllEvents",
+        "y": -1583.46875
+      },
+      {
+        "text": "Events Trending Worldwide",
+        "y": -832.28125
+      },
+      {
+        "text": "Dubai Fintech Summit",
+        "y": -593.625
+      },
+      {
+        "text": "Golden Gate Comedy Night",
+        "y": -593.625
+      },
+      {
+        "text": "Frisco Diwali Mela 2026 - India Festival of Lights - Kaleidoscope Park",
+        "y": -593.625
+      },
+      {
+        "text": "ADIPEC 2026 Booth Builder Abu Dhabi | Custom Stand Design UAE",
+        "y": -593.625
+      },
+      {
+        "text": "AFTER HOURS 2 with PBT (A sleepover for adults, except you go home).",
+        "y": -296.96875
+      },
+      {
+        "text": "METALEX 2026",
+        "y": -296.96875
+      },
+      {
+        "text": "interpack China 2026",
+        "y": -296.96875
+      },
+      {
+        "text": "2nd Annual Christmas at RockPointe Church Market - Bearspaw",
+        "y": -296.96875
+      },
+      {
+        "text": "Monday Joke Lab - Comedy Open Mic",
+        "y": -0.3125
+      },
+      {
+        "text": "22nd International Exhibition \"Transport and Logistics – TransLogistica Uzbekistan 2026\"",
+        "y": -0.3125
+      },
+      {
+        "text": "Overview session of the AI-Powered UX/UI course",
+        "y": -0.3125
+      },
+      {
+        "text": "COSMEX 2026",
+        "y": -0.3125
+      },
+      {
+        "text": "Discover Events",
+        "y": 645.1875
+      },
+      {
+        "text": "anywhere, anytime",
+        "y": 698.1875
+      },
+      {
+        "text": "Site Navigation",
+        "y": 0
+      },
+      {
+        "text": "Discover Events",
+        "y": 1125.6875
+      },
+      {
+        "text": "For Organizers",
+        "y": 1125.6875
+      },
+      {
+        "text": "Host Better Events",
+        "y": 1125.6875
+      },
+      {
+        "text": "Explore",
+        "y": 1125.6875
+      },
+      {
+        "text": "Trending In Worldwide",
+        "y": 1628.859375
+      }
+    ],
+    "fixed": [
+      {
+        "tag": "DIV",
+        "cls": "topbar fixed lg0 topbar--hero scrolled topbar--white shadow-on-scroll",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "navbar navbar-static pull-left visible-phone",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "A",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "qsp_search_page_container",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom_date_modal",
+        "position": "fixed",
+        "top": 0
+      },
+      {
+        "tag": "DIV",
+        "cls": "custom-date-modal-backdrop-transparent custom-date-modal-transition",
+        "position": "fixed",
+        "top": 0
+      }
+    ]
+  }
+]

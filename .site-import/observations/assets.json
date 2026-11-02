@@ -1,0 +1,1020 @@
+{
+  "images": [
+    {
+      "src": "https://cdn2.allevents.in/media-kit/svg/ae-logo-vector.svg",
+      "srcset": ""
+    },
+    {
+      "src": "https://allevents.in/img/ae-logo-website-v2.svg",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/ab/ced64bf76d429aaa513418ff72f873/profile.png",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/33/4fcdc12a954b04b02f742ce3265692/Google-Play-Icon.png",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/0a/caa241b4e3479abed19e9ffd00690c/App-Store-Icon.png",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-ip.allevents.in/s/rs:fill:400:240/g:sm/q:80/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90cmFuc3VwLzg1LzE0MDM0MTEwYTE0NmQwOTAzZTU2OTVkYmVjNzYzYy9NdXNpYy1FdmVudHMtMS0ucG5n.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-ip.allevents.in/s/rs:fill:400:240/g:sm/q:80/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90cmFuc3VwLzJhLzcxYTZiMGMwNmE0MzVmYjkxNjhmMTNmMGEzMzY5ZS9CdXNpbmVzcy1FdmVudHMucG5n.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-ip.allevents.in/s/rs:fill:400:240/g:sm/q:80/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90cmFuc3VwLzY4L2UyMzYwMDUxNDI0NTg5ODU5YWY0ZWNiNWZjZDM2Ny9Db25jZXJ0cy0xXzFfMTF6b24ucG5n.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-ip.allevents.in/s/rs:fill:400:240/g:sm/q:80/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90cmFuc3VwLzRhL2JhMWQwOWY0YjM0ZGYzODk3YjIxYmI2YzMwYTY3My9QYXJ0aWVzXzRfMTF6b24ucG5n.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-ip.allevents.in/s/rs:fill:400:240/g:sm/q:80/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90cmFuc3VwLzRmLzc1NzFiOTNlYmU0NTNjOWEyZWZiYWM3NGQwZTFmYi9Gb29kLURyaW5rcy1FdmVudHNfM18xMXpvbi5wbmc.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-ip.allevents.in/s/rs:fill:400:240/g:sm/q:80/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90cmFuc3VwL2E1LzFmNzMwM2IyN2Y0OWJmODI2NWFiYzdlNzlhZjc5ZC9Db21lZHktU2hvd3MucG5n.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-ip.allevents.in/s/rs:fill:400:240/g:sm/q:80/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90cmFuc3VwLzAzLzlmODBlMjZmMTk0MTIwOTZjODY4ZjcyOGVmNmNjMC9DcmFmdHMtRXZlbnRzLnBuZw.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-ip.allevents.in/s/rs:fill:400:240/g:sm/q:80/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90cmFuc3VwL2I4LzUzNDJjZmY2NmM0ZGVhOGQ5NjAwMjQyMWM2YjdiYS9GZXN0aXZhbHMucG5n.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-ip.allevents.in/s/rs:fill:400:240/g:sm/q:80/sh:100/aHR0cHM6Ly9jZG4yLmFsbGV2ZW50cy5pbi90cmFuc3VwLzg0L2ZjNTRiYTY1NzY0ZGJmOGQ5MmVkNzI3MThjOTFmZS9EYW5jZS1FdmVudHMucG5n.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/4d/78fee857694b2a8670845f6157b1e1/view-all-1-.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czYvYmFubmVycy8yZjQ5NGI3MC0zYTg1LTExZjEtYmQxZi1mMWUxMGYwM2JlNmYtcmltZy13MTIwMC1oNjc1LWRjNDkyOTE4LWdtaXIud2VicD92PTE3NzY0NDc5MTI.avif",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czEwL2Jhbm5lcnMvMDU0ZjdkMjAtZDQwMC0xMWYxLTgyODgtYzFhNDNhZDk5ZjY5LXJpbWctdzEyMDAtaDEyMTQtZGMwODA4MDgtZ21pci5qcGc_dj0xNzkzMzIzMTk3.avif",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czQvYmFubmVycy8wMDZjN2RmMGI5MGJmNjFkYTY3ZDNiODZkZWMyYjc3MmJkZGVjZTg2ZjZlMWRkNTJjOTA3NWQ1MWQ2YjFkYTZjLXJpbWctdzEyMDAtaDY3NS1kYzE4MTgxOC1nbWlyP3Y9MTc4ODU1MzAxMg.avif",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czEwL2Jhbm5lcnMvYzdhNDg4ZTM1MDJmNmM2M2YwMTk0ZGIwZDhmYTYwM2I0MTQwNTM5NzU4YTFiMDJlYzRlMDVkODZlZmIyN2YzNi1yaW1nLXcxMDI0LWg1NzYtZGMxOTE4MTQtZ21pci5qcGc_dj0xNzcxNzg1MDY4.avif",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/e0/98f47c69394d00951cdb2528a1bca1/fi_2107957featured-star.svg",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czEwL2Jhbm5lcnMvNmQ1ZDk2OTAtZDQxZi0xMWYwLTg4NDctMTNjNzRjZTY3ZWUwLXJpbWctdzEyMDAtaDY3NS1kYzEzMTIxOC1nbWlyLndlYnA_dj0xNzY1MTg5MTg5.avif",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czcvYmFubmVycy9kNzRlMzdiNTljMzk2NTE4NWFmMGUzMzU5NWE3ZGY2MjEzZWU5ZWIxMGMzMGY0MDExYjY1MzI3YTc4YmRjNmFmLXJpbWctdzEyMDAtaDY3Ni1kYzA4MDgwOC1nbWlyP3Y9MTc4ODE4MTcwOA.avif",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czMvYmFubmVycy8yZDQzZGRkMDA1YWRhNzA1Y2NiNWU1YzhjMzU3OGMwOTU4NGJkMzI3OWI4YjBiMWM0YjQ4MmVjZTE2NDc3YmVjLXJpbWctdzEyMDAtaDYyOC1kY2U4ZDhjOC1nbWlyP3Y9MTc4ODYwNDAyMA.avif",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czkvYmFubmVycy84M2ZiMmQ2NzY1N2E1NGNhZjczZjlmMWFiYTQwYTg1NjgzZGNkYzBkZjUwMWIxMmYwMjVkYTczOWJiZGE4MWVkLXJpbWctdzEyMDAtaDY3NS1kYzA4Mjg0OC1nbWlyP3Y9MTc4NzExMDU3OA.avif",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/73/50b00762be4131af6a9b90d15e7972/yy-175-1-.png",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/bd/c75347f2344b4e9515f4e5ed7e3a9a/ny.jpg",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/2f/de0a760e6c4322ae37b31498e933e2/toronto.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/a9/9500b64be6474693b848f260d723ba/Chicago.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/US.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/7c/1b048249aa476d8446f7ca8cff69fa/UK.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/CA.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/FR.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/DE.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/BR.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/NL.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/AU.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/ES.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/FI.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/AT.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/ZA.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/IN.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/PL.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/NZ.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/CH.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/NO.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/BE.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn5.allevents.in/images/flags/32/IT.png",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/e4/660f5826f0450fb86e14741e618d38/images/27721.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-az.allevents.in/events6/banners/08247bf0-c171-11f1-9327-f517d77d7b98-rimg-w200-h200-dc080808-gmir",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/6e/06d75880d14875913d12f9922f9a74/images/IMG_20261031_180253.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/thumbs/attendeethumb6abd606c788ca.jpg",
+      "srcset": ""
+    },
+    {
+      "src": "https://www.gravatar.com/avatar/0e5ee8c28d15009956a32925460834fb?s=800&d=identicon&r=g",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/6a/9bd66990f542f9a4e90227e5ad01f5/images/IMG_5403.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/a/ACg8ocKp0lu-6D8JhSuhwdbopjF6NHdYIjcxwk5eK_lVm5z82W1XBywm=s96-c?sz=200",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/40/c9624cb01f4587b5963292d7c8a237/images/IMG_20261101_091615646_HDR.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/a/ACg8ocLbsRDpjiRCXOPMIrEmOwN20HFvCCk0aex57g3EVYRPcF42_vCH=s96-c?sz=200",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/70/26f4ea5f7c48fa88dbc38622d2ce77/images/9072097ad1c1e0c9a316daf9601bb167f5344997ef51b8e2c067314d55c0dedb_exif.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://www.gravatar.com/avatar/27161d8c8828a4b8873ff95248e84665?s=800&d=identicon&r=g",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/aa/830623e5be46e8b7184bff45634b13/images/IMG-20261030-WA0048.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/a/ACg8ocJQq9KqN390gOYCpIh-R1x8K0XdcT__0oLCkGXgfyIYEilyAAYh=s96-c?sz=200",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-az.allevents.in/events10/banners/1b80636c6d28db1f934a40106ecae285abc37da07a6138b26c82cd0cf335e50d-rimg-w200-h200-dcd3d6db-gmir?v=1762317604",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/2c/0a0d5b47c4485ca3a197cc78cdf636/images/8d5cb0313aa0a60705f1ec05c44c008f9021a8d9346270ce57649bcce4d98c21_exif.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/a/ACg8ocJp8IC4vKzp5FCn20UM-8Lq0Ldqotn-hmPeckU4itmv9l0x_vnjuw=s96-c?sz=200",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/e0/c8ce8bee49410b8c7f71bbfa5d3209/images/8d144075b7d4bbd90637491206128ac00ab863e929cb152f29adb88b3c48402b_exif.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/thumbs/attendeethumb67d85d406dd1a.jpg",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/cb/3b2b93e5064c11ab245b4439ef9465/images/IMG_3075.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-az.allevents.in/events7/banners/3eeaeabf029a0d26544c726fd810df6fa1ea17b4a395c13a3d60db060f2e9024-rimg-w300-h300-dcc8d8e8-gmir?v=1793202603",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/6f/a0bd091a5f4e41af066480ca768e7d/images/2047.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/a/ACg8ocJDQi_HoXsJMAhWit97TbCrCEhcTVTgt5CIdSeobRgNTgB-mw=s96-c?sz=200",
+      "srcset": ""
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/a/ACg8ocJB9uEHF_Wa04Z_k25peRDkZLFPRS4ukFGcJ5v2tbIdVKziNw=s96-c?sz=200",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/29/8efe612e9a45e088461943fcd59383/images/IMG_8834.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-az.allevents.in/events10/banners/8d2a2400-ee57-11f0-9e43-d5b27bbded88-rimg-w200-h200-dcc2c2c2-gmir",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/45/4996395dfe4f16ba76d0b16dfc8fa7/images/20261030_191212.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/a/ACg8ocL621kHofZMIe6HbUJ3LRJdxVVSxxq_qZG7PBwRFa8bpm8ISnDl=s96-c?sz=200",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/b8/cf2ff1ef2c423494bf32be4e476f6f/images/1000014355.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/a/ACg8ocJpqa8kDK2iC0TCmBc_SH-Aqxc_WwxRzQyZbRt-aoTjY_jlBw=s96-c?sz=200",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/c9/4a1e72daf849ffac4c1970ab1ed84e/images/mahek_fatima_certificate.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/a/ACg8ocIDit_L23Q599k8CpRyS27Luh7oSdncdS8QUssISyEMM-B8bw=s96-c?sz=200",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn-az.allevents.in/events10/banners/bb0eacd4d4be7d892b1bba5444db02ce4f25e335f130ab00cb99f88a1fc5e46a-rimg-w200-h200-dc788e4b-gmir?v=1756744804",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/90/b63650d639408b957ffad38e4a9fb7/images/media_1793424904443.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/a/ACg8ocI5wyReNKMQxK5D92xeHcqjTgZmxlFzyCTELATFmdNWnUVDYyF2=s96-c?sz=200",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/90/96d37e5bb2452cb194e8b2a8a856b2/images/IMG_5993.webp",
+      "srcset": ""
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/a/ACg8ocLicIHyqvVpD8JeFtwWJjQ0UlvL-IlPCdT_qDQmxFxHdtqOqvISnQ=s96-c?sz=200",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "https://cdn2.allevents.in/transup/69/f897a514274d3197dc7db8ca572878/V2.webp",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "srcset": ""
+    }
+  ],
+  "scripts": [
+    "https://www.clarity.ms/tag/gz2wa4x6js",
+    "https://scripts.clarity.ms/0.8.77-beta/clarity.js",
+    "https://allevents.in/scripts/moment.min.js",
+    "https://allevents.in/scripts/daterangepicker.3.14.1.js",
+    "https://allevents.in/scripts/app/moments-component.js?v=2.1",
+    "https://allevents.in/scripts/moment.min.2.18.1.js",
+    "https://allevents.in/scripts/vue-select.js",
+    "https://www.clarity.ms/tag/gz2wa4x6js",
+    "https://na.allevents.in/piwik.js",
+    "https://d2r1yp2w7bby2u.cloudfront.net/js/clevertap.min.js",
+    "https://www.googletagmanager.com/gtag/js?id=G-DZD3QFXNY7&cx=c&gtm=4e6as1",
+    "https://www.googletagmanager.com/gtm.js?id=GTM-5NVQN6R",
+    "https://allevents.in/scripts/combined.js",
+    "https://allevents.in/scripts/common.js?v=v11793453327",
+    "https://www.googletagmanager.com/gtag/js?id=G-DZD3QFXNY7",
+    "https://allevents.in/scripts/app/homenew.js?v=1.14",
+    "https://eu1.clevertap-prod.com/a?t=96&type=page&d=N4IglgJiBcIGwE4BKBaArGu6AsaBaIANCAA4DmMAjMQIYBmMoANmAEYwgDuApqygM4QA1igBuAZgB0laUVIAnAPYAXRQGNFTDgAtlykvzlN1NJtw7cAdgH0AqgGUQAX2JryOvQegB6b6bOiVsr8kmCW3nIA6nhIANLWAMIAggCyAAqMXGAAtiQwAAzEnGDKTGowANoAukX85dCFXHT1wC5c6oxtnJYQdQVFPc2dAxAd0K1OTkAA%3D&rn=1&i=1793594755&sn=0&tries=1&origin=https%3A%2F%2Fallevents.in&useIP=false&r=1793594755026",
+    "https://allevents.in/scripts/axios.min.js",
+    "https://allevents.in/scripts/vue.min.js",
+    "https://allevents.in/scripts/vue-lazyload.1.3.3.js",
+    "https://allevents.in/scripts/vue-select.js",
+    "https://allevents.in/scripts/app/popular-eventlist.js?v=7.4",
+    "https://allevents.in/scripts/app/eventcard-component.js?v=3.132"
+  ],
+  "styles": [
+    "https://allevents.in/css/combined-responsive.css?v=v11793453327v11793453327",
+    "https://allevents.in/css/homenew.css?v=3.5",
+    "https://allevents.in/css/search-page.css?v=1.40.80",
+    "https://allevents.in/css/vue-select.css",
+    "https://allevents.in/css/daterangepicker.css"
+  ],
+  "backgrounds": [
+    "url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4gPHBhdGggZD0iTTEyIDIyQzEzIDE3IDIwIDE2LjQxODMgMjAgMTBDMjAgNS41ODE3MiAxNi40MTgzIDIgMTIgMkM3LjU4MTcyIDIgNCA1LjU4MTcyIDQgMTBDNCAxNi40MTgzIDExIDE3IDEyIDIyWiIgc3Ryb2tlPSIjNjY3MDg1IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPiA8cGF0aCBkPSJNMTIgMTNDMTMuNjU2OSAxMyAxNSAxMS42NTY5IDE1IDEwQzE1IDguMzQzMTUgMTMuNjU2OSA3IDEyIDdDMTAuMzQzMSA3IDkgOC4zNDMxNSA5IDEwQzkgMTEuNjU2OSAxMC4zNDMxIDEzIDEyIDEzWiIgc3Ryb2tlPSIjNjY3MDg1IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPiA8L3N2Zz4=\")",
+    "url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4gPHBhdGggZD0iTTYgMTdDNiAxNy45MyA2IDE4LjM5NSA2LjEwMjIyIDE4Ljc3NjVDNi4zNzk2MiAxOS44MTE3IDcuMTg4MjcgMjAuNjIwNCA4LjIyMzU0IDIwLjg5NzhDOC42MDUwNCAyMSA5LjA3MDAzIDIxIDEwIDIxSDE2LjJDMTcuODgwMiAyMSAxOC43MjAyIDIxIDE5LjM2MiAyMC42NzNDMTkuOTI2NSAyMC4zODU0IDIwLjM4NTQgMTkuOTI2NSAyMC42NzMgMTkuMzYyQzIxIDE4LjcyMDIgMjEgMTcuODgwMiAyMSAxNi4yVjcuOEMyMSA2LjExOTg0IDIxIDUuMjc5NzYgMjAuNjczIDQuNjM4MDNDMjAuMzg1NCA0LjA3MzU0IDE5LjkyNjUgMy42MTQ2IDE5LjM2MiAzLjMyNjk4QzE4LjcyMDIgMyAxNy44ODAyIDMgMTYuMiAzSDEwQzkuMDcwMDMgMyA4LjYwNTA0IDMgOC4yMjM1NCAzLjEwMjIyQzcuMTg4MjcgMy4zNzk2MiA2LjM3OTYyIDQuMTg4MjcgNi4xMDIyMiA1LjIyMzU0QzYgNS42MDUwNCA2IDYuMDcwMDMgNiA3TTEyIDhMMTYgMTJNMTYgMTJMMTIgMTZNMTYgMTJIMyIgc3Ryb2tlPSIjNjY3MDg1IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPiA8L3N2Zz4=\")",
+    "url(\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDhWMTZNOCAxMkgxNk03LjggMjFIMTYuMkMxNy44ODAyIDIxIDE4LjcyMDIgMjEgMTkuMzYyIDIwLjY3M0MxOS45MjY1IDIwLjM4NTQgMjAuMzg1NCAxOS45MjY1IDIwLjY3MyAxOS4zNjJDMjEgMTguNzIwMiAyMSAxNy44ODAyIDIxIDE2LjJWNy44QzIxIDYuMTE5ODQgMjEgNS4yNzk3NiAyMC42NzMgNC42MzgwM0MyMC4zODU0IDQuMDczNTQgMTkuOTI2NSAzLjYxNDYgMTkuMzYyIDMuMzI2OThDMTguNzIwMiAzIDE3Ljg4MDIgMyAxNi4yIDNINy44QzYuMTE5ODQgMyA1LjI3OTc2IDMgNC42MzgwMyAzLjMyNjk4QzQuMDczNTQgMy42MTQ2IDMuNjE0NiA0LjA3MzU0IDMuMzI2OTggNC42MzgwM0MzIDUuMjc5NzYgMyA2LjExOTg0IDMgNy44VjE2LjJDMyAxNy44ODAyIDMgMTguNzIwMiAzLjMyNjk4IDE5LjM2MkMzLjYxNDYgMTkuOTI2NSA0LjA3MzU0IDIwLjM4NTQgNC42MzgwMyAyMC42NzNDNS4yNzk3NiAyMSA2LjExOTg0IDIxIDcuOCAyMVoiIHN0cm9rZT0iYmxhY2siIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=\")",
+    "url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4gPHBhdGggZD0iTTIxIDEwSDNNMjEgMTEuNVY4LjhDMjEgNy4xMTk4NCAyMSA2LjI3OTc2IDIwLjY3MyA1LjYzODAzQzIwLjM4NTQgNS4wNzM1NCAxOS45MjY1IDQuNjE0NiAxOS4zNjIgNC4zMjY5OEMxOC43MjAyIDQgMTcuODgwMiA0IDE2LjIgNEg3LjhDNi4xMTk4NCA0IDUuMjc5NzYgNCA0LjYzODAzIDQuMzI2OThDNC4wNzM1NCA0LjYxNDYgMy42MTQ2IDUuMDczNTQgMy4zMjY5OCA1LjYzODAzQzMgNi4yNzk3NiAzIDcuMTE5ODQgMyA4LjhWMTcuMkMzIDE4Ljg4MDIgMyAxOS43MjAyIDMuMzI2OTggMjAuMzYyQzMuNjE0NiAyMC45MjY1IDQuMDczNTQgMjEuMzg1NCA0LjYzODAzIDIxLjY3M0M1LjI3OTc2IDIyIDYuMTE5ODQgMjIgNy44IDIySDEyLjVNMTYgMlY2TTggMlY2TTE3LjQ5NzYgMTUuNzExOUMxNi43OTc4IDE0LjkzMjggMTUuNjMwOSAxNC43MjMyIDE0Ljc1NDEgMTUuNDM2N0MxMy44Nzc0IDE2LjE1MDEgMTMuNzUzOSAxNy4zNDMgMTQuNDQyNSAxOC4xODY4QzE1LjEzMSAxOS4wMzA2IDE3LjQ5NzYgMjEgMTcuNDk3NiAyMUMxNy40OTc2IDIxIDE5Ljg2NDIgMTkuMDMwNiAyMC41NTI3IDE4LjE4NjhDMjEuMjQxMyAxNy4zNDMgMjEuMTMyOSAxNi4xNDI2IDIwLjI0MTEgMTUuNDM2N0MxOS4zNDkyIDE0LjczMDcgMTguMTk3NCAxNC45MzI4IDE3LjQ5NzYgMTUuNzExOVoiIHN0cm9rZT0iIzY2NzA4NSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4gPC9zdmc+\")",
+    "url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIiBmaWxsPSJub25lIj4KPHBhdGggZD0iTTkuOTk5ODQgMTQuNTgzNEgxMC4wMDgyTTYuODMzMTcgMTguMzMzNEgxMy4xNjY1QzE0LjA5OTkgMTguMzMzNCAxNC41NjY2IDE4LjMzMzQgMTQuOTIzMiAxOC4xNTE3QzE1LjIzNjggMTcuOTkxOSAxNS40OTE3IDE3LjczNjkgMTUuNjUxNSAxNy40MjMzQzE1LjgzMzIgMTcuMDY2OCAxNS44MzMyIDE2LjYwMDEgMTUuODMzMiAxNS42NjY3VjQuMzMzMzVDMTUuODMzMiAzLjM5OTkzIDE1LjgzMzIgMi45MzMyMiAxNS42NTE1IDIuNTc2N0MxNS40OTE3IDIuMjYzMSAxNS4yMzY4IDIuMDA4MTMgMTQuOTIzMiAxLjg0ODM0QzE0LjU2NjYgMS42NjY2OSAxNC4wOTk5IDEuNjY2NjkgMTMuMTY2NSAxLjY2NjY5SDYuODMzMTdDNS44OTk3NSAxLjY2NjY5IDUuNDMzMDQgMS42NjY2OSA1LjA3NjUyIDEuODQ4MzRDNC43NjI5MiAyLjAwODEzIDQuNTA3OTUgMi4yNjMxIDQuMzQ4MTYgMi41NzY3QzQuMTY2NSAyLjkzMzIyIDQuMTY2NSAzLjM5OTkzIDQuMTY2NSA0LjMzMzM1VjE1LjY2NjdDNC4xNjY1IDE2LjYwMDEgNC4xNjY1IDE3LjA2NjggNC4zNDgxNiAxNy40MjMzQzQuNTA3OTUgMTcuNzM2OSA0Ljc2MjkyIDE3Ljk5MTkgNS4wNzY1MiAxOC4xNTE3QzUuNDMzMDQgMTguMzMzNCA1Ljg5OTc1IDE4LjMzMzQgNi44MzMxNyAxOC4zMzM0Wk0xMC40MTY1IDE0LjU4MzRDMTAuNDE2NSAxNC44MTM1IDEwLjIzIDE1IDkuOTk5ODQgMTVDOS43Njk3MiAxNSA5LjU4MzE3IDE0LjgxMzUgOS41ODMxNyAxNC41ODM0QzkuNTgzMTcgMTQuMzUzMiA5Ljc2OTcyIDE0LjE2NjcgOS45OTk4NCAxNC4xNjY3QzEwLjIzIDE0LjE2NjcgMTAuNDE2NSAxNC4zNTMyIDEwLjQxNjUgMTQuNTgzNFoiIHN0cm9rZT0iIzJEOUNEQiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+\")",
+    "url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIiBmaWxsPSJub25lIj4gPHBhdGggZD0iTTcuNTc1IDcuNUM3Ljc3MDkyIDYuOTQzMDYgOC4xNTc2MyA2LjQ3MzQyIDguNjY2NjMgNi4xNzQyOEM5LjE3NTYzIDUuODc1MTMgOS43NzQwOCA1Ljc2NTc4IDEwLjM1NiA1Ljg2NTU5QzEwLjkzNzkgNS45NjU0IDExLjQ2NTcgNi4yNjc5NCAxMS44NDU5IDYuNzE5NjFDMTIuMjI2MSA3LjE3MTI4IDEyLjQzNDIgNy43NDI5NCAxMi40MzMzIDguMzMzMzNDMTIuNDMzMyAxMCA5LjkzMzMzIDEwLjgzMzMgOS45MzMzMyAxMC44MzMzTTEwIDE0LjE2NjdIMTAuMDA4M002LjUgMTcuNUgxMy41QzE0LjkwMDEgMTcuNSAxNS42MDAyIDE3LjUgMTYuMTM1IDE3LjIyNzVDMTYuNjA1NCAxNi45ODc4IDE2Ljk4NzggMTYuNjA1NCAxNy4yMjc1IDE2LjEzNUMxNy41IDE1LjYwMDIgMTcuNSAxNC45MDAxIDE3LjUgMTMuNVY2LjVDMTcuNSA1LjA5OTg3IDE3LjUgNC4zOTk4IDE3LjIyNzUgMy44NjUwMkMxNi45ODc4IDMuMzk0NjIgMTYuNjA1NCAzLjAxMjE3IDE2LjEzNSAyLjc3MjQ4QzE1LjYwMDIgMi41IDE0LjkwMDEgMi41IDEzLjUgMi41SDYuNUM1LjA5OTg3IDIuNSA0LjM5OTggMi41IDMuODY1MDIgMi43NzI0OEMzLjM5NDYyIDMuMDEyMTcgMy4wMTIxNyAzLjM5NDYyIDIuNzcyNDggMy44NjUwMkMyLjUgNC4zOTk4IDIuNSA1LjA5OTg3IDIuNSA2LjVWMTMuNUMyLjUgMTQuOTAwMSAyLjUgMTUuNjAwMiAyLjc3MjQ4IDE2LjEzNUMzLjAxMjE3IDE2LjYwNTQgMy4zOTQ2MiAxNi45ODc4IDMuODY1MDIgMTcuMjI3NUM0LjM5OTggMTcuNSA1LjA5OTg3IDE3LjUgNi41IDE3LjVaIiBzdHJva2U9IiM2NjcwODUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+IDwvc3ZnPg==\")",
+    "url(\"https://allevents.in/img/next-prev.png\")",
+    "url(\"https://allevents.in/img/next-prev.png\")",
+    "url(\"https://cdn2.allevents.in/transup/90/b744a057ac42349b23a0e6534da9ae/Rectangle-293.webp\")",
+    "url(\"https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czQvYmFubmVycy9mYjdjODVlMzM0ZmVjMDdkNWQ3NjFkNjRlZmRmMWMxNDA3M2EyOWY4MmRmNDk2NzE3OTZmMWY1ZWQyZjY3NWEzLXJpbWctdzEyMDAtaDYyOC1kYzE4NTg1OC1nbWlyP3Y9MTc4ODYyNTE3Ng.avif\")",
+    "url(\"https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czQvYmFubmVycy81YjMzZGQ1M2JlZDkwZTFiNWEzZjVkOWE0M2JjOTlhNmNhYjk4OTI4OGNhOWZkMDVmNzY4MjMwYjViZTM1YWMxLXJpbWctdzEyMDAtaDg2My1kYzA4MDgwOC1nbWlyP3Y9MTc4ODIwNjc0MA.avif\")",
+    "url(\"https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czQvYmFubmVycy8zNTJkNzMxOTA3Njk4M2U5NDU2MDQwNWNmNDEzNmQ5NWI1NmJkNmRmN2JkYTczMGVlOTE1MWYwNDEyNjNhZTNhLXJpbWctdzEyMDAtaDYyOC1kYzQ4NzhiOC1nbWlyP3Y9MTc4ODU3NTE3MA.avif\")",
+    "url(\"https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czQvYmFubmVycy9iM2MyMDk2ODZlMWQ4MzZkNDczNTcwYjg3ZjhlOTc2NmEwNzlmYTY3NTFmZWE5ZGMzMWEyYmI3YTM2ZWIyMjQwLXJpbWctdzEyMDAtaDEyMDAtZGMxODM4NTgtZ21pcj92PTE3ODg0MTA1NjQ.avif\")",
+    "url(\"https://cdn-ip.allevents.in/s/rs:fill:500:250/g:sm/sh:100/aHR0cHM6Ly9jZG4tYXouYWxsZXZlbnRzLmluL2V2ZW50czgvYmFubmVycy9jZmUwYjViNjRkZDMzOGEzNmU0NzRkNzZkMjgwZTQ0ZTAwY2E4MDdmYTkyZTU1MjRiNWJhZDhhZTEyYzJmOTc2LXJpbWctdzEyMDAtaDU2NC1kYzE4MTgxOC1nbWlyP3Y9MTc5MjUwNTM0OQ.avif\")",
+    "linear-gradient(110deg, rgb(245, 243, 255) 20.77%, rgb(255, 231, 225) 82.76%)",
+    "linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%)",
+    "linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%)",
+    "linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%)",
+    "linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%)",
+    "linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%)",
+    "linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%)",
+    "linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%)",
+    "linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%)",
+    "linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%)",
+    "linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%)",
+    "linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%)",
+    "linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%)",
+    "linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%)",
+    "linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%)",
+    "linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%)",
+    "linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%)",
+    "linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%)",
+    "linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%)",
+    "linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%)",
+    "linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%)",
+    "linear-gradient(192deg, rgb(15, 69, 133) 34.87%, rgb(33, 192, 232) 118.5%)",
+    "url(\"https://cdn2.allevents.in/transup/b2/367a50b28a47aa93fbe3b5981daee0/icons8-instagram-96.png\"), none",
+    "url(\"https://cdn2.allevents.in/transup/37/6d5f4695624d45acd62e760d86b343/b2c-web-bg.png\")",
+    "linear-gradient(90deg, rgb(18, 128, 255) 0%, rgb(11, 77, 153) 100%)",
+    "linear-gradient(0deg, rgb(255, 255, 255) 11.05%, rgba(255, 255, 255, 0) 70.3%)",
+    "linear-gradient(rgba(255, 255, 255, 0.61) 0%, rgba(0, 0, 0, 0) 100%)",
+    "url(\"https://cdn2.allevents.in/transup/32/e91277d8664254b55b112df848ea4e/lol.webp\")"
+  ]
+}

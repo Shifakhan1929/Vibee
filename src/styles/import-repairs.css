@@ -1,0 +1,7 @@
+#hss_bar .search_suggestion_popup[hidden] { display: none; }
+#hss_bar_background_overlay.import-search-overlay { display: block; }
+#hss_bar:has(.search_suggestion_popup:not([hidden])) { position: relative; z-index: 1002; }
+#cityselect.import-city-open { display: block; top: 10%; opacity: 1; }
+#cityselect .import-city-results { display: block; top: 100%; left: 0; right: 0; width: auto; max-height: 260px; overflow-y: auto; }
+#ae-nav-collapse.import-menu-open { height: auto; max-height: calc(100dvh - 60px); overflow-y: auto; }
+@media (max-width: 767px) { #cityselect.import-city-open { top: 0; max-height: 100dvh; overflow-y: auto; } }
