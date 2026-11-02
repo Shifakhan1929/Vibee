@@ -66,3 +66,499 @@
 .topbar--white .btn-navbar .icon-bar {
   background-color: #30363E !important;
 }
+
+
+/* ==========================================================================
+   VIBE EVENT TYPE PREVIEW & RESPONSIVE HERO GRID
+   ========================================================================== */
+
+/* Hero container height & layout overrides */
+.search-parent {
+  min-height: 640px !important;
+  height: auto !important;
+  padding: 50px 0 70px !important;
+}
+
+.search-parent .search-child {
+  height: auto !important;
+  min-height: auto !important;
+  max-width: 1200px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 16px !important;
+}
+
+/* Two-column hero on desktop (>= 860px), stacked on mobile (< 860px) */
+.vibe-hero-layout {
+  width: 100%;
+}
+
+@media (min-width: 860px) {
+  .vibe-hero-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr) !important;
+    grid-template-areas:
+      "headline card"
+      "search   card"
+      "chips    card"
+      "ctas     card" !important;
+    column-gap: 44px !important;
+    row-gap: 16px !important;
+    align-items: center !important;
+    text-align: left !important;
+  }
+
+  .vibe-hero-headline {
+    text-align: left !important;
+  }
+
+  .vibe-hero-headline .title {
+    text-align: left !important;
+    margin: 0 0 12px !important;
+    font-size: 44px !important;
+    line-height: 1.18 !important;
+  }
+
+  .vibe-hero-headline .sub-title {
+    text-align: left !important;
+    margin: 0 0 16px !important;
+    font-size: 17px !important;
+    line-height: 1.5 !important;
+  }
+
+  .vibe-hero-search {
+    width: 100% !important;
+  }
+
+  .vibe-hero-search #hss_bar {
+    justify-content: flex-start !important;
+  }
+
+  .vibe-hero-chips .vibe-chips-row {
+    justify-content: flex-start !important;
+  }
+
+  .vibe-hero-ctas {
+    justify-content: flex-start !important;
+  }
+}
+
+@media (max-width: 859px) {
+  .vibe-hero-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    align-items: stretch !important;
+    text-align: center !important;
+  }
+
+  .vibe-hero-headline { order: 1; }
+  .vibe-hero-search   { order: 2; }
+  .vibe-hero-chips    { order: 3; }
+  .vibe-hero-card     { order: 4; }
+  .vibe-hero-ctas     { order: 5; }
+
+  .vibe-hero-headline .title {
+    text-align: center !important;
+    font-size: 30px !important;
+    line-height: 1.22 !important;
+    margin: 0 0 10px !important;
+  }
+
+  .vibe-hero-headline .sub-title {
+    text-align: center !important;
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    margin: 0 0 16px !important;
+  }
+
+  .vibe-hero-search #hss_bar {
+    justify-content: center !important;
+  }
+
+  .vibe-hero-chips .vibe-chips-row {
+    justify-content: center !important;
+  }
+
+  .vibe-hero-card {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .vibe-hero-ctas {
+    justify-content: center !important;
+  }
+}
+
+/* Chips Row */
+.vibe-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.vibe-chip-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.vibe-chip-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px #00e0ff, 0 0 0 5px rgba(11, 31, 75, 0.4);
+}
+
+.vibe-chip-active {
+  background-color: #0b1f4b !important;
+  color: #ffffff !important;
+  border: 1.5px solid #0b1f4b !important;
+  box-shadow: 0 4px 14px rgba(11, 31, 75, 0.25);
+}
+
+.vibe-chip-inactive {
+  background-color: #ffffff !important;
+  color: #0b1f4b !important;
+  border: 1.5px solid #dbe6f7 !important;
+  box-shadow: 0 2px 6px rgba(11, 31, 75, 0.04);
+}
+
+.vibe-chip-inactive:hover {
+  background-color: #f6faff !important;
+  border-color: #0a6cf0 !important;
+  color: #0a6cf0 !important;
+  transform: translateY(-1px);
+}
+
+/* Preview Card Container & Layout */
+.vibe-preview-card {
+  position: relative;
+  border-radius: 28px;
+  border: 1px solid #dbe6f7;
+  background-color: #ffffff;
+  box-shadow: 0 20px 45px -12px rgba(10, 108, 240, 0.18), 0 4px 18px -4px rgba(11, 31, 75, 0.08);
+  overflow: hidden;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* Soft cyan glow behind top-right corner */
+.vibe-card-glow {
+  position: absolute;
+  top: -24px;
+  right: -24px;
+  width: 170px;
+  height: 170px;
+  background: radial-gradient(circle, rgba(0, 224, 255, 0.4) 0%, rgba(8, 168, 255, 0.15) 50%, transparent 75%);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(18px);
+  z-index: 1;
+}
+
+/* Card Banner Gradient (Navy -> Blue -> Cyan) */
+.vibe-card-banner {
+  position: relative;
+  z-index: 2;
+  padding: 16px 22px;
+  background: linear-gradient(135deg, #0b1f4b 0%, #0a6cf0 55%, #00e0ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vibe-banner-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vibe-banner-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #00e0ff;
+  box-shadow: 0 0 8px #00e0ff;
+  animation: vibeDotPulse 2s infinite ease-in-out;
+}
+
+@keyframes vibeDotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.85); }
+}
+
+.vibe-banner-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+}
+
+.vibe-banner-badge {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(4px);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* Card Body */
+.vibe-card-body {
+  position: relative;
+  z-index: 2;
+  padding: 22px 24px;
+  background: #ffffff;
+}
+
+.vibe-card-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.32;
+  color: #0b1f4b;
+  margin: 0 0 8px;
+}
+
+.vibe-card-meta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  color: #5a6e8c;
+  margin: 0 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vibe-meta-icon {
+  width: 15px;
+  height: 15px;
+  color: #0a6cf0;
+  flex-shrink: 0;
+}
+
+/* Progress bar: 8px tall, gradient from blue to cyan, rounded */
+.vibe-progress-track {
+  height: 8px;
+  border-radius: 9999px;
+  background-color: #edf3fc;
+  overflow: hidden;
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+}
+
+.vibe-progress-fill {
+  height: 8px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #0a6cf0 0%, #00e0ff 100%);
+  transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vibe-spots-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.vibe-spots-text {
+  font-weight: 700;
+  color: #0b1f4b;
+}
+
+.vibe-spots-percent {
+  color: #0a6cf0;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* Primary Button */
+.vibe-card-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 20px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #0b1f4b 0%, #0a6cf0 100%);
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(10, 108, 240, 0.25);
+}
+
+.vibe-card-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(10, 108, 240, 0.38);
+}
+
+.vibe-card-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px #00e0ff, 0 0 0 5px rgba(11, 31, 75, 0.4);
+}
+
+.vibe-button-arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.vibe-card-button:hover .vibe-button-arrow {
+  transform: translateX(3px);
+}
+
+/* Replay Animation on Card (fade in plus 8px slide up, ~0.35s) */
+@keyframes vibeCardSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.vibe-card-animated {
+  animation: vibeCardSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .vibe-card-animated {
+    animation: none !important;
+    transform: none !important;
+  }
+  .vibe-progress-fill {
+    transition: none !important;
+  }
+  .vibe-banner-dot {
+    animation: none !important;
+  }
+}
+
+/* Hero CTA buttons */
+.vibe-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.vibe-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 22px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0a6cf0, #08a8ff);
+  color: #ffffff !important;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  text-decoration: none !important;
+  box-shadow: 0 4px 14px rgba(10, 108, 240, 0.35);
+  transition: all 0.2s ease;
+}
+
+.vibe-cta-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(10, 108, 240, 0.45);
+  color: #ffffff !important;
+}
+
+.vibe-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff !important;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.vibe-cta-secondary:hover {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: #ffffff;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .vibe-preview-card {
+    background-color: #0f1a30;
+    border-color: #1e2d4d;
+    box-shadow: 0 20px 45px -12px rgba(0, 224, 255, 0.12);
+  }
+
+  .vibe-card-body {
+    background-color: #0f1a30;
+  }
+
+  .vibe-card-title {
+    color: #ffffff;
+  }
+
+  .vibe-card-meta {
+    color: #94a3b8;
+  }
+
+  .vibe-spots-text {
+    color: #e2e8f0;
+  }
+
+  .vibe-progress-track {
+    background-color: #1a2947;
+  }
+
+  .vibe-chip-inactive {
+    background-color: #132240 !important;
+    border-color: #243963 !important;
+    color: #e2e8f0 !important;
+  }
+
+  .vibe-chip-inactive:hover {
+    background-color: #1a2d54 !important;
+    border-color: #00e0ff !important;
+    color: #00e0ff !important;
+  }
+}

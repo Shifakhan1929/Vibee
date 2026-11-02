@@ -682,6 +682,14 @@ function CityEventsPage() {
 
           {/* Header Action Buttons */}
           <div className="flex items-center gap-3">
+            <a
+              href="/how-it-works"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-full bg-blue-50 text-[#1565C0] border border-blue-200 hover:bg-blue-100 transition-colors"
+            >
+              How it works
+            </a>
             <Link
               to="/"
               className="hidden lg:inline-flex items-center text-sm font-medium text-slate-600 hover:text-[#1565C0] transition-colors"

@@ -1,3 +1,4 @@
+import { EventTypePreview } from "../components/EventTypePreview";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import capturedCSS from "../styles/captured.css?raw";
@@ -83,7 +84,7 @@ function Index() {
               <div className={"tbsearch hide_for_b2b"}>
                 <div className={"input-append"}><span className={"hidden-phone search-icon-desktop"}>{"\n\t\t\t\t\t\t\t"}<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">{"\n\t\t\t\t\t\t\t\t"}<path d="M15.75 15.75L11.25 11.25M2.25 7.5C2.25 8.18944 2.3858 8.87213 2.64963 9.50909C2.91347 10.146 3.30018 10.7248 3.78769 11.2123C4.2752 11.6998 4.85395 12.0865 5.49091 12.3504C6.12787 12.6142 6.81056 12.75 7.5 12.75C8.18944 12.75 8.87213 12.6142 9.50909 12.3504C10.146 12.0865 10.7248 11.6998 11.2123 11.2123C11.6998 10.7248 12.0865 10.146 12.3504 9.50909C12.6142 8.87213 12.75 8.18944 12.75 7.5C12.75 6.81056 12.6142 6.12787 12.3504 5.49091C12.0865 4.85395 11.6998 4.2752 11.2123 3.78769C10.7248 3.30018 10.146 2.91347 9.50909 2.64963C8.87213 2.3858 8.18944 2.25 7.5 2.25C6.81056 2.25 6.12787 2.3858 5.49091 2.64963C4.85395 2.91347 4.2752 3.30018 3.78769 3.78769C3.30018 4.2752 2.91347 4.85395 2.64963 5.49091C2.3858 6.12787 2.25 6.81056 2.25 7.5Z" stroke="#30363E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t"}</svg>{"\n\t\t\t\t\t\t"}</span><span className={"\x76isible-phone search-icon-mobile"} style={{ pointerEvents: "auto", cursor: "pointer" }}>{"\n\t\t\t\t\t\t\t"}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none" style={{ pointerEvents: "auto" }}>{"\n\t\t\t\t\t\t\t\t"}<path d="M10.5 19.5C15.1944 19.5 19 15.6944 19 11C19 6.3056 15.1944 2.5 10.5 2.5C5.8056 2.5 2 6.3056 2 11C2 15.6944 5.8056 19.5 10.5 19.5Z" stroke="#fff" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t\t"}<path d="M16.6094 17.1108L20.852 21.3535" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t"}</svg>{"\n\t\t\t\t\t\t"}</span><input className={"span3"} id="searchd-input" type="text" placeholder="Art events" autoComplete="off" onKeyDown={e => { if (e.key === "Enter" && (e.currentTarget.value).trim()) { window.location.href = `/indore?q=${encodeURIComponent((e.currentTarget.value).trim())}`; } }} {...({ size: "16" } as any)} /></div>
               </div>
-              <div className={"tbhide  hidden-phone"}><a className={"create-b2b create-action track popo topbar-btn create-btn-style"} data-original-title="" href="/manage/create.php?ref=home-page-topbar" rel="nofollow" tabIndex={0} title="">{"\n\t\t\t\t\t\t\t"}<i className={"icon-plus-2 mr5 create-btn-icon"} style={{ fontSize: "16px", color: "var(--gray-600)" }} />Create Event</a><a className={"hide hidden-phone"} href="/recommended?ref=home-page-topbar" rel="nofollow" title="Recommended Events For You"><i className={"icon-magic"} /></a><button id="login-top" className={"track hidden-phone topbar-btn lazy"} title="Sign in to AllEvents">{"\n\t\t\t\t\t\t\t"}<img src="/site-assets/8a75fa2fbc04c7e6.webp" alt="User Profile" className={"login-user-icon lazy"} style={{ width: "22px", height: "22px", verticalAlign: "middle", marginRight: "2px", marginBottom: "2px" }} />
+              <div className={"tbhide  hidden-phone"}><a className={"how-it-works-link track topbar-btn"} href="/how-it-works" target="_blank" rel="noopener noreferrer" title="How Vibe works" style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "5px 12px", fontSize: "13px", fontWeight: "600", color: "#1565C0", backgroundColor: "#EFF6FF", border: "1px solid #BFDBFE", borderRadius: "16px", marginRight: "8px", textDecoration: "none" }}><i className={"icon-info-circle"} style={{ fontSize: "14px" }} />How it works</a><a className={"create-b2b create-action track popo topbar-btn create-btn-style"} data-original-title="" href="/manage/create.php?ref=home-page-topbar" rel="nofollow" tabIndex={0} title="">{"\n\t\t\t\t\t\t\t"}<i className={"icon-plus-2 mr5 create-btn-icon"} style={{ fontSize: "16px", color: "var(--gray-600)" }} />Create Event</a><a className={"hide hidden-phone"} href="/recommended?ref=home-page-topbar" rel="nofollow" title="Recommended Events For You"><i className={"icon-magic"} /></a><button id="login-top" className={"track hidden-phone topbar-btn lazy"} title="Sign in to AllEvents">{"\n\t\t\t\t\t\t\t"}<img src="/site-assets/8a75fa2fbc04c7e6.webp" alt="User Profile" className={"login-user-icon lazy"} style={{ width: "22px", height: "22px", verticalAlign: "middle", marginRight: "2px", marginBottom: "2px" }} />
       							Sign in
       						</button></div>
               <a className={"tbdapp track"} href="/app" style={{ right: "75px" }}>Open App</a>
@@ -101,11 +102,16 @@ function Index() {
         <div className={"nav-icon"} />
       </a>
       <div className={"search-parent "} style={{ backgroundImage: "url(\"/site-assets/3302afdc09bd1c7f.webp\")", backgroundColor: "black", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center center" }}>
-        <div className={"\x63ontainer search-child"}>
-          <div className={"\x72ow-fluid"} style={{ position: "relative", height: "100%" }}>
-            <div className={"span8 input-append search-wrap"}>
-              <h1 className={"title"} style={{ margin: "10px 0px 10px", fontWeight: "bold", fontSize: "40px", lineHeight: "1.2" }}>Need a team? A crowd? A stage? <span style={{ color: "rgb(33, 192, 232)" }}>Make it an event.</span></h1>
-              <p className={"sub-title"} style={{ fontWeight: "normal", fontSize: "18px", lineHeight: "1.5", marginBottom: "24px" }}>Vibe lets anyone host anything. Start a Sunday cricket match with 10 players or sell out a comedy night for 500. Post it, fill it, show up.</p>
+        <div className={"container search-child"}>
+          <div className={"vibe-hero-layout"}>
+            {/* 1. Headline (Desktop: Left Col / Mobile: Order 1) */}
+            <div className={"vibe-hero-headline"} style={{ gridArea: "headline" }}>
+              <h1 className={"title"} style={{ fontWeight: "bold", lineHeight: "1.2" }}>Need a team? A crowd? A stage? <span style={{ color: "rgb(33, 192, 232)" }}>Make it an event.</span></h1>
+              <p className={"sub-title"} style={{ fontWeight: "normal", lineHeight: "1.5" }}>Vibe lets anyone host anything. Start a Sunday cricket match with 10 players or sell out a comedy night for 500. Post it, fill it, show up.</p>
+            </div>
+
+            {/* 2. Search Bar (Desktop: Left Col / Mobile: Order 2) */}
+            <div className={"vibe-hero-search"} style={{ gridArea: "search" }}>
               <div id="hss_bar">
                 <div className={"hs_search_input_box"}>
                   <div className={"hs_search_icon"}>
@@ -141,13 +147,32 @@ function Index() {
                   <div>
                     <span role="button" tabIndex={0} onClick={openCity} onKeyDown={e => { if (e.key === "Enter") openCity(); }} className={"city-select-action"}>
                       <span className={"icon-map-marker-2"} style={{ fontSize: "18px", color: "rgb(255, 255, 255)", marginRight: "6px", cursor: "pointer" }} />
-                      <p style={{ colorScheme: "unset", forcedColorAdjust: "unset", mathDepth: "unset", position: "unset", positionAnchor: "unset", textSizeAdjust: "unset", appearance: "unset", fontFamily: "unset", fontFeatureSettings: "unset", fontKerning: "unset", fontLanguageOverride: "unset", fontOpticalSizing: "unset", fontPalette: "unset", fontSizeAdjust: "unset", fontStretch: "unset", fontStyle: "unset", fontSynthesis: "unset", fontVariant: "unset", fontVariationSettings: "unset", fontWeight: "unset", positionArea: "unset", textOrientation: "unset", textRendering: "unset", textSpacingTrim: "unset", WebkitFontSmoothing: "unset", WebkitLocale: "unset", WebkitTextOrientation: "unset", WebkitWritingMode: "unset", writingMode: "unset", zoom: "unset", accentColor: "unset", placeContent: "unset", placeItems: "unset", placeSelf: "unset", alignmentBaseline: "unset", anchorName: "unset", anchorScope: "unset", animationComposition: "unset", animation: "unset", animationTrigger: "unset", appRegion: "unset", aspectRatio: "unset", backdropFilter: "unset", backfaceVisibility: "unset", background: "unset", backgroundBlendMode: "unset", baselineShift: "unset", baselineSource: "unset", blockSize: "unset", borderBlock: "unset", borderRadius: "unset", borderCollapse: "unset", borderEndEndRadius: "unset", borderEndStartRadius: "unset", borderImage: "unset", borderInline: "unset", borderLeft: "unset", borderRight: "unset", borderShape: "unset", borderStartEndRadius: "unset", borderStartStartRadius: "unset", borderTop: "unset", inset: "unset", boxDecorationBreak: "unset", boxShadow: "unset", boxSizing: "unset", breakAfter: "unset", breakBefore: "unset", breakInside: "unset", bufferedRendering: "unset", captionSide: "unset", caretAnimation: "unset", caretColor: "unset", caretShape: "unset", clear: "unset", clip: "unset", clipPath: "unset", clipRule: "unset", colorInterpolation: "unset", colorInterpolationFilters: "unset", colorRendering: "unset", columns: "unset", columnFill: "unset", gap: "unset", ruleBreak: "unset", rule: "unset", ruleInset: "unset", ruleVisibilityItems: "unset", columnSpan: "unset", contain: "unset", containIntrinsicBlockSize: "unset", containIntrinsicSize: "unset", containIntrinsicInlineSize: "unset", container: "unset", content: "unset", contentVisibility: "unset", cornerShape: "unset", cornerBlockEndShape: "unset", cornerBlockStartShape: "unset", counterIncrement: "unset", counterReset: "unset", counterSet: "unset", cx: "unset", cy: "unset", d: "unset", display: "unset", dominantBaseline: "unset", dynamicRangeLimit: "unset", emptyCells: "unset", fieldSizing: "unset", fill: "unset", fillOpacity: "unset", fillRule: "unset", filter: "unset", flex: "unset", flexFlow: "unset", flexLineCount: "unset", float: "unset", floodColor: "unset", floodOpacity: "unset", frameSizing: "unset", grid: "unset", gridArea: "unset", height: "unset", hyphenateCharacter: "unset", hyphenateLimitChars: "unset", hyphens: "unset", imageOrientation: "unset", imageRendering: "unset", initialLetter: "unset", inlineSize: "unset", insetBlock: "unset", insetInline: "unset", interactivity: "unset", interestDelay: "unset", interpolateSize: "unset", isolation: "unset", letterSpacing: "unset", lightingColor: "unset", lineBreak: "unset", lineHeight: "unset", listStyle: "unset", marginBlock: "unset", margin: "unset", marginInline: "unset", marginTrim: "unset", marker: "unset", mask: "unset", maskType: "unset", mathShift: "unset", mathStyle: "unset", maxBlockSize: "unset", maxHeight: "unset", maxInlineSize: "unset", maxWidth: "unset", minBlockSize: "unset", minHeight: "unset", minInlineSize: "unset", minWidth: "unset", mixBlendMode: "unset", objectFit: "unset", objectPosition: "unset", objectViewBox: "unset", offset: "unset", opacity: "unset", order: "unset", orphans: "unset", outline: "unset", outlineOffset: "unset", overflowAnchor: "unset", overflowBlock: "unset", overflowClipMargin: "unset", overflowInline: "unset", overflowWrap: "unset", overflow: "unset", overlay: "unset", overscrollBehaviorBlock: "unset", overscrollBehaviorInline: "unset", overscrollBehavior: "unset", paddingBlock: "unset", padding: "unset", paddingInline: "unset", page: "unset", pageMarginSafety: "unset", pageOrientation: "unset", paintOrder: "unset", perspective: "unset", perspectiveOrigin: "unset", pointerEvents: "unset", positionTry: "unset", positionVisibility: "unset", printColorAdjust: "unset", quotes: "unset", r: "unset", readingFlow: "unset", readingOrder: "unset", resize: "unset", rotate: "unset", rubyAlign: "unset", rubyOverhang: "unset", rubyPosition: "unset", ruleOverlap: "unset", rx: "unset", ry: "unset", scale: "unset", scrollAxisLock: "unset", scrollBehavior: "unset", scrollInitialTarget: "unset", scrollMarginBlock: "unset", scrollMargin: "unset", scrollMarginInline: "unset", scrollMarkerGroup: "unset", scrollPaddingBlock: "unset", scrollPadding: "unset", scrollPaddingInline: "unset", scrollSnapAlign: "unset", scrollSnapStop: "unset", scrollSnapType: "unset", scrollTargetGroup: "unset", scrollTimeline: "unset", scrollbarColor: "unset", scrollbarGutter: "unset", scrollbarWidth: "unset", shapeImageThreshold: "unset", shapeMargin: "unset", shapeOutside: "unset", shapeRendering: "unset", size: "unset", speak: "unset", stopColor: "unset", stopOpacity: "unset", stroke: "unset", strokeDasharray: "unset", strokeDashoffset: "unset", strokeLinecap: "unset", strokeLinejoin: "unset", strokeMiterlimit: "unset", strokeOpacity: "unset", strokeWidth: "unset", tabSize: "unset", tableLayout: "unset", textAlign: "unset", textAlignLast: "unset", textAnchor: "unset", textAutospace: "unset", textBox: "unset", textCombineUpright: "unset", textDecoration: "unset", textDecorationSkipInk: "unset", textEmphasis: "unset", textEmphasisPosition: "unset", textFit: "unset", textIndent: "unset", textJustify: "unset", textOverflow: "unset", textShadow: "unset", textTransform: "unset", textUnderlineOffset: "unset", textUnderlinePosition: "unset", textWrap: "unset", timelineScope: "unset", timelineTrigger: "unset", touchAction: "unset", transform: "unset", transformBox: "unset", transformOrigin: "unset", transformStyle: "unset", transition: "unset", translate: "unset", triggerScope: "unset", userSelect: "unset", vectorEffect: "unset", verticalAlign: "unset", viewTimeline: "unset", viewTransitionClass: "unset", viewTransitionGroup: "unset", viewTransitionName: "unset", viewTransitionScope: "unset", visibility: "unset", borderSpacing: "unset", WebkitBoxAlign: "unset", WebkitBoxDecorationBreak: "unset", WebkitBoxDirection: "unset", WebkitBoxFlex: "unset", WebkitBoxOrdinalGroup: "unset", WebkitBoxOrient: "unset", WebkitBoxPack: "unset", WebkitBoxReflect: "unset", WebkitLineBreak: "unset", WebkitLineClamp: "unset", WebkitMaskBoxImage: "unset", WebkitRtlOrdering: "unset", WebkitRubyPosition: "unset", WebkitTapHighlightColor: "unset", WebkitTextCombine: "unset", WebkitTextDecorationsInEffect: "unset", WebkitTextFillColor: "unset", WebkitTextSecurity: "unset", WebkitTextStroke: "unset", WebkitUserDrag: "unset", whiteSpaceCollapse: "unset", widows: "unset", width: "unset", willChange: "unset", windowDrag: "unset", wordBreak: "unset", wordSpacing: "unset", x: "unset", y: "unset", zIndex: "unset", color: "white", fontSize: "18px", borderBottom: "0px solid rgb(255, 255, 255)", cursor: "pointer" } as CSSProperties} data-site-import-responsive="1641">
-      											Indore										</p>
+                      <p style={{ color: "white", fontSize: "18px", margin: "0", cursor: "pointer" }}>Indore</p>
                       <span className={"icon-angle-down"} style={{ fontSize: "15px", color: "rgb(255, 255, 255)", marginLeft: "6px", cursor: "pointer" }} />
                     </span>
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* 3 & 4. Event Type Preview (Chips directly below search + Single animated preview card) */}
+            <EventTypePreview
+              onCategoryFilterPreFill={(category) => {
+                setSearchText(category);
+              }}
+              onCardActionClick={(item) => {
+                window.location.href = `/indore?q=${encodeURIComponent(item.banner)}`;
+              }}
+            />
+
+            {/* 5. Hero CTA Buttons (Desktop: Left Col / Mobile: Order 5) */}
+            <div className={"vibe-hero-ctas"} style={{ gridArea: "ctas" }}>
+              <a href="/manage/create.php?ref=hero" className={"vibe-cta-primary"}>
+                + Host an Event
+              </a>
+              <a href="/indore" className={"vibe-cta-secondary"}>
+                Explore Indore Events
+              </a>
             </div>
           </div>
         </div>
@@ -177,24 +202,7 @@ function Index() {
             />
           </div>
 
-          {/* Feature Highlights */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "16px", marginTop: "32px", textAlign: "left" }}>
-            <div style={{ backgroundColor: "#F8FAFC", padding: "16px 20px", borderRadius: "12px", border: "1px solid #E2E8F0" }}>
-              <div style={{ fontSize: "20px", marginBottom: "6px" }}>⚡</div>
-              <div style={{ fontSize: "14px", fontWeight: "700", color: "#1E293B", marginBottom: "4px" }}>Instant Event Setup</div>
-              <div style={{ fontSize: "12px", color: "#64748B", lineHeight: "1.5" }}>Post a match, gig, or workshop in 60 seconds with ticketing and passes.</div>
-            </div>
-            <div style={{ backgroundColor: "#F8FAFC", padding: "16px 20px", borderRadius: "12px", border: "1px solid #E2E8F0" }}>
-              <div style={{ fontSize: "20px", marginBottom: "6px" }}>👥</div>
-              <div style={{ fontSize: "14px", fontWeight: "700", color: "#1E293B", marginBottom: "4px" }}>Local Crowd Reach</div>
-              <div style={{ fontSize: "12px", color: "#64748B", lineHeight: "1.5" }}>Connect with local enthusiasts actively looking for things to do.</div>
-            </div>
-            <div style={{ backgroundColor: "#F8FAFC", padding: "16px 20px", borderRadius: "12px", border: "1px solid #E2E8F0" }}>
-              <div style={{ fontSize: "20px", marginBottom: "6px" }}>🎟️</div>
-              <div style={{ fontSize: "14px", fontWeight: "700", color: "#1E293B", marginBottom: "4px" }}>Seamless Check-ins</div>
-              <div style={{ fontSize: "12px", color: "#64748B", lineHeight: "1.5" }}>Instant digital QR passes, real-time attendee lists, and smooth payouts.</div>
-            </div>
-          </div>
+
         </div>
       </div>
 
@@ -1904,6 +1912,521 @@ function Index() {
           </div>
         </div>
       </div>
+      <div className={"\x72ow-fluid fold-top worldwide_t_events"} style={{ borderBottom: "0px solid rgb(221, 221, 221)" } as CSSProperties}>
+        <div className={"\x63ontainer"}>
+          <div>
+            <div className={"head-label"}>
+              <h2 className={"headstyle-1"}>Events Trending Worldwide</h2>
+            </div>
+            <ul className={"event-card-parent event-card-scrollable show4card"}>
+              <li className={"event-card event-card-link"}>
+                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/2e95892f05553cd4.avif\")" }}>
+                  <div className={"ellipsis-btn-join-event"}>
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
+                  </div>
+                </div>
+                <div className={"meta"}>
+                  <div className={"meta-top"}>
+                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
+                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
+      													Mon, 02 Nov • 12:00 AM											</div>
+                    </div>
+                  </div>
+                  <div className={"meta-middle"}>
+                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
+                      <a href="/dubai/dubai-fintech-summit-tickets/80001500382218?ref=hp-worldwide-event" target="_blank" title="Dubai Fintech Summit">
+                        <h3>
+      							Dubai Fintech Summit						</h3>
+                      </a>
+                    </div>
+                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
+      											Dubai, United Arab Emirates									</div>
+                  </div>
+                  <div className={"meta-bottom"}>
+                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }} />
+                    <div className={"price-container"} />
+                  </div>
+                </div>
+              </li>
+              <li className={"event-card event-card-link"}>
+                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/02c7205684aba6a1.avif\")" }}>
+                  <span className={"c-ribbon"}>Featured</span>
+                  <div className={"ellipsis-btn-join-event"}>
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
+                  </div>
+                </div>
+                <div className={"meta"}>
+                  <div className={"meta-top"}>
+                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
+                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
+      													Sun, 01 Nov • 07:00 PM + 95 more											</div>
+                    </div>
+                  </div>
+                  <div className={"meta-middle"}>
+                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
+                      <a href="/san-francisco/golden-gate-comedy-night-tickets/80002857950372?ref=hp-worldwide-event" target="_blank" title="Golden Gate Comedy Night">
+                        <h3>
+      							Golden Gate Comedy Night						</h3>
+                      </a>
+                    </div>
+                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
+      											San Francisco, United States									</div>
+                  </div>
+                  <div className={"meta-bottom"}>
+                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }}>
+                      <div className={"\x74op-3-avatars"} style={{ display: "flex", alignItems: "center", marginRight: "16px" }}><img className={"avatar-img lazy"} data-src="https://cdn-az.allevents.in/banners/2a8e0187a982adec182731321024efd0-rimg-w300-h300-gmir.png" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/aac4991994a59479.webp" /><img className={"avatar-img lazy"} data-src="https://cdn-az.allevents.in/banners/2a8e0187a982adec182731321024efd0-rimg-w300-h300-gmir.png" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/aac4991994a59479.webp" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/d164c59101eeca892fd926b1e515ae2d?s=100&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/1440e35fd1f15a46.png" /></div>
+                      <div className={"interested"}>
+                        <span>583+ Interested</span>
+                      </div>
+                    </div>
+                    <div className={"divider"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-300)", margin: "0px 10px" }}>|</div>
+                    <div className={"price-container"}>
+                      <span className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>{"\n\t\t\t\t\t\t\t\t\t\t"}<i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} />{"\n\t\t\t\t\t\t\t\t\t\t"}<span>
+      											USD 20										</span>{"\n\t\t\t\t\t\t\t\t\t"}</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li className={"event-card event-card-link"}>
+                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/b8c20c58f31aae7c.avif\")" }}>
+                  <div className={"ellipsis-btn-join-event"}>
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
+                  </div>
+                </div>
+                <div className={"meta"}>
+                  <div className={"meta-top"}>
+                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
+                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
+      													Sun, 01 Nov • 03:00 PM											</div>
+                    </div>
+                  </div>
+                  <div className={"meta-middle"}>
+                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
+                      <a href="/frisco/frisco-diwali-mela-2026-india-festival-of-lights-kaleidoscope-park-tickets/80004112128573?ref=hp-worldwide-event" target="_blank" title="Frisco Diwali Mela 2026 - India Festival of Lights - Kaleidoscope Park">
+                        <h3>
+      							Frisco Diwali Mela 2026 - India Festival of Lights - Kaleidoscope Park						</h3>
+                      </a>
+                    </div>
+                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
+      											Frisco, United States									</div>
+                  </div>
+                  <div className={"meta-bottom"}>
+                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }}>
+                      <div className={"\x74op-3-avatars"} style={{ display: "flex", alignItems: "center", marginRight: "16px" }}><img className={"avatar-img lazy"} data-src="https://lh3.googleusercontent.com/a/ACg8ocISApaRMt4roVcbOE2tDaxRfRNBhqR2Znw-shJ5Qas4i7gGjVW2eQ=s96-c?sz=200" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/a9f7f06905d8b05c.jpg" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/27161d8c8828a4b8873ff95248e84665?s=800&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/d21143941473afbb.png" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/f86641c3a205ea46ced5e31e5ab95211?s=100&d=identicon&r=g?sz=200"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/2c5201022833f977.png" /></div>
+                      <div className={"interested"}>
+                        <span>29+ Interested</span>
+                      </div>
+                    </div>
+                    <div className={"divider"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-300)", margin: "0px 10px" }}>|</div>
+                    <div className={"price-container"}>
+                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li className={"event-card event-card-link"}>
+                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/42c702df3c553bb4.avif\")" }}>
+                  <div className={"ellipsis-btn-join-event"}>
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
+                  </div>
+                </div>
+                <div className={"meta"}>
+                  <div className={"meta-top"}>
+                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
+                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
+      													Mon, 02 Nov • 10:00 PM											</div>
+                    </div>
+                  </div>
+                  <div className={"meta-middle"}>
+                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
+                      <a href="/abu-dhabi/adipec-2026-booth-builder-abu-dhabi-custom-stand-design-uae-tickets/80003293874819?ref=hp-worldwide-event" target="_blank" title="ADIPEC 2026 Booth Builder Abu Dhabi  Custom Stand Design UAE">
+                        <h3>
+      							ADIPEC 2026 Booth Builder Abu Dhabi | Custom Stand Design UAE						</h3>
+                      </a>
+                    </div>
+                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
+      											Abu Dhabi, United Arab Emirates									</div>
+                  </div>
+                  <div className={"meta-bottom"}>
+                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }}>
+                      <div className={"\x74op-3-avatars"} style={{ display: "flex", alignItems: "center", marginRight: "16px" }}><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/27161d8c8828a4b8873ff95248e84665?s=800&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/d21143941473afbb.png" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/70d0b388479b4ac63933d70bea8c7dcd?s=100&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/adc21d17c13f8c13.png" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/9ebf60829e02624278409089e9803f75?s=100&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/6dd7e1483cb39670.png" /></div>
+                      <div className={"interested"}>
+                        <span>18+ Interested</span>
+                      </div>
+                    </div>
+                    <div className={"divider"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-300)", margin: "0px 10px" }}>|</div>
+                    <div className={"price-container"}>
+                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li className={"event-card event-card-link"}>
+                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/ce8e0d3582b98275.avif\")" }}>
+                  <div className={"ellipsis-btn-join-event"}>
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
+                  </div>
+                </div>
+                <div className={"meta"}>
+                  <div className={"meta-top"}>
+                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
+                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
+      													Sat, 14 Nov • 08:30 PM											</div>
+                    </div>
+                  </div>
+                  <div className={"meta-middle"}>
+                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
+                      <a href="/ahmedabad/after-hours-2-with-pbt-a-sleepover-for-adults-except-you-go-home-tickets/80003158561913?ref=hp-worldwide-event" target="_blank" title="AFTER HOURS 2 with PBT (A sleepover for adults except you go home).">
+                        <h3>
+      							AFTER HOURS 2 with PBT (A sleepover for adults, except you go home).						</h3>
+                      </a>
+                    </div>
+                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
+      											Ahmedabad, India									</div>
+                  </div>
+                  <div className={"meta-bottom"}>
+                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }}>
+                      <div className={"\x74op-3-avatars"} style={{ display: "flex", alignItems: "center", marginRight: "16px" }}><img className={"avatar-img lazy"} data-src="https://lh3.googleusercontent.com/a/ACg8ocKeXn9z9fhB1Bp4pi4EWBgdwz0oENG3LfH1cfCM8RKdmWIv8UPu=s96-c?sz=200" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/57a60c25229891ce.jpg" /><img className={"avatar-img lazy"} data-src="https://lh3.googleusercontent.com/a/ACg8ocIOfucwI5nCd2YiC7QK0bjI7LhDFO5e1X2LhMae2cfxaFCoWw=s96-c?sz=200" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/67971d0da0dc49cf.png" /><img className={"avatar-img lazy"} data-src="https://lh3.googleusercontent.com/a/ACg8ocL8nDKowAmvfmJJ18Ye6YcquJWtGvZe-C2YACaGsMFsiBViWAGcHQ=s96-c?sz=200" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/f5ed8ad4f5dbbe4f.jpg" /></div>
+                      <div className={"interested"}>
+                        <span>40+ Interested</span>
+                      </div>
+                    </div>
+                    <div className={"divider"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-300)", margin: "0px 10px" }}>|</div>
+                    <div className={"price-container"}>
+                      <span className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>{"\n\t\t\t\t\t\t\t\t\t\t"}<i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} />{"\n\t\t\t\t\t\t\t\t\t\t"}<span>
+      											INR 649										</span>{"\n\t\t\t\t\t\t\t\t\t"}</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li className={"event-card event-card-link"}>
+                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/c36c54f0a94ec3a5.avif\")" }}>
+                  <div className={"ellipsis-btn-join-event"}>
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
+                  </div>
+                </div>
+                <div className={"meta"}>
+                  <div className={"meta-top"}>
+                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
+                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
+      													Wed, 18 Nov • 10:00 AM											</div>
+                    </div>
+                  </div>
+                  <div className={"meta-middle"}>
+                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
+                      <a href="/bangkok/metalex-2026-tickets/80003039801371?ref=hp-worldwide-event" target="_blank" title="METALEX 2026">
+                        <h3>
+      							METALEX 2026						</h3>
+                      </a>
+                    </div>
+                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
+      											Bangkok, Thailand									</div>
+                  </div>
+                  <div className={"meta-bottom"}>
+                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }}>
+                      <div className={"interested"}>
+                        <span>4+ Interested</span>
+                      </div>
+                    </div>
+                    <div className={"divider"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-300)", margin: "0px 10px" }}>|</div>
+                    <div className={"price-container"}>
+                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li className={"event-card event-card-link"}>
+                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/813facb7cd342a58.avif\")" }}>
+                  <div className={"ellipsis-btn-join-event"}>
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
+                  </div>
+                </div>
+                <div className={"meta"}>
+                  <div className={"meta-top"}>
+                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
+                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
+      													Mon, 16 Nov • 09:30 AM											</div>
+                    </div>
+                  </div>
+                  <div className={"meta-middle"}>
+                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
+                      <a href="/shanghai/interpack-china-2026-tickets/80003736560002?ref=hp-worldwide-event" target="_blank" title="interpack China 2026">
+                        <h3>
+      							interpack China 2026						</h3>
+                      </a>
+                    </div>
+                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
+      											Shanghai, China									</div>
+                  </div>
+                  <div className={"meta-bottom"}>
+                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }} />
+                    <div className={"price-container"}>
+                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li className={"event-card event-card-link"}>
+                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/2780c4e3ccfcf890.avif\")" }}>
+                  <div className={"ellipsis-btn-join-event"}>
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
+                  </div>
+                </div>
+                <div className={"meta"}>
+                  <div className={"meta-top"}>
+                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
+                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
+      													Sat, 07 Nov • 10:00 AM											</div>
+                    </div>
+                  </div>
+                  <div className={"meta-middle"}>
+                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
+                      <a href="/calgary/2nd-annual-christmas-at-rockpointe-church-market-bearspaw-tickets/80006938899731?ref=hp-worldwide-event" target="_blank" title="2nd Annual Christmas at RockPointe Church Market - Bearspaw">
+                        <h3>
+      							2nd Annual Christmas at RockPointe Church Market - Bearspaw						</h3>
+                      </a>
+                    </div>
+                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
+      											Calgary, Canada									</div>
+                  </div>
+                  <div className={"meta-bottom"}>
+                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }}>
+                      <div className={"\x74op-3-avatars"} style={{ display: "flex", alignItems: "center", marginRight: "16px" }}><img className={"avatar-img lazy"} data-src="https://lh3.googleusercontent.com/a/ACg8ocJzMu93ERN-fsCLSNI-6fURNaLSMC80AzpowqKqaWiL1suP2A=s96-c?sz=200" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/7775f68764485fcc.png" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/484a75e037f391b3e257a8ebf58ed499?s=100&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/7a91dbf0d042e0dd.png" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/3e680e3419607c6b62897caed9c90627?s=800&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/8b6b8f7bc220817e.png" /></div>
+                      <div className={"interested"}>
+                        <span>74+ Interested</span>
+                      </div>
+                    </div>
+                    <div className={"divider"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-300)", margin: "0px 10px" }}>|</div>
+                    <div className={"price-container"}>
+                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li className={"event-card event-card-link"}>
+                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/64ae391c90bbca1f.avif\")" }}>
+                  <div className={"ellipsis-btn-join-event"}>
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
+                  </div>
+                </div>
+                <div className={"meta"}>
+                  <div className={"meta-top"}>
+                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
+                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
+      													Mon, 02 Nov • 09:30 PM											</div>
+                    </div>
+                  </div>
+                  <div className={"meta-middle"}>
+                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
+                      <a href="/ahmedabad/monday-joke-lab-comedy-open-mic-tickets/80004024621748?ref=hp-worldwide-event" target="_blank" title="Monday Joke Lab - Comedy Open Mic">
+                        <h3>
+      							Monday Joke Lab - Comedy Open Mic						</h3>
+                      </a>
+                    </div>
+                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
+      											Ahmedabad, India									</div>
+                  </div>
+                  <div className={"meta-bottom"}>
+                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }}>
+                      <div className={"\x74op-3-avatars"} style={{ display: "flex", alignItems: "center", marginRight: "16px" }}><img className={"avatar-img lazy"} data-src="https://lh3.googleusercontent.com/a/ACg8ocKwqpM7e9Ykv8AbnKRgyfitngM_5Fxo9XJz3oO-E9sipqYfcjzfKw=s96-c?sz=200" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/045ebc8355e2f379.jpg" /><img className={"avatar-img lazy"} data-src="https://lh3.googleusercontent.com/a/ACg8ocJ_cbvZ07Sz-5YprQnSnvr6YY04CfNDzFUVJqCxn75ZDy_UgLc=s96-c?sz=200" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/a37be5511814629c.png" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/8063ba5ae9fd3b24ed4061c097b7c67b?s=100&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/5e2a6adad29a701c.png" /></div>
+                      <div className={"interested"}>
+                        <span>9+ Interested</span>
+                      </div>
+                    </div>
+                    <div className={"divider"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-300)", margin: "0px 10px" }}>|</div>
+                    <div className={"price-container"}>
+                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li className={"event-card event-card-link"}>
+                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/508d612e521f3311.avif\")" }}>
+                  <div className={"ellipsis-btn-join-event"}>
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
+                  </div>
+                </div>
+                <div className={"meta"}>
+                  <div className={"meta-top"}>
+                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
+                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
+      													Tue, 10 Nov • 10:00 AM											</div>
+                    </div>
+                  </div>
+                  <div className={"meta-middle"}>
+                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
+                      <a href="/tashkent/22nd-international-exhibition-transport-and-logistics-translogistica-uzbekistan-2026-tickets/80001320795115?ref=hp-worldwide-event" target="_blank" title={"22nd International Exhibition &quotTransport and Logistics  TransLogistica Uzbekistan 2026\""}>
+                        <h3>
+      							22nd International Exhibition "Transport and Logistics – TransLogistica Uzbekistan 2026"						</h3>
+                      </a>
+                    </div>
+                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
+      											Tashkent, Uzbekistan									</div>
+                  </div>
+                  <div className={"meta-bottom"}>
+                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }} />
+                    <div className={"price-container"}>
+                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li className={"event-card event-card-link"}>
+                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/200125fa6f1fc49a.avif\")" }}>
+                  <div className={"ellipsis-btn-join-event"}>
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
+                  </div>
+                </div>
+                <div className={"meta"}>
+                  <div className={"meta-top"}>
+                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
+                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
+      													Sun, 01 Nov • 08:30 PM											</div>
+                    </div>
+                  </div>
+                  <div className={"meta-middle"}>
+                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
+                      <a href="/online/overview-session-of-the-ai-powered-ux-ui-course-tickets/80003582926304?ref=hp-worldwide-event" target="_blank" title="Overview session of the AI-Powered UXUI course">
+                        <h3>
+      							Overview session of the AI-Powered UX/UI course						</h3>
+                      </a>
+                    </div>
+                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
+      											Online									</div>
+                  </div>
+                  <div className={"meta-bottom"}>
+                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }}>
+                      <div className={"\x74op-3-avatars"} style={{ display: "flex", alignItems: "center", marginRight: "16px" }}><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/7e8a0c924644fc710e547bf7c77b4001?s=100&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/6e1eb6828d61399c.png" /><img className={"avatar-img lazy"} data-src="https://lh3.googleusercontent.com/a/ACg8ocIqhaguhXRaTbul_WSsasxxr5yDfjaGwACrmaDzwG56beOUNEIx=s96-c?sz=200" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/58cbdf70e45bbefc.jpg" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/d4a712fca27c82634b102dd89abef4ee?s=100&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/e5ee266616358846.png" /></div>
+                      <div className={"interested"}>
+                        <span>31+ Interested</span>
+                      </div>
+                    </div>
+                    <div className={"divider"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-300)", margin: "0px 10px" }}>|</div>
+                    <div className={"price-container"}>
+                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li className={"event-card event-card-link"}>
+                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/c7d27ba8a2dcbb61.avif\")" }}>
+                  <div className={"ellipsis-btn-join-event"}>
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <div className={"interest-animate"} />
+                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
+                  </div>
+                </div>
+                <div className={"meta"}>
+                  <div className={"meta-top"}>
+                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
+                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
+      													Tue, 03 Nov • 10:00 AM											</div>
+                    </div>
+                  </div>
+                  <div className={"meta-middle"}>
+                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
+                      <a href="/bangkok/cosmex-2026-tickets/80003796903727?ref=hp-worldwide-event" target="_blank" title="COSMEX 2026">
+                        <h3>
+      							COSMEX 2026						</h3>
+                      </a>
+                    </div>
+                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
+      											Bangkok, Thailand									</div>
+                  </div>
+                  <div className={"meta-bottom"}>
+                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }} />
+                    <div className={"price-container"}>
+                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <div className={"memories-wrapper"}>
         <div>
           <div className={"memories-header"}>
@@ -2572,521 +3095,6 @@ function Index() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div className={"\x72ow-fluid fold-top worldwide_t_events"} style={{ borderBottom: "0px solid rgb(221, 221, 221)" } as CSSProperties}>
-        <div className={"\x63ontainer"}>
-          <div>
-            <div className={"head-label"}>
-              <h2 className={"headstyle-1"}>Events Trending Worldwide</h2>
-            </div>
-            <ul className={"event-card-parent event-card-scrollable show4card"}>
-              <li className={"event-card event-card-link"}>
-                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/2e95892f05553cd4.avif\")" }}>
-                  <div className={"ellipsis-btn-join-event"}>
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
-                  </div>
-                </div>
-                <div className={"meta"}>
-                  <div className={"meta-top"}>
-                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
-                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
-      													Mon, 02 Nov • 12:00 AM											</div>
-                    </div>
-                  </div>
-                  <div className={"meta-middle"}>
-                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/dubai/dubai-fintech-summit-tickets/80001500382218?ref=hp-worldwide-event" target="_blank" title="Dubai Fintech Summit">
-                        <h3>
-      							Dubai Fintech Summit						</h3>
-                      </a>
-                    </div>
-                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
-      											Dubai, United Arab Emirates									</div>
-                  </div>
-                  <div className={"meta-bottom"}>
-                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }} />
-                    <div className={"price-container"} />
-                  </div>
-                </div>
-              </li>
-              <li className={"event-card event-card-link"}>
-                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/02c7205684aba6a1.avif\")" }}>
-                  <span className={"c-ribbon"}>Featured</span>
-                  <div className={"ellipsis-btn-join-event"}>
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
-                  </div>
-                </div>
-                <div className={"meta"}>
-                  <div className={"meta-top"}>
-                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
-                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
-      													Sun, 01 Nov • 07:00 PM + 95 more											</div>
-                    </div>
-                  </div>
-                  <div className={"meta-middle"}>
-                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/san-francisco/golden-gate-comedy-night-tickets/80002857950372?ref=hp-worldwide-event" target="_blank" title="Golden Gate Comedy Night">
-                        <h3>
-      							Golden Gate Comedy Night						</h3>
-                      </a>
-                    </div>
-                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
-      											San Francisco, United States									</div>
-                  </div>
-                  <div className={"meta-bottom"}>
-                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }}>
-                      <div className={"\x74op-3-avatars"} style={{ display: "flex", alignItems: "center", marginRight: "16px" }}><img className={"avatar-img lazy"} data-src="https://cdn-az.allevents.in/banners/2a8e0187a982adec182731321024efd0-rimg-w300-h300-gmir.png" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/aac4991994a59479.webp" /><img className={"avatar-img lazy"} data-src="https://cdn-az.allevents.in/banners/2a8e0187a982adec182731321024efd0-rimg-w300-h300-gmir.png" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/aac4991994a59479.webp" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/d164c59101eeca892fd926b1e515ae2d?s=100&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/1440e35fd1f15a46.png" /></div>
-                      <div className={"interested"}>
-                        <span>583+ Interested</span>
-                      </div>
-                    </div>
-                    <div className={"divider"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-300)", margin: "0px 10px" }}>|</div>
-                    <div className={"price-container"}>
-                      <span className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>{"\n\t\t\t\t\t\t\t\t\t\t"}<i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} />{"\n\t\t\t\t\t\t\t\t\t\t"}<span>
-      											USD 20										</span>{"\n\t\t\t\t\t\t\t\t\t"}</span>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li className={"event-card event-card-link"}>
-                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/b8c20c58f31aae7c.avif\")" }}>
-                  <div className={"ellipsis-btn-join-event"}>
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
-                  </div>
-                </div>
-                <div className={"meta"}>
-                  <div className={"meta-top"}>
-                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
-                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
-      													Sun, 01 Nov • 03:00 PM											</div>
-                    </div>
-                  </div>
-                  <div className={"meta-middle"}>
-                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/frisco/frisco-diwali-mela-2026-india-festival-of-lights-kaleidoscope-park-tickets/80004112128573?ref=hp-worldwide-event" target="_blank" title="Frisco Diwali Mela 2026 - India Festival of Lights - Kaleidoscope Park">
-                        <h3>
-      							Frisco Diwali Mela 2026 - India Festival of Lights - Kaleidoscope Park						</h3>
-                      </a>
-                    </div>
-                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
-      											Frisco, United States									</div>
-                  </div>
-                  <div className={"meta-bottom"}>
-                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }}>
-                      <div className={"\x74op-3-avatars"} style={{ display: "flex", alignItems: "center", marginRight: "16px" }}><img className={"avatar-img lazy"} data-src="https://lh3.googleusercontent.com/a/ACg8ocISApaRMt4roVcbOE2tDaxRfRNBhqR2Znw-shJ5Qas4i7gGjVW2eQ=s96-c?sz=200" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/a9f7f06905d8b05c.jpg" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/27161d8c8828a4b8873ff95248e84665?s=800&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/d21143941473afbb.png" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/f86641c3a205ea46ced5e31e5ab95211?s=100&d=identicon&r=g?sz=200"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/2c5201022833f977.png" /></div>
-                      <div className={"interested"}>
-                        <span>29+ Interested</span>
-                      </div>
-                    </div>
-                    <div className={"divider"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-300)", margin: "0px 10px" }}>|</div>
-                    <div className={"price-container"}>
-                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li className={"event-card event-card-link"}>
-                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/42c702df3c553bb4.avif\")" }}>
-                  <div className={"ellipsis-btn-join-event"}>
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
-                  </div>
-                </div>
-                <div className={"meta"}>
-                  <div className={"meta-top"}>
-                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
-                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
-      													Mon, 02 Nov • 10:00 PM											</div>
-                    </div>
-                  </div>
-                  <div className={"meta-middle"}>
-                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/abu-dhabi/adipec-2026-booth-builder-abu-dhabi-custom-stand-design-uae-tickets/80003293874819?ref=hp-worldwide-event" target="_blank" title="ADIPEC 2026 Booth Builder Abu Dhabi  Custom Stand Design UAE">
-                        <h3>
-      							ADIPEC 2026 Booth Builder Abu Dhabi | Custom Stand Design UAE						</h3>
-                      </a>
-                    </div>
-                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
-      											Abu Dhabi, United Arab Emirates									</div>
-                  </div>
-                  <div className={"meta-bottom"}>
-                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }}>
-                      <div className={"\x74op-3-avatars"} style={{ display: "flex", alignItems: "center", marginRight: "16px" }}><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/27161d8c8828a4b8873ff95248e84665?s=800&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/d21143941473afbb.png" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/70d0b388479b4ac63933d70bea8c7dcd?s=100&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/adc21d17c13f8c13.png" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/9ebf60829e02624278409089e9803f75?s=100&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/6dd7e1483cb39670.png" /></div>
-                      <div className={"interested"}>
-                        <span>18+ Interested</span>
-                      </div>
-                    </div>
-                    <div className={"divider"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-300)", margin: "0px 10px" }}>|</div>
-                    <div className={"price-container"}>
-                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li className={"event-card event-card-link"}>
-                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/ce8e0d3582b98275.avif\")" }}>
-                  <div className={"ellipsis-btn-join-event"}>
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
-                  </div>
-                </div>
-                <div className={"meta"}>
-                  <div className={"meta-top"}>
-                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
-                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
-      													Sat, 14 Nov • 08:30 PM											</div>
-                    </div>
-                  </div>
-                  <div className={"meta-middle"}>
-                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/ahmedabad/after-hours-2-with-pbt-a-sleepover-for-adults-except-you-go-home-tickets/80003158561913?ref=hp-worldwide-event" target="_blank" title="AFTER HOURS 2 with PBT (A sleepover for adults except you go home).">
-                        <h3>
-      							AFTER HOURS 2 with PBT (A sleepover for adults, except you go home).						</h3>
-                      </a>
-                    </div>
-                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
-      											Ahmedabad, India									</div>
-                  </div>
-                  <div className={"meta-bottom"}>
-                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }}>
-                      <div className={"\x74op-3-avatars"} style={{ display: "flex", alignItems: "center", marginRight: "16px" }}><img className={"avatar-img lazy"} data-src="https://lh3.googleusercontent.com/a/ACg8ocKeXn9z9fhB1Bp4pi4EWBgdwz0oENG3LfH1cfCM8RKdmWIv8UPu=s96-c?sz=200" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/57a60c25229891ce.jpg" /><img className={"avatar-img lazy"} data-src="https://lh3.googleusercontent.com/a/ACg8ocIOfucwI5nCd2YiC7QK0bjI7LhDFO5e1X2LhMae2cfxaFCoWw=s96-c?sz=200" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/67971d0da0dc49cf.png" /><img className={"avatar-img lazy"} data-src="https://lh3.googleusercontent.com/a/ACg8ocL8nDKowAmvfmJJ18Ye6YcquJWtGvZe-C2YACaGsMFsiBViWAGcHQ=s96-c?sz=200" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/f5ed8ad4f5dbbe4f.jpg" /></div>
-                      <div className={"interested"}>
-                        <span>40+ Interested</span>
-                      </div>
-                    </div>
-                    <div className={"divider"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-300)", margin: "0px 10px" }}>|</div>
-                    <div className={"price-container"}>
-                      <span className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>{"\n\t\t\t\t\t\t\t\t\t\t"}<i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} />{"\n\t\t\t\t\t\t\t\t\t\t"}<span>
-      											INR 649										</span>{"\n\t\t\t\t\t\t\t\t\t"}</span>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li className={"event-card event-card-link"}>
-                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/c36c54f0a94ec3a5.avif\")" }}>
-                  <div className={"ellipsis-btn-join-event"}>
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
-                  </div>
-                </div>
-                <div className={"meta"}>
-                  <div className={"meta-top"}>
-                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
-                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
-      													Wed, 18 Nov • 10:00 AM											</div>
-                    </div>
-                  </div>
-                  <div className={"meta-middle"}>
-                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/bangkok/metalex-2026-tickets/80003039801371?ref=hp-worldwide-event" target="_blank" title="METALEX 2026">
-                        <h3>
-      							METALEX 2026						</h3>
-                      </a>
-                    </div>
-                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
-      											Bangkok, Thailand									</div>
-                  </div>
-                  <div className={"meta-bottom"}>
-                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }}>
-                      <div className={"interested"}>
-                        <span>4+ Interested</span>
-                      </div>
-                    </div>
-                    <div className={"divider"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-300)", margin: "0px 10px" }}>|</div>
-                    <div className={"price-container"}>
-                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li className={"event-card event-card-link"}>
-                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/813facb7cd342a58.avif\")" }}>
-                  <div className={"ellipsis-btn-join-event"}>
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
-                  </div>
-                </div>
-                <div className={"meta"}>
-                  <div className={"meta-top"}>
-                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
-                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
-      													Mon, 16 Nov • 09:30 AM											</div>
-                    </div>
-                  </div>
-                  <div className={"meta-middle"}>
-                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/shanghai/interpack-china-2026-tickets/80003736560002?ref=hp-worldwide-event" target="_blank" title="interpack China 2026">
-                        <h3>
-      							interpack China 2026						</h3>
-                      </a>
-                    </div>
-                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
-      											Shanghai, China									</div>
-                  </div>
-                  <div className={"meta-bottom"}>
-                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }} />
-                    <div className={"price-container"}>
-                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li className={"event-card event-card-link"}>
-                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/2780c4e3ccfcf890.avif\")" }}>
-                  <div className={"ellipsis-btn-join-event"}>
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
-                  </div>
-                </div>
-                <div className={"meta"}>
-                  <div className={"meta-top"}>
-                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
-                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
-      													Sat, 07 Nov • 10:00 AM											</div>
-                    </div>
-                  </div>
-                  <div className={"meta-middle"}>
-                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/calgary/2nd-annual-christmas-at-rockpointe-church-market-bearspaw-tickets/80006938899731?ref=hp-worldwide-event" target="_blank" title="2nd Annual Christmas at RockPointe Church Market - Bearspaw">
-                        <h3>
-      							2nd Annual Christmas at RockPointe Church Market - Bearspaw						</h3>
-                      </a>
-                    </div>
-                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
-      											Calgary, Canada									</div>
-                  </div>
-                  <div className={"meta-bottom"}>
-                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }}>
-                      <div className={"\x74op-3-avatars"} style={{ display: "flex", alignItems: "center", marginRight: "16px" }}><img className={"avatar-img lazy"} data-src="https://lh3.googleusercontent.com/a/ACg8ocJzMu93ERN-fsCLSNI-6fURNaLSMC80AzpowqKqaWiL1suP2A=s96-c?sz=200" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/7775f68764485fcc.png" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/484a75e037f391b3e257a8ebf58ed499?s=100&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/7a91dbf0d042e0dd.png" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/3e680e3419607c6b62897caed9c90627?s=800&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/8b6b8f7bc220817e.png" /></div>
-                      <div className={"interested"}>
-                        <span>74+ Interested</span>
-                      </div>
-                    </div>
-                    <div className={"divider"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-300)", margin: "0px 10px" }}>|</div>
-                    <div className={"price-container"}>
-                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li className={"event-card event-card-link"}>
-                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/64ae391c90bbca1f.avif\")" }}>
-                  <div className={"ellipsis-btn-join-event"}>
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
-                  </div>
-                </div>
-                <div className={"meta"}>
-                  <div className={"meta-top"}>
-                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
-                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
-      													Mon, 02 Nov • 09:30 PM											</div>
-                    </div>
-                  </div>
-                  <div className={"meta-middle"}>
-                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/ahmedabad/monday-joke-lab-comedy-open-mic-tickets/80004024621748?ref=hp-worldwide-event" target="_blank" title="Monday Joke Lab - Comedy Open Mic">
-                        <h3>
-      							Monday Joke Lab - Comedy Open Mic						</h3>
-                      </a>
-                    </div>
-                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
-      											Ahmedabad, India									</div>
-                  </div>
-                  <div className={"meta-bottom"}>
-                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }}>
-                      <div className={"\x74op-3-avatars"} style={{ display: "flex", alignItems: "center", marginRight: "16px" }}><img className={"avatar-img lazy"} data-src="https://lh3.googleusercontent.com/a/ACg8ocKwqpM7e9Ykv8AbnKRgyfitngM_5Fxo9XJz3oO-E9sipqYfcjzfKw=s96-c?sz=200" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/045ebc8355e2f379.jpg" /><img className={"avatar-img lazy"} data-src="https://lh3.googleusercontent.com/a/ACg8ocJ_cbvZ07Sz-5YprQnSnvr6YY04CfNDzFUVJqCxn75ZDy_UgLc=s96-c?sz=200" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/a37be5511814629c.png" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/8063ba5ae9fd3b24ed4061c097b7c67b?s=100&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/5e2a6adad29a701c.png" /></div>
-                      <div className={"interested"}>
-                        <span>9+ Interested</span>
-                      </div>
-                    </div>
-                    <div className={"divider"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-300)", margin: "0px 10px" }}>|</div>
-                    <div className={"price-container"}>
-                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li className={"event-card event-card-link"}>
-                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/508d612e521f3311.avif\")" }}>
-                  <div className={"ellipsis-btn-join-event"}>
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
-                  </div>
-                </div>
-                <div className={"meta"}>
-                  <div className={"meta-top"}>
-                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
-                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
-      													Tue, 10 Nov • 10:00 AM											</div>
-                    </div>
-                  </div>
-                  <div className={"meta-middle"}>
-                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/tashkent/22nd-international-exhibition-transport-and-logistics-translogistica-uzbekistan-2026-tickets/80001320795115?ref=hp-worldwide-event" target="_blank" title={"22nd International Exhibition &quotTransport and Logistics  TransLogistica Uzbekistan 2026\""}>
-                        <h3>
-      							22nd International Exhibition "Transport and Logistics – TransLogistica Uzbekistan 2026"						</h3>
-                      </a>
-                    </div>
-                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
-      											Tashkent, Uzbekistan									</div>
-                  </div>
-                  <div className={"meta-bottom"}>
-                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }} />
-                    <div className={"price-container"}>
-                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li className={"event-card event-card-link"}>
-                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/200125fa6f1fc49a.avif\")" }}>
-                  <div className={"ellipsis-btn-join-event"}>
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
-                  </div>
-                </div>
-                <div className={"meta"}>
-                  <div className={"meta-top"}>
-                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
-                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
-      													Sun, 01 Nov • 08:30 PM											</div>
-                    </div>
-                  </div>
-                  <div className={"meta-middle"}>
-                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/online/overview-session-of-the-ai-powered-ux-ui-course-tickets/80003582926304?ref=hp-worldwide-event" target="_blank" title="Overview session of the AI-Powered UXUI course">
-                        <h3>
-      							Overview session of the AI-Powered UX/UI course						</h3>
-                      </a>
-                    </div>
-                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
-      											Online									</div>
-                  </div>
-                  <div className={"meta-bottom"}>
-                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }}>
-                      <div className={"\x74op-3-avatars"} style={{ display: "flex", alignItems: "center", marginRight: "16px" }}><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/7e8a0c924644fc710e547bf7c77b4001?s=100&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/6e1eb6828d61399c.png" /><img className={"avatar-img lazy"} data-src="https://lh3.googleusercontent.com/a/ACg8ocIqhaguhXRaTbul_WSsasxxr5yDfjaGwACrmaDzwG56beOUNEIx=s96-c?sz=200" width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/58cbdf70e45bbefc.jpg" /><img className={"avatar-img lazy"} data-src={"https://www.gravatar.com/avatar/d4a712fca27c82634b102dd89abef4ee?s=100&d=identicon&r=g"} width="20" height="20" style={{ borderRadius: "50%", objectFit: "cover", marginRight: "-8px", border: "1px solid rgb(255, 255, 255)" }} alt="Attendee" loading="lazy" src="/site-assets/e5ee266616358846.png" /></div>
-                      <div className={"interested"}>
-                        <span>31+ Interested</span>
-                      </div>
-                    </div>
-                    <div className={"divider"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-300)", margin: "0px 10px" }}>|</div>
-                    <div className={"price-container"}>
-                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li className={"event-card event-card-link"}>
-                <div className={"banner-cont php-banner-cont lazy"} style={{ display: "block", backgroundImage: "url(\"/site-assets/c7d27ba8a2dcbb61.avif\")" }}>
-                  <div className={"ellipsis-btn-join-event"}>
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <div className={"interest-animate"} />
-                    <i className={"track icon-star-empty event-interested-action"} title="I'm interested" />
-                  </div>
-                </div>
-                <div className={"meta"}>
-                  <div className={"meta-top"}>
-                    <div className={"meta-top-info"} style={{ display: "flex", alignItems: "center", marginBottom: "6px" }}>
-                      <div className={"date"} style={{ fontSize: "13px", fontWeight: "400", color: "var(--gray-500)", marginRight: "10px", textTransform: "capitalize" }}>
-      													Tue, 03 Nov • 10:00 AM											</div>
-                    </div>
-                  </div>
-                  <div className={"meta-middle"}>
-                    <div className={"title"} style={{ overflowWrap: "break-word" }}>
-                      <a href="/bangkok/cosmex-2026-tickets/80003796903727?ref=hp-worldwide-event" target="_blank" title="COSMEX 2026">
-                        <h3>
-      							COSMEX 2026						</h3>
-                      </a>
-                    </div>
-                    <div className={"location dotdotted"} style={{ fontSize: "14px", lineHeight: "21px", fontWeight: "400", color: "var(--gray-500)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "12px" }}>
-      											Bangkok, Thailand									</div>
-                  </div>
-                  <div className={"meta-bottom"}>
-                    <div className={"interested-container"} style={{ display: "flex", alignItems: "center" }} />
-                    <div className={"price-container"}>
-                      <div className={"price"} style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><i className={"icon icon-ticket-empty"} style={{ fontSize: "14px", color: "var(--gray-700)" }} /><span>Free</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
@@ -4814,6 +4822,12 @@ function ImportedNavMainNavigation({ openCity }: { openCity: () => void }) {
       <ul className={"nav topuserinfomobile"}>
         <li className={"ae-top-visible-city li1"}>
           <a href="/indore">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}<div className={"ae-icon-marker new-svg-icon"} />{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}<span className={"toh city-select-width"}>Indore</span>{"\n\t\t\t\t\t\t                        \t\t"}<button onClick={e => { e.preventDefault(); openCity(); }} className={"city-select-button tltp mcity-select"}>{"\n\t\t\t\t\t\t                        \t\t"}<span className={"city-select-v-middle"}>Change City</span>{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}</button>{"\n\t\t\t\t\t\t\t\t\t\t\t\t"}</a>
+        </li>
+        <li className={"svg-item-box"}>
+          <a className={"e_main_title1 track"} href="/how-it-works" target="_blank" rel="noopener noreferrer">
+            <div className={"ae-icon-info new-svg-icon"} />
+            <span className={"e_nav_item"}>How it works</span>
+          </a>
         </li>
         <li className={"svg-item-box"}>
           <a className={"login-action e_main_title1 track"} href="#" id="login-top-mob">
