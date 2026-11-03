@@ -61,6 +61,13 @@ export function VibeGlobalNavbar() {
   const isCreate =
     pathname.startsWith("/create") || pathname.startsWith("/host");
 
+  // Listen for open-city-selector event triggered by homepage search bar
+  useEffect(() => {
+    const handleOpenCity = () => setCityOpen(true);
+    window.addEventListener("open-city-selector", handleOpenCity);
+    return () => window.removeEventListener("open-city-selector", handleOpenCity);
+  }, []);
+
   return (
     <>
       {/* 1. Global City Selector Modal */}
@@ -110,28 +117,38 @@ export function VibeGlobalNavbar() {
               className="vibe-nav-logo inline-flex items-center gap-1.5 select-none"
               title="Vibe - Home"
             >
+              {/* Light Mode Logo (Default Light) */}
               <img
                 className="logo logo-dark h-[30px] w-auto object-contain"
                 src="/site-assets/vibe-logo-dark.png"
                 alt="Vibe logo"
                 fetchPriority="high"
               />
+              {/* Dark Mode Logo (Ice White #F0F6FF text + Brightened Cobalt stroke #0038A8) */}
+              <img
+                className="logo logo-dark-mode h-[30px] w-auto object-contain"
+                src="/site-assets/vibe-logo-dark-mode.png"
+                alt="Vibe logo"
+                fetchPriority="high"
+              />
             </Link>
 
-            {/* Location Selector Pill */}
+            {/* Location Selector Pill (Display only - clicking disabled per user request) */}
             <div className="vibe-nav-location">
               <button
                 type="button"
-                onClick={() => setCityOpen(true)}
-                title={`${selectedCity} Events - Click to change city`}
-                aria-haspopup="dialog"
-                aria-expanded={cityOpen}
-                className="vibe-nav-city-btn group"
-                tabIndex={0}
+                onClick={(e) => {
+                  e.preventDefault();
+                  // No-op: Navbar location button click disabled
+                }}
+                title={`${selectedCity} Events`}
+                aria-haspopup="false"
+                className="vibe-nav-city-btn group cursor-default"
+                tabIndex={-1}
               >
                 <MapPin className="w-3.5 h-3.5 text-[#0066f5] shrink-0" />
                 <span className="vibe-nav-city-name">{selectedCity}</span>
-                <ChevronDown className="w-3 h-3 text-slate-400 group-hover:text-slate-600 shrink-0" />
+                <ChevronDown className="w-3 h-3 text-slate-400 shrink-0" />
               </button>
             </div>
           </div>
@@ -327,12 +344,7 @@ export function VibeGlobalNavbar() {
               </Link>
 
               <div className="pt-2 mt-2 border-t border-slate-100 flex flex-col gap-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    setCityOpen(true);
-                  }}
+                <div
                   className="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-800"
                 >
                   <span className="flex items-center gap-2 text-slate-600">
@@ -341,9 +353,8 @@ export function VibeGlobalNavbar() {
                   </span>
                   <span className="font-bold text-[#0066f5] flex items-center gap-1">
                     {selectedCity}
-                    <ChevronDown className="w-3 h-3 text-slate-400" />
                   </span>
-                </button>
+                </div>
 
                 <button
                   type="button"

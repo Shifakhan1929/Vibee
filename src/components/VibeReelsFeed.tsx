@@ -22,6 +22,8 @@ import {
   Volume2,
   VolumeX,
   Download,
+  Filter,
+  Check,
 } from "lucide-react";
 import { triggerPwaInstall } from "./AppInstallModal";
 
@@ -279,6 +281,7 @@ export function VibeReelsFeed() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedCity, setSelectedCity] = useState<string>("All Cities");
   const [categoryDropdownOpen, setCategoryDropdownOpen] = useState(false);
+  const [categoryDrawerOpen, setCategoryDrawerOpen] = useState(false);
   const [cityDropdownOpen, setCityDropdownOpen] = useState(false);
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -613,70 +616,149 @@ export function VibeReelsFeed() {
           </div>
         ) : (
           <div className="flex items-center justify-center gap-4 lg:gap-7 max-w-7xl w-full h-full max-h-[820px]">
-            {/* LEFT SIDE: Category Dropdown & Host a Vibe Button */}
-            <div className="hidden lg:flex w-[210px] rounded-[24px] bg-white/95 backdrop-blur-xl border border-[#dbe6f7] p-4 shadow-md flex-col gap-3 shrink-0 text-slate-800 self-start">
-              {/* Category Dropdown Menu */}
-              <div className="space-y-1.5">
-                <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
-                  <Flame className="w-4 h-4 text-[#0066f5]" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-800">Category</span>
-                </div>
-
-                <div className="relative pt-1">
-                  <button
-                    type="button"
-                    onClick={() => setCategoryDropdownOpen(!categoryDropdownOpen)}
-                    className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-800 shadow-xs transition-all cursor-pointer"
-                  >
-                    <span className="truncate">
-                      {CATEGORIES.find((c) => c.id === selectedCategory)?.label || "All vibes"}
-                    </span>
-                    <ChevronDown
-                      className={`w-3.5 h-3.5 text-slate-500 transition-transform duration-200 ${
-                        categoryDropdownOpen ? "rotate-180 text-[#0066f5]" : ""
-                      }`}
-                    />
-                  </button>
-
-                  {categoryDropdownOpen && (
-                    <div className="absolute left-0 top-full mt-1.5 w-full rounded-2xl bg-white border border-[#dbe6f7] shadow-xl p-1.5 z-50 animate-in fade-in zoom-in-95">
-                      {CATEGORIES.map((cat) => (
-                        <button
-                          key={cat.id}
-                          onClick={() => {
-                            setSelectedCategory(cat.id);
-                            setCategoryDropdownOpen(false);
-                            setCurrentIndex(0);
-                          }}
-                          type="button"
-                          className={`w-full text-left px-3 py-2 rounded-xl text-xs font-medium flex items-center justify-between transition-colors cursor-pointer ${
-                            selectedCategory === cat.id
-                              ? "bg-[#0066f5] text-white font-bold"
-                              : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"
-                          }`}
-                        >
-                          <span>{cat.label}</span>
-                          {selectedCategory === cat.id && (
-                            <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0" />
-                          )}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Host a Vibe Button (Directly below Category dropdown) */}
+            {/* FLOATING TRIGGER: Tap to open Category Drawer on Left */}
+            <div className="fixed top-[74px] left-3 sm:left-6 z-40">
               <button
-                onClick={() => setCreateVibeOpen(true)}
                 type="button"
-                className="w-full py-2.5 px-3 rounded-xl bg-[#0066f5] hover:bg-[#0052cc] text-white text-xs font-bold shadow-md hover:shadow-lg flex items-center justify-center gap-1.5 cursor-pointer transition-all active:scale-[0.98]"
-                title="Host a Vibe"
+                onClick={() => setCategoryDrawerOpen(true)}
+                className="flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-white/95 hover:bg-white backdrop-blur-md border border-[#dbe6f7] shadow-md hover:shadow-lg text-slate-800 text-xs font-bold transition-all hover:scale-105 active:scale-95 cursor-pointer group select-none"
+                title="Browse Categories & Filter"
               >
-                <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
-                <span>Host a Vibe</span>
+                <div className="w-5 h-5 rounded-lg bg-[#0066f5]/10 text-[#0066f5] flex items-center justify-center group-hover:bg-[#0066f5] group-hover:text-white transition-colors">
+                  <Filter className="w-3 h-3" />
+                </div>
+                <span className="font-semibold text-slate-700 group-hover:text-slate-900">
+                  {CATEGORIES.find((c) => c.id === selectedCategory)?.label || "Categories"}
+                </span>
+                <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#0066f5] transition-transform duration-200" />
               </button>
             </div>
+
+            {/* =========================================================================
+                LEFT SIDE CATEGORY DRAWER (Hidden by default, slides out on click)
+                ========================================================================= */}
+            {categoryDrawerOpen && (
+              <div
+                className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs transition-opacity animate-in fade-in duration-200"
+                onClick={() => setCategoryDrawerOpen(false)}
+              >
+                <div
+                  className="fixed inset-y-0 left-0 w-80 max-w-[85vw] bg-white border-r border-[#dbe6f7] shadow-2xl z-50 flex flex-col justify-between p-6 animate-in slide-in-from-left duration-300"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="space-y-5 overflow-y-auto">
+                    {/* Drawer Header */}
+                    <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#0b1f4b] to-[#0a6cf0] text-white flex items-center justify-center font-bold shadow-md shadow-[#0a6cf0]/20">
+                          <Flame className="w-4 h-4 fill-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-sm font-extrabold text-slate-900 leading-tight">Explore Categories</h3>
+                          <p className="text-[11px] text-slate-400">Discover live city meetups</p>
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => setCategoryDrawerOpen(false)}
+                        className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+
+                    {/* Categories List */}
+                    <div className="space-y-1.5">
+                      <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400 px-1">
+                        Categories
+                      </label>
+                      <div className="space-y-1 pt-1">
+                        {CATEGORIES.map((cat) => {
+                          const isSelected = selectedCategory === cat.id;
+                          const count = vibes.filter(
+                            (v) => cat.id === "all" || v.category === cat.category
+                          ).length;
+
+                          return (
+                            <button
+                              key={cat.id}
+                              type="button"
+                              onClick={() => {
+                                setSelectedCategory(cat.id);
+                                setCategoryDrawerOpen(false);
+                                setCurrentIndex(0);
+                              }}
+                              className={`w-full text-left px-3.5 py-2.5 rounded-2xl text-xs font-semibold flex items-center justify-between transition-all cursor-pointer ${
+                                isSelected
+                                  ? "bg-gradient-to-r from-[#0b1f4b] to-[#0a6cf0] text-white shadow-md shadow-[#0a6cf0]/20 font-bold"
+                                  : "text-slate-700 hover:bg-slate-50 hover:text-slate-900 border border-transparent hover:border-slate-100"
+                              }`}
+                            >
+                              <div className="flex items-center gap-2.5">
+                                <span className={`w-2 h-2 rounded-full ${isSelected ? "bg-[#00D2FF]" : "bg-slate-300"}`} />
+                                <span>{cat.label}</span>
+                              </div>
+                              <div className="flex items-center gap-1.5">
+                                <span className={`text-[10px] px-2 py-0.5 rounded-full ${
+                                  isSelected ? "bg-white/20 text-white" : "bg-slate-100 text-slate-500"
+                                }`}>
+                                  {count}
+                                </span>
+                                {isSelected && <Check className="w-3.5 h-3.5 text-white" />}
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* City Filter in Drawer */}
+                    <div className="space-y-1.5 pt-2 border-t border-slate-100">
+                      <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400 px-1">
+                        Filter by City
+                      </label>
+                      <div className="grid grid-cols-2 gap-1.5 pt-1">
+                        {CITIES.map((c) => (
+                          <button
+                            key={c}
+                            type="button"
+                            onClick={() => {
+                              setSelectedCity(c);
+                              setCategoryDrawerOpen(false);
+                              setCurrentIndex(0);
+                            }}
+                            className={`px-3 py-2 rounded-xl text-xs font-semibold text-center transition-all cursor-pointer ${
+                              selectedCity === c
+                                ? "bg-[#0a6cf0] text-white shadow-xs font-bold"
+                                : "bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-200/60"
+                            }`}
+                          >
+                            {c}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Drawer Bottom: Host a Vibe CTA */}
+                  <div className="pt-4 border-t border-slate-100 space-y-2">
+                    <button
+                      onClick={() => {
+                        setCategoryDrawerOpen(false);
+                        setCreateVibeOpen(true);
+                      }}
+                      type="button"
+                      className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#0b1f4b] to-[#0a6cf0] hover:brightness-110 text-white text-xs font-bold shadow-md shadow-[#0a6cf0]/25 flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-[0.98]"
+                    >
+                      <Plus className="w-4 h-4 stroke-[2.5]" />
+                      <span>Host an Instant Vibe</span>
+                    </button>
+                    <p className="text-[10px] text-center text-slate-400">
+                      Free 60-second spontaneous gathering
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Reel Card */}
             <div
@@ -847,6 +929,56 @@ export function VibeReelsFeed() {
                 </button>
               </div>
 
+              {/* Mobile Bottom Overlay (Event Info & Quick Join CTA for mobile viewports) */}
+              <div className="lg:hidden absolute bottom-3 left-3 right-16 z-20 space-y-2 select-none pointer-events-auto">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-blue-50 text-[#0A6CF0] border border-blue-200 flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+                    {currentVibe.host_initials}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-xs font-bold text-white truncate drop-shadow-md">
+                      {currentVibe.host_name}
+                    </div>
+                    <div className="text-[10px] text-white/80 drop-shadow-xs">
+                      {currentVibe.formatted_date} · {currentVibe.formatted_time}
+                    </div>
+                  </div>
+                </div>
+
+                <h2
+                  className="text-base sm:text-lg font-black text-white leading-tight drop-shadow-md line-clamp-2"
+                  style={{ fontFamily: "'Trapvoid', 'Bricolage Grotesque', 'Outfit', sans-serif" }}
+                >
+                  {currentVibe.title}
+                </h2>
+
+                <div className="flex items-center gap-1.5 text-[11px] text-white/90 drop-shadow-xs truncate">
+                  <MapPin className="w-3.5 h-3.5 text-[#00e0ff] shrink-0" />
+                  <span className="truncate">{currentVibe.location_name}, {currentVibe.city}</span>
+                </div>
+
+                <div className="pt-1">
+                  {userRsvp ? (
+                    <button
+                      onClick={() => setPassModalOpen(true)}
+                      type="button"
+                      className="w-full py-2 px-3 rounded-xl bg-emerald-500/90 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-md active:scale-95"
+                    >
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      <span>You're In · Pass</span>
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => setJoinModalOpen(true)}
+                      type="button"
+                      className="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-[#0b1f4b] to-[#0a6cf0] text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-md active:scale-95"
+                    >
+                      <Zap className="w-3.5 h-3.5 fill-current" />
+                      <span>Join Vibe</span>
+                    </button>
+                  )}
+                </div>
+              </div>
             </div>
 
             {/* CENTER: Navigation Arrows (Desktop) */}
@@ -1009,7 +1141,7 @@ export function VibeReelsFeed() {
 
             <button
               onClick={() => setJoinModalOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white"
+              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -1099,7 +1231,7 @@ export function VibeReelsFeed() {
           >
             <button
               onClick={() => setPassModalOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white"
+              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -1127,11 +1259,11 @@ export function VibeReelsFeed() {
             <div className="bg-slate-50 border border-[#dbe6f7] rounded-2xl p-3 my-4 text-left text-xs space-y-1">
               <div className="flex justify-between">
                 <span className="text-slate-500">Pass Holder:</span>
-                <span className="font-bold text-white">{userRsvp.name}</span>
+                <span className="font-bold text-slate-900">{userRsvp.name}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-500">Spots Reserved:</span>
-                <span className="font-bold text-white">{userRsvp.spots} Person</span>
+                <span className="font-bold text-slate-900">{userRsvp.spots} Person</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-500">Pass ID:</span>
@@ -1145,7 +1277,7 @@ export function VibeReelsFeed() {
                   showToast("Pass saved to device!");
                   setPassModalOpen(false);
                 }}
-                className="flex-1 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold"
+                className="flex-1 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold"
               >
                 Done
               </button>
@@ -1178,7 +1310,7 @@ export function VibeReelsFeed() {
           >
             <button
               onClick={() => setHostModalOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white"
+              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -1188,7 +1320,7 @@ export function VibeReelsFeed() {
               {currentVibe.host_initials}
             </div>
 
-            <h3 className="text-lg font-bold text-white mb-0.5">{currentVibe.host_name}</h3>
+            <h3 className="text-lg font-bold text-slate-900 mb-0.5">{currentVibe.host_name}</h3>
             <p className="text-xs text-slate-500 mb-3">Host on Vibe Instant</p>
 
             <div className="grid grid-cols-2 gap-2 my-4">
@@ -1223,7 +1355,7 @@ export function VibeReelsFeed() {
                   setHostModalOpen(false);
                   setCommentsOpen(true);
                 }}
-                className="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-slate-700 text-xs font-semibold"
+                className="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold"
               >
                 Ask in Public Comments
               </button>
@@ -1246,7 +1378,7 @@ export function VibeReelsFeed() {
           >
             <button
               onClick={() => setInfoModalOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white"
+              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -1255,7 +1387,7 @@ export function VibeReelsFeed() {
               {currentVibe.category}
             </span>
 
-            <h3 className="text-2xl font-black text-white mb-2 leading-tight">{currentVibe.title}</h3>
+            <h3 className="text-2xl font-black text-slate-900 mb-2 leading-tight">{currentVibe.title}</h3>
 
             <div className="space-y-2 py-3 border-y border-white/10 my-4 text-xs sm:text-sm">
               <div className="flex items-center gap-2 text-slate-600">
@@ -1324,7 +1456,7 @@ export function VibeReelsFeed() {
               </div>
               <button
                 onClick={() => setCommentsOpen(false)}
-                className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white"
+                className="w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-800"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -1344,7 +1476,7 @@ export function VibeReelsFeed() {
                     </div>
                     <div className="flex-1 bg-slate-50 border border-[#dbe6f7] rounded-2xl p-3 text-xs">
                       <div className="flex justify-between items-center mb-1">
-                        <span className="font-bold text-white">{comm.author}</span>
+                        <span className="font-bold text-slate-900">{comm.author}</span>
                         <span className="text-[10px] text-slate-500">{comm.timeAgo}</span>
                       </div>
                       <p className="text-slate-600 leading-relaxed">{comm.text}</p>
@@ -1388,7 +1520,7 @@ export function VibeReelsFeed() {
           >
             <button
               onClick={() => setCreateVibeOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white"
+              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -1398,7 +1530,7 @@ export function VibeReelsFeed() {
               60-Second Instant Gathering
             </div>
 
-            <h3 className="text-xl font-extrabold text-white mb-4">Host a Vibe</h3>
+            <h3 className="text-xl font-extrabold text-slate-900 mb-4">Host a Vibe</h3>
 
             <form onSubmit={handleCreateVibe} className="space-y-3.5">
               <div>

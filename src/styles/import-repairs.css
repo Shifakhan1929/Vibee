@@ -1,3 +1,514 @@
+
+/* ==========================================================================
+   VIBE LIGHT THEME DESIGN SYSTEM (Requested Palette)
+   ========================================================================== */
+/* ==========================================================================
+   VIBE DYNAMIC THEME SYSTEM (User Requested Dark / Light Palette)
+   ========================================================================== */
+:root, [data-theme="light"], .light {
+  /* Backgrounds & Surfaces (Default Light) */
+  --vibe-bg-primary: #FDFDFD;
+  --vibe-bg-surface: #FFFFFF;
+  --vibe-border: #E2E8F0;
+
+  /* Typography */
+  --vibe-text-primary: #07133A;
+  --vibe-text-muted: #64748B;
+
+  /* Accents & Brand Colors */
+  --vibe-accent-cyan: #00D2FF;
+  --vibe-accent-azure: #007BFF;
+  --vibe-accent-cobalt: #0038A8;
+
+  /* Gradients & Glows */
+  --vibe-cta-gradient: linear-gradient(135deg, #007BFF 0%, #0038A8 100%);
+  --vibe-card-gradient: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  --vibe-cyan-glow: 0 0 16px rgba(0, 210, 255, 0.2);
+
+  /* Legacy aliases for backwards compatibility */
+  --vibe-navy: #07133A;
+  --vibe-cobalt: #0038A8;
+  --vibe-azure: #007BFF;
+  --vibe-cyan: #00D2FF;
+  --vibe-bg: #FDFDFD;
+  --vibe-grad-primary: linear-gradient(135deg, #0038A8 0%, #007BFF 100%);
+  --vibe-grad-accent: linear-gradient(135deg, #007BFF 0%, #00D2FF 100%);
+  --vibe-grad-dark: linear-gradient(135deg, #07133A 0%, #0038A8 100%);
+}
+
+[data-theme="dark"], .dark {
+  /* Backgrounds & Surfaces */
+  --vibe-bg-primary: #030816;
+  --vibe-bg-surface: #07133A;
+  --vibe-border: #112255;
+
+  /* Typography */
+  --vibe-text-primary: #F0F6FF;
+  --vibe-text-muted: #8A99AD;
+
+  /* Accents & Brand Colors */
+  --vibe-accent-cyan: #00D2FF;
+  --vibe-accent-azure: #007BFF;
+  --vibe-accent-cobalt: #0038A8;
+
+  /* Gradients & Glows */
+  --vibe-cta-gradient: linear-gradient(135deg, #00D2FF 0%, #007BFF 60%, #0038A8 100%);
+  --vibe-card-gradient: linear-gradient(180deg, rgba(17, 34, 85, 0.5) 0%, rgba(7, 19, 58, 0.8) 100%);
+  --vibe-cyan-glow: 0 0 20px rgba(0, 210, 255, 0.35);
+
+  /* Legacy aliases in dark mode */
+  --vibe-bg: #030816;
+  --vibe-navy: #F0F6FF;
+}
+
+/* Logo switching between light and dark modes */
+html[data-theme="dark"] .logo-dark,
+.dark .logo-dark {
+  display: none !important;
+}
+
+html[data-theme="dark"] .logo-dark-mode,
+.dark .logo-dark-mode {
+  display: inline-block !important;
+}
+
+html:not([data-theme="dark"]):not(.dark) .logo-dark {
+  display: inline-block !important;
+}
+
+html:not([data-theme="dark"]):not(.dark) .logo-dark-mode {
+  display: none !important;
+}
+
+/* Dark mode body and root overrides */
+html[data-theme="dark"],
+html.dark,
+[data-theme="dark"] body,
+.dark body {
+  background-color: var(--vibe-bg-primary) !important;
+  color: var(--vibe-text-primary) !important;
+}
+
+/* Navbar in Dark Mode */
+[data-theme="dark"] .vibe-sticky-navbar,
+.dark .vibe-sticky-navbar {
+  background-color: rgba(3, 8, 22, 0.96) !important;
+  border-bottom: 1px solid var(--vibe-border) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6) !important;
+}
+
+[data-theme="dark"] .vibe-nav-link,
+.dark .vibe-nav-link {
+  color: var(--vibe-text-muted) !important;
+}
+
+[data-theme="dark"] .vibe-nav-link:hover,
+.dark .vibe-nav-link:hover {
+  color: var(--vibe-accent-cyan) !important;
+  background-color: rgba(17, 34, 85, 0.6) !important;
+}
+
+[data-theme="dark"] .vibe-nav-link.active,
+.dark .vibe-nav-link.active {
+  color: var(--vibe-accent-cyan) !important;
+  background-color: rgba(17, 34, 85, 0.8) !important;
+  box-shadow: 0 0 12px rgba(0, 210, 255, 0.25) !important;
+}
+
+[data-theme="dark"] .vibe-nav-city-btn,
+.dark .vibe-nav-city-btn {
+  background-color: rgba(7, 19, 58, 0.8) !important;
+  border-color: var(--vibe-border) !important;
+  color: var(--vibe-text-primary) !important;
+}
+
+[data-theme="dark"] .vibe-nav-city-name,
+.dark .vibe-nav-city-name {
+  color: var(--vibe-text-primary) !important;
+}
+
+[data-theme="dark"] .vibe-nav-city-btn:hover,
+.dark .vibe-nav-city-btn:hover {
+  background-color: rgba(17, 34, 85, 0.9) !important;
+  border-color: var(--vibe-accent-azure) !important;
+}
+
+/* Content Sections in Dark Mode */
+[data-theme="dark"] .near-by-section,
+[data-theme="dark"] .bgstyle-0,
+[data-theme="dark"] .popular-event-country-section,
+[data-theme="dark"] .v2-cat-list-section,
+[data-theme="dark"] .hpe-container,
+[data-theme="dark"] .personal-interest-section,
+[data-theme="dark"] .fold-top,
+[data-theme="dark"] .fold,
+.dark .near-by-section,
+.dark .bgstyle-0,
+.dark .popular-event-country-section,
+.dark .v2-cat-list-section,
+.dark .hpe-container,
+.dark .personal-interest-section,
+.dark .fold-top,
+.dark .fold {
+  background-color: var(--vibe-bg-primary) !important;
+  color: var(--vibe-text-primary) !important;
+}
+
+[data-theme="dark"] .hero-wavy-divider path:last-child,
+.dark .hero-wavy-divider path:last-child {
+  fill: var(--vibe-bg-primary) !important;
+}
+
+[data-theme="dark"] .hero-wavy-divider path:first-child,
+.dark .hero-wavy-divider path:first-child {
+  fill: rgba(0, 210, 255, 0.15) !important;
+}
+
+/* Headings in Dark Mode */
+[data-theme="dark"] .headstyle-1,
+[data-theme="dark"] .head-label h2,
+[data-theme="dark"] .cat-title,
+[data-theme="dark"] .hpe-title,
+.dark .headstyle-1,
+.dark .head-label h2,
+.dark .cat-title,
+.dark .hpe-title {
+  color: var(--vibe-text-primary) !important;
+}
+
+/* Event Cards in Dark Mode */
+[data-theme="dark"] .item-box,
+[data-theme="dark"] .event-card,
+[data-theme="dark"] .cat-item,
+[data-theme="dark"] .category-card,
+[data-theme="dark"] .featured-card,
+.dark .item-box,
+.dark .event-card,
+.dark .cat-item,
+.dark .category-card,
+.dark .featured-card {
+  background: var(--vibe-card-gradient) !important;
+  background-color: var(--vibe-bg-surface) !important;
+  border: 1px solid var(--vibe-border) !important;
+  color: var(--vibe-text-primary) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45) !important;
+}
+
+[data-theme="dark"] .item-box:hover,
+[data-theme="dark"] .event-card:hover,
+.dark .item-box:hover,
+.dark .event-card:hover {
+  border-color: var(--vibe-accent-azure) !important;
+  box-shadow: var(--vibe-cyan-glow) !important;
+}
+
+[data-theme="dark"] .item-title,
+[data-theme="dark"] .event-title,
+.dark .item-title,
+.dark .event-title {
+  color: var(--vibe-text-primary) !important;
+}
+
+[data-theme="dark"] .item-place,
+[data-theme="dark"] .item-time,
+[data-theme="dark"] .event-meta,
+[data-theme="dark"] .sub-title,
+[data-theme="dark"] .meta-info,
+.dark .item-place,
+.dark .item-time,
+.dark .event-meta,
+.dark .sub-title,
+.dark .meta-info {
+  color: var(--vibe-text-muted) !important;
+}
+
+/* Dark Mode support for Dashboard & Instant */
+[data-theme="dark"] .vibe-instant-container,
+.dark .vibe-instant-container {
+  background-color: var(--vibe-bg-primary) !important;
+  color: var(--vibe-text-primary) !important;
+}
+
+
+/* Light theme body and global background */
+body, html {
+  background-color: var(--vibe-bg) !important;
+  color: var(--vibe-navy) !important;
+}
+
+/* Homepage Hero: Keep Dark Background as explicitly requested by user */
+.search-parent {
+  background: radial-gradient(circle at 50% 30%, #0c2052 0%, var(--vibe-navy) 75%, #040c24 100%) !important;
+}
+
+.search-parent .title {
+  color: #ffffff !important;
+}
+
+.search-parent .sub-title {
+  color: #d1d5db !important;
+}
+
+/* Wavy divider into light theme */
+.hero-wavy-divider path:last-child {
+  fill: var(--vibe-bg) !important;
+}
+
+.hero-wavy-divider path:first-child {
+  fill: rgba(0, 210, 255, 0.18) !important;
+}
+
+/* Light Theme Content Sections */
+.near-by-section,
+.bgstyle-0,
+.popular-event-country-section,
+.v2-cat-list-section,
+.hpe-container,
+.personal-interest-section,
+.fold-top,
+.fold {
+  background-color: var(--vibe-bg) !important;
+  color: var(--vibe-navy) !important;
+}
+
+/* Section Headings */
+.headstyle-1,
+.head-label h2,
+.head-label h1,
+.near-by-section .headstyle-1,
+.popular-event-country-section .headstyle-1,
+.v2-cat-list-section h2,
+.hpe-container h2 {
+  color: var(--vibe-navy) !important;
+  font-family: 'Bricolage Grotesque', 'Outfit', sans-serif !important;
+  font-weight: 800 !important;
+}
+
+/* Explore Cities Near You: Cards */
+.nearby-city-item {
+  background: #ffffff !important;
+  border: 1px solid rgba(7, 19, 58, 0.08) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 2px 10px rgba(7, 19, 58, 0.04) !important;
+  transition: all 0.25s ease !important;
+}
+
+.nearby-city-item:hover {
+  border-color: var(--vibe-azure) !important;
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+.nearby-city-item .city-name {
+  color: var(--vibe-navy) !important;
+  font-weight: 700 !important;
+}
+
+.nearby-city-item .city-events {
+  color: var(--vibe-azure) !important;
+  font-weight: 600 !important;
+}
+
+.nearby-city-item .city-icon {
+  color: var(--vibe-cobalt) !important;
+  background: rgba(0, 56, 168, 0.06) !important;
+  border-radius: 10px !important;
+}
+
+/* Trending Events Cards in India */
+.event-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(7, 19, 58, 0.08) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 2px 12px rgba(7, 19, 58, 0.04) !important;
+  transition: all 0.25s ease !important;
+  overflow: hidden !important;
+}
+
+.event-card:hover {
+  border-color: var(--vibe-azure) !important;
+  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+.event-card .title h3,
+.event-card .title a {
+  color: var(--vibe-navy) !important;
+  font-weight: 700 !important;
+}
+
+.event-card .meta-top .date {
+  color: var(--vibe-cobalt) !important;
+  font-weight: 600 !important;
+}
+
+.event-card .meta-middle .location {
+  color: rgba(7, 19, 58, 0.65) !important;
+}
+
+.event-card .c-ribbon {
+  background: linear-gradient(135deg, var(--vibe-cobalt) 0%, var(--vibe-azure) 100%) !important;
+  color: #ffffff !important;
+}
+
+/* Category Grid Tiles */
+.v2-cat-item {
+  background: #ffffff !important;
+  border: 1px solid rgba(7, 19, 58, 0.08) !important;
+  box-shadow: 0 2px 10px rgba(7, 19, 58, 0.04) !important;
+  border-radius: 14px !important;
+  transition: all 0.25s ease !important;
+}
+
+.v2-cat-item:hover {
+  border-color: var(--vibe-azure) !important;
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Category tabs in events section */
+.ue-tabs {
+  border-bottom: 2px solid rgba(7, 19, 58, 0.08) !important;
+}
+
+.ue-option.active {
+  color: var(--vibe-cobalt) !important;
+  border-bottom: 3px solid var(--vibe-azure) !important;
+  font-weight: 700 !important;
+}
+
+.ue-option:hover {
+  color: var(--vibe-azure) !important;
+}
+
+/* View More Button */
+.hp_view_more_btn {
+  background: #ffffff !important;
+  border: 1.5px solid var(--vibe-azure) !important;
+  color: var(--vibe-azure) !important;
+  border-radius: 9999px !important;
+  font-weight: 700 !important;
+  transition: all 0.2s ease !important;
+}
+
+.hp_view_more_btn:hover {
+  background: var(--vibe-azure) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(0, 123, 255, 0.25) !important;
+}
+
+/* Top Sticky Global Navbar */
+.vibe-sticky-navbar {
+  background-color: rgba(253, 253, 253, 0.98) !important;
+  border-bottom: 1px solid rgba(7, 19, 58, 0.08) !important;
+}
+
+.vibe-nav-btn-host {
+  background: linear-gradient(135deg, var(--vibe-cobalt) 0%, var(--vibe-azure) 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.vibe-nav-btn-host:hover {
+  box-shadow: 0 4px 16px rgba(0, 56, 168, 0.35) !important;
+  filter: brightness(1.05) !important;
+}
+
+.vibe-nav-btn-app {
+  border: 1.5px solid var(--vibe-azure) !important;
+  color: var(--vibe-azure) !important;
+  background: #ffffff !important;
+}
+
+.vibe-nav-btn-app:hover {
+  background: rgba(0, 123, 255, 0.06) !important;
+}
+
+.vibe-nav-link.active {
+  color: var(--vibe-cobalt) !important;
+}
+
+.vibe-nav-bolt {
+  color: var(--vibe-cyan) !important;
+}
+
+/* Footer styling: cohesive deep vibe-navy theme */
+footer.footer,
+.footer {
+  background-color: var(--vibe-navy, #07133A) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #cbd5e1 !important;
+}
+
+.footer .home-footer1 {
+  background: transparent !important;
+  color: #cbd5e1 !important;
+}
+
+.footer .footer-head-title,
+.footer h3.footer-head-title {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  letter-spacing: -0.01em !important;
+  text-transform: none !important;
+}
+
+.footer .home-footer-links li a {
+  color: #94a3b8 !important;
+  font-size: 13.5px !important;
+  transition: color 0.15s ease !important;
+}
+
+.footer .home-footer-links li a:hover {
+  color: var(--vibe-cyan, #00D2FF) !important;
+}
+
+.footer .home-footer3 {
+  background: rgba(0, 0, 0, 0.22) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-bottom: none !important;
+  padding: 14px 0 !important;
+  margin: 20px 0 0 !important;
+}
+
+.footer .home-footer3 li a {
+  color: #94a3b8 !important;
+  font-size: 13px !important;
+  transition: color 0.15s ease !important;
+}
+
+.footer .home-footer3 li a:hover {
+  color: var(--vibe-cyan, #00D2FF) !important;
+}
+
+.footer .home-footer4 {
+  background: rgba(0, 0, 0, 0.38) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+  padding: 14px 0 !important;
+}
+
+.footer .home-footer4 .cpy-right,
+.footer .home-footer4 .cpy-right span {
+  color: #64748b !important;
+  font-size: 12px !important;
+}
+
+.footer .footer-social a.btn-topbar {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #cbd5e1 !important;
+  border-radius: 8px !important;
+  margin-left: 6px !important;
+  transition: all 0.2s ease !important;
+}
+
+.footer .footer-social a.btn-topbar:hover {
+  background: var(--vibe-azure, #007BFF) !important;
+  color: #ffffff !important;
+  border-color: var(--vibe-azure, #007BFF) !important;
+}
+
 #hss_bar .search_suggestion_popup[hidden] { display: none; }
 #hss_bar_background_overlay.import-search-overlay { display: block; }
 #hss_bar:has(.search_suggestion_popup:not([hidden])) { position: relative; z-index: 1002; }
@@ -127,9 +638,12 @@
   .vibe-hero-headline .title {
     text-align: left !important;
     margin: 0 0 10px !important;
-    font-size: 38px !important;
-    line-height: 1.18 !important;
+    font-family: "Bricolage Grotesque", "Trapvoid", sans-serif !important;
+    font-size: clamp(34px, 5vw, 56px) !important;
+    line-height: 1.08 !important;
     font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+    text-transform: none !important;
     color: #ffffff !important;
     white-space: normal !important;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45) !important;
@@ -264,8 +778,12 @@
 
   .vibe-hero-headline .title {
     text-align: center !important;
-    font-size: 27px !important;
-    line-height: 1.25 !important;
+    font-family: "Bricolage Grotesque", "Trapvoid", sans-serif !important;
+    font-size: clamp(34px, 5vw, 56px) !important;
+    line-height: 1.08 !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+    text-transform: none !important;
     margin: 0 0 8px !important;
     white-space: normal !important;
   }
@@ -1075,8 +1593,10 @@ svg {
   }
 
   .vibe-hero-headline .title {
-    font-size: 24px !important;
-    line-height: 1.22 !important;
+    font-family: "Bricolage Grotesque", "Trapvoid", sans-serif !important;
+    font-size: clamp(34px, 5vw, 56px) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.03em !important;
     margin-bottom: 6px !important;
   }
 
@@ -2308,4 +2828,91 @@ svg {
     height: 100px !important;
     min-height: 100px !important;
   }
+}
+
+
+/* Ensure BotCreateSection headings are sentence case */
+.bot-create-h1 {
+  text-transform: none !important;
+  font-size: clamp(26px, 3.6vw, 42px) !important;
+  line-height: 1.15 !important;
+  max-width: 20ch !important;
+}
+
+.bot-step-title {
+  text-transform: none !important;
+}
+
+
+/* "The Moments That Make Vibe." heading font follows main heading */
+.memories-title {
+  font-family: "Bricolage Grotesque", "Trapvoid", sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+  text-transform: none !important;
+  color: var(--vibe-navy, #07133A) !important;
+}
+
+.memories-subtitle {
+  text-transform: none !important;
+}
+
+
+/* ==========================================================================
+   VIBE CITY SELECTOR MODAL POLISH
+   ========================================================================== */
+.vibe-city-selector-modal button {
+  border: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+  text-shadow: none !important;
+  text-transform: none !important;
+}
+
+.vibe-city-selector-modal .city-chip {
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  background-color: #f8fafc !important;
+}
+
+.vibe-city-selector-modal .city-chip:hover {
+  background-color: #f1f5f9 !important;
+  border-color: #007bff !important;
+  color: #007bff !important;
+}
+
+.vibe-city-selector-modal .city-chip.active {
+  background: linear-gradient(to right, #07133A, #007BFF) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.25) !important;
+}
+
+.vibe-city-selector-modal .city-row-btn {
+  border: none !important;
+  background-color: transparent !important;
+}
+
+.vibe-city-selector-modal .city-row-btn:hover {
+  background-color: #f1f5f9 !important;
+}
+
+.vibe-city-selector-modal .city-row-btn.active {
+  background-color: #eff6ff !important;
+}
+
+.vibe-city-scroll::-webkit-scrollbar {
+  width: 4px !important;
+}
+
+.vibe-city-scroll::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.vibe-city-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1 !important;
+  border-radius: 9999px !important;
+}
+
+.vibe-city-scroll::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8 !important;
 }

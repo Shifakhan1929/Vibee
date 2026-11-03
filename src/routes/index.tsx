@@ -44,8 +44,9 @@ function Index() {
   const [cityText, setCityText] = useState("");
   const opener = useRef<HTMLElement | null>(null);
   const openCity = () => {
-    opener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    setSearchOpen(false); setMenuOpen(false); setCityText(""); setCityOpen(true);
+    setSearchOpen(false);
+    setMenuOpen(false);
+    window.dispatchEvent(new CustomEvent("open-city-selector"));
   };
   const closePanels = () => { setCityOpen(false); setSearchOpen(false); setMenuOpen(false); opener.current?.focus(); };
   useEffect(() => {
@@ -80,33 +81,55 @@ function Index() {
           <div className={"vibe-hero-layout"}>
             {/* 1. Headline (Desktop: Left Col / Mobile: Order 1) */}
             <div className={"vibe-hero-headline"} style={{ gridArea: "headline" }}>
-              <h1 className={"title"} style={{ fontWeight: "bold", lineHeight: "1.15" }}>
+              <h1
+                className={"title"}
+                style={{
+                  fontFamily: '"Bricolage Grotesque", "Trapvoid", sans-serif',
+                  fontSize: "clamp(34px, 5vw, 56px)",
+                  fontWeight: 800,
+                  lineHeight: 1.08,
+                  letterSpacing: "-0.03em",
+                  textTransform: "none",
+                }}
+              >
                 Make plans.{" "}
-                <span style={{ color: "rgb(33, 192, 232)", display: "block" }}>Make it an event.</span>
+                <span style={{ color: "var(--vibe-cyan, #00D2FF)", display: "block" }}>Make it an event.</span>
               </h1>
               <p className={"sub-title"} style={{ fontWeight: "normal", lineHeight: "1.5" }}>
                 Discover exciting gatherings, create unforgettable experiences, and find your people. Whatever brings you together, there's a Vibe for it.
               </p>
             </div>
 
-            {/* 2. Search Bar (Desktop: Left Col / Mobile: Order 2) */}
+            {/* 2. Search Bar (Tapping opens the Location Selector Card) */}
             <div className={"vibe-hero-search"} style={{ gridArea: "search" }}>
-              <div id="hss_bar">
-                <div className={"hs_search_input_box"}>
+              <div
+                id="hss_bar"
+                onClick={openCity}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") openCity(); }}
+                style={{ cursor: "pointer" }}
+              >
+                <div className={"hs_search_input_box"} style={{ cursor: "pointer" }}>
                   <div className={"hs_search_icon"}>
                     <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M16.839 16.0751L12.4498 11.7562C13.5992 10.5074 14.3054 8.85589 14.3054 7.03859C14.3049 3.15103 11.1028 0 7.15245 0C3.20212 0 0 3.15103 0 7.03859C0 10.9261 3.20212 14.0772 7.15245 14.0772C8.85926 14.0772 10.4247 13.4868 11.6544 12.5054L16.0606 16.8414C16.2753 17.0529 16.6238 17.0529 16.8385 16.8414C17.0537 16.6299 17.0537 16.2866 16.839 16.0751ZM7.15245 12.9942C3.81004 12.9942 1.1005 10.3278 1.1005 7.03859C1.1005 3.74936 3.81004 1.08293 7.15245 1.08293C10.4949 1.08293 13.2044 3.74936 13.2044 7.03859C13.2044 10.3278 10.4949 12.9942 7.15245 12.9942Z" fill="#575C67" />
                     </svg>
                   </div>
-                  <input onFocus={() => setSearchOpen(true)} value={searchText} onChange={e => setSearchText(e.target.value)} type="search" name="hs_search_text" placeholder="Search Events, Categories, Location..." autoComplete="off" className={"hs_search_text"} onKeyDown={e => { if (e.key === "Enter" && searchText.trim()) { window.location.href = `/${citySlug}?q=${encodeURIComponent(searchText.trim())}`; } }} />
-                  <div className={"hs_remove_text_icon"}>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: "none" }}>
-                      <path d="M13.3334 13.3334L2.66675 2.66675M13.3334 2.66675L2.66675 13.3334" stroke="#D4D4D4" strokeWidth="2" strokeLinecap="round" />
-                    </svg>
-                  </div>
+                  <input
+                    onClick={(e) => { e.stopPropagation(); openCity(); }}
+                    onFocus={(e) => { e.target.blur(); openCity(); }}
+                    readOnly
+                    type="search"
+                    name="hs_search_text"
+                    placeholder="Search Events, Categories, Location..."
+                    autoComplete="off"
+                    className={"hs_search_text"}
+                    style={{ cursor: "pointer" }}
+                  />
                   <div className={"searchlocation hidden-phone"}>
                     <div id="hs_qsp_change_city_app">
-                      <div role="button" tabIndex={0} onClick={openCity} onKeyDown={e => { if (e.key === "Enter") openCity(); }} className={"changecity"} style={{ cursor: "pointer", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: "6px", paddingRight: "14px" }}>
+                      <div className={"changecity"} style={{ cursor: "pointer", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: "6px", paddingRight: "14px" }}>
                         <div className={"divider"} style={{ color: "var(--gray-200)" }}>|</div>
                         <span className={"location_icon"} style={{ left: "12px" }}>
                           <i className={"icon-map-marker-2"} style={{ fontSize: "18px", color: "var(--gray-500)" }} />
@@ -118,13 +141,10 @@ function Index() {
                       </div>
                     </div>
                   </div>
-                  <div className={"search_suggestion_popup"} hidden={!searchOpen}>
-                    <div className={"ss_wrapper"}><div className="ss_trending_topics"><div className="ss_heading">Trending Topics</div><div className="topics_chips_container">{topics.filter(t => !searchText || t.includes(searchText.toLowerCase())).map(t => <span key={t}><a className="chip" href={`/${citySlug}?q=${encodeURIComponent(t)}`} target="_blank">{t}</a></span>)}</div></div></div>
-                  </div>
                 </div>
                 <div className={"searchlocation \x76isible-phone"}>
                   <div>
-                    <span role="button" tabIndex={0} onClick={openCity} onKeyDown={e => { if (e.key === "Enter") openCity(); }} className={"city-select-action"}>
+                    <span className={"city-select-action"}>
                       <span className={"icon-map-marker-2"} style={{ fontSize: "18px", color: "rgb(255, 255, 255)", marginRight: "6px", cursor: "pointer" }} />
                       <p style={{ color: "white", fontSize: "18px", margin: "0", cursor: "pointer", textTransform: "capitalize" }}>{selectedCity}</p>
                       <span className={"icon-angle-down"} style={{ fontSize: "15px", color: "rgb(255, 255, 255)", marginLeft: "6px", cursor: "pointer" }} />
@@ -556,7 +576,7 @@ function Index() {
         <div className={"\x63ontainer"}>
           <div>
             <div className={"head-label"}>
-              <h2 className={"headstyle-1"}>Trending Events in the United States</h2>
+              <h2 className={"headstyle-1"}>Trending Events in India</h2>
             </div>
             <ul className={"event-card-parent event-card-scrollable show4card"}>
               <li className={"event-card event-card-link"}>
@@ -2404,7 +2424,18 @@ function Index() {
       <div className={"memories-wrapper"}>
         <div>
           <div className={"memories-header"}>
-            <h1 className={"memories-title"}>The Moments That Make Vibe.</h1>
+            <h1
+              className={"memories-title"}
+              style={{
+                fontFamily: '"Bricolage Grotesque", "Trapvoid", sans-serif',
+                fontWeight: 800,
+                letterSpacing: "-0.03em",
+                textTransform: "none",
+                color: "var(--vibe-navy, #07133A)",
+              }}
+            >
+              The Moments That Make Vibe.
+            </h1>
             <p className={"memories-subtitle"}>Real people. Real experiences. Unforgettable moments.</p>
           </div>
           <MemoriesMarquee>
@@ -3112,7 +3143,7 @@ function Index() {
             <div className={"ap-heading"}>
               <h3 className={"ap-gradient"}>Discover Events</h3>
               <h3 className={"ap-dark"}>anywhere, anytime</h3>
-              <p className={"ap-sub"}>Download the AllEvents app to never miss out the best events near you!</p>
+              <p className={"ap-sub"}>Download the Vibe app to never miss out the best events near you!</p>
             </div>
             <div className={"ap-download vibe-ap-download"} style={{ flexDirection: "column", gap: "16px" }}>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", alignItems: "center" }}>
@@ -3228,7 +3259,7 @@ function Index() {
             </div>
           </div>
           <div className={"ap-phones"}>
-            <img className={"lazy"} data-src="https://cdn2.allevents.in/transup/4f/79976e30914407af5ab19d25587640/app.webp" title="Discover Events On The GO" alt="Discover Events On The GO" src="/site-assets/7fafe4e0d0e0414e.webp" loading="eager" />
+            <img className={"lazy"} data-src="/site-assets/7fafe4e0d0e0414e.webp" title="Discover Events On The GO with Vibe" alt="Discover Events On The GO with Vibe" src="/site-assets/7fafe4e0d0e0414e.webp" loading="eager" />
           </div>
         </div>
         <div className={"ap-fade"} />
@@ -4951,17 +4982,18 @@ function ImportedFooterSiteNavigation() {
           <div className={"row"} style={{ float: "left", textAlign: "left", overflow: "hidden" }}>
             <div className={"span3-ms ft1span3 first-column"}>
               <div className={"another-div"} style={{ marginTop: "5px" }}>
-                <a className={"footer-04__logo_link"} href="/" target="_blank">
-                  <img style={{ width: "150px", display: "inline" }} title="Vibe logo" className={"lazy allevents_logo"} alt="Vibe Footer Logo" height="36" src="/site-assets/vibe-logo-light.png" />
+                <a className={"footer-04__logo_link"} href="/" style={{ display: "inline-block", marginBottom: "8px" }}>
+                  <img
+                    style={{ height: "36px", width: "auto", objectFit: "contain", display: "block" }}
+                    title="Vibe logo"
+                    className={"allevents_logo"}
+                    alt="Vibe Footer Logo"
+                    src="/site-assets/vibe-logo-light.png"
+                  />
                 </a>
-                <p className={"goto-content"} style={{ color: "white", marginTop: "10px" }}>Go-to place to discover events for more than 20M people globally.</p>
-                <ul className={"footer-badges home-footer-links"}>
-                  <li>
-                    <div className={"footer-04__info content_box"}>
-                      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", listStyle: "none", columnGap: "10px" }} className={"badges-list"}><img className={"lazy badges"} style={{ margin: "1em 0px 0px", display: "block" }} height="44" width="34" alt="Leading Ticketing Platform" title="Awarded as Leading Event Ticketing Software by G2" src="/site-assets/15b299389afdf490.png" /><img className={"lazy badges"} style={{ margin: "1em 0px 0px", display: "block" }} height="44" width="34" alt="High Performer" title="Awarded as High Performer by G2" src="/site-assets/961affe689554fe2.png" /><img className={"lazy badges"} style={{ margin: "1em 0px 0px", display: "block" }} height="44" width="34" alt="Best Relationship" title="Awarded as Best Relationship by G2" src="/site-assets/a35806a5167f7842.png" /><img className={"lazy badges"} style={{ margin: "1em 0px 0px", display: "block" }} height="44" width="34" alt="Grid Leader" title="Awarded as Grid Leader by G2" src="/site-assets/497cacde6fd443a8.png" /></div>
-                    </div>
-                  </li>
-                </ul>
+                <p className={"goto-content"} style={{ color: "rgba(255, 255, 255, 0.75)", marginTop: "10px", fontSize: "13px", lineHeight: "1.6", maxWidth: "260px" }}>
+                  Go-to place to discover events for more than 20M people globally.
+                </p>
               </div>
             </div>
             <div className={"span3-ms ft1span3 last-four"}>
@@ -5053,79 +5085,6 @@ function ImportedFooterSiteNavigation() {
             </div>
           </div>
         </div>
-
-      </div>
-      <div className={"home-footer2 hidden-phone"}>
-        <div className={"\x63ontainer"} style={{ borderTop: "1px solid rgb(46, 54, 63)", borderBottom: "1px solid rgb(46, 54, 63)", padding: "10px 0px" } as CSSProperties}>
-          <span className={"footer-head-title"} style={{ color: "rgb(239, 239, 239)", textTransform: "none", margin: "10px 0px 10px 10px", float: "left" }}>Country</span>
-          <ul style={{ marginBottom: "0px" }}>
-            <li>
-              <a href="/location.php?country=argentina">Argentina</a>
-            </li>
-            <li>
-              <a href="/location.php?country=australia">Australia</a>
-            </li>
-            <li>
-              <a href="/location.php?country=brazil">Brazil</a>
-            </li>
-            <li>
-              <a href="/location.php?country=belgium">Belgium</a>
-            </li>
-            <li>
-              <a href="/location.php?country=canada">Canada</a>
-            </li>
-            <li>
-              <a href="/location.php?country=france">France</a>
-            </li>
-            <li>
-              <a href="/location.php?country=germany">Germany</a>
-            </li>
-            <li>
-              <a href="/location.php?country=india">India</a>
-            </li>
-            <li>
-              <a href="/location.php?country=ireland">Ireland</a>
-            </li>
-            <li>
-              <a href="/location.php?country=italy">Italy</a>
-            </li>
-            <li>
-              <a href="/location.php?country=malaysia">Malaysia</a>
-            </li>
-            <li>
-              <a href="/location.php?country=mexico">Mexico</a>
-            </li>
-            <li>
-              <a href="/location.php?country=netherlands">Netherlands</a>
-            </li>
-            <li>
-              <a href="/location.php?country=south africa">South Africa</a>
-            </li>
-            <li>
-              <a href="/location.php?country=spain">Spain</a>
-            </li>
-            <li>
-              <a href="/location.php?country=singapore">Singapore</a>
-            </li>
-            <li>
-              <a href="/location.php?country=united kingdom">United Kingdom</a>
-            </li>
-            <li>
-              <a href="/location.php?country=united states">United States</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div className={"custom-footer-section"} style={{ margin: "20px 0px 30px" }}>
-        <div className={"\x63ontainer"}>
-          <div className={"row"}>
-            <div className={"span12 footer-links-cont"}>
-              <h3 className={"footer-head-title custom-footer-head-title"}>Trending in Worldwide</h3>
-              <ul className={"footer-links gray-links custom-footer-ul"} />
-            </div>
-          </div>
-        </div>
-
       </div>
       <div className={"home-footer3"}>
         <div className={"\x63ontainer"}>

@@ -270,8 +270,8 @@ export function HostEventStudio() {
 
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#0B1F4B] to-[#0A6CF0] text-slate-900 flex items-center justify-center shadow-md shadow-[#FF5500]/25 group-hover:scale-105 transition-transform duration-200">
-                    <Wand2 className="w-6 h-6" />
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#0B1F4B] to-[#0A6CF0] text-white flex items-center justify-center shadow-md shadow-[#0A6CF0]/25 group-hover:scale-105 transition-transform duration-200">
+                    <Wand2 className="w-6 h-6 text-white" />
                   </div>
                   <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#0A6CF0]/15 text-[#0A6CF0] border border-[#0A6CF0]/25">
                     1-Click Fast Track
@@ -306,12 +306,12 @@ export function HostEventStudio() {
 
               {/* Action Button */}
               <div className="pt-6">
-                <div className="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-[#0B1F4B] to-[#0A6CF0] group-hover:brightness-110 text-slate-900 font-bold text-xs sm:text-sm flex items-center justify-between transition-all shadow-md shadow-[#FF5500]/20">
+                <div className="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-[#0B1F4B] to-[#0A6CF0] group-hover:brightness-110 text-white font-bold text-xs sm:text-sm flex items-center justify-between transition-all shadow-md shadow-[#0A6CF0]/25">
                   <span className="flex items-center gap-1.5">
-                    <Sparkles className="w-4 h-4 fill-white" />
+                    <Sparkles className="w-4 h-4 fill-white text-white" />
                     <span>Launch AI Studio</span>
                   </span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             </div>
@@ -563,7 +563,7 @@ export function HostEventStudio() {
                 <button
                   type="button"
                   onClick={() => handlePublish()}
-                  className="flex-1 py-3 rounded-xl bg-gradient-to-r from-[#0B1F4B] to-[#0A6CF0] hover:brightness-110 text-slate-900 font-bold text-sm shadow-lg shadow-[#FF5500]/25 cursor-pointer transition-all"
+                  className="flex-1 py-3 rounded-xl bg-gradient-to-r from-[#0B1F4B] to-[#0A6CF0] hover:brightness-110 text-white font-bold text-sm shadow-lg shadow-[#0A6CF0]/25 cursor-pointer transition-all"
                 >
                   Publish Live Event
                 </button>
@@ -755,7 +755,7 @@ export function HostEventStudio() {
               <div className="pt-4">
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#0B1F4B] to-[#0A6CF0] hover:brightness-110 text-slate-900 font-bold text-sm shadow-lg shadow-[#FF5500]/25 cursor-pointer transition-all"
+                  className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#0B1F4B] to-[#0A6CF0] hover:brightness-110 text-white font-bold text-sm shadow-lg shadow-[#0A6CF0]/25 cursor-pointer transition-all"
                 >
                   Publish Event Now
                 </button>
@@ -805,7 +805,7 @@ export function HostEventStudio() {
             <div className="space-y-2.5">
               <a
                 href={publishedUrl || `/indore`}
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-[#0B1F4B] to-[#0A6CF0] text-slate-900 font-bold text-sm flex items-center justify-center gap-2 shadow-lg cursor-pointer"
+                className="w-full py-3 rounded-xl bg-gradient-to-r from-[#0B1F4B] to-[#0A6CF0] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg cursor-pointer"
               >
                 <span>View Event Landing Page</span>
                 <ExternalLink className="w-4 h-4" />

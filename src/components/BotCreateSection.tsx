@@ -353,7 +353,7 @@ export function BotCreateSection() {
             LEFT COLUMN
             ================================================================== */}
         <div className="bot-create-left">
-          <h2 className="bot-create-h1">{BOT_CONTENT.h1}</h2>
+          <h2 className="bot-create-h1" style={{ textTransform: "none", fontSize: "clamp(26px, 3.6vw, 42px)", lineHeight: 1.15, maxWidth: "20ch" }}>{BOT_CONTENT.h1}</h2>
 
           <p className="bot-create-subtext">{BOT_CONTENT.subtext}</p>
 
@@ -369,7 +369,7 @@ export function BotCreateSection() {
                 </div>
 
                 <div className="bot-step-content">
-                  <h3 className="bot-step-title">{step.title}</h3>
+                  <h3 className="bot-step-title" style={{ textTransform: "none" }}>{step.title}</h3>
                   <p className="bot-step-desc">
                     {step.number === 1 ? (
                       <>
