@@ -179,14 +179,14 @@ const DEFAULT_GUEST_INQUIRIES: GuestInquiry[] = [
 
 export function HostDashboard() {
   const [events, setEvents] = useState<HostedEvent[]>([]);
-  const [activeTab, setActiveTab] = useState<"upcoming" | "past" | "drafts">("upcoming");
+  const [activeTab, setActiveTab] = useState<"upcoming" | "past" | "drafts" | "messages">("upcoming");
+  const [messagesFilter, setMessagesFilter] = useState<"all" | "unread" | "replied">("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   // Modals state
   const [dispatchModalEvent, setDispatchModalEvent] = useState<HostedEvent | null>(null);
   const [scanModalEvent, setScanModalEvent] = useState<HostedEvent | null>(null);
-  const [inboxOpen, setInboxOpen] = useState(false);
   const [inquiries, setInquiries] = useState<GuestInquiry[]>(DEFAULT_GUEST_INQUIRIES);
   const [selectedInquiry, setSelectedInquiry] = useState<GuestInquiry | null>(null);
   const [replyText, setReplyText] = useState("");
@@ -361,6 +361,24 @@ export function HostDashboard() {
     });
   }, [events, activeTab, searchQuery]);
 
+  // Filtered Guest Inquiries for the on-page Messages tab
+  const filteredInquiries = useMemo(() => {
+    return inquiries.filter((inq) => {
+      if (messagesFilter === "unread" && inq.isRead) return false;
+      if (messagesFilter === "replied" && !inq.reply) return false;
+
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase();
+        const matchesName = inq.guestName.toLowerCase().includes(q);
+        const matchesEmail = inq.guestEmail.toLowerCase().includes(q);
+        const matchesTitle = inq.eventTitle.toLowerCase().includes(q);
+        const matchesQuestion = inq.question.toLowerCase().includes(q);
+        return matchesName || matchesEmail || matchesTitle || matchesQuestion;
+      }
+      return true;
+    });
+  }, [inquiries, messagesFilter, searchQuery]);
+
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans antialiased selection:bg-[#0A6CF0] selection:text-white">
       {/* Toast Notification */}
@@ -371,68 +389,7 @@ export function HostDashboard() {
         </div>
       )}
 
-      {/* =========================================================================
-          TOPBAR NAVIGATION (LIGHT THEME MATCHING HOMEPAGE)
-          ========================================================================= */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-white/95 border-b border-slate-200 px-4 sm:px-8 py-3.5 shadow-xs">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <Link to="/" className="flex items-center gap-2 text-slate-900">
-              <img
-                src="/site-assets/vibe-logo-dark.png"
-                alt="Vibe logo"
-                className="h-8 w-auto object-contain"
-                onError={(e) => {
-                  (e.target as HTMLElement).style.display = "none";
-                }}
-              />
-              <span className="font-extrabold text-xl tracking-tight text-slate-900">Vibe</span>
-              <span className="text-[10px] font-black uppercase tracking-wider bg-blue-50 text-[#1565C0] border border-blue-200 px-2.5 py-0.5 rounded-full ml-1">
-                HOST SPACE
-              </span>
-            </Link>
 
-            <nav className="hidden md:flex items-center gap-4 text-xs font-semibold text-slate-600">
-              <Link to="/dashboard" className="text-[#0A6CF0] bg-blue-50/80 px-3 py-1.5 rounded-lg border border-blue-200/60 font-bold">
-                Dashboard
-              </Link>
-              <Link to="/vibe-instant" className="hover:text-[#0A6CF0] transition-colors flex items-center gap-1">
-                <Zap className="w-3.5 h-3.5 text-[#0A6CF0]" />
-                Vibe Instant
-              </Link>
-              <Link to="/how-it-works" className="hover:text-[#0A6CF0] transition-colors">
-                How It Works
-              </Link>
-            </nav>
-          </div>
-
-          <div className="flex items-center gap-3">
-            {/* Guest Inbox Trigger */}
-            <button
-              onClick={() => setInboxOpen(true)}
-              type="button"
-              className="relative p-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 transition-colors cursor-pointer"
-              title="Guest Communication Inbox"
-            >
-              <MessageSquare className="w-4 h-4 text-slate-700" />
-              {metrics.unreadInquiries > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#0A6CF0] text-white font-bold text-[9px] flex items-center justify-center shadow-xs">
-                  {metrics.unreadInquiries}
-                </span>
-              )}
-            </button>
-
-            {/* + Host an Event Button */}
-            <Link
-              to="/create"
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#0B1F4B] to-[#0A6CF0] hover:brightness-110 text-white text-xs font-bold transition-all shadow-md flex items-center gap-1.5 cursor-pointer"
-            >
-              <Plus className="w-4 h-4" />
-              <span>Host an Event</span>
-            </Link>
-          </div>
-        </div>
-      </header>
 
       {/* =========================================================================
           HERO BANNER & GREETING
@@ -458,12 +415,19 @@ export function HostDashboard() {
 
             <div className="flex items-center gap-3">
               <button
-                onClick={() => setInboxOpen(true)}
+                onClick={() => {
+                  setActiveTab("messages");
+                  document.getElementById("dashboard-tabs-section")?.scrollIntoView({ behavior: "smooth" });
+                }}
                 type="button"
-                className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-xs font-semibold text-slate-700 hover:text-slate-900 transition-colors flex items-center gap-2 cursor-pointer shadow-2xs"
+                className={`px-4 py-2.5 rounded-xl border text-xs font-semibold transition-colors flex items-center gap-2 cursor-pointer shadow-2xs ${
+                  activeTab === "messages"
+                    ? "bg-blue-50 border-[#0A6CF0] text-[#0A6CF0] font-bold"
+                    : "bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-700 hover:text-slate-900"
+                }`}
               >
                 <MessageSquare className="w-4 h-4 text-[#0A6CF0]" />
-                <span>Guest Inbox ({metrics.unreadInquiries})</span>
+                <span>Guest Messages ({metrics.unreadInquiries})</span>
               </button>
 
               <Link
@@ -525,8 +489,13 @@ export function HostDashboard() {
 
             {/* Card 4: Guest Inquiries */}
             <div
-              className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm relative overflow-hidden group hover:border-[#0A6CF0]/50 transition-all cursor-pointer"
-              onClick={() => setInboxOpen(true)}
+              className={`p-5 rounded-2xl bg-white border shadow-sm relative overflow-hidden group hover:border-[#0A6CF0]/50 transition-all cursor-pointer ${
+                activeTab === "messages" ? "border-[#0A6CF0] ring-2 ring-[#0A6CF0]/20" : "border-slate-200/90"
+              }`}
+              onClick={() => {
+                setActiveTab("messages");
+                document.getElementById("dashboard-tabs-section")?.scrollIntoView({ behavior: "smooth" });
+              }}
             >
               <div className="flex items-center justify-between text-slate-500 text-xs font-medium mb-2">
                 <span>Guest Messages</span>
@@ -550,16 +519,16 @@ export function HostDashboard() {
       </section>
 
       {/* =========================================================================
-          EVENTS MANAGEMENT & TABS
+          EVENTS MANAGEMENT & TABS + ON-PAGE MESSAGES
           ========================================================================= */}
-      <section className="py-8 sm:py-12 px-4 sm:px-8 max-w-7xl mx-auto">
+      <section id="dashboard-tabs-section" className="py-8 sm:py-12 px-4 sm:px-8 max-w-7xl mx-auto scroll-mt-20">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           {/* Tabs */}
-          <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-white border border-slate-200 shadow-2xs w-fit">
+          <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-white border border-slate-200 shadow-2xs w-fit overflow-x-auto max-w-full">
             <button
               onClick={() => setActiveTab("upcoming")}
               type="button"
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0 ${
                 activeTab === "upcoming"
                   ? "bg-[#0A6CF0] text-white shadow-sm"
                   : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
@@ -570,7 +539,7 @@ export function HostDashboard() {
             <button
               onClick={() => setActiveTab("past")}
               type="button"
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0 ${
                 activeTab === "past"
                   ? "bg-[#0A6CF0] text-white shadow-sm"
                   : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
@@ -581,13 +550,36 @@ export function HostDashboard() {
             <button
               onClick={() => setActiveTab("drafts")}
               type="button"
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0 ${
                 activeTab === "drafts"
                   ? "bg-[#0A6CF0] text-white shadow-sm"
                   : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
               }`}
             >
               Drafts ({events.filter((e) => e.status === "draft").length})
+            </button>
+            <button
+              onClick={() => setActiveTab("messages")}
+              type="button"
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 shrink-0 ${
+                activeTab === "messages"
+                  ? "bg-[#0A6CF0] text-white shadow-sm"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+              }`}
+            >
+              <MessageSquare className="w-3.5 h-3.5" />
+              <span>Guest Messages ({inquiries.length})</span>
+              {metrics.unreadInquiries > 0 && (
+                <span
+                  className={`px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
+                    activeTab === "messages"
+                      ? "bg-white text-[#0A6CF0]"
+                      : "bg-amber-500 text-white"
+                  }`}
+                >
+                  {metrics.unreadInquiries} new
+                </span>
+              )}
             </button>
           </div>
 
@@ -598,14 +590,277 @@ export function HostDashboard() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search your events by name or city..."
+              placeholder={
+                activeTab === "messages"
+                  ? "Search guest questions or attendees..."
+                  : "Search your events by name or city..."
+              }
               className="w-full pl-9 pr-4 py-2 rounded-xl bg-white border border-slate-300 text-xs text-slate-800 placeholder:text-slate-400 focus:outline-hidden focus:border-[#0A6CF0] shadow-2xs transition-colors"
             />
           </div>
         </div>
 
-        {/* Events Grid / List */}
-        {filteredEvents.length === 0 ? (
+        {/* =========================================================================
+            VIEW A: ON-PAGE GUEST MESSAGES SECTION (ADJUSTED DIRECTLY ONTO THE DASHBOARD PAGE)
+            ========================================================================= */}
+        {activeTab === "messages" ? (
+          <div className="rounded-3xl bg-white border border-slate-200/90 shadow-sm p-5 sm:p-7 animate-in fade-in duration-200">
+            {/* Top Bar of Messages Section */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100 mb-6">
+              <div>
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 text-[#0A6CF0] border border-blue-200 text-[10px] font-bold uppercase tracking-wider mb-1.5">
+                  <MessageSquare className="w-3 h-3 text-[#0A6CF0]" />
+                  Direct Guest Inquiries
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 font-heading">Attendee Messages & Inquiries</h3>
+                <p className="text-xs text-slate-500 mt-0.5">
+                  Answer attendee questions, provide parking/timing details, and send confirmations directly.
+                </p>
+              </div>
+
+              {/* Message Filter Pills */}
+              <div className="flex items-center gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200 text-xs">
+                <button
+                  type="button"
+                  onClick={() => setMessagesFilter("all")}
+                  className={`px-3 py-1.5 rounded-lg font-semibold transition-all cursor-pointer ${
+                    messagesFilter === "all"
+                      ? "bg-white text-slate-900 shadow-xs font-bold"
+                      : "text-slate-600 hover:text-slate-900"
+                  }`}
+                >
+                  All ({inquiries.length})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMessagesFilter("unread")}
+                  className={`px-3 py-1.5 rounded-lg font-semibold transition-all cursor-pointer ${
+                    messagesFilter === "unread"
+                      ? "bg-white text-[#0A6CF0] shadow-xs font-bold"
+                      : "text-slate-600 hover:text-slate-900"
+                  }`}
+                >
+                  Unread ({metrics.unreadInquiries})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMessagesFilter("replied")}
+                  className={`px-3 py-1.5 rounded-lg font-semibold transition-all cursor-pointer ${
+                    messagesFilter === "replied"
+                      ? "bg-white text-emerald-600 shadow-xs font-bold"
+                      : "text-slate-600 hover:text-slate-900"
+                  }`}
+                >
+                  Replied ({inquiries.filter((i) => i.reply).length})
+                </button>
+              </div>
+            </div>
+
+            {/* Split Inbox View: Left Column (Threads) + Right Column (Chat/Reply Pane) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 min-h-[520px]">
+              {/* Left Column: Threads List (5 cols) */}
+              <div className="lg:col-span-5 flex flex-col space-y-2.5 overflow-y-auto max-h-[580px] pr-1.5 custom-scrollbar">
+                {filteredInquiries.length === 0 ? (
+                  <div className="text-center py-16 px-4 rounded-2xl bg-slate-50 border border-slate-200">
+                    <MessageSquare className="w-10 h-10 text-slate-300 mx-auto mb-2" />
+                    <p className="text-sm font-bold text-slate-700">No messages found</p>
+                    <p className="text-xs text-slate-400 mt-1">
+                      {messagesFilter === "unread"
+                        ? "You are all caught up! No unread messages."
+                        : "No inquiries matching your search filter."}
+                    </p>
+                  </div>
+                ) : (
+                  filteredInquiries.map((inq) => {
+                    const isSelected = selectedInquiry?.id === inq.id;
+                    return (
+                      <div
+                        key={inq.id}
+                        onClick={() => {
+                          setSelectedInquiry(inq);
+                          // Auto mark as read on view
+                          if (!inq.isRead) {
+                            setInquiries((prev) =>
+                              prev.map((i) => (i.id === inq.id ? { ...i, isRead: true } : i))
+                            );
+                          }
+                        }}
+                        className={`p-4 rounded-2xl border text-xs transition-all cursor-pointer select-none ${
+                          isSelected
+                            ? "bg-blue-50/80 border-[#0A6CF0] ring-2 ring-[#0A6CF0]/20 shadow-xs"
+                            : inq.isRead
+                            ? "bg-white border-slate-200/90 hover:bg-slate-50 hover:border-slate-300 text-slate-700"
+                            : "bg-white border-blue-300/80 shadow-xs hover:border-[#0A6CF0] text-slate-900"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between mb-1.5">
+                          <div className="flex items-center gap-2 min-w-0">
+                            {/* Avatar Badge */}
+                            <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-[#0B1F4B] to-[#0A6CF0] text-white flex items-center justify-center font-bold text-[11px] shrink-0">
+                              {inq.guestName.charAt(0)}
+                            </div>
+                            <span className="font-bold text-slate-900 truncate">{inq.guestName}</span>
+                          </div>
+                          <span className="text-[10px] text-slate-400 shrink-0">{inq.timeAgo}</span>
+                        </div>
+
+                        <div className="text-[11px] font-semibold text-[#0A6CF0] truncate mb-1">
+                          {inq.eventTitle}
+                        </div>
+
+                        <p className="text-slate-600 line-clamp-2 leading-relaxed text-[11.5px]">
+                          {inq.question}
+                        </p>
+
+                        <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px]">
+                          <span className="text-slate-400 font-mono truncate">{inq.guestEmail}</span>
+                          {inq.reply ? (
+                            <span className="inline-flex items-center gap-1 font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                              <CheckCircle2 className="w-3 h-3" />
+                              Replied
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1 font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+                              Needs Reply
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+
+              {/* Right Column: Conversation Workspace (7 cols) */}
+              <div className="lg:col-span-7 rounded-2xl bg-slate-50/70 border border-slate-200/90 p-5 flex flex-col justify-between overflow-hidden">
+                {selectedInquiry ? (
+                  <div className="flex flex-col h-full justify-between space-y-4">
+                    <div className="space-y-4 overflow-y-auto max-h-[380px] pr-1 custom-scrollbar">
+                      {/* Thread Header */}
+                      <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <h4 className="text-sm font-bold text-slate-900">{selectedInquiry.guestName}</h4>
+                            <span className="text-xs text-slate-400 font-mono">({selectedInquiry.guestEmail})</span>
+                          </div>
+                          <div className="text-xs text-[#0A6CF0] font-semibold mt-0.5 flex items-center gap-1">
+                            <span>Event:</span>
+                            <span className="underline">{selectedInquiry.eventTitle}</span>
+                          </div>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setInquiries((prev) =>
+                              prev.map((i) =>
+                                i.id === selectedInquiry.id ? { ...i, isRead: !i.isRead } : i
+                              )
+                            );
+                            setSelectedInquiry((prev) => (prev ? { ...prev, isRead: !prev.isRead } : null));
+                            showToast(selectedInquiry.isRead ? "Marked as unread" : "Marked as read");
+                          }}
+                          className="px-2.5 py-1 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-[11px] font-semibold text-slate-600 transition-colors w-fit"
+                        >
+                          {selectedInquiry.isRead ? "Mark Unread" : "Mark Read"}
+                        </button>
+                      </div>
+
+                      {/* Guest Question Box */}
+                      <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                        <div className="flex items-center justify-between text-[11px] text-slate-400 mb-1.5 font-medium">
+                          <span className="text-slate-500 font-bold uppercase tracking-wider text-[10px]">Guest Inquiry</span>
+                          <span>{selectedInquiry.timeAgo}</span>
+                        </div>
+                        <p className="text-xs text-slate-800 leading-relaxed font-medium">
+                          {selectedInquiry.question}
+                        </p>
+                      </div>
+
+                      {/* Existing Reply (if available) */}
+                      {selectedInquiry.reply && (
+                        <div className="p-4 rounded-xl bg-emerald-50/80 border border-emerald-200/80">
+                          <div className="flex items-center gap-1.5 text-emerald-800 font-bold text-[11px] mb-1">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                            <span>Your Sent Response:</span>
+                          </div>
+                          <p className="text-xs text-emerald-950 leading-relaxed">
+                            {selectedInquiry.reply}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Quick Reply Presets */}
+                      <div>
+                        <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">
+                          ⚡ Quick Reply Presets:
+                        </div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {[
+                            "Yes, parking is available at the venue! 🚗",
+                            "Doors open 30 minutes before the scheduled time. ⏰",
+                            "All equipment & gear will be provided on-site! 🏏",
+                            "Feel free to bring your own instrument! 🎸",
+                            "Looking forward to hosting you! See you there. ✨",
+                          ].map((preset) => (
+                            <button
+                              key={preset}
+                              type="button"
+                              onClick={() => setReplyText(preset)}
+                              className="px-2.5 py-1 rounded-lg bg-white hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-[11px] text-slate-700 hover:text-[#0A6CF0] transition-colors cursor-pointer text-left"
+                            >
+                              {preset}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Reply Input Form */}
+                    <form onSubmit={handleSendReply} className="pt-3 border-t border-slate-200/90 space-y-2 mt-auto">
+                      <textarea
+                        rows={3}
+                        value={replyText}
+                        onChange={(e) => setReplyText(e.target.value)}
+                        placeholder={`Type message or reply to ${selectedInquiry.guestName}...`}
+                        required
+                        className="w-full p-3 rounded-xl bg-white border border-slate-300 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:border-[#0A6CF0] shadow-2xs"
+                      />
+                      <div className="flex items-center justify-between gap-3">
+                        <span className="text-[11px] text-slate-400">
+                          Sends instant notification via Email & SMS to guest.
+                        </span>
+                        <button
+                          type="submit"
+                          className="px-5 py-2.5 rounded-xl bg-[#0A6CF0] hover:bg-[#085AC7] text-white text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-sm shrink-0"
+                        >
+                          <Send className="w-3.5 h-3.5" />
+                          <span>Send Response</span>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center justify-center h-full text-center p-8 text-slate-400 my-auto">
+                    <div className="w-14 h-14 rounded-2xl bg-white border border-slate-200 shadow-xs flex items-center justify-center mb-3">
+                      <MessageSquare className="w-7 h-7 text-[#0A6CF0]/60" />
+                    </div>
+                    <h4 className="text-sm font-bold text-slate-700">No conversation selected</h4>
+                    <p className="text-xs text-slate-400 max-w-xs mt-1">
+                      Choose an attendee thread from the left to read their inquiry and reply.
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ) : null}
+
+        {/* =========================================================================
+            VIEW B: EVENTS GRID / LIST (FOR UPCOMING / PAST / DRAFTS TABS)
+            ========================================================================= */}
+        {activeTab !== "messages" && (filteredEvents.length === 0 ? (
           <div className="text-center py-16 px-4 rounded-3xl bg-white border border-slate-200 shadow-sm">
             <Calendar className="w-12 h-12 text-slate-400 mx-auto mb-3" />
             <h3 className="text-lg font-bold text-slate-900 mb-1">No {activeTab} events found</h3>
@@ -755,7 +1010,7 @@ export function HostDashboard() {
               );
             })}
           </div>
-        )}
+        ))}
       </section>
 
       {/* =========================================================================
@@ -967,125 +1222,6 @@ export function HostDashboard() {
         </div>
       )}
 
-      {/* =========================================================================
-          MODAL 3: GUEST COMMUNICATION INBOX
-          ========================================================================= */}
-      {inboxOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="relative w-full max-w-3xl h-[600px] bg-white border border-slate-200 rounded-3xl p-6 sm:p-7 shadow-2xl text-slate-800 flex flex-col">
-            <button
-              onClick={() => setInboxOpen(false)}
-              type="button"
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors"
-            >
-              <X className="w-4 h-4" />
-            </button>
-
-            <div className="mb-4">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-bold uppercase tracking-wider mb-2">
-                <MessageSquare className="w-3 h-3 text-amber-600" />
-                GUEST COMMUNICATION INBOX
-              </div>
-              <h3 className="text-xl font-bold text-slate-900">Direct Guest Inquiries</h3>
-              <p className="text-xs text-slate-500">
-                Questions asked by attendees through your Vibe event pages.
-              </p>
-            </div>
-
-            {/* Split Inbox View */}
-            <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 overflow-hidden min-h-0">
-              {/* Left Column: Threads */}
-              <div className="overflow-y-auto space-y-2 pr-1 custom-scrollbar">
-                {inquiries.map((inq) => (
-                  <div
-                    key={inq.id}
-                    onClick={() => setSelectedInquiry(inq)}
-                    className={`p-3.5 rounded-xl border text-xs transition-all cursor-pointer ${
-                      selectedInquiry?.id === inq.id
-                        ? "bg-blue-50 border-[#0A6CF0] text-slate-900"
-                        : inq.isRead
-                        ? "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"
-                        : "bg-white border-blue-400 text-slate-900 font-medium shadow-xs"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between text-[11px] mb-1">
-                      <span className="font-bold text-slate-900">{inq.guestName}</span>
-                      <span className="text-slate-400">{inq.timeAgo}</span>
-                    </div>
-                    <div className="text-[10px] text-[#0A6CF0] font-semibold truncate mb-1">
-                      {inq.eventTitle}
-                    </div>
-                    <p className="text-slate-600 line-clamp-2 leading-relaxed">
-                      {inq.question}
-                    </p>
-                    {inq.reply && (
-                      <div className="mt-2 text-[10px] text-emerald-600 font-semibold flex items-center gap-1">
-                        <CheckCircle2 className="w-3 h-3" />
-                        <span>Replied</span>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              {/* Right Column: Active Thread Detail & Reply Form */}
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between overflow-hidden">
-                {selectedInquiry ? (
-                  <>
-                    <div className="space-y-3 overflow-y-auto">
-                      <div className="border-b border-slate-200 pb-3">
-                        <h4 className="text-sm font-bold text-slate-900">{selectedInquiry.guestName}</h4>
-                        <div className="text-[11px] text-slate-500">{selectedInquiry.guestEmail}</div>
-                        <div className="text-[10px] text-[#0A6CF0] font-mono mt-1 font-semibold">
-                          Re: {selectedInquiry.eventTitle}
-                        </div>
-                      </div>
-
-                      <div className="p-3 rounded-xl bg-white border border-slate-200 text-xs text-slate-700 leading-relaxed shadow-2xs">
-                        <span className="font-bold text-slate-500 block text-[10px] mb-1">QUESTION:</span>
-                        {selectedInquiry.question}
-                      </div>
-
-                      {selectedInquiry.reply && (
-                        <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 leading-relaxed">
-                          <span className="font-bold text-emerald-700 block text-[10px] mb-1">YOUR PREVIOUS REPLY:</span>
-                          {selectedInquiry.reply}
-                        </div>
-                      )}
-                    </div>
-
-                    <form onSubmit={handleSendReply} className="pt-3 border-t border-slate-200 space-y-2">
-                      <textarea
-                        rows={3}
-                        value={replyText}
-                        onChange={(e) => setReplyText(e.target.value)}
-                        placeholder={`Reply to ${selectedInquiry.guestName}...`}
-                        required
-                        className="w-full p-2.5 rounded-xl bg-white border border-slate-300 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:border-[#0A6CF0]"
-                      />
-                      <button
-                        type="submit"
-                        className="w-full py-2 rounded-xl bg-[#0A6CF0] hover:bg-[#085AC7] text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
-                      >
-                        <Send className="w-3.5 h-3.5" />
-                        <span>Send Response</span>
-                      </button>
-                    </form>
-                  </>
-                ) : (
-                  <div className="flex flex-col items-center justify-center h-full text-center p-6 text-slate-400">
-                    <MessageSquare className="w-10 h-10 mb-2 opacity-40 text-slate-400" />
-                    <p className="text-xs font-semibold text-slate-700">No inquiry selected</p>
-                    <p className="text-[11px] text-slate-500 mt-1">
-                      Choose an inquiry from the left to read and send a reply.
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

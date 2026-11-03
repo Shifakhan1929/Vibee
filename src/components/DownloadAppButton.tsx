@@ -60,20 +60,19 @@ export function DownloadAppButton({
         display: "inline-flex",
         alignItems: "center",
         gap: "6px",
-        padding: "5px 13px",
+        padding: "6px 14px",
         fontSize: "13px",
-        fontWeight: "700",
-        color: "#0a6cf0",
-        backgroundColor: "#f0f7ff",
-        border: "1px solid #bfdbfe",
-        borderRadius: "16px",
-        marginRight: "8px",
+        fontWeight: "600",
+        color: "#0066f5",
+        backgroundColor: "#ffffff",
+        border: "1.5px solid #bfdbfe",
+        borderRadius: "9999px",
         textDecoration: "none",
         cursor: "pointer",
         transition: "all 0.2s ease",
       }}
     >
-      <Download style={{ width: "14px", height: "14px", color: "#0a6cf0" }} />
+      <Download style={{ width: "14px", height: "14px", color: "#0066f5" }} />
       <span>{label}</span>
     </button>
   );

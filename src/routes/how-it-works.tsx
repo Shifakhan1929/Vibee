@@ -311,107 +311,31 @@ export default function HowItWorksPage() {
         isDark ? "bg-[#060D1E] text-white" : "bg-[#F8FAFC] text-slate-800"
       }`}
     >
-      {/* =========================================================================
-          TOPBAR NAVIGATION
-          ========================================================================= */}
-      <header
-        className={`sticky top-0 z-50 backdrop-blur-md border-b transition-colors ${
-          isDark
-            ? "bg-[#060D1E]/95 border-slate-800/80 text-white"
-            : "bg-white/95 border-slate-200 text-slate-800 shadow-xs"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-5">
-            <Link to="/" className="flex items-center gap-2">
-              <img
-                src={
-                  isDark
-                    ? "/site-assets/6f6ea317c2a7cf87.png"
-                    : "/site-assets/vibe-logo-dark.png"
-                }
-                alt="Vibe logo"
-                className="h-8 w-auto object-contain"
-                onError={(e) => {
-                  (e.target as HTMLElement).style.display = "none";
-                }}
-              />
-              <span className="font-extrabold text-xl tracking-tight text-white drop-shadow-sm">
-                Vibe
-              </span>
-            </Link>
-
-            <span
-              className={`hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${
-                isDark
-                  ? "bg-blue-500/10 text-[#38bdf8] border border-blue-400/20"
-                  : "bg-blue-50 text-[#1565C0] border border-blue-200"
-              }`}
-            >
-              <span className="w-2 h-2 rounded-full bg-[#00e0ff] animate-pulse" />
-              How It Works
-            </span>
-          </div>
-
-          <nav className="flex items-center gap-3 sm:gap-4">
-            {/* Theme Toggle Button */}
-            <button
-              onClick={() => setTheme(isDark ? "light" : "dark")}
-              type="button"
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
-                isDark
-                  ? "bg-slate-800/80 text-slate-200 border-slate-700 hover:bg-slate-700 hover:text-white"
-                  : "bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200"
-              }`}
-              title="Toggle Dark / Light Theme"
-            >
-              {isDark ? (
-                <>
-                  <Sun className="w-3.5 h-3.5 text-amber-400" />
-                  <span className="hidden sm:inline">Light Mode</span>
-                </>
-              ) : (
-                <>
-                  <Moon className="w-3.5 h-3.5 text-indigo-600" />
-                  <span className="hidden sm:inline">Dark Mode</span>
-                </>
-              )}
-            </button>
-
-            <Link
-              to="/"
-              className={`text-sm font-medium transition-colors hidden sm:inline-block ${
-                isDark
-                  ? "text-slate-300 hover:text-white"
-                  : "text-slate-600 hover:text-[#1565C0]"
-              }`}
-            >
-              Home
-            </Link>
-
-            <a
-              href="/vibe-instant"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`text-sm font-semibold transition-colors hidden md:inline-flex items-center gap-1 ${
-                isDark
-                  ? "text-[#00e0ff] hover:text-[#38bdf8]"
-                  : "text-[#0a6cf0] hover:text-[#08a8ff]"
-              }`}
-            >
-              <Zap className="w-3.5 h-3.5" />
-              Vibe Instant
-            </a>
-
-            <a
-              href="/create"
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-gradient-to-r from-[#0a6cf0] to-[#0099ff] text-white hover:brightness-110 shadow-md transition-all"
-            >
-              <span>+</span> Host an Event
-            </a>
-          </nav>
-        </div>
-      </header>
+      {/* Discreet floating theme toggle */}
+      <div className="fixed bottom-6 right-6 z-40">
+        <button
+          onClick={() => setTheme(isDark ? "light" : "dark")}
+          type="button"
+          className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-semibold shadow-xl border backdrop-blur-md transition-all ${
+            isDark
+              ? "bg-slate-900/90 text-slate-200 border-slate-700 hover:bg-slate-800"
+              : "bg-white/90 text-slate-700 border-slate-300 hover:bg-slate-100"
+          }`}
+          title="Toggle Dark / Light Theme"
+        >
+          {isDark ? (
+            <>
+              <Sun className="w-4 h-4 text-amber-400" />
+              <span>Light</span>
+            </>
+          ) : (
+            <>
+              <Moon className="w-4 h-4 text-indigo-600" />
+              <span>Dark</span>
+            </>
+          )}
+        </button>
+      </div>
 
       {/* =========================================================================
           SECTION 1: "One place for every kind of gathering" (Screenshot 1)
@@ -636,39 +560,143 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      {/* =========================================================================
-          BOTTOM CTA SECTION
+            {/* =========================================================================
+          VIDEO DEMO / WALKTHROUGH SECTION
           ========================================================================= */}
-      <section className="py-16 sm:py-20 bg-gradient-to-br from-[#0b1f4b] via-[#0a6cf0] to-[#08a8ff] text-white">
+      <section
+        className={`py-16 sm:py-24 transition-colors border-t ${
+          isDark
+            ? "bg-[#060D1E] border-slate-800"
+            : "bg-white border-slate-200"
+        }`}
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div
+            className={`inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 ${
+              isDark
+                ? "bg-blue-500/10 text-blue-400 border border-blue-500/20"
+                : "bg-blue-50 text-blue-600 border border-blue-100"
+            }`}
+          >
+            Video Walkthrough
+          </div>
           <h2
-            className="text-3xl sm:text-4xl font-extrabold tracking-tight"
+            className={`text-3xl sm:text-4xl font-extrabold tracking-tight ${
+              isDark ? "text-white" : "text-slate-900"
+            }`}
             style={{ fontFamily: "'Trapvoid', 'Bricolage Grotesque', 'Outfit', sans-serif" }}
           >
-            Ready to host your next gathering?
+            Why Vibe is Best For You
           </h2>
-          <p className="mt-3 text-base sm:text-lg text-blue-100 max-w-xl mx-auto leading-relaxed">
-            From Sunday cricket matches to comedy nights and packed concerts,
-            post it on Vibe and fill every spot.
+          <p
+            className={`mt-3 text-base sm:text-lg max-w-xl mx-auto leading-relaxed mb-8 ${
+              isDark ? "text-[#8EA2C6]" : "text-slate-600"
+            }`}
+          >
+            Need a team? A crowd? A stage? See how anyone can create, share, and fill out events in minutes.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="/create"
-              className="px-8 py-3.5 rounded-xl bg-white text-[#0a6cf0] font-bold text-base hover:bg-blue-50 shadow-lg hover:shadow-xl transition-all"
-            >
-              Start Hosting Now
-            </a>
-            <a
-              href="/vibe-instant"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-black/20 hover:bg-black/30 text-white font-semibold text-base border border-white/20 transition-colors"
-            >
-              <Zap className="w-4 h-4 text-[#00e0ff]" />
-              Try Vibe Instant
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
+          {/* 16:9 Video Frame */}
+          <div className="relative w-full pb-[56.25%] h-0 overflow-hidden rounded-2xl bg-slate-900 shadow-2xl border border-slate-200/80 dark:border-slate-800">
+            <iframe
+              className="absolute top-0 left-0 w-full h-full border-0"
+              src="https://www.youtube-nocookie.com/embed/D77hEY4o300?autoplay=1&mute=1&loop=1&playlist=D77hEY4o300&playsinline=1&rel=0&modestbranding=1"
+              title="Why Vibe is Best For You"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </section>
+
+{/* =========================================================================
+          DO YOU HOST EVENTS? (CREATOR BANNER)
+          ========================================================================= */}
+      <section
+        className="relative overflow-hidden"
+        style={{
+          background: "linear-gradient(98deg, #0d4a8f 0%, #1562a9 40%, #1b7bc0 75%, #2497d5 100%)",
+        }}
+      >
+        {/* Decorative floating bubbles matching reference banner */}
+        <div
+          aria-hidden="true"
+          className="absolute w-10 h-10 rounded-full pointer-events-none"
+          style={{ top: "12%", right: "28%", backgroundColor: "rgba(255, 255, 255, 0.15)" }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute w-12 h-12 rounded-full pointer-events-none"
+          style={{ top: "42%", right: "6%", backgroundColor: "rgba(255, 255, 255, 0.12)" }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute w-14 h-14 rounded-full pointer-events-none"
+          style={{ bottom: "18%", right: "36%", backgroundColor: "rgba(255, 255, 255, 0.12)" }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute w-5 h-5 rounded-full pointer-events-none"
+          style={{ top: "8%", right: "38%", backgroundColor: "rgba(255, 255, 255, 0.22)" }}
+        />
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 min-h-[260px] sm:min-h-[290px] flex flex-col md:flex-row items-center justify-between relative z-10 pt-6 md:pt-0">
+          {/* Left Column: Heading, Subhead, CTA Button & Links */}
+          <div className="w-full md:w-7/12 py-6 md:py-8 text-left z-20">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-tight">
+              Do you host events?
+            </h2>
+            <p className="text-base sm:text-lg text-blue-100/90 mt-1.5 mb-5 font-normal">
+              Let’s make the world #Happening together
+            </p>
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+              <a
+                href="/create"
+                className="inline-flex items-center justify-center px-6 py-2.5 rounded bg-white text-[#0d4a8f] font-semibold text-sm shadow hover:bg-slate-50 hover:shadow-md transition-all transform hover:-translate-y-0.5"
+              >
+                Create an Event
+              </a>
+              <div className="flex items-center gap-2.5 text-white text-sm sm:text-base font-medium">
+                <a href="/create" className="hover:text-blue-200 transition-colors">
+                  Create
+                </a>
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-white/70" />
+                <a href="/how-it-works" className="hover:text-blue-200 transition-colors">
+                  Promote
+                </a>
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-white/70" />
+                <a href="/how-it-works" className="hover:text-blue-200 transition-colors">
+                  Sell
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Floating Testimonial Pill & Person Image */}
+          <div className="w-full md:w-5/12 flex items-end justify-center md:justify-end relative min-h-[220px] md:min-h-[260px] mt-3 md:mt-0">
+            {/* Instagram Testimonial Card */}
+            <div className="relative md:absolute md:left-2 lg:-left-6 md:top-1/3 md:-translate-y-1/2 z-30 bg-white rounded-lg shadow-lg px-3.5 py-2.5 flex items-center gap-2.5 border border-slate-100 mb-3 md:mb-0">
+              <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 p-1">
+                <img
+                  src="/site-assets/546ba667917ff012.png"
+                  alt="Instagram"
+                  className="w-5 h-5 object-contain"
+                />
+              </div>
+              <div className="text-left leading-tight">
+                <div className="font-semibold text-slate-800 text-xs sm:text-sm">@suyash</div>
+                <div className="text-[11px] text-slate-500 mt-0.5">Speaker & Host</div>
+              </div>
+            </div>
+
+            {/* Host Person Image - Suyash (Compact & proportional) */}
+            <div className="relative z-20 flex items-end justify-center">
+              <img
+                src="/site-assets/host-person-cutout.png"
+                alt="Suyash - Event Host"
+                className="max-h-[220px] sm:max-h-[250px] md:max-h-[280px] object-contain select-none"
+              />
+            </div>
           </div>
         </div>
       </section>

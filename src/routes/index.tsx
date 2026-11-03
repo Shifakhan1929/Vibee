@@ -1,8 +1,10 @@
 import { EventTypePreview } from "../components/EventTypePreview";
 import { BotCreateSection } from "../components/BotCreateSection";
 import { DownloadAppButton } from "../components/DownloadAppButton";
+import { CitySelectorModal, useSelectedCity } from "../components/CitySelectorModal";
+import { MemoriesMarquee } from "../components/MemoriesMarquee";
 import { triggerPwaInstall } from "../components/AppInstallModal";
-import { Download } from "lucide-react";
+import { Download, Users, ArrowRight, Sparkles } from "lucide-react";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import capturedCSS from "../styles/captured.css?raw";
@@ -10,10 +12,10 @@ import repairCSS from "../styles/import-repairs.css?raw";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
-    { title: "Vibe – Need a team? A crowd? A stage? Make it an event." },
-    { name: "description", content: "Vibe lets anyone host anything. Start a Sunday cricket match with 10 players or sell out a comedy night for 500. Post it, fill it, show up." },
-    { property: "og:title", content: "Vibe – Need a team? A crowd? A stage? Make it an event." },
-    { property: "og:description", content: "Vibe lets anyone host anything. Start a Sunday cricket match with 10 players or sell out a comedy night for 500. Post it, fill it, show up." },
+    { title: "Vibe – Make plans. Make it an event." },
+    { name: "description", content: "Discover exciting gatherings, create unforgettable experiences, and find your people. Whatever brings you together, there's a Vibe for it." },
+    { property: "og:title", content: "Vibe – Make plans. Make it an event." },
+    { property: "og:description", content: "Discover exciting gatherings, create unforgettable experiences, and find your people. Whatever brings you together, there's a Vibe for it." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
   ] }),
@@ -29,6 +31,7 @@ function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [cityOpen, setCityOpen] = useState(false);
+  const [selectedCity, setSelectedCity] = useSelectedCity("Indore");
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [cityText, setCityText] = useState("");
@@ -54,48 +57,7 @@ function Index() {
     <>
       <style>{capturedCSS}</style>
       <style>{repairCSS}</style>
-      {cityOpen && <><div className="modal-backdrop fade in" onClick={closePanels} />
-      <div id="cityselect" className="modal fade in import-city-open" role="dialog" aria-modal="true" aria-label="Change city" tabIndex={-1}>
-        <button type="button" className="close" aria-label="Close city chooser" onClick={closePanels}>×</button>
-        <div className="modal-header"><div className="header"><h1 className="h3">AllEvents in <div className="city-container"><div className="city-scroller">{CITY_NAMES.map(c => <span key={c}>{c}</span>)}</div></div></h1></div>
-        <div className="city-in"><i className="icon icon-search"/><input id="city_select_input" className="typeahead ui-autocomplete-input" autoComplete="off" placeholder="Enter your city…" value={cityText} onChange={e => setCityText(e.target.value)} onKeyDown={e => { if (e.key === "Enter" && cityText.trim()) { window.location.href = `/${encodeURIComponent(cityText.trim().toLowerCase().replace(/\s+/g, "-"))}`; } }} />
-        <span id="cityselect-current-location">Current Location</span>
-        {cityText.length >= 2 && <ul className="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all city-autoc import-city-results">{CITY_SUGGESTIONS.filter(c => c[0].toLowerCase().includes(cityText.toLowerCase())).map(([name,region,url]) => <li className="ui-menu-item" key={url}><a className="ui-corner-all" href={url}><i className="icon-map-marker-2 city-select-icon-marker"/><p>{name}<span>{region}</span></p></a></li>)}</ul>}
-        </div></div>
-        <div className="modal-body"><div className="nearby-cities-section"><div className="nearby-cities-section-header"><span className="h3 nearby-cities-title">Explore Cities Near You</span><span className="nearby-cities-subtitle">Discover events in 40,000+ Cities around the world with AllEvents</span></div><div className="city-list">{OBSERVED_CITIES.map(([name,url]) => <a className="cbtn ghref" key={url} href={url}><i className="icon-map-marker-2 city-select-icon-marker"/><div><span>{name}</span></div></a>)}</div></div></div>
-      </div></>}
 
-      <div className={`topbar fixed lg0 topbar--hero topbar--white ${scrolled ? "scrolled shadow-on-scroll" : ""}`}>
-        <div className={"\x63ontainer \x74op-cont"}>
-          <div className={"row \x74op-cont-row"}>
-            <div className={"span5 logo-span logo-span-flex"}>
-              <div id="ae-mobile-navbar" className={"navbar navbar-static pull-left \x76isible-phone"}>
-                <div className={"navbar-inner"}>
-                  <div className={"\x63ontainer ae-mobile-navbar-container mobile-navbar-container"}>
-                    <button className={"btn btn-navbar mnv tb-mobile--burger mobile-navbar--custom mobile-burger-btn"} aria-label={menuOpen ? "Close Menu" : "Open Menu"} aria-expanded={menuOpen} aria-controls="ae-nav-collapse" onClick={() => setMenuOpen(!menuOpen)}> {"\n\t\t\t\t\t\t\t\t\t\t"}<span className={"screen-reader-only"}>Open Menu</span>{"\n\t\t\t\t\t\t\t\t\t\t"}<span className={"icon-bar"} />{"\n\t\t\t\t\t\t\t\t\t\t"}<span className={"icon-bar"} />{"\n\t\t\t\t\t\t\t\t\t\t"}<span className={"icon-bar"} />{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<span className={"red-dot-burger"} />{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}</button>
-                    <div className={`nav-collapse collapse ${menuOpen ? "in import-menu-open" : ""}`} id="ae-nav-collapse">
-                      <ImportedNavMainNavigation openCity={openCity} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <a className={"logo-cont"} href="/indore">{"\n\t\t\t\t\t\t\t\t\t"}<img className={"logo logo-dark home-page-nav-scroll"} width="135" height="37" src="/site-assets/vibe-logo-dark.png" title="Vibe" alt="Vibe logo" fetchPriority="high" />{"\n\t\t\t\t\t"}<img className={"logo logo-light home-page-nav-scroll"} width="135" height="37" src="/site-assets/vibe-logo-light.png" title="Vibe" alt="Vibe logo" />{"\n\t\t\t\t\t\t\t\t\t\n    \t\t\t"}</a>
-              <div className={"city-select-wrapper"} style={{ marginLeft: "10px" }}>
-                <button title="Indore, Madhya Pradesh, India Events" onClick={openCity} aria-haspopup="dialog" aria-expanded={cityOpen} className={"city-select-button toh tltp ae-top-hide-city hidden-phone city-select-desktop"} tabIndex={0}><i className={"icon-map-marker-2 city-select-icon-marker"} />Indore<i className={"icon-angle-down city-select-icon-down"} style={{ fontSize: "16px", verticalAlign: "middle", paddingLeft: "4px", borderWidth: "medium", borderStyle: "none", borderColor: "currentcolor", borderImage: "none", background: "none" } as CSSProperties} /></button>
-              </div>
-            </div>
-            <div className={"span7 pull-right rspan topbar-options topbar-options-logged-out"}>
-              <div className={"tbsearch hide_for_b2b"}>
-                <div className={"input-append"}><span className={"hidden-phone search-icon-desktop"}>{"\n\t\t\t\t\t\t\t"}<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">{"\n\t\t\t\t\t\t\t\t"}<path d="M15.75 15.75L11.25 11.25M2.25 7.5C2.25 8.18944 2.3858 8.87213 2.64963 9.50909C2.91347 10.146 3.30018 10.7248 3.78769 11.2123C4.2752 11.6998 4.85395 12.0865 5.49091 12.3504C6.12787 12.6142 6.81056 12.75 7.5 12.75C8.18944 12.75 8.87213 12.6142 9.50909 12.3504C10.146 12.0865 10.7248 11.6998 11.2123 11.2123C11.6998 10.7248 12.0865 10.146 12.3504 9.50909C12.6142 8.87213 12.75 8.18944 12.75 7.5C12.75 6.81056 12.6142 6.12787 12.3504 5.49091C12.0865 4.85395 11.6998 4.2752 11.2123 3.78769C10.7248 3.30018 10.146 2.91347 9.50909 2.64963C8.87213 2.3858 8.18944 2.25 7.5 2.25C6.81056 2.25 6.12787 2.3858 5.49091 2.64963C4.85395 2.91347 4.2752 3.30018 3.78769 3.78769C3.30018 4.2752 2.91347 4.85395 2.64963 5.49091C2.3858 6.12787 2.25 6.81056 2.25 7.5Z" stroke="#30363E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t"}</svg>{"\n\t\t\t\t\t\t"}</span><span className={"\x76isible-phone search-icon-mobile"} style={{ pointerEvents: "auto", cursor: "pointer" }}>{"\n\t\t\t\t\t\t\t"}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none" style={{ pointerEvents: "auto" }}>{"\n\t\t\t\t\t\t\t\t"}<path d="M10.5 19.5C15.1944 19.5 19 15.6944 19 11C19 6.3056 15.1944 2.5 10.5 2.5C5.8056 2.5 2 6.3056 2 11C2 15.6944 5.8056 19.5 10.5 19.5Z" stroke="#fff" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t\t"}<path d="M16.6094 17.1108L20.852 21.3535" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" />{"\n\t\t\t\t\t\t\t"}</svg>{"\n\t\t\t\t\t\t"}</span><input className={"span3"} id="searchd-input" type="text" placeholder="Art events" autoComplete="off" onKeyDown={e => { if (e.key === "Enter" && (e.currentTarget.value).trim()) { window.location.href = `/indore?q=${encodeURIComponent((e.currentTarget.value).trim())}`; } }} {...({ size: "16" } as any)} /></div>
-              </div>
-              <div className={"tbhide  hidden-phone"}><DownloadAppButton /><a className={"vibe-instant-topbar-btn track topbar-btn"} href="/vibe-instant" target="_blank" rel="noopener noreferrer" title="Vibe Instant – Host anything in 60 seconds" style={{ display: "inline-flex", alignItems: "center", gap: "5px", padding: "5px 12px", fontSize: "13px", fontWeight: "700", color: "#ffffff", background: "linear-gradient(135deg, #0b1f4b 0%, #0a6cf0 100%)", border: "1px solid #08a8ff", borderRadius: "16px", marginRight: "8px", textDecoration: "none", boxShadow: "0 2px 8px rgba(10, 108, 240, 0.25)" }}><span style={{ color: "#00e0ff", fontSize: "13px" }}>⚡</span>Vibe Instant</a><a className={"how-it-works-link track topbar-btn"} href="/how-it-works" target="_blank" rel="noopener noreferrer" title="How Vibe works" style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "5px 12px", fontSize: "13px", fontWeight: "600", color: "#1565C0", backgroundColor: "#EFF6FF", border: "1px solid #BFDBFE", borderRadius: "16px", marginRight: "8px", textDecoration: "none" }}><i className={"icon-info-circle"} style={{ fontSize: "14px" }} />How it works</a><a className={"create-b2b create-action track popo topbar-btn create-btn-style"} data-original-title="" href="/create" rel="nofollow" tabIndex={0} title="">{"\n\t\t\t\t\t\t\t"}<i className={"icon-plus-2 mr5 create-btn-icon"} style={{ fontSize: "16px", color: "var(--gray-600)" }} />Host an Event</a><a className={"dashboard-topbar-link track topbar-btn"} href="/dashboard" style={{ display: "inline-flex", alignItems: "center", gap: "5px", padding: "5px 12px", fontSize: "13px", fontWeight: "600", color: "#475569", backgroundColor: "#F1F5F9", border: "1px solid #E2E8F0", borderRadius: "16px", marginRight: "8px", textDecoration: "none" }}><i className={"icon-dashboard"} style={{ fontSize: "14px" }} />Dashboard</a><a className={"hide hidden-phone"} href="/recommended?ref=home-page-topbar" rel="nofollow" title="Recommended Events For You"><i className={"icon-magic"} /></a><button id="login-top" className={"track hidden-phone topbar-btn lazy"} title="Sign in to AllEvents">{"\n\t\t\t\t\t\t\t"}<img src="/site-assets/8a75fa2fbc04c7e6.webp" alt="User Profile" className={"login-user-icon lazy"} style={{ width: "22px", height: "22px", verticalAlign: "middle", marginRight: "2px", marginBottom: "2px" }} />
-      							Sign in
-      						</button></div>
-              <button type="button" onClick={() => triggerPwaInstall()} className={"tbdapp track"} style={{ right: "75px", cursor: "pointer", border: "none", background: "linear-gradient(135deg, #0b1f4b 0%, #0a6cf0 100%)", color: "#ffffff", borderRadius: "14px", padding: "5px 12px", display: "inline-flex", alignItems: "center", gap: "5px", fontWeight: "700" }} title="Install Vibe App (Web & Mobile)"><Download style={{ width: "13px", height: "13px" }} />App</button>
-            </div>
-          </div>
-        </div>
-      </div>
       <div id="overlay">
         <div className={"\x74ransition-wrap"} />
       </div>
@@ -105,13 +67,18 @@ function Index() {
       <a href="#" id="next-link">
         <div className={"nav-icon"} />
       </a>
-      <div className={"search-parent "} style={{ backgroundImage: "url(\"/site-assets/3302afdc09bd1c7f.webp\")", backgroundColor: "black", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center center" }}>
+      <div className={"search-parent luxury-hero-parent"} style={{ backgroundImage: "linear-gradient(135deg, rgba(8, 26, 44, 0.90) 0%, rgba(13, 44, 68, 0.85) 50%, rgba(8, 26, 44, 0.95) 100%), url(\"/site-assets/3302afdc09bd1c7f.webp\")", backgroundColor: "#081a2c", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center center" }}>
         <div className={"container search-child"}>
           <div className={"vibe-hero-layout"}>
             {/* 1. Headline (Desktop: Left Col / Mobile: Order 1) */}
             <div className={"vibe-hero-headline"} style={{ gridArea: "headline" }}>
-              <h1 className={"title"} style={{ fontWeight: 800, lineHeight: 1.2, margin: "0 0 10px 0", textShadow: "0 2px 10px rgba(0,0,0,0.5)" }}>Need a team? A crowd? A stage? <span style={{ color: "#00e0ff" }}>Make it an event.</span></h1>
-              <p className={"sub-title"} style={{ fontWeight: "normal", lineHeight: 1.55, textTransform: "none", margin: "0 0 16px 0", color: "#cbd5e1" }}>Vibe lets anyone host anything. Start a Sunday cricket match with 10 players or sell out a comedy night for 500. Post it, fill it, show up.</p>
+              <h1 className={"title"} style={{ fontWeight: "bold", lineHeight: "1.15" }}>
+                Make plans.{" "}
+                <span style={{ color: "rgb(33, 192, 232)", display: "block" }}>Make it an event.</span>
+              </h1>
+              <p className={"sub-title"} style={{ fontWeight: "normal", lineHeight: "1.5" }}>
+                Discover exciting gatherings, create unforgettable experiences, and find your people. Whatever brings you together, there's a Vibe for it.
+              </p>
             </div>
 
             {/* 2. Search Bar (Desktop: Left Col / Mobile: Order 2) */}
@@ -136,7 +103,7 @@ function Index() {
                         <span className={"location_icon"} style={{ left: "12px" }}>
                           <i className={"icon-map-marker-2"} style={{ fontSize: "18px", color: "var(--gray-500)" }} />
                         </span>
-                        <p className={"location_text"} style={{ fontSize: "16px", color: "var(--gray-800)", margin: "0px" }}>indore</p>
+                        <p className={"location_text"} style={{ fontSize: "16px", color: "var(--gray-800)", margin: "0px", textTransform: "capitalize" }}>{selectedCity}</p>
                         <span>
                           <i className={"icon-angle-down"} style={{ fontSize: "20px", color: "var(--gray-500)" }} />
                         </span>
@@ -151,7 +118,7 @@ function Index() {
                   <div>
                     <span role="button" tabIndex={0} onClick={openCity} onKeyDown={e => { if (e.key === "Enter") openCity(); }} className={"city-select-action"}>
                       <span className={"icon-map-marker-2"} style={{ fontSize: "18px", color: "rgb(255, 255, 255)", marginRight: "6px", cursor: "pointer" }} />
-                      <p style={{ color: "white", fontSize: "18px", margin: "0", cursor: "pointer" }}>Indore</p>
+                      <p style={{ color: "white", fontSize: "18px", margin: "0", cursor: "pointer", textTransform: "capitalize" }}>{selectedCity}</p>
                       <span className={"icon-angle-down"} style={{ fontSize: "15px", color: "rgb(255, 255, 255)", marginLeft: "6px", cursor: "pointer" }} />
                     </span>
                   </div>
@@ -171,56 +138,24 @@ function Index() {
 
             {/* 5. Hero CTA Buttons (Desktop: Left Col / Mobile: Order 5) */}
             <div className={"vibe-hero-ctas"} style={{ gridArea: "ctas" }}>
-              <a
-                href="/vibe-instant"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={"vibe-cta-instant"}
-                title="Launch an event in 60 seconds"
-              >
-                <span>⚡</span> Vibe Instant
-              </a>
-              <a href="/create" className={"vibe-cta-primary"}>
-                + Host an Event
-              </a>
-              <a href="/indore" className={"vibe-cta-secondary"}>
-                Explore Indore Events
+              <a href={`/${selectedCity.toLowerCase().replace(/\s+/g, "-")}`} className={"vibe-cta-secondary"}>
+                <span>Explore {selectedCity} Events</span>
+                <ArrowRight className="w-4 h-4" />
               </a>
             </div>
           </div>
+        </div>
+        {/* Bottom Wavy Curve Transition (Matching reference image) */}
+        <div className={"hero-wavy-divider"} aria-hidden="true">
+          <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className={"hero-wavy-svg"}>
+            <path d="M0,60 C320,115 540,-5 820,55 C1100,115 1260,25 1440,50 L1440,120 L0,120 Z" fill="rgba(0, 224, 255, 0.16)" />
+            <path d="M0,45 C280,105 460,-10 760,42 C1060,95 1240,10 1440,35 L1440,120 L0,120 Z" fill="#EEF4FF" />
+          </svg>
         </div>
       </div>
       <div id="hss_bar_background_overlay" className={searchOpen ? "import-search-overlay" : ""} onClick={() => setSearchOpen(false)} />
       {/* Bot Create Section */}
       <BotCreateSection />
-      {/* Why Vibe is Best For You - Video Section */}
-      <div style={{ backgroundColor: "#ffffff", padding: "48px 0 36px", borderBottom: "1px solid #E2E8F0" }}>
-        <div style={{ maxWidth: "860px", margin: "0 auto", padding: "0 20px", textAlign: "center" }}>
-          <div style={{ display: "inline-block", padding: "4px 14px", borderRadius: "9999px", backgroundColor: "#EFF6FF", color: "#1565C0", fontSize: "12px", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "12px" }}>
-            Video Walkthrough
-          </div>
-          <h2 style={{ fontSize: "28px", fontWeight: "800", color: "#1E293B", margin: "0 0 10px", lineHeight: "1.25" }}>
-            Why Vibe is Best For You
-          </h2>
-          <p style={{ fontSize: "15px", color: "#64748B", margin: "0 auto 28px", maxWidth: "600px", lineHeight: "1.6" }}>
-            Need a team? A crowd? A stage? See how anyone can create, share, and fill out events in minutes.
-          </p>
-
-          {/* 16:9 Video Frame */}
-          <div style={{ position: "relative", width: "100%", paddingBottom: "56.25%", height: 0, overflow: "hidden", borderRadius: "16px", backgroundColor: "#0F172A", boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)", border: "1px solid #CBD5E1" }}>
-            <iframe
-              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: 0 }}
-              src="https://www.youtube-nocookie.com/embed/ScMzIvxBSi4?rel=0&modestbranding=1"
-              title="Why Vibe is Best For You"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-
-
-        </div>
-      </div>
-
       <div className={"near-by-section"}>
         <div className={"fold"} style={{ paddingBottom: "30px" }}>
           <div className={"\x72ow-fluid bgstyle-0"}>
@@ -231,11 +166,12 @@ function Index() {
                 </h2>
               </div>
               <div className={"near-by-items-wrapper"}>
-                <div className={"nearby-cities-grid"}><a className={"nearby-city-item track"} href="/portland" title="Events in Portland">{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-icon"}><i className={"icon-map-marker-2"} /></div>{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Portland</span><span className={"city-events"}>6,698+ Events</span></div>{"\n\t\t\t\t\t\t\t\t\t"}</a><a className={"nearby-city-item track"} href="/spokane" title="Events in Spokane">{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-icon"}><i className={"icon-map-marker-2"} /></div>{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Spokane</span><span className={"city-events"}>2,029+ Events</span></div>{"\n\t\t\t\t\t\t\t\t\t"}</a><a className={"nearby-city-item track"} href="/tacoma" title="Events in Tacoma">{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-icon"}><i className={"icon-map-marker-2"} /></div>{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Tacoma</span><span className={"city-events"}>1,614+ Events</span></div>{"\n\t\t\t\t\t\t\t\t\t"}</a><a className={"nearby-city-item track"} href="/bellevue" title="Events in Bellevue">{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-icon"}><i className={"icon-map-marker-2"} /></div>{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Bellevue</span><span className={"city-events"}>693+ Events</span></div>{"\n\t\t\t\t\t\t\t\t\t"}</a><a onClick={e => { e.preventDefault(); openCity(); }} className={"nearby-city-item search-city-item track"} href="#" title="Search for more cities">{"\n\t\t\t\t\t\t\t\t\t"}<div className={"city-icon search-icon"}><i className={"icon icon-search"} /></div>{"\n\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Search City</span><span className={"city-events"}>30,000+ cities</span></div>{"\n\t\t\t\t\t\t\t\t"}</a></div>
+                <div className={"nearby-cities-grid"}><a className={"nearby-city-item track"} href="/indore" title="Events in Indore">{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-icon"}><i className={"icon-map-marker-2"} /></div>{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Indore</span><span className={"city-events"}>132+ Events</span></div>{"\n\t\t\t\t\t\t\t\t\t"}</a><a className={"nearby-city-item track"} href="/chhindwara" title="Events in Chhindwara">{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-icon"}><i className={"icon-map-marker-2"} /></div>{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Chhindwara</span><span className={"city-events"}>0+ Events</span></div>{"\n\t\t\t\t\t\t\t\t\t"}</a><a className={"nearby-city-item track"} href="/bhopal" title="Events in Bhopal">{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-icon"}><i className={"icon-map-marker-2"} /></div>{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Bhopal</span><span className={"city-events"}>44+ Events</span></div>{"\n\t\t\t\t\t\t\t\t\t"}</a><a className={"nearby-city-item track"} href="/akola" title="Events in Akola">{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-icon"}><i className={"icon-map-marker-2"} /></div>{"\n\t\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Akola</span><span className={"city-events"}>8+ Events</span></div>{"\n\t\t\t\t\t\t\t\t\t"}</a><a onClick={e => { e.preventDefault(); openCity(); }} className={"nearby-city-item search-city-item track"} href="#" title="Search for more cities">{"\n\t\t\t\t\t\t\t\t\t"}<div className={"city-icon search-icon"}><i className={"icon icon-search"} /></div>{"\n\t\t\t\t\t\t\t\t\t"}<div className={"city-info"}><span className={"city-name"}>Search City</span><span className={"city-events"}>30,000+ cities</span></div>{"\n\t\t\t\t\t\t\t\t"}</a></div>
               </div>
             </div>
           </div>
         </div>
+
       </div>
       <div className={"v2-cat-list-section"}>
         <div className={"fold"}>
@@ -251,6 +187,7 @@ function Index() {
             </div>
           </div>
         </div>
+
       </div>
       <div id="home-popular-event-section" className={"homepopulareventsection fold events-loaded"}>
         <div id="show_popular_section" className={"\x63ontainer hpe-container"}>
@@ -587,6 +524,7 @@ function Index() {
             </div>
           </div>
         </div>
+
       </div>
       <div className={"\x72ow-fluid fold-top popular-event-country-section"}>
         <div className={"\x63ontainer"}>
@@ -1920,6 +1858,7 @@ function Index() {
             </div>
           </div>
         </div>
+
       </div>
       <div className={"\x72ow-fluid fold-top worldwide_t_events"} style={{ borderBottom: "0px solid rgb(221, 221, 221)" } as CSSProperties}>
         <div className={"\x63ontainer"}>
@@ -2439,11 +2378,10 @@ function Index() {
       <div className={"memories-wrapper"}>
         <div>
           <div className={"memories-header"}>
-            <h1 className={"memories-title"}>Loved by millions. Lived on AllEvents</h1>
-            <p className={"memories-subtitle"}>Join the people turning moments into memories.</p>
+            <h1 className={"memories-title"}>The Moments That Make Vibe.</h1>
+            <p className={"memories-subtitle"}>Real people. Real experiences. Unforgettable moments.</p>
           </div>
-          <div className={"memories-main-container"}>
-            <div className={"memories-columns-container"} style={{ transform: "translateX(-47.5px)" }} data-site-import-responsive="749">
+          <MemoriesMarquee>
               <div className={"memories-column"}>
                 <div className={"memories-card memories-card-short"}>
                   <img src="/site-assets/6276c0ed1177f8f6.webp" alt="Wodan De Mey" loading="lazy" className={"memories-card-image"} />
@@ -2651,29 +2589,6 @@ function Index() {
                 </div>
               </div>
               <div className={"memories-column"}>
-                <div className={"memories-card memories-card-tall"}>
-                  <img src="/site-assets/0332bcf67004b4fe.webp" alt="Dorothy Doctor" loading="lazy" className={"memories-card-image"} />
-                  <div className={"memories-card-overlay"}>
-                    <img src="/site-assets/16217f7eec5a14c6.jpg" alt="Dorothy Doctor" loading="lazy" className={"memories-avatar memories-avatar-small lazy"} />
-                    <div>
-                      <div className={"memories-user-name memories-user-name-light"}>
-                                                      Dorothy Doctor
-                                                  </div>
-                      <div className={"memories-user-time memories-user-time-light"}>
-                                                      Today
-                                                  </div>
-                    </div>
-                  </div>
-                  <div className={"memories-event-info"}>
-                    <div className={"memories-event-icon"}>
-                      <i className={"icon icon-calendar-empty"} />
-                    </div>
-                    <div className={"memories-event-name"}>Bryson Tiller at Talking Stick Resort Amphitheatre</div>
-                    <div className={"memories-event-location"}>
-                                                Talking Stick Resort Amphitheatre
-                                              </div>
-                  </div>
-                </div>
                 <div className={"memories-card memories-card-short"}>
                   <img src="/site-assets/2eae0bf0c2d6265e.webp" alt="Debby willoughby" loading="lazy" className={"memories-card-image"} />
                   <div className={"memories-card-overlay"}>
@@ -3103,58 +3018,67 @@ function Index() {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={"creator-solution-section"}>
-        <div className={"fold"}>
-          <div className={"\x72ow-fluid bgstyle-0"}>
-            <div className={"\x63ontainer"}>
-              <div className={"cs-container"}>
-                <div className={"action-container"}>
-                  <div className={"title"}>
-                                  Do you host events?
-                              </div>
-                  <div className={"title-small"}>
-                                  Let’s make the world #Happening together
-                              </div>
-                  <div style={{ display: "flex" }}>
-                    <a className={"home-page-button"} data-original-title="View all Events in Indore" href="/create" style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
-                                      Host an Event
-                                  </a>
-                    <div className={"creator-link"}><a href="/create" style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
-                                          Create
-                                      </a><svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" viewBox="0 0 5 5" fill="none" style={{ margin: "9px" }}>{"\n                                    "}<circle cx="2.5" cy="2.5" r="2.5" fill="#D9D9D9" />{"\n                                "}</svg><a href="/pages/event-marketing?ref=home-page-creator-section" style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
-                                          Promote
-                                      </a><svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" viewBox="0 0 5 5" fill="none" style={{ margin: "9px" }}>{"\n                                    "}<circle cx="2.5" cy="2.5" r="2.5" fill="#D9D9D9" />{"\n                                "}</svg><a href="/pages/event-ticketing?ref=home-page-creator-section" style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}>
-                                          Sell
-                                      </a></div>
-                  </div>
-                </div>
-                <div className={"temp"}>
-                  <div className={"insta-person"} style={{ position: "relative" }}>
-                    <div className={"banner-person"}>
-                      <img className={"lazy"} data-src="https://cdn2.allevents.in/transup/39/c965dfe22c452caaf9b882c3884dff/reduced-solution-for-creator-person.png" alt="Person Image" loading="lazy" src="/site-assets/175216bcaf1b5d80.webp" />
-                    </div>
-                    <div className={"insta-link lazy"}>
-                      <div className={"\x63ontainer"} style={{ display: "flex", alignItems: "center", padding: "8px" }}>
-                        <div className={"circle"} />
-                        <div style={{ display: "block", marginLeft: "12px" }}>
-                          <div style={{ color: "rgb(48, 54, 62)", fontSize: "16px", fontStyle: "normal", fontWeight: "600", lineHeight: "normal", margin: "4px 0px", textAlign: "left" }}>@Stroymoyd</div>
-                          <div style={{ color: "rgb(98, 98, 98)", fontSize: "14px", fontStyle: "normal", fontWeight: "400", lineHeight: "normal", margin: "4px 0px" }}>Comedian, San Francisco</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className={"banner-bubble"} style={{ width: "40px", height: "40px", top: "70%", zIndex: "1000", left: "-25%", borderRadius: "50%", position: "absolute", fill: "rgba(207, 245, 255, 0.3)", backgroundColor: "rgba(207, 238, 255, 0.3)" }} />
-                    <div className={"banner-bubble"} style={{ width: "35px", height: "35px", top: "23%", zIndex: "1000", right: "-5%", borderRadius: "50%", position: "absolute", fill: "rgba(207, 245, 255, 0.3)", backgroundColor: "rgba(207, 238, 255, 0.3)" }} />
-                    <div className={"banner-bubble"} style={{ width: "18px", height: "18px", top: "5%", zIndex: "1000", left: "15%", borderRadius: "50%", position: "absolute", fill: "rgba(207, 245, 255, 0.3)", backgroundColor: "rgba(207, 238, 255, 0.3)" }} />
-                  </div>
-                </div>
+          </MemoriesMarquee>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: "38px",
+              marginBottom: "12px",
+              padding: "0 20px",
+              textAlign: "center",
+              gap: "12px",
+            }}
+          >
+            <a
+              href="https://wa.me/919183123093?text=Hi%20Vibe%2C%20I%20want%20to%20join%20the%20Vibe%20community!"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="vibe-join-community-btn"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "12px",
+                padding: "15px 36px",
+                borderRadius: "9999px",
+                background: "linear-gradient(135deg, #0a6cf0 0%, #004ecc 100%)",
+                color: "#ffffff",
+                fontSize: "16px",
+                fontWeight: "800",
+                textDecoration: "none",
+                boxShadow: "0 12px 30px -6px rgba(10, 108, 240, 0.4)",
+                transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+                cursor: "pointer",
+                letterSpacing: "-0.2px",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "translateY(-2px) scale(1.02)";
+                e.currentTarget.style.boxShadow = "0 18px 36px -6px rgba(10, 108, 240, 0.55)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0) scale(1)";
+                e.currentTarget.style.boxShadow = "0 12px 30px -6px rgba(10, 108, 240, 0.4)";
+              }}
+            >
+              <Users style={{ width: "20px", height: "20px", color: "#ffffff" }} />
+              <span>Join the Community</span>
+              <ArrowRight style={{ width: "18px", height: "18px", color: "#ffffff", opacity: 0.9 }} />
+            </a>
+
+            <div className="vibe-community-stat" style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "13px", color: "#64748b", fontWeight: "500" }}>
+              <div style={{ display: "flex", marginLeft: "-4px" }}>
+                <span style={{ width: "22px", height: "22px", borderRadius: "50%", border: "2px solid #fff", background: "#3b82f6", display: "inline-block", marginRight: "-6px" }} />
+                <span style={{ width: "22px", height: "22px", borderRadius: "50%", border: "2px solid #fff", background: "#8b5cf6", display: "inline-block", marginRight: "-6px" }} />
+                <span style={{ width: "22px", height: "22px", borderRadius: "50%", border: "2px solid #fff", background: "#10b981", display: "inline-block" }} />
               </div>
+              <span>Join 50,000+ creators, artists &amp; attendees sharing unforgettable vibes</span>
             </div>
           </div>
         </div>
+
       </div>
       <div className={"app-pitch"}>
         <div className={"ap-container"}>
@@ -3164,11 +3088,117 @@ function Index() {
               <h3 className={"ap-dark"}>anywhere, anytime</h3>
               <p className={"ap-sub"}>Download the AllEvents app to never miss out the best events near you!</p>
             </div>
-            <div className={"ap-download"}>
-              <div className={"ap-qr"}>
-                <img className={"lazy"} data-src="https://cdn2.allevents.in/transup/2e/1723178e244d7c8a3946a247219666/qr-code.png" alt="Scan to download AllEvents app" src="/site-assets/f401e83494cd77da.png" loading="eager" />
+            <div className={"ap-download vibe-ap-download"} style={{ flexDirection: "column", gap: "16px" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", alignItems: "center" }}>
+                <button
+                  type="button"
+                  onClick={triggerPwaInstall}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "12px",
+                    padding: "14px 26px",
+                    borderRadius: "16px",
+                    background: "linear-gradient(135deg, #0a6cf0 0%, #004ecc 100%)",
+                    color: "#ffffff",
+                    border: "none",
+                    boxShadow: "0 10px 25px -5px rgba(10, 108, 240, 0.4)",
+                    cursor: "pointer",
+                    transition: "all 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                    e.currentTarget.style.boxShadow = "0 14px 30px -5px rgba(10, 108, 240, 0.5)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.boxShadow = "0 10px 25px -5px rgba(10, 108, 240, 0.4)";
+                  }}
+                >
+                  <Download style={{ width: "22px", height: "22px", color: "#ffffff" }} />
+                  <div style={{ textAlign: "left" }}>
+                    <div style={{ fontSize: "11px", fontWeight: "600", textTransform: "uppercase", letterSpacing: "0.5px", opacity: 0.85, lineHeight: 1 }}>
+                      Free Instant Install
+                    </div>
+                    <div style={{ fontSize: "17px", fontWeight: "800", lineHeight: 1.2, marginTop: "2px" }}>
+                      Download App
+                    </div>
+                  </div>
+                </button>
+
+                <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                  <button
+                    type="button"
+                    onClick={triggerPwaInstall}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      padding: "12px 18px",
+                      borderRadius: "14px",
+                      background: "#ffffff",
+                      border: "1.5px solid #dbe6f7",
+                      color: "#0b1f4b",
+                      fontSize: "13px",
+                      fontWeight: "700",
+                      cursor: "pointer",
+                      transition: "all 0.2s ease",
+                      boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = "#0a6cf0";
+                      e.currentTarget.style.backgroundColor = "#f6faff";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = "#dbe6f7";
+                      e.currentTarget.style.backgroundColor = "#ffffff";
+                    }}
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M3.609 1.814L13.792 12 3.61 22.186a2.38 2.38 0 0 1-.397-.563A2.43 2.43 0 0 1 3 20.407V3.593c0-.435.076-.84.213-1.216.096-.264.23-.5.396-.563zm1.196-.64L15.932 7.43l-3.235 3.235L4.805 1.174zm0 21.652l7.892-9.49 3.235 3.234-11.127 6.256zm12.28-7.925l2.67-1.503a1.95 1.95 0 0 0 0-3.396l-2.67-1.503-3.567 3.701 3.567 2.701z" />
+                    </svg>
+                    <span>Google Play</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={triggerPwaInstall}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      padding: "12px 18px",
+                      borderRadius: "14px",
+                      background: "#ffffff",
+                      border: "1.5px solid #dbe6f7",
+                      color: "#0b1f4b",
+                      fontSize: "13px",
+                      fontWeight: "700",
+                      cursor: "pointer",
+                      transition: "all 0.2s ease",
+                      boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = "#0a6cf0";
+                      e.currentTarget.style.backgroundColor = "#f6faff";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = "#dbe6f7";
+                      e.currentTarget.style.backgroundColor = "#ffffff";
+                    }}
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.42c.67-.82 1.13-1.96.99-3.1-.98.04-2.19.66-2.88 1.48-.61.71-1.15 1.87-1.01 2.98 1.1.09 2.22-.55 2.9-1.36z" />
+                    </svg>
+                    <span>App Store</span>
+                  </button>
+                </div>
               </div>
-              
+
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "13px", color: "var(--gray-500)", fontWeight: "500" }}>
+                <span style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#10b981", display: "inline-block" }} />
+                <span>Works on Android, iOS &amp; Desktop · Zero storage needed</span>
+              </div>
             </div>
           </div>
           <div className={"ap-phones"}>
@@ -4820,17 +4850,18 @@ function Index() {
             </div>
           </div>
         </div>
+
       </div>
     </>
   );
 }
 
-function ImportedNavMainNavigation({ openCity }: { openCity: () => void }) {
+function ImportedNavMainNavigation({ openCity, selectedCity = "Indore" }: { openCity: () => void; selectedCity?: string }) {
   return (
     <nav role="navigation" aria-label="Main Navigation">
       <ul className={"nav topuserinfomobile"}>
         <li className={"ae-top-visible-city li1"}>
-          <a href="/indore">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}<div className={"ae-icon-marker new-svg-icon"} />{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}<span className={"toh city-select-width"}>Indore</span>{"\n\t\t\t\t\t\t                        \t\t"}<button onClick={e => { e.preventDefault(); openCity(); }} className={"city-select-button tltp mcity-select"}>{"\n\t\t\t\t\t\t                        \t\t"}<span className={"city-select-v-middle"}>Change City</span>{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}</button>{"\n\t\t\t\t\t\t\t\t\t\t\t\t"}</a>
+          <a href="/indore">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}<div className={"ae-icon-marker new-svg-icon"} />{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}<span className={"toh city-select-width"}>{selectedCity}</span>{"\n\t\t\t\t\t\t                        \t\t"}<button onClick={e => { e.preventDefault(); openCity(); }} className={"city-select-button tltp mcity-select"}>{"\n\t\t\t\t\t\t                        \t\t"}<span className={"city-select-v-middle"}>Change City</span>{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t"}</button>{"\n\t\t\t\t\t\t\t\t\t\t\t\t"}</a>
         </li>
         <li className={"svg-item-box"}>
           <a className={"e_main_title1 track"} href="/vibe-instant" target="_blank" rel="noopener noreferrer"><div className={"ae-icon-magic new-svg-icon"} /><span className={"e_nav_item"}>⚡ Vibe Instant</span></a></li><li className={"svg-item-box"}><button type="button" onClick={() => triggerPwaInstall()} className={"e_main_title1 track"} style={{ width: "100%", textAlign: "left", background: "none", border: "none", padding: "10px 15px", cursor: "pointer", display: "flex", alignItems: "center" }}><div className={"new-svg-icon"} style={{ display: "flex", alignItems: "center", justifyContent: "center", marginRight: "10px" }}><Download style={{ width: "16px", height: "16px", color: "#0a6cf0" }} /></div><span className={"e_nav_item"} style={{ fontWeight: 600, color: "#0a6cf0" }}>Download App</span></button></li><li className={"svg-item-box"}><a className={"e_main_title1 track"} href="/how-it-works" target="_blank" rel="noopener noreferrer">
@@ -4996,6 +5027,7 @@ function ImportedFooterSiteNavigation() {
             </div>
           </div>
         </div>
+
       </div>
       <div className={"home-footer2 hidden-phone"}>
         <div className={"\x63ontainer"} style={{ borderTop: "1px solid rgb(46, 54, 63)", borderBottom: "1px solid rgb(46, 54, 63)", padding: "10px 0px" } as CSSProperties}>
@@ -5067,6 +5099,7 @@ function ImportedFooterSiteNavigation() {
             </div>
           </div>
         </div>
+
       </div>
       <div className={"home-footer3"}>
         <div className={"\x63ontainer"}>

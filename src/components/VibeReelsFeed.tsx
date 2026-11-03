@@ -570,7 +570,7 @@ export function VibeReelsFeed() {
 
   return (
     <div
-      className="vibe-instant-container fixed inset-0 h-[100dvh] w-full bg-[#f6faff] text-slate-800 overflow-hidden select-none flex flex-col justify-between"
+      className="vibe-instant-container relative w-full h-[calc(100dvh-60px)] bg-[#f6faff] text-slate-800 overflow-hidden select-none flex flex-col justify-between"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -587,156 +587,7 @@ export function VibeReelsFeed() {
         </div>
       )}
 
-      {/* =========================================================================
-          TOPBAR HEADER
-          ========================================================================= */}
-      <header className="w-full bg-white/95 border-b border-[#dbe6f7] backdrop-blur-md px-4 sm:px-8 py-3 flex items-center justify-between z-30 shrink-0 shadow-xs">
-        <div className="flex items-center gap-2.5 sm:gap-3">
-          <Link
-            to="/"
-            className="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white/80 hover:text-white transition-colors cursor-pointer"
-            title="Back to home"
-          >
-            <ArrowLeft className="w-4 h-4" />
-          </Link>
 
-          <div className="flex items-center gap-1 font-sans">
-            <Flame className="w-5 h-5 text-[#0a6cf0] fill-[#0a6cf0]" />
-            <span className="font-extrabold text-base sm:text-lg text-slate-900 tracking-tight">Vibe</span>
-            <span className="text-[10px] font-black uppercase tracking-wider bg-[#0a6cf0] text-white px-2 py-0.5 rounded-md ml-0.5 shadow-[0_0_10px_rgba(255,85,0,0.5)]">
-              INSTANT
-            </span>
-          </div>
-        </div>
-
-        {/* Center / Right Controls */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          {/* City Selector */}
-          <div className="relative">
-            <button
-              onClick={() => {
-                setCityDropdownOpen(!cityDropdownOpen);
-                setCategoryDropdownOpen(false);
-              }}
-              type="button"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-slate-600 transition-colors cursor-pointer"
-            >
-              <MapPin className="w-3.5 h-3.5 text-[#0a6cf0]" />
-              <span className="max-w-[80px] sm:max-w-none truncate">{selectedCity}</span>
-              <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
-            </button>
-
-            {cityDropdownOpen && (
-              <div className="absolute left-0 mt-2 w-40 rounded-2xl bg-white border border-[#dbe6f7] shadow-xl p-1.5 z-50 rounded-2xl">
-                {CITIES.map((c) => (
-                  <button
-                    key={c}
-                    onClick={() => {
-                      setSelectedCity(c);
-                      setCityDropdownOpen(false);
-                      setCurrentIndex(0);
-                    }}
-                    type="button"
-                    className={`w-full text-left px-3 py-2 rounded-xl text-xs font-medium flex items-center justify-between transition-colors ${
-                      selectedCity === c
-                        ? "bg-[#0a6cf0]/20 text-[#0a6cf0] font-bold"
-                        : "text-slate-700 hover:bg-[#f6faff] hover:text-slate-900"
-                    }`}
-                  >
-                    <span>{c}</span>
-                    {selectedCity === c && <span className="w-1.5 h-1.5 rounded-full bg-[#0a6cf0]" />}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Category Selector Dropdown */}
-          <div className="relative">
-            <button
-              onClick={() => {
-                setCategoryDropdownOpen(!categoryDropdownOpen);
-                setCityDropdownOpen(false);
-              }}
-              type="button"
-              className="flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-white transition-colors cursor-pointer"
-            >
-              <Flame className="w-3 h-3 text-[#0a6cf0]" />
-              <span className="max-w-[90px] sm:max-w-none truncate">
-                {CATEGORIES.find((c) => c.id === selectedCategory)?.label || "All vibes"}
-              </span>
-              <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
-            </button>
-
-            {categoryDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-48 rounded-2xl bg-white border border-[#dbe6f7] shadow-xl p-1.5 z-50 rounded-2xl">
-                {CATEGORIES.map((cat) => (
-                  <button
-                    key={cat.id}
-                    onClick={() => {
-                      setSelectedCategory(cat.id);
-                      setCategoryDropdownOpen(false);
-                      setCurrentIndex(0);
-                    }}
-                    type="button"
-                    className={`w-full text-left px-3 py-2 rounded-xl text-xs font-medium flex items-center justify-between transition-colors ${
-                      selectedCategory === cat.id
-                        ? "bg-[#0a6cf0]/20 text-[#0a6cf0] font-bold"
-                        : "text-slate-700 hover:bg-[#f6faff] hover:text-slate-900"
-                    }`}
-                  >
-                    <span>{cat.label}</span>
-                    {selectedCategory === cat.id && <span className="w-1.5 h-1.5 rounded-full bg-[#0a6cf0]" />}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Dashboard Link */}
-          <Link
-            to="/dashboard"
-            className="hidden md:inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-slate-600 hover:text-white transition-colors"
-          >
-            Dashboard
-          </Link>
-
-          {/* Sound Toggle */}
-          <button
-            onClick={() => {
-              setSoundEnabled(!soundEnabled);
-              showToast(soundEnabled ? "Audio muted" : "Ambiance sound active");
-            }}
-            type="button"
-            className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white/80 hover:text-white transition-colors cursor-pointer"
-            title={soundEnabled ? "Mute audio" : "Enable ambiance"}
-          >
-            {soundEnabled ? <Volume2 className="w-4 h-4 text-[#0a6cf0]" /> : <VolumeX className="w-4 h-4" />}
-          </button>
-
-          {/* Download App Button */}
-          <button
-            type="button"
-            onClick={triggerPwaInstall}
-            className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white hover:bg-[#f6faff] border border-[#dbe6f7] hover:border-[#0a6cf0] flex items-center justify-center text-[#0a6cf0] transition-all cursor-pointer shadow-sm group"
-            title="Install Vibe App (Web & Mobile)"
-            aria-label="Install Vibe App"
-          >
-            <Download className="w-4 h-4 text-[#0a6cf0] group-hover:scale-110 transition-transform" />
-          </button>
-
-          {/* Host a Vibe Button */}
-          <button
-            onClick={() => setCreateVibeOpen(true)}
-            type="button"
-            className="px-3 sm:px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#0b1f4b] to-[#0a6cf0] hover:brightness-110 text-white text-xs font-bold transition-all shadow-[0_0_12px_rgba(255,85,0,0.4)] flex items-center gap-1 cursor-pointer active:scale-95"
-          >
-            <Plus className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Host Vibe</span>
-            <span className="sm:hidden">Host</span>
-          </button>
-        </div>
-      </header>
 
       {/* =========================================================================
           MAIN REELS VIEWPORT (DESKTOP & MOBILE RESPONSIVE)
@@ -761,7 +612,72 @@ export function VibeReelsFeed() {
             </button>
           </div>
         ) : (
-          <div className="flex items-center justify-center gap-4 lg:gap-7 max-w-6xl w-full h-full max-h-[820px]">
+          <div className="flex items-center justify-center gap-4 lg:gap-7 max-w-7xl w-full h-full max-h-[820px]">
+            {/* LEFT SIDE: Category Dropdown & Host a Vibe Button */}
+            <div className="hidden lg:flex w-[210px] rounded-[24px] bg-white/95 backdrop-blur-xl border border-[#dbe6f7] p-4 shadow-md flex-col gap-3 shrink-0 text-slate-800 self-start">
+              {/* Category Dropdown Menu */}
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
+                  <Flame className="w-4 h-4 text-[#0066f5]" />
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-800">Category</span>
+                </div>
+
+                <div className="relative pt-1">
+                  <button
+                    type="button"
+                    onClick={() => setCategoryDropdownOpen(!categoryDropdownOpen)}
+                    className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-800 shadow-xs transition-all cursor-pointer"
+                  >
+                    <span className="truncate">
+                      {CATEGORIES.find((c) => c.id === selectedCategory)?.label || "All vibes"}
+                    </span>
+                    <ChevronDown
+                      className={`w-3.5 h-3.5 text-slate-500 transition-transform duration-200 ${
+                        categoryDropdownOpen ? "rotate-180 text-[#0066f5]" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {categoryDropdownOpen && (
+                    <div className="absolute left-0 top-full mt-1.5 w-full rounded-2xl bg-white border border-[#dbe6f7] shadow-xl p-1.5 z-50 animate-in fade-in zoom-in-95">
+                      {CATEGORIES.map((cat) => (
+                        <button
+                          key={cat.id}
+                          onClick={() => {
+                            setSelectedCategory(cat.id);
+                            setCategoryDropdownOpen(false);
+                            setCurrentIndex(0);
+                          }}
+                          type="button"
+                          className={`w-full text-left px-3 py-2 rounded-xl text-xs font-medium flex items-center justify-between transition-colors cursor-pointer ${
+                            selectedCategory === cat.id
+                              ? "bg-[#0066f5] text-white font-bold"
+                              : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"
+                          }`}
+                        >
+                          <span>{cat.label}</span>
+                          {selectedCategory === cat.id && (
+                            <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0" />
+                          )}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Host a Vibe Button (Directly below Category dropdown) */}
+              <button
+                onClick={() => setCreateVibeOpen(true)}
+                type="button"
+                className="w-full py-2.5 px-3 rounded-xl bg-[#0066f5] hover:bg-[#0052cc] text-white text-xs font-bold shadow-md hover:shadow-lg flex items-center justify-center gap-1.5 cursor-pointer transition-all active:scale-[0.98]"
+                title="Host a Vibe"
+              >
+                <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
+                <span>Host a Vibe</span>
+              </button>
+            </div>
+
             {/* Reel Card */}
             <div
               onDoubleClick={handleDoubleClick}
@@ -781,6 +697,53 @@ export function VibeReelsFeed() {
                 <span className="px-3 py-1 rounded-full text-[11px] font-semibold bg-black/60 backdrop-blur-md text-white/90 border border-white/10 shadow-sm">
                   {currentVibe.badge || "Community pick"}
                 </span>
+              </div>
+
+              {/* City Filter Pill Top Right of Card (Adjusted onto the page) */}
+              <div
+                className="absolute top-4 right-4 z-30"
+                onPointerDown={(e) => e.stopPropagation()}
+              >
+                <div className="relative">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setCityDropdownOpen(!cityDropdownOpen);
+                    }}
+                    type="button"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-md border border-white/20 text-xs font-semibold text-white shadow-md transition-all cursor-pointer select-none"
+                    title="Change City"
+                  >
+                    <MapPin className="w-3.5 h-3.5 text-[#00e0ff]" />
+                    <span className="max-w-[85px] truncate">{selectedCity}</span>
+                    <ChevronDown className="w-3 h-3 text-white/80" />
+                  </button>
+
+                  {cityDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-44 rounded-2xl bg-white border border-[#dbe6f7] shadow-2xl p-1.5 z-50 animate-in fade-in zoom-in-95">
+                      {CITIES.map((c) => (
+                        <button
+                          key={c}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedCity(c);
+                            setCityDropdownOpen(false);
+                            setCurrentIndex(0);
+                          }}
+                          type="button"
+                          className={`w-full text-left px-3 py-2 rounded-xl text-xs font-medium flex items-center justify-between transition-colors cursor-pointer ${
+                            selectedCity === c
+                              ? "bg-[#0a6cf0] text-white font-bold"
+                              : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"
+                          }`}
+                        >
+                          <span>{c}</span>
+                          {selectedCity === c && <span className="w-1.5 h-1.5 rounded-full bg-white" />}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* Cover Image with Vignette */}
@@ -860,88 +823,30 @@ export function VibeReelsFeed() {
                   </div>
                   <span className="text-[11px] font-semibold text-white drop-shadow-md">Info</span>
                 </button>
-              </div>
 
-              {/* Bottom Card Content Overlay */}
-              <div className="absolute inset-x-0 bottom-0 z-20 px-4 sm:px-5 pr-16 pb-4 sm:pb-5 space-y-2 pointer-events-auto">
-                {/* Host Line */}
-                <div>
-                  <p className="text-xs text-slate-500 font-medium">
-                    Hosted by <span className="text-white font-semibold">{currentVibe.host_name}</span>
-                  </p>
-                  <h3
-                    onClick={() => setInfoModalOpen(true)}
-                    className="text-lg sm:text-xl font-black text-white leading-snug mt-0.5 line-clamp-2 cursor-pointer hover:underline"
-                  >
-                    {currentVibe.title}
-                  </h3>
-                  <p className="text-[11px] font-semibold text-slate-600 uppercase tracking-wide mt-1 truncate">
-                    {currentVibe.formatted_date_time_venue}
-                  </p>
-                </div>
-
-                {/* Capacity Progress Bar */}
-                {currentVibe.has_spots_limit && currentVibe.capacity && (
-                  <div className="space-y-1.5 pt-1">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="font-semibold text-slate-600 flex items-center gap-1">
-                        <Users className="w-3.5 h-3.5 text-slate-500" />
-                        <span>
-                          {currentVibe.going_count}/{currentVibe.capacity} going
-                        </span>
-                      </span>
-                      <span className="font-bold text-[#0a6cf0] flex items-center gap-1">
-                        <Flame className="w-3 h-3 fill-[#0a6cf0]" />
-                        <span>{currentVibe.spots_left ?? 0} spots left</span>
-                      </span>
-                    </div>
-
-                    <div className="w-full h-1.5 bg-white/20 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-[#0a6cf0] to-[#00e0ff] rounded-full transition-all duration-300"
-                        style={{
-                          width: `${Math.min(
-                            100,
-                            (currentVibe.going_count / (currentVibe.capacity || 1)) * 100
-                          )}%`,
-                        }}
-                      />
-                    </div>
+                {/* Sound Toggle Button (Moved from removed second navbar) */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSoundEnabled(!soundEnabled);
+                    showToast(soundEnabled ? "Audio muted" : "Ambiance sound active");
+                  }}
+                  className="flex flex-col items-center gap-1 cursor-pointer group/sound"
+                  title={soundEnabled ? "Mute audio" : "Enable sound"}
+                >
+                  <div className="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-white/90 hover:bg-black/80 flex items-center justify-center transition-all shadow-md">
+                    {soundEnabled ? (
+                      <Volume2 className="w-4.5 h-4.5 text-[#00e0ff]" />
+                    ) : (
+                      <VolumeX className="w-4.5 h-4.5 text-white/70" />
+                    )}
                   </div>
-                )}
-
-                {/* Action Buttons Row */}
-                <div className="flex items-center gap-2 pt-1">
-                  {userRsvp ? (
-                    <button
-                      onClick={() => setPassModalOpen(true)}
-                      type="button"
-                      className="flex-1 py-2.5 px-3 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-xs font-bold text-emerald-400 flex items-center justify-center gap-1.5 shadow-lg active:scale-98 cursor-pointer transition-all"
-                    >
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                      <span>You're in · View pass</span>
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => setJoinModalOpen(true)}
-                      type="button"
-                      className="flex-1 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#0b1f4b] to-[#0a6cf0] hover:brightness-110 active:scale-[0.98] text-xs font-semibold text-white flex items-center justify-center gap-1.5 backdrop-blur-md shadow-[0_4px_20px_rgba(255,85,0,0.4)] cursor-pointer select-none transition-all"
-                    >
-                      <Zap className="w-3.5 h-3.5 fill-current" />
-                      <span>Join now</span>
-                    </button>
-                  )}
-
-                  <button
-                    onClick={() => setHostModalOpen(true)}
-                    type="button"
-                    className="py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white/90 hover:text-white text-xs font-semibold flex items-center justify-center gap-1.5 backdrop-blur-md shadow-lg cursor-pointer active:scale-[0.98] transition-all shrink-0"
-                    title="Connect with host"
-                  >
-                    <span>Connect with host</span>
-                  </button>
-                </div>
+                  <span className="text-[11px] font-semibold text-white drop-shadow-md">
+                    {soundEnabled ? "Sound" : "Mute"}
+                  </span>
+                </button>
               </div>
+
             </div>
 
             {/* CENTER: Navigation Arrows (Desktop) */}

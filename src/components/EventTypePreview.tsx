@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 
 /**
  * ============================================================================
@@ -130,17 +130,24 @@ export function EventTypePreview({
     button: "Join for ₹100",
   };
 
-  const handleChipClick = (key: EventTypeKey) => {
-    setSelectedType(key);
-    // Increment animKey so React replays the animation even if the same chip is clicked
-    setAnimKey((prev) => prev + 1);
+  // Pause auto-rotation when user hovers over card so they can click buttons
+  const [isPaused, setIsPaused] = useState<boolean>(false);
 
-    // Optional category pre-fill hook
-    const item = data[key];
-    if (item && onCategoryFilterPreFill) {
-      onCategoryFilterPreFill(item.banner, item.id);
-    }
-  };
+  // Auto-change event preview every 4 seconds with slow smooth animation in a loop: Cricket -> Comedy -> Music -> Workshop -> Party
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setSelectedType((prevType) => {
+        const currentIndex = EVENT_TYPE_KEYS.indexOf(prevType);
+        const nextIndex = (currentIndex + 1) % EVENT_TYPE_KEYS.length;
+        return EVENT_TYPE_KEYS[nextIndex];
+      });
+      setAnimKey((prev) => prev + 1);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   const handlePrimaryButtonClick = () => {
     if (onCardActionClick) {
@@ -152,40 +159,12 @@ export function EventTypePreview({
 
   return (
     <>
-      {/* 1. Chips Row (Directly below search bar) */}
-      <div
-        className="vibe-hero-chips"
-        style={{ gridArea: "chips" }}
-      >
-        <div
-          role="group"
-          aria-label="Event type preview options"
-          className="vibe-chips-row"
-        >
-          {EVENT_TYPE_KEYS.map((key) => {
-            const item = data[key];
-            if (!item) return null;
-            const isActive = selectedType === key;
-
-            return (
-              <button
-                key={key}
-                type="button"
-                aria-pressed={isActive}
-                onClick={() => handleChipClick(key)}
-                className={`vibe-chip-btn ${isActive ? "vibe-chip-active" : "vibe-chip-inactive"}`}
-              >
-                {item.label}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* 2. Exactly ONE Preview Card (Updated in place, never 5 cards rendered) */}
+      {/* Exactly ONE Preview Card (Auto-changes every 2 seconds in a continuous loop) */}
       <div
         className="vibe-hero-card"
         style={{ gridArea: "card" }}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
       >
         {/* Animated Card Container */}
         <div
@@ -202,7 +181,6 @@ export function EventTypePreview({
               <span className="vibe-banner-dot" />
               <span className="vibe-banner-text">{activeItem.banner}</span>
             </div>
-            <span className="vibe-banner-badge">Preview</span>
           </div>
 
           {/* Card Body */}
@@ -241,26 +219,51 @@ export function EventTypePreview({
               <span className="vibe-spots-percent">{activeItem.progress}% filled</span>
             </div>
 
-            {/* Primary Action Button */}
-            <button
-              type="button"
-              onClick={handlePrimaryButtonClick}
-              className="vibe-card-button"
-            >
-              <span>{activeItem.button}</span>
-              <svg
-                className="vibe-button-arrow"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
+            {/* Bottom Actions inside the card: Primary Button + View All Button */}
+            <div className="vibe-card-actions">
+              {/* Primary Action Button */}
+              <button
+                type="button"
+                onClick={handlePrimaryButtonClick}
+                className="vibe-card-button"
               >
-                <path
-                  fillRule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
+                <span>{activeItem.button}</span>
+                <svg
+                  className="vibe-button-arrow"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
+
+              {/* View all button placed in the bottom of the card */}
+              <a
+                href="/vibe-instant"
+                className="vibe-card-view-all-btn group"
+                title="View all similar events"
+              >
+                <span className="vibe-similar-bolt">⚡</span>
+                <span>View all similar events</span>
+                <svg
+                  className="vibe-similar-arrow"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>

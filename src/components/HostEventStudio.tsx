@@ -219,64 +219,19 @@ export function HostEventStudio() {
         </div>
       )}
 
-      {/* =========================================================================
-          TOPBAR HEADER
-          ========================================================================= */}
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs text-slate-800">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link
-              to="/"
-              className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-slate-900 transition-colors cursor-pointer"
-              title="Back to home"
-            >
-              <ArrowLeft className="w-4 h-4" />
-            </Link>
-
-            <Link to="/" className="flex items-center gap-1.5 font-sans">
-              <Flame className="w-5 h-5 text-[#0A6CF0] fill-[#0A6CF0]" />
-              <span className="font-extrabold text-lg text-slate-900 tracking-tight">Vibe</span>
-              <span className="text-[10px] font-black uppercase tracking-wider bg-slate-100 text-[#0A6CF0] border border-slate-300 px-2 py-0.5 rounded-md ml-1">
-                HOST STUDIO
-              </span>
-            </Link>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <Link
-              to="/dashboard"
-              className="inline-flex items-center gap-1 text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors px-2.5 py-1 rounded-lg bg-slate-100 border border-slate-200 text-slate-700"
-            >
-              Host Dashboard
-            </Link>
-
-            <Link
-              to="/vibes"
-              className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors"
-            >
-              <Zap className="w-3.5 h-3.5 text-[#00e0ff]" />
-              Live Vibes Feed
-            </Link>
-
-            <Link
-              to="/how-it-works"
-              className="hidden md:inline-flex text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors"
-            >
-              How It Works
-            </Link>
-
-            {mode !== "hub" && (
-              <button
-                onClick={() => setMode("hub")}
-                type="button"
-                className="px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-900 transition-colors cursor-pointer"
-              >
-                Change Method
-              </button>
-            )}
-          </div>
+      {/* Sub-header navigation for Host Studio when active in a workflow */}
+      {mode !== "hub" && (
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4 flex items-center justify-between">
+          <button
+            onClick={() => setMode("hub")}
+            type="button"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs font-semibold text-slate-800 transition-colors cursor-pointer"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Back to Studio Hub</span>
+          </button>
         </div>
-      </header>
+      )}
 
       {/* =========================================================================
           VIEW 1: HUB SELECTION ("How would you like to host?")
