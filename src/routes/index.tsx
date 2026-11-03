@@ -205,14 +205,7 @@ function Index() {
                 <ArrowRight className="w-4 h-4" />
               </a>
 
-              {/* Compact Vibe Instant Pill Badge */}
-              <Link
-                to="/vibe-instant"
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 hover:bg-white/15 text-[#00D2FF] border border-[#00D2FF]/30 text-xs font-bold transition-all"
-              >
-                <span>⚡ Vibe Instant</span>
-                <span className="text-[10px] text-slate-300 font-normal">· Live Reels</span>
-              </Link>
+
             </div>
           </div>
         </div>
