@@ -443,8 +443,9 @@ export function CitySelectorModal({
                 placeholder="Search by city (e.g. Bhopal, Indore, Bangalore, Satna...)"
                 className="w-full pl-10 pr-9 py-2.5 rounded-xl border border-[#dbe6f7] dark:border-white/15 bg-[#f6faff] dark:bg-white/5 text-sm text-[#0b1f4b] dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-[#0a6cf0] focus:ring-2 focus:ring-[#0a6cf0]/20 transition-all"
                 onKeyDown={(e) => {
-                  if (e.key === "Enter" && filteredCities.length > 0) {
-                    handleCityClick(filteredCities[0]);
+                  const firstCity = filteredCities[0];
+                  if (e.key === "Enter" && firstCity) {
+                    handleCityClick(firstCity);
                   }
                 }}
               />
@@ -680,15 +681,10 @@ export function CitySelectorModal({
  * Hook to reactively read and update selected city anywhere across the app
  */
 export function useSelectedCity(defaultCity = "Indore"): [string, (city: string) => void] {
-  const [city, setCity] = useState<string>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("vibe_selected_city");
-      if (saved && saved.trim()) return saved.trim();
-    }
-    return defaultCity;
-  });
+  const [city, setCity] = useState<string>(defaultCity);
 
   useEffect(() => {
+    setCity(getSavedCity());
     const handleCityChange = (e: Event) => {
       const customEvent = e as CustomEvent<{ city: string }>;
       if (customEvent.detail?.city) {

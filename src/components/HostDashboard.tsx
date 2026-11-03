@@ -295,7 +295,7 @@ export function HostDashboard() {
               checkedIn: !t.checkedIn,
               checkInTime: !t.checkedIn
                 ? new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-                : undefined,
+                : "",
             }
           : t
       );

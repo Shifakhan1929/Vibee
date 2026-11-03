@@ -141,7 +141,7 @@ export function EventTypePreview({
       setSelectedType((prevType) => {
         const currentIndex = EVENT_TYPE_KEYS.indexOf(prevType);
         const nextIndex = (currentIndex + 1) % EVENT_TYPE_KEYS.length;
-        return EVENT_TYPE_KEYS[nextIndex];
+        return EVENT_TYPE_KEYS[nextIndex] ?? prevType;
       });
       setAnimKey((prev) => prev + 1);
     }, 4000);

@@ -12,3 +12,5 @@
 ## Website import
 - Keep imported markup and interactive JSX in its route file and retain captured CSS separately to preserve source structure and cascade.
 - Use importedDocument route staticData for source html/body attributes so the shared root owns the document shell.
+- Keep category-to-filter mappings in a browser-safe shared module and use the existing city route's search parameters; this avoids duplicated city pages and makes card navigation testable.
+- Keep responsive import overrides in a separate stylesheet loaded after captured CSS, scoped to the affected sections; this preserves imported artwork and cascade.
