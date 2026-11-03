@@ -51,6 +51,7 @@ export const Route = createFileRoute("/$city")({
           content: `Explore top events, festivals, concerts, and parties in ${cityName}.`,
         },
         { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
     };
   },
@@ -93,6 +94,8 @@ const CATEGORIES = [
   "Food & Drinks",
   "Arts & Theatre",
   "Sports",
+  "Kids & Family",
+  "Photography",
 ] as const;
 
 const DATE_FILTERS = [
@@ -542,6 +545,12 @@ function CityEventsPage() {
   const [cityModalOpen, setCityModalOpen] = useState(false);
   const [modalSearchText, setModalSearchText] = useState("");
 
+  useEffect(() => {
+    setSearchQuery(searchParams.q ?? "");
+    setSelectedCategory(searchParams.category ?? "All");
+    setSelectedDate(searchParams.date ?? "All Dates");
+  }, [city, searchParams.q, searchParams.category, searchParams.date]);
+
   const allEvents = useMemo(() => {
     return generateEventsForCity(city, formattedCity);
   }, [city, formattedCity]);
@@ -639,7 +648,7 @@ function CityEventsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-[#1E293B] font-sans antialiased">
+    <div className="city-events-page min-h-screen bg-[#F8FAFC] text-[#1E293B] font-sans antialiased">
 
 
       {/* 2. City Hero Banner */}
@@ -713,7 +722,7 @@ function CityEventsPage() {
       </section>
 
       {/* 3. Filter Sticky Toolbar (Category Pills + Date Tabs) */}
-      <section className="sticky top-16 z-30 bg-white/95 backdrop-blur-md border-b border-[#E2E8F0] shadow-2xs">
+      <section className="city-filter-toolbar sticky top-16 z-30 bg-white/95 backdrop-blur-md border-b border-[#E2E8F0] shadow-2xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           {/* Categories Horizontal Scroll */}
           <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-2">
@@ -736,7 +745,7 @@ function CityEventsPage() {
           </div>
 
           {/* Date Filter Tabs + Active Counters */}
-          <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 border-t border-slate-100 pt-2.5 mt-1 text-xs">
+          <div className="city-date-row flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 border-t border-slate-100 pt-2.5 mt-1 text-xs">
             <div className="flex items-center gap-4 overflow-x-auto scrollbar-none">
               {DATE_FILTERS.map((dt) => {
                 const active = selectedDate === dt;
@@ -780,7 +789,7 @@ function CityEventsPage() {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="city-trending-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {featuredEvents.map((ev) => (
                 <EventCard
                   key={ev.id}
@@ -912,7 +921,7 @@ function CityEventsPage() {
         activeCitySlug={city}
         onSelectCity={(selected) => {
           setCityModalOpen(false);
-          navigate({ to: "/$city", params: { city: selected.slug }, search: {} });
+          navigate({ to: "/$city", params: { city: selected.id }, search: {} });
         }}
       />
 
@@ -1010,7 +1019,7 @@ function EventCard({
   onToggleBookmark: (e: React.MouseEvent) => void;
 }) {
   return (
-    <article className="group bg-white rounded-2xl border border-[#E2E8F0] shadow-xs hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col overflow-hidden">
+    <article className="city-event-card group bg-white rounded-2xl border border-[#E2E8F0] shadow-xs hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col overflow-hidden">
       {/* Image Container with Badges */}
       <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
         <img

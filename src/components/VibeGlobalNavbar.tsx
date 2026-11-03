@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { triggerPwaInstall } from "./AppInstallModal";
-import { CitySelectorModal, POPULAR_CITIES, type CityItem } from "./CitySelectorModal";
+import { CitySelectorModal, POPULAR_CITIES, type CityItem, useSelectedCity, setSavedCity } from "./CitySelectorModal";
 import { MapPin, ChevronDown, Menu, X, Plus, Download, User } from "lucide-react";
 
 export function VibeGlobalNavbar() {
   const [cityOpen, setCityOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [selectedCity, setSelectedCity] = useState("Delhi NCR");
+  const [selectedCity, setSelectedCity] = useSelectedCity("Indore");
 
   // Track the current route pathname from TanStack Router
   const pathname = useRouterState({
@@ -18,19 +18,19 @@ export function VibeGlobalNavbar() {
   // Keep location in sync with URL or local storage
   useEffect(() => {
     try {
-      const cleanSlug = pathname.replace(/^\//, "").toLowerCase();
+      const cleanSlug = pathname.split("/")[1]?.toLowerCase() ?? "";
       const matchedCity = POPULAR_CITIES.find(
         (c) => c.id.toLowerCase() === cleanSlug
       );
       if (matchedCity) {
         setSelectedCity(matchedCity.name);
-        localStorage.setItem("vibe_selected_city", matchedCity.name);
+        setSavedCity(matchedCity.name);
       } else {
         const saved = localStorage.getItem("vibe_selected_city");
         if (saved) {
           setSelectedCity(saved);
         } else {
-          setSelectedCity("Delhi NCR");
+          setSelectedCity("Indore");
         }
       }
     } catch {
@@ -206,9 +206,10 @@ export function VibeGlobalNavbar() {
                   : ""
               }`}
               title="Host an Event"
+              aria-label="Host an Event"
             >
               <Plus className="w-4 h-4 text-white shrink-0 stroke-[2.5]" />
-              <span>Host an Event</span>
+              <span className="host-label-full">Host an Event</span><span className="host-label-short">Host</span>
             </Link>
 
             {/* Circular Profile Avatar Button */}

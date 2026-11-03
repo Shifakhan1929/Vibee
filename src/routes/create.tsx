@@ -22,6 +22,7 @@ export const Route = createFileRoute("/create")({
           "Design, distribute, and publish editorial event landing pages in seconds with AI verification and instant passes.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: CreateEventPage,

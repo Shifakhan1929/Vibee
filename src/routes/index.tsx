@@ -6,7 +6,11 @@ import { MemoriesMarquee } from "../components/MemoriesMarquee";
 import { triggerPwaInstall } from "../components/AppInstallModal";
 import { Download, Users, ArrowRight, Sparkles } from "lucide-react";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Button } from "../components/ui/button";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "../components/ui/dialog";
+import { EVENT_CATEGORIES, categorySearch, citySlugForName } from "../lib/event-categories";
+import responsiveCSS from "../styles/responsive.css?raw";
 import capturedCSS from "../styles/captured.css?raw";
 import repairCSS from "../styles/import-repairs.css?raw";
 
@@ -32,6 +36,9 @@ function Index() {
   const [scrolled, setScrolled] = useState(false);
   const [cityOpen, setCityOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useSelectedCity("Indore");
+  const [categoriesOpen, setCategoriesOpen] = useState(false);
+  const [categoryQuery, setCategoryQuery] = useState("");
+  const citySlug = citySlugForName(selectedCity);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [cityText, setCityText] = useState("");
@@ -57,6 +64,7 @@ function Index() {
     <>
       <style>{capturedCSS}</style>
       <style>{repairCSS}</style>
+      <style>{responsiveCSS}</style>
 
       <div id="overlay">
         <div className={"\x74ransition-wrap"} />
@@ -90,7 +98,7 @@ function Index() {
                       <path d="M16.839 16.0751L12.4498 11.7562C13.5992 10.5074 14.3054 8.85589 14.3054 7.03859C14.3049 3.15103 11.1028 0 7.15245 0C3.20212 0 0 3.15103 0 7.03859C0 10.9261 3.20212 14.0772 7.15245 14.0772C8.85926 14.0772 10.4247 13.4868 11.6544 12.5054L16.0606 16.8414C16.2753 17.0529 16.6238 17.0529 16.8385 16.8414C17.0537 16.6299 17.0537 16.2866 16.839 16.0751ZM7.15245 12.9942C3.81004 12.9942 1.1005 10.3278 1.1005 7.03859C1.1005 3.74936 3.81004 1.08293 7.15245 1.08293C10.4949 1.08293 13.2044 3.74936 13.2044 7.03859C13.2044 10.3278 10.4949 12.9942 7.15245 12.9942Z" fill="#575C67" />
                     </svg>
                   </div>
-                  <input onFocus={() => setSearchOpen(true)} value={searchText} onChange={e => setSearchText(e.target.value)} type="search" name="hs_search_text" placeholder="Search Events, Categories, Location..." autoComplete="off" className={"hs_search_text"} onKeyDown={e => { if (e.key === "Enter" && searchText.trim()) { window.location.href = `/indore?q=${encodeURIComponent(searchText.trim())}`; } }} />
+                  <input onFocus={() => setSearchOpen(true)} value={searchText} onChange={e => setSearchText(e.target.value)} type="search" name="hs_search_text" placeholder="Search Events, Categories, Location..." autoComplete="off" className={"hs_search_text"} onKeyDown={e => { if (e.key === "Enter" && searchText.trim()) { window.location.href = `/${citySlug}?q=${encodeURIComponent(searchText.trim())}`; } }} />
                   <div className={"hs_remove_text_icon"}>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: "none" }}>
                       <path d="M13.3334 13.3334L2.66675 2.66675M13.3334 2.66675L2.66675 13.3334" stroke="#D4D4D4" strokeWidth="2" strokeLinecap="round" />
@@ -111,7 +119,7 @@ function Index() {
                     </div>
                   </div>
                   <div className={"search_suggestion_popup"} hidden={!searchOpen}>
-                    <div className={"ss_wrapper"}><div className="ss_trending_topics"><div className="ss_heading">Trending Topics</div><div className="topics_chips_container">{topics.filter(t => !searchText || t.includes(searchText.toLowerCase())).map(t => <span key={t}><a className="chip" href={`/indore/${t}?ref=search-suggestion-topics`} target="_blank">{t}</a></span>)}</div></div></div>
+                    <div className={"ss_wrapper"}><div className="ss_trending_topics"><div className="ss_heading">Trending Topics</div><div className="topics_chips_container">{topics.filter(t => !searchText || t.includes(searchText.toLowerCase())).map(t => <span key={t}><a className="chip" href={`/${citySlug}?q=${encodeURIComponent(t)}`} target="_blank">{t}</a></span>)}</div></div></div>
                   </div>
                 </div>
                 <div className={"searchlocation \x76isible-phone"}>
@@ -132,13 +140,13 @@ function Index() {
                 setSearchText(category);
               }}
               onCardActionClick={(item) => {
-                window.location.href = `/indore?q=${encodeURIComponent(item.banner)}`;
+                window.location.href = `/${citySlug}?q=${encodeURIComponent(item.banner)}`;
               }}
             />
 
             {/* 5. Hero CTA Buttons (Desktop: Left Col / Mobile: Order 5) */}
             <div className={"vibe-hero-ctas"} style={{ gridArea: "ctas" }}>
-              <a href={`/${selectedCity.toLowerCase().replace(/\s+/g, "-")}`} className={"vibe-cta-secondary"}>
+              <a href={`/${citySlug}`} className={"vibe-cta-secondary"}>
                 <span>Explore {selectedCity} Events</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
@@ -173,22 +181,40 @@ function Index() {
         </div>
 
       </div>
-      <div className={"v2-cat-list-section"}>
-        <div className={"fold"}>
-          <div className={"\x72ow-fluid bgstyle-0"}>
-            <div className={"\x63ontainer"}>
-              <div className={"head-label"} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0px" }}>
-                <h2 className={"headstyle-1 acolor"}>
-                  <span>Indore's Most-Loved</span>
-                </h2>
-                <button className={"btn btn-link hidden-desktop"} style={{ color: "rgb(130, 130, 130)", float: "right", fontSize: "14px", padding: "4px 12px" }}> View all </button>
-              </div>
-              <div className={"v2-cat-items-wrapper"}><a className={"v2-cat-item track"} href="/indore/music" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/93b82224d173105b.webp" alt="Music" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/indore/concerts" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/39053defbb43a63c.webp" alt="Concert" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/indore/parties" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/2b0ccf40e274f844.webp" alt="Parties" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/indore/food-drinks" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/546d76e37ce0d8e0.webp" alt={"Food & Drinks"} className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/indore/crafts" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/8f9bebffbc7bf57d.webp" alt="Crafts" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/indore/festivals" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/d0af47ed09716286.webp" alt="Festivals" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/indore/kids" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/57fa7e9248221a5f.webp" alt="Kids" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/indore/photography" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/930522db410623d7.webp" alt="Photography" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><a className={"v2-cat-item track"} href="/indore/sports" target="_blank">{"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"}<img src="/site-assets/bc422fd976b63917.webp" alt="Sports" className={"v2-cat-img"} />{"\n\t\t\t\t\t\t\t"}</a><div className={"v2-cat-item v2-see-all-item track"}><img src="/site-assets/9117ecf9f3919d0f.webp" alt="All Categories" className={"v2-see-all-img"} /></div></div>
-            </div>
+      <section className="v2-cat-list-section" aria-labelledby="most-loved-title">
+        <div className="fold"><div className="row-fluid bgstyle-0"><div className="container">
+          <div className="most-loved-header">
+            <h2 id="most-loved-title" className="headstyle-1 acolor">{selectedCity}'s Most-Loved</h2>
+            <Button variant="link" onClick={() => { setCategoryQuery(""); setCategoriesOpen(true); }}>View all <ArrowRight /></Button>
           </div>
-        </div>
-
-      </div>
+          <div className="v2-cat-items-wrapper">
+            {EVENT_CATEGORIES.slice(0, 9).map(category => (
+              <Link key={category.slug} className="v2-cat-item track" to="/$city" params={{ city: citySlug }} search={categorySearch(category)} aria-label={`${category.name} events in ${selectedCity}`}>
+                {"image" in category && <img src={`/site-assets/${category.image}`} alt={category.name} className="v2-cat-img" loading="lazy" />}
+              </Link>
+            ))}
+            <Button variant="ghost" className="v2-cat-item v2-see-all-item track" onClick={() => { setCategoryQuery(""); setCategoriesOpen(true); }} aria-label="Explore all categories">
+              <img src="/site-assets/9117ecf9f3919d0f.webp" alt="All Categories" className="v2-cat-img" loading="lazy" />
+            </Button>
+          </div>
+        </div></div></div>
+      </section>
+      <Dialog open={categoriesOpen} onOpenChange={setCategoriesOpen}>
+        <DialogContent className="category-dialog">
+          <DialogTitle>Explore categories in {selectedCity}</DialogTitle>
+          <DialogDescription className="sr-only">Choose an event category</DialogDescription>
+          <input className="category-search" aria-label="Search categories" placeholder="Search categories" value={categoryQuery} onChange={e => setCategoryQuery(e.target.value)} />
+          <div className="category-dialog-grid">
+            {EVENT_CATEGORIES.filter(c => c.name.toLowerCase().includes(categoryQuery.toLowerCase())).map(category => (
+              <Link key={category.slug} to="/$city" params={{ city: citySlug }} search={categorySearch(category)} onClick={() => setCategoriesOpen(false)} className="category-dialog-item">
+                {"image" in category ? <img src={`/site-assets/${category.image}`} alt="" /> : <Sparkles className="category-symbol" />}
+                <span>{category.name}</span><ArrowRight className="category-arrow" />
+              </Link>
+            ))}
+          </div>
+          {!EVENT_CATEGORIES.some(c => c.name.toLowerCase().includes(categoryQuery.toLowerCase())) && <p role="status">No matching categories</p>}
+        </DialogContent>
+      </Dialog>
       <div id="home-popular-event-section" className={"homepopulareventsection fold events-loaded"}>
         <div id="show_popular_section" className={"\x63ontainer hpe-container"}>
           <div className={"head-label"}>
