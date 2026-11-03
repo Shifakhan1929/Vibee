@@ -241,7 +241,7 @@ function Index() {
         <div className="fold"><div className="row-fluid bgstyle-0"><div className="container">
           <div className="most-loved-header">
             <h2 id="most-loved-title" className="headstyle-1 acolor">{selectedCity}'s Most-Loved</h2>
-            <Button variant="link" onClick={() => { setCategoryQuery(""); setCategoriesOpen(true); }}>View all <ArrowRight /></Button>
+            
           </div>
           <div className="v2-cat-items-wrapper">
             {EVENT_CATEGORIES.slice(0, 9).map(category => (
