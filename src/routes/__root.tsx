@@ -1,6 +1,5 @@
 import { VibeGlobalNavbar } from "../components/VibeGlobalNavbar";
 import { AppInstallModal } from "../components/AppInstallModal";
-import { GlobalThemeToggle } from "../components/GlobalThemeToggle";
 import { useMatches as useImportedMatches } from "@tanstack/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
@@ -81,7 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
       { title: "AllEvents" },
       { name: "description", content: "Discover events and things to do with AllEvents." },
       { name: "author", content: "AllEvents" },
@@ -150,6 +149,14 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useEffect(() => {
+    try {
+      document.documentElement.removeAttribute("data-theme");
+      document.documentElement.classList.remove("dark");
+      localStorage.removeItem("vibe_theme");
+    } catch {}
+  }, []);
+
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -157,7 +164,6 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <AppInstallModal />
-      <GlobalThemeToggle />
     </QueryClientProvider>
   );
 }

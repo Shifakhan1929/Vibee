@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useVibeTheme } from "../lib/theme";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Calendar,
@@ -215,8 +214,7 @@ function LearnMeetIcon() {
 }
 
 export default function HowItWorksPage() {
-  const [theme, setTheme] = useVibeTheme();
-  const isDark = theme === "dark";
+  const isDark = false;
 
   // Section 1 Data: Categories
   const categories = [
@@ -337,7 +335,7 @@ export default function HowItWorksPage() {
   return (
     <div
       className={`min-h-screen font-sans antialiased transition-colors duration-300 ${
-        isDark ? "bg-[#060D1E] text-white" : "bg-[#FDFDFD] text-slate-800"
+        isDark ? "bg-[#060D1E] text-white" : "bg-[#F6F8FB] text-slate-800"
       }`}
     >
 
@@ -349,7 +347,7 @@ export default function HowItWorksPage() {
         className={`relative pt-10 pb-8 sm:pt-14 sm:pb-10 overflow-hidden border-b transition-colors ${
           isDark
             ? "bg-gradient-to-b from-[#07133A] via-[#060D1E] to-[#060D1E] border-slate-800"
-            : "bg-gradient-to-b from-[#F0F5FF] via-[#F8FAFD] to-[#FDFDFD] border-slate-200/80"
+            : "bg-gradient-to-b from-[#EDF2FA] via-[#F3F6FA] to-[#F6F8FB] border-slate-200/80"
         }`}
       >
         {/* Glow ambient meshes */}
@@ -429,7 +427,7 @@ export default function HowItWorksPage() {
           ========================================================================= */}
       <section
         className={`py-10 sm:py-12 transition-colors ${
-          isDark ? "bg-[#060D1E]" : "bg-[#FDFDFD]"
+          isDark ? "bg-[#060D1E]" : "bg-[#F6F8FB]"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -462,7 +460,7 @@ export default function HowItWorksPage() {
                 className={`group rounded-3xl p-6 sm:p-7 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 ${
                   isDark
                     ? "bg-[#0C1B38] border border-[#162B54] hover:border-[#00D2FF]/50 hover:shadow-[0_15px_35px_rgba(0,210,255,0.12)]"
-                    : "bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#007BFF]/40"
+                    : "bg-white border border-slate-200/90 shadow-[0_4px_20px_rgba(7,19,58,0.06)] hover:shadow-[0_16px_36px_rgba(7,19,58,0.12)] hover:border-[#007BFF]/40"
                 }`}
               >
                 <div>
@@ -510,7 +508,7 @@ export default function HowItWorksPage() {
         className={`py-10 sm:py-12 transition-colors border-t border-b ${
           isDark
             ? "bg-[#07133A]/50 border-slate-800"
-            : "bg-[#F8FAFD] border-slate-200/70"
+            : "bg-[#EFF3F8] border-slate-200/80"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -544,10 +542,10 @@ export default function HowItWorksPage() {
                   tier.isPopular
                     ? isDark
                       ? "bg-[#0C1B38] border-2 border-[#00D2FF] shadow-[0_20px_50px_rgba(0,210,255,0.15)]"
-                      : "bg-white border-2 border-[#007BFF] shadow-xl"
+                      : "bg-white border-2 border-[#007BFF] shadow-[0_12px_36px_rgba(0,123,255,0.18)]"
                     : isDark
                     ? "bg-[#0C1B38] border border-[#162B54] hover:border-slate-600"
-                    : "bg-white border border-slate-200 shadow-sm hover:shadow-lg"
+                    : "bg-white border border-slate-200/90 shadow-[0_4px_20px_rgba(7,19,58,0.06)] hover:shadow-[0_14px_32px_rgba(7,19,58,0.12)]"
                 }`}
               >
                 {tier.isPopular && (
@@ -613,7 +611,7 @@ export default function HowItWorksPage() {
           ========================================================================= */}
       <section
         className={`py-10 sm:py-12 transition-colors ${
-          isDark ? "bg-[#060D1E]" : "bg-[#FDFDFD]"
+          isDark ? "bg-[#060D1E]" : "bg-[#F6F8FB]"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -648,7 +646,7 @@ export default function HowItWorksPage() {
                   className={`rounded-3xl p-6 sm:p-7 border transition-all duration-300 flex flex-col justify-between hover:shadow-lg ${
                     isDark
                       ? "bg-[#0C1B38] border-[#162B54]"
-                      : "bg-white border-slate-200 shadow-xs"
+                      : "bg-white border border-slate-200/90 shadow-[0_4px_20px_rgba(7,19,58,0.06)] hover:shadow-[0_12px_28px_rgba(7,19,58,0.10)]"
                   }`}
                 >
                   <div>
@@ -698,7 +696,7 @@ export default function HowItWorksPage() {
         className={`py-10 sm:py-12 transition-colors border-t ${
           isDark
             ? "bg-[#060D1E] border-slate-800"
-            : "bg-[#F8FAFD] border-slate-200"
+            : "bg-[#EFF3F8] border-slate-200/80"
         }`}
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

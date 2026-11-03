@@ -3,6 +3,9 @@ import { BotCreateSection } from "../components/BotCreateSection";
 import { DownloadAppButton } from "../components/DownloadAppButton";
 import { CitySelectorModal, useSelectedCity } from "../components/CitySelectorModal";
 import { MemoriesMarquee } from "../components/MemoriesMarquee";
+import { MobileSearchSheet } from "../components/MobileSearchSheet";
+import { MobileBottomTabBar } from "../components/MobileBottomTabBar";
+import { Plus } from "lucide-react";
 import { triggerPwaInstall } from "../components/AppInstallModal";
 import { Download, Users, ArrowRight, Sparkles } from "lucide-react";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
@@ -42,6 +45,19 @@ function Index() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [cityText, setCityText] = useState("");
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+
+  /**
+   * TODO: CONTENT LOCALIZATION ISSUES (Flagged per requirements):
+   * 1. Indore sections show Oregon / Portland events with USD prices ($0.00 to 28.52).
+   * 2. "Trending in the United States" and Spokane/Portland appear for Indian users.
+   * 3. Fix backend API data feeds to map local INR (₹) events for Indore and Indian hubs.
+   */
+  useEffect(() => {
+    const handleOpenSearch = () => setMobileSearchOpen(true);
+    window.addEventListener("open-search-sheet", handleOpenSearch);
+    return () => window.removeEventListener("open-search-sheet", handleOpenSearch);
+  }, []);
   const opener = useRef<HTMLElement | null>(null);
   const openCity = () => {
     setSearchOpen(false);
@@ -70,12 +86,7 @@ function Index() {
       <div id="overlay">
         <div className={"\x74ransition-wrap"} />
       </div>
-      <a href="#" id="prev-link">
-        <div className={"nav-icon"} />
-      </a>
-      <a href="#" id="next-link">
-        <div className={"nav-icon"} />
-      </a>
+
       <div className={"search-parent luxury-hero-parent"} style={{ backgroundImage: "linear-gradient(135deg, rgba(8, 26, 44, 0.90) 0%, rgba(13, 44, 68, 0.85) 50%, rgba(8, 26, 44, 0.95) 100%), url(\"/site-assets/3302afdc09bd1c7f.webp\")", backgroundColor: "#081a2c", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center center" }}>
         <div className={"container search-child"}>
           <div className={"vibe-hero-layout"}>
@@ -117,8 +128,22 @@ function Index() {
                     </svg>
                   </div>
                   <input
-                    onClick={(e) => { e.stopPropagation(); openCity(); }}
-                    onFocus={(e) => { e.target.blur(); openCity(); }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (typeof window !== "undefined" && window.innerWidth < 1024) {
+                        setMobileSearchOpen(true);
+                      } else {
+                        openCity();
+                      }
+                    }}
+                    onFocus={(e) => {
+                      e.target.blur();
+                      if (typeof window !== "undefined" && window.innerWidth < 1024) {
+                        setMobileSearchOpen(true);
+                      } else {
+                        openCity();
+                      }
+                    }}
                     readOnly
                     type="search"
                     name="hs_search_text"
@@ -164,12 +189,31 @@ function Index() {
               }}
             />
 
-            {/* 5. Hero CTA Buttons (Desktop: Left Col / Mobile: Order 5) */}
+            {/* 5. Hero CTA Buttons (Desktop: Left Col / Mobile: Full Width) */}
             <div className={"vibe-hero-ctas"} style={{ gridArea: "ctas" }}>
+              {/* Mobile Primary Full-Width CTA "Host an Event" (48px tall) */}
+              <Link
+                to="/create"
+                className="lg:hidden w-full h-12 rounded-xl bg-gradient-to-r from-[#00D2FF] via-[#007BFF] to-[#0038A8] text-white font-extrabold text-[15px] flex items-center justify-center gap-2 shadow-lg shadow-[#007BFF]/35 active:scale-98 transition-all"
+              >
+                <Plus className="w-5 h-5 stroke-[3]" />
+                <span>Host an Event</span>
+              </Link>
+
+              {/* Secondary text link "Explore Indore Events" */}
               <a href={`/${citySlug}`} className={"vibe-cta-secondary"}>
                 <span>Explore {selectedCity} Events</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
+
+              {/* Compact Vibe Instant Pill Badge */}
+              <Link
+                to="/vibe-instant"
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 hover:bg-white/15 text-[#00D2FF] border border-[#00D2FF]/30 text-xs font-bold transition-all"
+              >
+                <span>⚡ Vibe Instant</span>
+                <span className="text-[10px] text-slate-300 font-normal">· Live Reels</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -2443,7 +2487,7 @@ function Index() {
                 <div className={"memories-card memories-card-short"}>
                   <img src="/site-assets/6276c0ed1177f8f6.webp" alt="Wodan De Mey" loading="lazy" className={"memories-card-image"} />
                   <div className={"memories-card-overlay"}>
-                    <img src="/site-assets/6a1b0bb843780745.bin" alt="Wodan De Mey" loading="lazy" className={"memories-avatar memories-avatar-small lazy"} />
+                    <img src="/site-assets/6a1b0bb843780745.jpg" alt="Wodan De Mey" loading="lazy" className={"memories-avatar memories-avatar-small lazy"} />
                     <div>
                       <div className={"memories-user-name memories-user-name-light"}>
                                                       Wodan De Mey
@@ -2627,7 +2671,7 @@ function Index() {
                       <p className={"memories-review-text"}>"How much the kids enjoyed it!..."</p>
                     </div>
                     <div className={"memories-user-info"} style={{ padding: "15px" }}>
-                      <img src="/site-assets/bc0025e8d4119c78.bin" alt="Jacqueline Parker" loading="lazy" className={"memories-avatar lazy"} />
+                      <img src="/site-assets/bc0025e8d4119c78.jpg" alt="Jacqueline Parker" loading="lazy" className={"memories-avatar lazy"} />
                       <div>
                         <div className={"memories-user-name"}>Jacqueline Parker</div>
                         <div className={"memories-user-time"}>Today</div>
@@ -2674,7 +2718,7 @@ function Index() {
                 <div className={"memories-card memories-card-short"}>
                   <img src="/site-assets/4a62cf1e64c98d59.webp" alt="Rae Jean Walker" loading="lazy" className={"memories-card-image"} />
                   <div className={"memories-card-overlay"}>
-                    <img src="/site-assets/23c33611f25ec38f.bin" alt="Rae Jean Walker" loading="lazy" className={"memories-avatar memories-avatar-small lazy"} />
+                    <img src="/site-assets/23c33611f25ec38f.jpg" alt="Rae Jean Walker" loading="lazy" className={"memories-avatar memories-avatar-small lazy"} />
                     <div>
                       <div className={"memories-user-name memories-user-name-light"}>
                                                       Rae Jean Walker
@@ -2752,7 +2796,7 @@ function Index() {
                 <div className={"memories-card memories-card-short"}>
                   <img src="/site-assets/0479b7d4662b15e4.webp" alt="Deborah Stevens" loading="lazy" className={"memories-card-image"} />
                   <div className={"memories-card-overlay"}>
-                    <img src="/site-assets/aa15bdca49adb8aa.bin" alt="Deborah Stevens" loading="lazy" className={"memories-avatar memories-avatar-small lazy"} />
+                    <img src="/site-assets/aa15bdca49adb8aa.jpg" alt="Deborah Stevens" loading="lazy" className={"memories-avatar memories-avatar-small lazy"} />
                     <div>
                       <div className={"memories-user-name memories-user-name-light"}>
                                                       Deborah Stevens
@@ -2858,7 +2902,7 @@ function Index() {
                       <p className={"memories-review-text"}>"Amazing band and creative costumes.... we partied till after..."</p>
                     </div>
                     <div className={"memories-user-info"} style={{ padding: "15px" }}>
-                      <img src="/site-assets/7ab189e1c423aaca.bin" alt="Curran Malhotra" loading="lazy" className={"memories-avatar lazy"} />
+                      <img src="/site-assets/7ab189e1c423aaca.jpg" alt="Curran Malhotra" loading="lazy" className={"memories-avatar lazy"} />
                       <div>
                         <div className={"memories-user-name"}>Curran Malhotra</div>
                         <div className={"memories-user-time"}>Today</div>
@@ -4909,6 +4953,19 @@ function Index() {
         </div>
 
       </div>
+      {/* Full-Screen Mobile Search Sheet (100dvh, auto-focused) */}
+      <MobileSearchSheet
+        isOpen={mobileSearchOpen}
+        onClose={() => setMobileSearchOpen(false)}
+        selectedCity={selectedCity}
+        onSelectTopic={(topic) => {
+          setSearchText(topic);
+          window.location.href = `/${citySlug}?q=${encodeURIComponent(topic)}`;
+        }}
+      />
+
+      {/* Fixed 56px Mobile Bottom Tab Bar (< 1024px) */}
+      <MobileBottomTabBar onOpenSearch={() => setMobileSearchOpen(true)} />
     </>
   );
 }
@@ -5060,10 +5117,10 @@ function ImportedFooterSiteNavigation() {
                   <a href="/pages/events-listing-plugin?ref=footer-n-home-page" target="_blank" title="Event Plugins for websites">Event Listing Plugin</a>
                 </li>
                 <li>
-                  <a className={"tltp"} href="/blog/media-kit?ref=footer-n-home-page" rel="nofollow" target="_blank" title="All Events Logo Media Kit">Media Kit</a>
+                  <a className={"tltp"} href="/blog/media-kit?ref=footer-n-home-page" rel="nofollow" target="_blank" title="Vibe Logo Media Kit">Media Kit</a>
                 </li>
                 <li>
-                  <a className={"tltp track"} href="/pages/affiliate-program?ref=footer-n-home-page" rel="nofollow" target="_blank" title="Join AllEvents Affiliate Program">Affiliate Program</a>
+                  <a className={"tltp track"} href="/pages/affiliate-program?ref=footer-n-home-page" rel="nofollow" target="_blank" title="Join Vibe Affiliate Program">Affiliate Program</a>
                 </li>
                 <li>
                   <a href="/pages/events-api?ref=footer-n-home-page" target="_blank" title="Events Api">Events API</a>
@@ -5090,7 +5147,7 @@ function ImportedFooterSiteNavigation() {
         <div className={"\x63ontainer"}>
           <ul style={{ margin: "0px 0px 0px 10px" }}>
             <li>
-              <a href="/about" title="About Us and the All Events in City team">About</a>
+              <a href="/about" title="About Us and the Vibe team">About</a>
             </li>
             <li>
               <a href="/pages/careers">Careers</a>

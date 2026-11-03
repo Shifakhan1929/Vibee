@@ -1,14 +1,11 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect } from "react";
 import {
   MapPin,
-  Search,
   X,
-  Compass,
   Check,
-  Building2,
   Sparkles,
-  ArrowRight,
-  Navigation,
+  ChevronRight,
+  Flame,
 } from "lucide-react";
 
 export interface CityItem {
@@ -54,7 +51,7 @@ export const POPULAR_CITIES: CityItem[] = [
     url: "/bangalore",
     popular: true,
     eventCount: "680+ Events",
-    badge: "Tech & Music Capital",
+    badge: "Tech & Live Gigs",
     landmark: "Cubbon Park",
   },
   {
@@ -82,7 +79,7 @@ export const POPULAR_CITIES: CityItem[] = [
   {
     id: "delhi",
     name: "Delhi NCR",
-    state: "Delhi",
+    state: "Delhi NCR",
     country: "India",
     url: "/delhi",
     popular: true,
@@ -123,6 +120,7 @@ export const ALL_CITY_SUGGESTIONS: CityItem[] = [
     country: "India",
     url: "/ujjain",
     eventCount: "110+ Events",
+    badge: "Heritage & Culture",
   },
   {
     id: "jabalpur",
@@ -131,6 +129,7 @@ export const ALL_CITY_SUGGESTIONS: CityItem[] = [
     country: "India",
     url: "/jabalpur",
     eventCount: "95+ Events",
+    badge: "Nature & Art",
   },
   {
     id: "gwalior",
@@ -139,6 +138,7 @@ export const ALL_CITY_SUGGESTIONS: CityItem[] = [
     country: "India",
     url: "/gwalior",
     eventCount: "80+ Events",
+    badge: "Music & History",
   },
   {
     id: "rewa",
@@ -147,6 +147,7 @@ export const ALL_CITY_SUGGESTIONS: CityItem[] = [
     country: "India",
     url: "/rewa",
     eventCount: "40+ Events",
+    badge: "Regional Hub",
   },
   {
     id: "jaipur",
@@ -155,6 +156,7 @@ export const ALL_CITY_SUGGESTIONS: CityItem[] = [
     country: "India",
     url: "/jaipur",
     eventCount: "260+ Events",
+    badge: "Royal Gatherings",
   },
   {
     id: "ahmedabad",
@@ -163,6 +165,7 @@ export const ALL_CITY_SUGGESTIONS: CityItem[] = [
     country: "India",
     url: "/ahmedabad",
     eventCount: "310+ Events",
+    badge: "Festivals & Business",
   },
   {
     id: "goa",
@@ -171,6 +174,7 @@ export const ALL_CITY_SUGGESTIONS: CityItem[] = [
     country: "India",
     url: "/goa",
     eventCount: "450+ Events",
+    badge: "Beach & Nightlife",
   },
   {
     id: "chandigarh",
@@ -179,6 +183,7 @@ export const ALL_CITY_SUGGESTIONS: CityItem[] = [
     country: "India",
     url: "/chandigarh",
     eventCount: "190+ Events",
+    badge: "Youth & Music",
   },
   {
     id: "kolkata",
@@ -187,22 +192,7 @@ export const ALL_CITY_SUGGESTIONS: CityItem[] = [
     country: "India",
     url: "/kolkata",
     eventCount: "320+ Events",
-  },
-  {
-    id: "london",
-    name: "London",
-    state: "England",
-    country: "United Kingdom",
-    url: "/london",
-    eventCount: "1200+ Events",
-  },
-  {
-    id: "new-york",
-    name: "New York",
-    state: "NY",
-    country: "United States",
-    url: "/newyork-dbe12298e8b6a417",
-    eventCount: "1500+ Events",
+    badge: "Arts & Literature",
   },
 ];
 
@@ -297,18 +287,23 @@ export function CitySelectorModal({
 
   return (
     <div
-      className="fixed inset-0 z-[99999] bg-black/50 backdrop-blur-[3px] flex items-center justify-center p-3 animate-in fade-in duration-200"
+      className="fixed inset-0 z-[99999] bg-[#07133A]/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 animate-in fade-in duration-200"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="city-modal-title"
     >
       <div
-        className="vibe-city-selector-modal w-full max-w-[380px] bg-white rounded-3xl shadow-[0_25px_70px_rgba(7,19,58,0.25)] border border-slate-100 overflow-hidden flex flex-col max-h-[480px] animate-in zoom-in-95 duration-200 select-none text-slate-800"
+        className="vibe-city-selector-modal w-full sm:max-w-[420px] bg-white rounded-t-[28px] sm:rounded-3xl shadow-[0_25px_70px_rgba(7,19,58,0.35)] border border-slate-100/80 overflow-hidden flex flex-col max-h-[85vh] sm:max-h-[520px] animate-in slide-in-from-bottom-6 sm:zoom-in-95 duration-200 select-none text-slate-800"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Modern Header */}
-        <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/70 shrink-0">
+        {/* Mobile Drag Indicator Pill */}
+        <div className="pt-2.5 pb-1 flex justify-center sm:hidden bg-slate-50/70">
+          <div className="w-10 h-1 rounded-full bg-slate-300" />
+        </div>
+
+        {/* Polished Header (No aggressive all-caps) */}
+        <div className="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50/70 shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-2xl bg-gradient-to-tr from-[#07133A] to-[#007BFF] text-white flex items-center justify-center shadow-md shadow-[#007BFF]/25 shrink-0">
               <MapPin className="w-4 h-4 fill-white text-white" />
@@ -316,31 +311,31 @@ export function CitySelectorModal({
             <div>
               <h2
                 id="city-modal-title"
-                className="text-sm font-black text-slate-900 tracking-tight leading-tight"
+                className="text-[15px] font-extrabold text-[#07133A] tracking-tight leading-tight"
                 style={{ textTransform: "none" }}
               >
                 Select Your City
               </h2>
-              <p className="text-[11px] text-slate-400 font-medium">Find local gatherings & events</p>
+              <p className="text-[11px] text-slate-500 font-medium">Find local gatherings & events</p>
             </div>
           </div>
 
           <button
             type="button"
             onClick={onClose}
-            className="w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-400 hover:text-slate-800 flex items-center justify-center transition-colors cursor-pointer"
+            className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-400 hover:text-slate-800 flex items-center justify-center transition-colors cursor-pointer"
             aria-label="Close dialog"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Scrollable Cities Content (Single clean container) */}
+        {/* Scrollable Cities Content (Single clean container, NO search bar as requested) */}
         <div className="vibe-city-scroll overflow-y-auto px-5 py-4 flex-1 space-y-5">
-          {/* Section 1: Popular Hubs */}
+          {/* Section 1: Popular Hubs Chips */}
           <div>
             <div className="flex items-center gap-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2.5">
-              <Sparkles className="w-3 h-3 text-[#007BFF]" />
+              <Flame className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
               <span>Popular Hubs</span>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -351,27 +346,32 @@ export function CitySelectorModal({
                     key={city.id}
                     type="button"
                     onClick={() => handleCityClick(city)}
-                    className={`city-chip px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                    className={`city-chip px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
                       isSelected
-                        ? "active bg-gradient-to-r from-[#07133A] to-[#007BFF] text-white font-bold shadow-md shadow-[#007BFF]/25 border-transparent"
-                        : "bg-slate-50 text-slate-700 hover:text-[#007BFF] hover:bg-slate-100"
+                        ? "active bg-gradient-to-r from-[#07133A] to-[#007BFF] text-white font-bold shadow-md shadow-[#007BFF]/25 border-transparent scale-[1.02]"
+                        : "bg-slate-50 text-slate-700 hover:text-[#007BFF] hover:bg-blue-50/60 border border-slate-200/70"
                     }`}
                   >
-                    {city.name}
+                    {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
+                    <span>{city.name}</span>
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* Section 2: All Cities List */}
+          {/* Section 2: All Cities List (Border-less, sleek rows) */}
           <div>
             <div className="flex items-center justify-between text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
-              <span>All Cities</span>
-              <span className="text-[10px] font-semibold text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">
-                {ALL_CITY_SUGGESTIONS.length}
+              <div className="flex items-center gap-1.5">
+                <Sparkles className="w-3 h-3 text-[#007BFF]" />
+                <span>All Cities</span>
+              </div>
+              <span className="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">
+                {ALL_CITY_SUGGESTIONS.length} Hubs
               </span>
             </div>
+
             <div className="space-y-1">
               {ALL_CITY_SUGGESTIONS.map((city) => {
                 const isSelected = checkIfSelected(city);
@@ -380,40 +380,54 @@ export function CitySelectorModal({
                     key={city.id}
                     type="button"
                     onClick={() => handleCityClick(city)}
-                    className={`city-row-btn group w-full text-left px-3 py-2.5 rounded-xl text-xs transition-all flex items-center justify-between cursor-pointer ${
+                    className={`city-row-btn group w-full text-left px-3 py-2.5 rounded-2xl text-xs transition-all flex items-center justify-between cursor-pointer ${
                       isSelected
-                        ? "active bg-blue-50/90 text-[#007BFF] font-bold"
-                        : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"
+                        ? "active bg-blue-50/90 text-[#007BFF] font-bold shadow-xs"
+                        : "text-slate-700 hover:bg-slate-50/90 hover:text-slate-900"
                     }`}
                   >
-                    <div className="flex items-center gap-2.5 truncate">
+                    <div className="flex items-center gap-3 truncate">
                       <div
-                        className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                        className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 text-xs font-black transition-colors ${
                           isSelected
-                            ? "bg-[#007BFF] text-white shadow-xs"
-                            : "bg-slate-100 text-slate-400 group-hover:text-[#007BFF] group-hover:bg-blue-50"
+                            ? "bg-gradient-to-tr from-[#07133A] to-[#007BFF] text-white shadow-xs"
+                            : "bg-slate-100 text-slate-500 group-hover:text-[#007BFF] group-hover:bg-blue-50"
                         }`}
                       >
-                        <MapPin className="w-3 h-3" />
+                        {city.name.slice(0, 2).toUpperCase()}
                       </div>
                       <div className="truncate">
-                        <span className={`font-semibold text-xs ${isSelected ? "text-[#007BFF]" : "text-slate-800"}`}>
-                          {city.name}
-                        </span>
-                        <span className="text-[10px] text-slate-400 ml-1.5 font-normal">
-                          {city.state.split(" ")[0]}
-                        </span>
+                        <div className="flex items-center gap-1.5">
+                          <span className={`font-bold text-[13px] ${isSelected ? "text-[#007BFF]" : "text-slate-900"}`}>
+                            {city.name}
+                          </span>
+                          {city.badge && (
+                            <span className="text-[9px] font-medium text-slate-400 bg-slate-100 px-1.5 py-0.2 rounded-md hidden sm:inline">
+                              {city.badge}
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-[11px] text-slate-400 font-normal truncate mt-0.5">
+                          {city.state}
+                        </p>
                       </div>
                     </div>
 
-                    {isSelected ? (
-                      <div className="flex items-center gap-1 text-[10px] font-bold text-[#007BFF] bg-blue-100/70 px-2 py-0.5 rounded-full shrink-0">
-                        <Check className="w-3 h-3 stroke-[3]" />
-                        <span>Selected</span>
-                      </div>
-                    ) : (
-                      <ArrowRight className="w-3.5 h-3.5 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:text-[#007BFF] transition-all transform group-hover:translate-x-0.5 shrink-0" />
-                    )}
+                    <div className="flex items-center gap-2 shrink-0">
+                      {isSelected ? (
+                        <div className="flex items-center gap-1 text-[10px] font-bold text-white bg-gradient-to-r from-[#07133A] to-[#007BFF] px-2.5 py-1 rounded-full shadow-xs">
+                          <Check className="w-3 h-3 stroke-[3]" />
+                          <span>Selected</span>
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-1.5 text-slate-400 group-hover:text-[#007BFF]">
+                          <span className="text-[10px] font-semibold text-slate-400 group-hover:text-[#007BFF]">
+                            {city.eventCount.split(" ")[0]}
+                          </span>
+                          <ChevronRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transform group-hover:translate-x-0.5 transition-all" />
+                        </div>
+                      )}
+                    </div>
                   </button>
                 );
               })}
@@ -435,7 +449,7 @@ export function CitySelectorModal({
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-1.5 rounded-xl bg-gradient-to-r from-[#07133A] to-[#007BFF] hover:brightness-110 text-white font-bold text-xs shadow-xs transition-all cursor-pointer active:scale-95"
+            className="px-5 py-2 rounded-xl bg-gradient-to-r from-[#07133A] to-[#007BFF] hover:brightness-110 active:scale-95 text-white font-bold text-xs shadow-sm transition-all cursor-pointer"
           >
             Done
           </button>
