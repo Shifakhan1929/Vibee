@@ -143,7 +143,7 @@ export function HostEventStudio() {
     price: "100",
     capacity: "14",
     description: "Friendly casual gully cricket match. All gear and match balls provided.",
-    posterUrl: SAMPLE_POSTERS[0].imageUrl,
+    posterUrl: SAMPLE_POSTERS[0]?.imageUrl ?? "",
   });
 
   const [publishedUrl, setPublishedUrl] = useState("");
@@ -157,6 +157,7 @@ export function HostEventStudio() {
   const handleSimulateAiScan = (posterId: string) => {
     setSelectedPosterId(posterId);
     const poster = SAMPLE_POSTERS.find((p) => p.id === posterId) || SAMPLE_POSTERS[0];
+    if (!poster) return;
     setIsAiScanning(true);
     setAiScanStatus("Vision OCR: Ingesting poster text...");
 

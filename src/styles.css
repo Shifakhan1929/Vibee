@@ -2,6 +2,7 @@
 @source "../src";
 @import "tw-animate-css";
 @import "./styles/import-repairs.css";
+@import "./styles/responsive.css";
 
 @custom-variant dark (&:is(.dark *));
 

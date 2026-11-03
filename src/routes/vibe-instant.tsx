@@ -23,6 +23,7 @@ export const Route = createFileRoute("/vibe-instant")({
           "Swipe full-screen live reels and join spontaneous meetups across India with 1-click RSVP passes.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: VibeInstantPage,

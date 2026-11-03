@@ -5,7 +5,7 @@ export const Route = createFileRoute("/host")({
   head: () => ({
     meta: [
       {
-        title: "Host an Event · Create with AI or Manual Studio | Vibe",
+        title: "Host Studio · Plan Your Next Gathering | Vibe",
       },
       {
         name: "description",
@@ -14,7 +14,7 @@ export const Route = createFileRoute("/host")({
       },
       {
         property: "og:title",
-        content: "Host an Event · Vibe by Swaniki Studio",
+        content: "Host Studio · Vibe",
       },
       {
         property: "og:description",
@@ -22,6 +22,7 @@ export const Route = createFileRoute("/host")({
           "Design, distribute, and publish editorial event landing pages in seconds with AI verification and instant passes.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: HostPage,

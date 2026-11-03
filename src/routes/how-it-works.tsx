@@ -29,6 +29,7 @@ export const Route = createFileRoute("/how-it-works")({
           "One place for every kind of gathering. From a group of 10 to a crowd of 1,000 — live in about five minutes.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: HowItWorksPage,

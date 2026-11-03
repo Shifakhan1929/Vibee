@@ -22,6 +22,7 @@ export const Route = createFileRoute("/dashboard")({
           "Your events, your guests, all together. Real-time guest attendance, gross revenue tracking, and live dispatch announcements.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: DashboardPage,

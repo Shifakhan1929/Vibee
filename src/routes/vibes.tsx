@@ -6,7 +6,7 @@ export const Route = createFileRoute("/vibes")({
     meta: [
       {
         title:
-          "Vibe Instant — Spontaneous Meetups & Live Event Reels | Vibe",
+          "Event Reels — Discover Live Gatherings | Vibe",
       },
       {
         name: "description",
@@ -15,7 +15,7 @@ export const Route = createFileRoute("/vibes")({
       },
       {
         property: "og:title",
-        content: "Vibe Instant — Spontaneous Meetups & Event Reels",
+        content: "Event Reels — Vibe",
       },
       {
         property: "og:description",
@@ -23,6 +23,7 @@ export const Route = createFileRoute("/vibes")({
           "Swipe full-screen live reels and join spontaneous meetups across India with 1-click RSVP passes.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: VibesPage,
