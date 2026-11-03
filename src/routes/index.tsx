@@ -4,7 +4,6 @@ import { DownloadAppButton } from "../components/DownloadAppButton";
 import { CitySelectorModal, useSelectedCity } from "../components/CitySelectorModal";
 import { MemoriesMarquee } from "../components/MemoriesMarquee";
 import { MobileSearchSheet } from "../components/MobileSearchSheet";
-import { MobileBottomTabBar } from "../components/MobileBottomTabBar";
 import { Plus } from "lucide-react";
 import { triggerPwaInstall } from "../components/AppInstallModal";
 import { Download, Users, ArrowRight, Sparkles } from "lucide-react";
@@ -4964,9 +4963,7 @@ function Index() {
         }}
       />
 
-      {/* Fixed 56px Mobile Bottom Tab Bar (< 1024px) */}
-      <MobileBottomTabBar onOpenSearch={() => setMobileSearchOpen(true)} />
-    </>
+          </>
   );
 }
 

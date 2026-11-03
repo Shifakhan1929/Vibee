@@ -1,6 +1,7 @@
 /* ==========================================================================
-   MOBILE-FIRST & RESPONSIVE POLISH (Strictly scoped for phones < 1024px)
-   Desktop layout (>= 1024px) is fully preserved without any alteration.
+   RESPONSIVE STYLES
+   Ensures seamless mobile experience (< 1024px) while preserving 100% desktop fidelity (>= 1024px).
+   Upper navbar matches the clean white aesthetic of the dashboard on both mobile and desktop.
    ========================================================================== */
 
 :root {
@@ -20,327 +21,549 @@ img, video, iframe {
   max-width: 100%;
 }
 
+.host-label-short {
+  display: none;
+}
+
+.vibe-nav-wrap {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+}
+
+.vibe-nav-left {
+  min-width: 0;
+}
+
+.vibe-nav-center {
+  position: static !important;
+  transform: none !important;
+}
+
+.vibe-nav-right {
+  justify-self: end;
+}
+
+.vibe-nav-city-name {
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vibe-navbar-spacer {
+  height: var(--nav-height) !important;
+  min-height: var(--nav-height) !important;
+}
+
+.vibe-sticky-navbar a,
+.vibe-sticky-navbar button {
+  min-height: 36px;
+}
+
+.most-loved-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.most-loved-header h2 {
+  min-width: 0;
+  margin: 0;
+}
+
+.v2-cat-list-section .v2-cat-items-wrapper {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  padding: 8px 0;
+}
+
+.v2-cat-list-section .v2-cat-item {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 180ms ease;
+}
+
+.v2-cat-list-section .v2-cat-item:hover {
+  transform: translateY(-3px);
+}
+
+.v2-cat-list-section .v2-cat-item:focus-visible {
+  outline: 2px solid var(--category-hover);
+  outline-offset: 3px;
+}
+
+.v2-cat-list-section .v2-cat-img {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 5 / 3;
+  object-fit: contain;
+}
+
+.category-dialog {
+  z-index: 11002 !important;
+  width: calc(100% - 32px) !important;
+  max-width: 720px !important;
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  border-radius: 8px;
+  background: var(--category-surface);
+  color: var(--category-ink);
+}
+
+body:has(.category-dialog) [data-slot="dialog-overlay"],
+body:has(.category-dialog) [data-state="open"][class*="fixed inset-0"] {
+  z-index: 11001 !important;
+}
+
+.category-search {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--category-border);
+  border-radius: 6px;
+  background: var(--category-surface);
+}
+
+.category-dialog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.category-dialog-item {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) 16px;
+  gap: 12px;
+  align-items: center;
+  min-height: 64px;
+  padding: 8px;
+  border: 1px solid var(--category-border);
+  border-radius: 8px;
+  color: var(--category-ink);
+  text-decoration: none;
+}
+
+.category-dialog-item:hover {
+  border-color: var(--category-hover);
+  box-shadow: var(--category-shadow);
+}
+
+.category-dialog-item img {
+  width: 64px;
+  aspect-ratio: 5 / 3;
+  object-fit: contain;
+}
+
+.category-symbol {
+  width: 24px;
+  margin: auto;
+  color: var(--category-hover);
+}
+
+.category-arrow {
+  width: 16px;
+}
+
+.city-filter-toolbar {
+  top: var(--nav-height) !important;
+}
+
+.city-date-row > div:first-child {
+  min-width: 0;
+}
+
+.city-date-row button {
+  flex-shrink: 0;
+  white-space: nowrap;
+  min-height: 36px;
+}
+
+.city-event-card {
+  min-width: 0;
+}
+
+.city-event-card .absolute.top-3.left-3 {
+  max-width: calc(100% - 64px);
+  flex-wrap: wrap;
+}
+
+.city-event-card .absolute.top-3.left-3 span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* ==========================================================================
-   MOBILE & TABLET STYLES (< 1024px)
+   MEDIUM / TABLET SCREENS (< 1200px)
    ========================================================================== */
-@media (max-width: 1023px) {
+@media (max-width: 1199px) {
   :root {
-    --nav-height: 56px;
+    --nav-height: 104px;
   }
 
-  /* Prevent any horizontal page blowout */
+  .vibe-nav-wrap {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    height: 60px !important;
+  }
+
+  .vibe-nav-center {
+    display: none !important;
+  }
+
+  .vibe-nav-mobile-bar {
+    display: flex !important;
+    height: 44px;
+    padding: 3px 12px !important;
+    justify-content: center !important;
+    background: #ffffff !important;
+    border-top: 1px solid #f1f5f9 !important;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .vibe-nav-mobile-bar::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .vibe-nav-mobile-bar .vibe-nav-tabs-group {
+    width: max-content;
+    margin: 0 auto;
+    flex-shrink: 0;
+  }
+
+  .vibe-nav-mobile-bar .vibe-nav-link {
+    padding: 5px 12px !important;
+    flex-shrink: 0;
+  }
+}
+
+/* ==========================================================================
+   MOBILE PHONES (< 768px)
+   Upper navbar displays cleanly with top row (Logo + City + Host) and upper sub-bar (Home, Instant, How It Works, Dashboard).
+   No bottom navbar.
+   ========================================================================== */
+@media (max-width: 767px) {
+  :root {
+    --nav-height: 104px;
+  }
+
   html, body {
     overflow-x: hidden !important;
     width: 100% !important;
     max-width: 100vw !important;
   }
 
-  /* Add safe-area bottom padding to main body so mobile bottom bar never covers content */
+  /* No bottom navbar padding needed */
   body {
-    padding-bottom: calc(64px + env(safe-area-inset-bottom, 12px)) !important;
+    padding-bottom: 0 !important;
   }
 
-  /* Sticky Header on Mobile */
+  /* Clean White Upper Navbar - Exactly like Dashboard */
   .vibe-sticky-navbar {
-    height: 56px !important;
-    background-color: #07133A !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05) !important;
   }
 
-  /* Hide Desktop Nav and Mobile Sub-Bar */
-  .vibe-nav-center,
-  .vibe-nav-mobile-bar,
-  .vibe-nav-download-btn,
+  .vibe-nav-wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    height: 56px !important;
+    padding: 0 12px !important;
+    gap: 8px !important;
+  }
+
+  .vibe-nav-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex-shrink: 1 !important;
+    min-width: 0;
+  }
+
+  .vibe-nav-left > button {
+    flex-shrink: 0;
+    width: 32px;
+    height: 36px;
+    padding: 4px;
+    border: 0;
+    background: transparent;
+  }
+
+  .vibe-nav-logo .logo {
+    height: 28px !important;
+    max-height: 28px !important;
+    width: auto !important;
+  }
+
+  .vibe-nav-location {
+    min-width: 0;
+    flex-shrink: 1 !important;
+  }
+
+  .vibe-nav-city-btn {
+    max-width: 110px;
+    min-width: 0;
+    gap: 4px !important;
+    padding: 4px 8px !important;
+    font-size: 12px !important;
+  }
+
+  .vibe-nav-city-name {
+    min-width: 0;
+  }
+
+  .vibe-nav-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex-shrink: 0;
+  }
+
+  .vibe-nav-download-btn {
+    display: none !important;
+  }
+
+  .vibe-nav-host-btn {
+    padding: 6px 12px !important;
+    gap: 4px !important;
+    min-height: 34px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    border-radius: 9999px !important;
+  }
+
+  .host-label-full {
+    display: none !important;
+  }
+
+  .host-label-short {
+    display: inline !important;
+  }
+
   .vibe-nav-profile-btn {
     display: none !important;
   }
 
-  /* ------------------------------------------------------------------------
-     1. HERO SECTION (< 1024px)
-     ------------------------------------------------------------------------ */
-  .search-parent {
-    padding-top: calc(56px + env(safe-area-inset-top, 10px)) !important;
-    padding-bottom: 24px !important;
-    background-position: center top !important;
-  }
-
-  .search-parent .search-child {
-    padding: 0 16px !important;
-    max-width: 100% !important;
-  }
-
-  .vibe-hero-layout {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 16px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  /* Hero Headline */
-  .vibe-hero-headline {
-    order: 1 !important;
-    text-align: center !important;
-    width: 100% !important;
-    padding: 12px 4px 4px !important;
-  }
-
-  /* Hero Search Field (48px tall, 16px font to prevent iOS auto-zoom) */
-  .vibe-hero-search {
-    order: 2 !important;
-    width: 100% !important;
-    margin: 0 auto 4px !important;
-  }
-
-  /* Preview Card on Mobile (Full width with 16px radius) */
-  .vibe-hero-card-wrapper,
-  .vibe-hero-card {
-    order: 3 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-  }
-
-  /* Hero CTA Buttons */
-  .vibe-hero-ctas {
-    order: 4 !important;
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 10px !important;
-    align-items: center !important;
-  }
-
-  .vibe-hero-ctas .vibe-cta-primary {
-    width: 100% !important;
-    height: 48px !important;
-    border-radius: 14px !important;
+  /* Upper Sub-Navbar with clean segmented pill tabs */
+  .vibe-nav-mobile-bar {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 15px !important;
-    font-weight: 800 !important;
+    width: 100% !important;
+    padding: 5px 8px !important;
+    background: #ffffff !important;
+    border-top: 1px solid #f1f5f9 !important;
   }
 
-  .vibe-hero-ctas .vibe-cta-secondary {
+  .vibe-nav-mobile-bar .vibe-nav-tabs-group {
     display: inline-flex !important;
     align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
-    color: #00D2FF !important;
-    font-size: 14px !important;
-    font-weight: 700 !important;
-    padding: 8px 16px !important;
+    gap: 3px !important;
+    padding: 3px 4px !important;
+    border-radius: 9999px !important;
+    background: #edf2f7 !important;
+  }
+
+  .vibe-nav-mobile-bar .vibe-nav-link {
+    font-size: 12px !important;
+    padding: 4px 10px !important;
+    border-radius: 9999px !important;
+  }
+
+  .vibe-navbar-spacer {
+    height: 104px !important;
+    min-height: 104px !important;
   }
 
   /* ------------------------------------------------------------------------
-     2. BOT CREATE SECTION (< 1024px)
+     Categories & Events on Mobile
      ------------------------------------------------------------------------ */
-  .bot-create-section {
-    padding: 36px 16px !important;
-  }
-
-  .bot-create-container {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 32px !important;
-  }
-
-  .bot-create-h1 {
-    font-size: 26px !important;
-    line-height: 1.2 !important;
-    text-align: left !important;
-  }
-
-  .bot-create-subtext {
-    font-size: 14.5px !important;
-    line-height: 1.5 !important;
-    margin-bottom: 24px !important;
-  }
-
-  .bot-action-buttons {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 10px !important;
-    width: 100% !important;
-  }
-
-  .bot-btn {
-    width: 100% !important;
-    height: 48px !important;
-    border-radius: 14px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 14.5px !important;
-    font-weight: 700 !important;
-  }
-
-  /* Chat Mockup frame max 320px tall on mobile */
-  .bot-phone-frame {
-    width: 100% !important;
-    max-width: 340px !important;
-    margin: 0 auto !important;
-  }
-
-  .bot-phone-screen {
-    height: 320px !important;
-    max-height: 320px !important;
-    overflow-y: auto !important;
-  }
-
-  /* ------------------------------------------------------------------------
-     3. CATEGORIES CAROUSEL (< 1024px)
-     ------------------------------------------------------------------------ */
-  .v2-cat-list-section {
-    padding: 24px 0 !important;
-  }
-
-  .most-loved-header {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    padding: 0 16px !important;
-    margin-bottom: 14px !important;
-  }
-
-  .most-loved-header h2 {
-    font-size: 20px !important;
-    font-weight: 800 !important;
-    color: #07133A !important;
-    margin: 0 !important;
-  }
-
   .v2-cat-list-section .v2-cat-items-wrapper {
-    display: flex !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    scrollbar-width: none !important;
-    -webkit-overflow-scrolling: touch !important;
-    gap: 14px !important;
-    padding: 4px 16px 12px !important;
-  }
-
-  .v2-cat-list-section .v2-cat-items-wrapper::-webkit-scrollbar {
-    display: none !important;
+    grid-template-columns: none;
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    grid-auto-columns: 160px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    gap: 10px;
+    padding: 6px 0 12px;
   }
 
   .v2-cat-list-section .v2-cat-item {
-    flex: 0 0 76px !important;
-    width: 76px !important;
-    scroll-snap-align: start !important;
-    text-align: center !important;
+    scroll-snap-align: start;
   }
 
-  .v2-cat-list-section .v2-cat-img {
-    width: 76px !important;
-    height: 76px !important;
-    border-radius: 20px !important;
-    object-fit: cover !important;
-    box-shadow: 0 4px 14px rgba(7, 19, 58, 0.08) !important;
+  .most-loved-header h2 {
+    font-size: 22px !important;
+    line-height: 1.3;
   }
 
-  /* ------------------------------------------------------------------------
-     4. EVENT LISTS (Popular in Indore & Trending) (< 1024px)
-     ------------------------------------------------------------------------ */
+  .nearby-cities-grid {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    gap: 12px !important;
+    width: 100%;
+    padding-bottom: 12px;
+  }
+
+  .nearby-city-item {
+    flex: 0 0 170px !important;
+    min-width: 170px !important;
+    scroll-snap-align: start;
+  }
+
   .event-card-parent.event-card-scrollable {
     display: flex !important;
     overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    scrollbar-width: none !important;
-    -webkit-overflow-scrolling: touch !important;
-    gap: 14px !important;
-    padding: 4px 16px 14px !important;
-  }
-
-  .event-card-parent.event-card-scrollable::-webkit-scrollbar {
-    display: none !important;
+    width: 100%;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    gap: 16px;
   }
 
   .event-card-parent.event-card-scrollable .event-card {
     flex: 0 0 82% !important;
     width: 82% !important;
-    max-width: 320px !important;
-    scroll-snap-align: start !important;
-    border-radius: 16px !important;
-    overflow: hidden !important;
+    max-width: 310px !important;
+    scroll-snap-align: start;
   }
 
-  /* ------------------------------------------------------------------------
-     5. CITIES NEAR YOU (< 1024px)
-     ------------------------------------------------------------------------ */
-  .nearby-cities-grid {
+  .event-card-scrollable .banner-cont {
+    aspect-ratio: 16 / 9;
+    height: auto !important;
+  }
+
+  .event-card-scrollable .banner-img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover;
+  }
+
+  .event-card-scrollable .title h3 {
+    white-space: normal !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .vibe-bot-chat-frame {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .city-trending-grid {
+    display: flex !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: 12px;
+  }
+
+  .city-trending-grid .city-event-card {
+    flex: 0 0 86%;
+    max-width: 340px;
+    scroll-snap-align: start;
+  }
+
+  .city-date-row {
     display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 10px !important;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .city-date-row > div:first-child {
+    overflow-x: auto;
+  }
+
+  .footer {
+    padding-bottom: 24px !important;
+  }
+}
+
+/* ==========================================================================
+   EXTRA SMALL PHONES (< 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .vibe-preview-card {
+    aspect-ratio: auto !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+  }
+
+  .vibe-card-title {
+    font-size: 15px !important;
+    line-height: 1.3 !important;
+  }
+
+  .vibe-card-actions {
+    margin-top: 12px;
+  }
+
+  .search-parent .search-child {
     padding: 0 16px !important;
   }
 
-  .nearby-city-item {
-    width: 100% !important;
+  .vibe-hero-headline .title {
+    font-size: 28px !important;
+  }
+
+  .vibe-hero-search #hss_bar .hs_search_input_box {
+    display: flex !important;
+    align-items: center;
+  }
+
+  .vibe-hero-search #hss_bar .hs_search_icon {
+    flex: 0 0 40px;
+    padding: 0 12px !important;
+  }
+
+  .vibe-hero-search #hss_bar .hs_search_text {
     min-width: 0 !important;
-    padding: 10px !important;
-    border-radius: 12px !important;
-    background: #f8fafc !important;
-    border: 1px solid #e2e8f0 !important;
+    padding: 0 8px !important;
   }
 
-  /* ------------------------------------------------------------------------
-     6. APP DOWNLOAD SECTION (< 1024px)
-     ------------------------------------------------------------------------ */
-  /* Hide QR Code on Mobile phones (phones cannot scan their own screen!) */
-  .app-qr-code,
-  .app-qr-container,
-  [data-qr-code] {
-    display: none !important;
+  .category-dialog-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  /* ------------------------------------------------------------------------
-     7. FOOTER ON MOBILE (< 1024px)
-     ------------------------------------------------------------------------ */
-  .footer {
-    padding-bottom: calc(76px + env(safe-area-inset-bottom, 16px)) !important;
+  .category-dialog {
+    padding: 20px;
   }
 
-  .home-footer1 .row {
-    float: none !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 20px !important;
+  .vibe-nav-left {
+    gap: 5px !important;
   }
 
-  .home-footer1 .span3-ms {
-    width: 100% !important;
-    float: none !important;
-    margin: 0 !important;
-  }
-
-  .home-footer3 ul {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 12px 18px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  .home-footer4 .cpy-right {
-    width: 100% !important;
-    text-align: center !important;
-    margin: 8px 0 !important;
-  }
-
-  .footer-social {
-    float: none !important;
-    display: flex !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    margin-top: 10px !important;
+  .vibe-nav-city-btn {
+    max-width: 100px;
   }
 }
 
 /* Reduced Motion preference */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  .v2-cat-item,
+  .vibe-preview-card,
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
